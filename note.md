@@ -1,0 +1,1 @@
+- lunedi 26.10 no anatomia (si entra alle 1), si recupera 23.11

@@ -649,6 +649,7 @@ Avvengono 3 processi importanti nelle vie di conduzione
         2. serve a intrappolare sostanze nocive e agenti patogeni
 
 Il movimento delle ciglia sposta il muco verso l'alto
+Il fumo inibisce il movimento delle ciglia
 <div style="clear: both;"></div>
 
 

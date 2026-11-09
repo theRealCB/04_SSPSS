@@ -652,5 +652,39 @@ Il movimento delle ciglia sposta il muco verso l'alto
 Il fumo inibisce il movimento delle ciglia
 <div style="clear: both;"></div>
 
+## I polmoni
+<img src="imm/pagina18_img1.jpg" width="350" style="float: left; margin-right: 30px;">
+
+- Organi localizzati nella ==cavità toracica==
+- La base di ogni polmone ==poggia sul diaframma==, mentre **l'apice** ("la punta") si estende fino a ==poco sotto la clavicola ==
+- Da notare le ==separazoni nei polmoni==, vengono identificate come **lobi** (3 lobi nel destro e 2 lobi nel sinistro, per lasciare spazio al cuore). I lobi sono separati da **scissure**
+- Il polmone sinistro è quindi ==piu piccolo== del polmone destro
+- I polmoni sono costituiti da tessuto connettivo ==**elastico**== e alveoli. Ciò fa si che si possono allargare e poi ritornare alla posizione originale
+- I polmoni sono rivestiti dalla pleura viscerale
+<div style="clear: both;"></div>
+
+## Le pleure
+
+<img src="imm/pagina19_img2.jpg" width="350" style="float: left; margin-right: 30px;">
+
+- La parete della cavità toracica che ospita i polmoni è rivestita dalla pleura parietale
+- Il liquido pleurico fa si che vi sia un ambiente privo di attrito per poter permettere il movimento dei polmoni
+<div style="clear: both;"></div>
+
+## La deglutizione
+
+<img src="imm/pagina19_img1.jpg" width="350" style="float: left; margin-right: 30px;">
+
+- La deglutizione è un riflesso &rarr; risposta **involontaria** ad uno stimolo
+- <font color="red">La deglutizione però è un riflesso particolare, perche inizia in maniera volontaria, e poi procede in maniera involontaria</font>:
+    - **Parte volontaria**: Spostamento del bolo verso la faringe da parte della lingua
+    - **Parte involontaria**: quando il bolo arriva nella faringe, il riflesso procede in maniera involontaria (non controlliamo più il movimento della farigne)
+- L'**epiglottide** è una lamina (sottile strato) cartilaginea. Nel corso della deglutizione l'epiglottide si ==abbassa==, e chiude l'entrata alle vie respiratorie
+
+## La ventilazione polmonare
+
+<img src="imm/pagina20_img1.jpg" width="450" >
+
+- Movimento meccanico che consente di ==rinnovare l'aria== all'interno dei polmoni. Comprende due fasi: **inspirazione** ed **espirazione**
 
 

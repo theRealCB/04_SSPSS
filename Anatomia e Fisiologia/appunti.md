@@ -682,9 +682,19 @@ Il fumo inibisce il movimento delle ciglia
 - L'**epiglottide** è una lamina (sottile strato) cartilaginea. Nel corso della deglutizione l'epiglottide si ==abbassa==, e chiude l'entrata alle vie respiratorie
 
 ## La ventilazione polmonare
-
-<img src="imm/pagina20_img1.jpg" width="450" >
+<img src="imm/pagina20_img1.jpg" width="450" style="float: left; margin-right: 30px;">
 
 - Movimento meccanico che consente di ==rinnovare l'aria== all'interno dei polmoni. Comprende due fasi: **inspirazione** ed **espirazione**
+<div style="clear: both;"></div>
 
+> Praentesi di fisica: quando si comprime dell'aria, il volume diminuisce e la pressione aumenta. Viceversa quando si decomprime un gas, il volume aumenta e la pressione diminuisce &rarr; **questo meccanismo è usato per la respirazione**
 
+### Inspirazione
+- IN GENERALE: necessaria **contrazione** 
+- È un processo ==**attivo**== (è richiesta la contrazione muscolare, che consuma atp)
+- Durante l'inspirazione, il diaframma si contrae e <font color="red">SI ABBASSA</font>.
+- Anche i muscoli intercostali si contraggono e sollevano le costole.
+- Ciò determina un aumento del volume della cavità toracica; di conseguenza anche i polmoni aumentano di volume e la pressione dell'aria all'interno di questi organi **diminuisce**, e diventa inferiore alla pressione atmosferica
+- L'aria si sposta quindi da fuori verso i polmoni
+
+> <font color="red">IMPORTANTE DA NON DIMENTICARE: CONTRAZIONE = ARIA CHE ENTRA</font>

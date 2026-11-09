@@ -631,11 +631,25 @@ Vie di conduzione dell'aria:
 - ==trachea==
 - ==bronchi== (destro e sinistro)
 - bronchioli
-- <font color="red">alveoli</font>: unità funyionali dell'apparato respiratorio. È qui che avvengono gli scambi di gas
+- <font color="red">alveoli</font>: unità funzionali dell'apparato respiratorio. È qui che avvengono gli scambi di gas &rarr; avvengono per &Delta;p
 
 Avvengono 3 processi importanti nelle vie di conduzione
 - Riscaldata
 - Umidificata (O<sub>2</sub> in aria secca irrita le mucose)
 - Purificata
+
+## La mucosa respiratoria
+
+<img src="imm/pagina18_img2.png" width="200" style="float: left; margin-right: 30px;">
+
+- Parliamo di **epitelio pseudostratificato** perche al microscopio sembra composto da piu strati, ma in realta è a singolo strato, ma con nuclei posizionati nella cellula in posizioni differenti
+- Tra le cellule epiteliali pseudostratificate troviamo **cellule caliciformi**, che producono muco
+- Il **muco** è una sostanza viscosa che svolge due funzioni:
+        1. lubrifica le ciglia
+        2. serve a intrappolare sostanze nocive e agenti patogeni
+
+Il movimento delle ciglia sposta il muco verso l'alto
+<div style="clear: both;"></div>
+
 
 

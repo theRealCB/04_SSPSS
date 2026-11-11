@@ -2,7 +2,7 @@
 
 ---
 
-## LA COMUNICAZIONE UMANA COME SISTEMA DI COMUNICAZIONE
+## La comunicazione umana come sistema di comunicazione
 
 ### Cos'è un sistema?
 
@@ -78,7 +78,7 @@ I sistemi tendono al mmantenimento di un certo equilibrio attraverso la stabiliz
 
     >Stessi esiti possono derivare da diverse condizioni di partenza
 
-## I 5 ASSIOMI DELLA COMUNICAZIONE
+## I 5 assiomi della comunicazione
 
 ### 1<sup>o</sup> assioma
 

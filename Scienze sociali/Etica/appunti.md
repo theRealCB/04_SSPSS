@@ -30,7 +30,7 @@ Altri esempi più un generale:
 
 =>La risposta a questi temi cambia rispetto al punto di vista della ==società==. Il ruolo dell'etica in tutto ciò non è dare risposte assolute a queste tematiche, ma anlizzare i vari punti di vista e le varie correnti di pensiero
 
-## OBBIETTIVI DEL CORSO DI ETICA
+## Obbiettivi del corso di etica
 - Concoscere e saper riflettere sui principi, sui valori, sulle norme che stanno a fondamento della nostra società
 - Conoscere e saper riflettere sui principi, sui valori, sulle norme che stanno a fondamento delle professioni sanitarie
 - Saper riflettere sulla propria etica personale nei confronti delle professioni sanitarie
@@ -71,7 +71,7 @@ graph LR
 
 Questi tre elementi interagiscono, si relazionano, e si influenzano
 
-## CASO: INTERRUZIONE DI GRAVIDANZA
+## Caso: interruzione di gravidanza
 >Una ragazza di 20 anni che sta frequentando una scuola univeritaria professionale scopre di essere incinta alla sesta settimana di gravidanza
 Con il suo ragazzo di 22, anche lui studente e con il quale ha una relazione da tre mesi, hanno sempre usato le dovute precauzioni, ma qualcosa è andato storto
 La ragazza non sa se abortire o no.
@@ -89,7 +89,7 @@ Nel caso incontriamo un conflitto tra etica personale e etica professionale parl
 
 Il diritto all'**obiezione di coscienza** si interfaccia spesso con il pricipio di **discriminazione** (es: se non assumo una infermiera cattolica perche contraria all'aborto sto discriminando)
 
-## LA MORALE SOCIALE 
+## La morale sociale 
 L'insieme di principi, valori e norme di una società che stabiliscono cosa é giusto e cosa é sbagliato
 
 - Norme ==scritte== &rarr; leggi.
@@ -102,11 +102,11 @@ Obbiettivo della morale è la **pace sociale** o **sicurezza sociale** &rarr; ga
 
 La riflessione qui é capire quali principi fondamentali devono essere scritti nella Costituzione
 
-### L'ETICA È LA FILOSOFIA MORALE
+### L'etica è la filosofia morale
 Se la **morale** è l'insieme di principi, valori e norme di una determinata società, allora l'**Etica** é ... 
 &rarr; *la riflessione critica e razionale su ciò che è giusto e sbagliato, sui principi, sui valori e sulle norme di una determinata società o individuo*
 
-## L'ETICA PROFESSIONALE
+## L'etica professionale
 
 Vi è una differenza tra sapere tecnico-scientifico e sapere etico filosofico
 

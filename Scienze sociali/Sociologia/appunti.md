@@ -56,7 +56,7 @@ L'identità sociale è **plurima e cumulativa**
 
 
 # FASCICOLO 2
-## CASO 9
+## Caso 9
 
 - SINTESI DEL CASO: 
 

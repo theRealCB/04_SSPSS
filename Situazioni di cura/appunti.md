@@ -3,7 +3,7 @@
 
 # LE INFEZIONI
 
-## IMPORTANZA DELLE TEMPERATURE
+## Importanza delle temperature
 - <span style="color:green">Dai 65<sup>o</sup> morte dei batteri </span>(==ma non delle tossine==)
 
 - <span style="color:orange">Tra 40<sup>o</sup> e 64<sup>o</sup> C proliferazione lenta <span>
@@ -17,7 +17,7 @@
 
 
 
-## TRASMISSIONE
+## Trasmissione
 ### Mezzi di trasmissione
 - **Contatto**: con oggetti, corpo, superfici
 => pericolosità del contatto è che la catena di contagio è molto complessa
@@ -52,7 +52,7 @@ Diviso in 2 categorie  (in base alla grandezza della goccia):
 
 <br>
 
-##### DISINFEZIONE
+##### Disinfezione
 4 elementi della disinfezione (ugualmente importanti):
 - Prodotto (**Chimico**)
 - Freddo (**Temperatura**) &rarr; 20<sup>o</sup>/25<sup>o</sup>

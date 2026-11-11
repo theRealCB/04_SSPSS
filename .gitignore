@@ -2,6 +2,7 @@
 # Sito (generato dal workflow)
 /docs
 /site
+/overrides
 
 # File temporanei di Office
 ~$*

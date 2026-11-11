@@ -43,6 +43,9 @@ SUBJECTS = {
     "Scienze sociali": ("material-account-group", "Etica e sociologia"),
     "Scienze umane e della salute": ("material-hospital-box", "Determinanti della salute e storia sanitaria"),
     "Situazioni di cura": ("material-stethoscope", "Infezioni, igiene e multiresistenze"),
+    # Sotto-materie
+    "Etica": ("material-scale-balance", "La morale sociale e l'etica professionale"),
+    "Sociologia": ("material-account-group", "Esperimenti e dinamiche sociali"),
 }
 DEFAULT_ICON = "material-notebook-outline"
 
@@ -121,43 +124,51 @@ def last_commit_ts(path: Path) -> int:
     except Exception:
         return 0
 
-def materials_in(folder: Path, paired_pdfs: set[Path]) -> list[Path]:
-    """File scaricabili in folder e nelle sottocartelle senza .md."""
-    out = []
+def natkey(p: Path):
+    """Ordinamento naturale (Booklet_2 prima di Booklet_10)."""
+    return [int(t) if t.isdigit() else t.lower()
+            for t in re.split(r"(\d+)", p.name)]
+
+
+def materials_in(folder: Path, paired_pdfs: set[Path]) -> list[tuple]:
+    """File scaricabili raggruppati: (None, file sciolti), poi una voce per
+    ogni sottocartella senza .md. Deduplica per nome tra i gruppi."""
+    groups, seen = [], set()
+
+    def add(name, files):
+        unique = [f for f in sorted(files, key=natkey) if f.name not in seen]
+        seen.update(f.name for f in unique)
+        if unique:
+            groups.append((name, unique))
+
+    add(None, [p for p in folder.iterdir()
+               if p.is_file() and not is_junk(p)
+               and p.suffix.lower() in MATERIAL_EXT and p not in paired_pdfs])
     for p in sorted(folder.iterdir()):
-        if is_junk(p):
-            continue
-        if p.is_file() and p.suffix.lower() in MATERIAL_EXT and p not in paired_pdfs:
-            out.append(p)
-        elif p.is_dir() and not any(c.suffix == ".md" for c in p.rglob("*") if not is_junk(c)):
-            out.extend(c for c in sorted(p.rglob("*"))
-                       if c.is_file() and not is_junk(c) and c.suffix.lower() in MATERIAL_EXT)
-    # Deduplica per nome file (es. booklet presenti sia sciolti sia nella sottocartella)
-    seen, unique = set(), []
-    for p in out:
-        if p.name not in seen:
-            seen.add(p.name)
-            unique.append(p)
-    # Ordinamento naturale (Booklet_2 prima di Booklet_10)
-    def natkey(p: Path):
-        return [int(t) if t.isdigit() else t.lower()
-                for t in re.split(r"(\d+)", p.name)]
-    return sorted(unique, key=natkey)
+        if (p.is_dir() and not is_junk(p)
+                and not any(c.suffix == ".md" for c in p.rglob("*") if not is_junk(c))):
+            add(p.name, [c for c in p.rglob("*")
+                         if c.is_file() and not is_junk(c) and c.suffix.lower() in MATERIAL_EXT])
+    return groups
 
 
 def material_links(folder: Path, dest_folder: Path, paired_pdfs: set[Path]) -> str:
-    items = materials_in(folder, paired_pdfs)
-    if not items:
+    groups = materials_in(folder, paired_pdfs)
+    if not groups:
         return ""
     lines = ["", '<div class="sspss-materials" markdown>',
              '<p class="sspss-materials__title">Materiali</p>', ""]
-    for f in items:
-        rel = f.relative_to(folder)
-        icon = FILE_ICONS.get(f.suffix.lower(), ":material-file-document-outline:")
-        href = urllib.parse.quote(str(rel))
-        label = f.stem.replace("_", " ")
-        lines.append(f"- {icon} [{label}]({href})")
-    lines += ["", "</div>"]
+    for gname, files in groups:
+        if gname:
+            lines += [f'<p class="sspss-materials__group">{gname.replace("_", " ")}</p>', ""]
+        for f in files:
+            rel = f.relative_to(folder)
+            icon = FILE_ICONS.get(f.suffix.lower(), ":material-file-document-outline:")
+            href = urllib.parse.quote(str(rel))
+            label = f.stem.replace("_", " ")
+            lines.append(f"- {icon} [{label}]({href})")
+        lines.append("")
+    lines.append("</div>")
     return "\n".join(lines) + "\n"
 
 
@@ -210,8 +221,15 @@ def process_folder(src: Path, dest: Path) -> dict:
                       if any(c.suffix == ".md" for c in s.rglob("*") if not is_junk(c))]
         body = ""
         if md_subdirs:
-            body += "\n" + "\n".join(
-                f"- :material-folder-open: [{s.name}](<{s.name}/index.md>)" for s in md_subdirs) + "\n"
+            sub_cards = []
+            for sub2 in md_subdirs:
+                icon, desc = SUBJECTS.get(sub2.name, (DEFAULT_ICON, "Appunti e materiali"))
+                sub_cards.append(
+                    f"-   :{icon}:{{ .lg .middle }} __{sub2.name}__\n\n"
+                    f"    ---\n\n    {desc}\n\n    [Apri →](<{sub2.name}/index.md>)"
+                )
+            body += ('\n<div class="grid cards" markdown>\n\n'
+                     + "\n\n".join(sub_cards) + "\n\n</div>\n")
         body += material_links(src, dest, paired)
         if not body.strip():
             body = "\n*Ancora nessun materiale.*\n"
@@ -423,6 +441,14 @@ body.sspss-hide-mat .sspss-card .sspss-materials > ul { display: none; }
   letter-spacing: .12em; text-transform: uppercase;
   color: var(--md-default-fg-color--light);
 }
+.sspss-materials__group {
+  font-size: .56rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--sspss-red);
+  margin: .6rem 0 0 !important;
+}
+[data-md-color-scheme="slate"] .sspss-materials__group { color: #FF8A75; }
+body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { display: none; }
 .sspss-card .sspss-materials > ul { list-style: none; margin: .4rem 0 0; padding: 0; font-size: .62rem; }
 .sspss-card .sspss-materials > ul li { margin: .15rem 0; display: flex; align-items: center; gap: .3rem; }
 .sspss-materials .twemoji { color: var(--sspss-red); flex: none; display: inline-flex; }

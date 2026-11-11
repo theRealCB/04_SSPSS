@@ -67,6 +67,7 @@ def from_api():
     total = to_int(api_get("stats/total", span).get("total", 0))
     hits = api_get("stats/hits", {**span, "daily": "false", "limit": 100}).get("hits", [])
     by_path = {unicodedata.normalize("NFC", urllib.parse.unquote(h.get("path", ""))): to_int(h.get("count", 0)) for h in hits}
+    print("percorsi visti dall'API:", json.dumps(by_path, ensure_ascii=False))
     paths = {}
     for name in subjects():
         p = BASE_PATH + name + "/"

@@ -25,10 +25,8 @@ EXCLUDE_DIRS = {".git", ".github", "docs", "site", "overrides", "Stage", "__pyca
 
 def fetch_count(path: str):
     """Conteggio per un percorso; prova la variante così com'è e quella encodata. 404 = 0."""
-    variants = [path]
     quoted = urllib.parse.quote(path, safe="/")
-    if quoted != path:
-        variants.append(quoted)
+    variants = [quoted] if quoted == path else [quoted, path]
     missing = False
     for p in variants:
         url = f"https://{CODE}.goatcounter.com/counter/{urllib.parse.quote(p, safe='')}.json"

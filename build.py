@@ -233,6 +233,10 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 2px; }
 [data-md-color-scheme="slate"] mark { background: #8d6e00; color: #fff; }
 .md-typeset .grid.cards > ul > li { border-radius: 8px; }
 
+/* Le liste scorrono attorno alle immagini con float, come in MPE
+   (Material le mette in flow-root, che le blocca in colonna accanto al float) */
+.md-typeset ol:not([hidden]), .md-typeset ul:not([hidden]) { display: block; }
+
 /* Spaziature compatte come nell'anteprima MPE */
 .md-typeset p, .md-typeset li { line-height: 1.6; }
 .md-typeset p { margin-top: 0; margin-bottom: .3em; }

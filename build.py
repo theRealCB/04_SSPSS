@@ -13,6 +13,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DOCS = ROOT / "docs"
+PDF_MANIFEST = ROOT / "pdf_manifest.json"
+PDF_TARGETS: list[dict] = []  # pagine per cui generare il PDF in CI se non committato
 
 # Cartelle/file da non pubblicare
 EXCLUDE_DIRS = {".git", ".github", "docs", "site", "overrides", "Stage", "__pycache__"}
@@ -31,6 +33,7 @@ FILE_ICONS = {
 # Icona e descrizione per la card in homepage
 SUBJECTS = {
     "Adattamento e responsabilità": ("material-account-heart", "Relazione di cura, sensazione e percezione"),
+    "Atelier": ("material-arm-flex", "Atelier di fisioterapia"),
     "Anatomia e Fisiologia": ("material-heart-pulse", "Cellula, tessuti, sistema nervoso e apparati"),
     "Comunicazione": ("material-forum", "Sistemi, assiomi e comunicazione umana"),
     "Ergonomia": ("material-chair-rolling", "Colonna vertebrale e movimenti corretti"),
@@ -79,7 +82,7 @@ def fix_tight_blocks(text: str) -> str:
     return "\n".join(out)
 
 
-def transform_md(src: Path, title: str, pdf_name: str | None) -> str:
+def transform_md(src: Path, title: str, pdf_name: str) -> str:
     text = src.read_text(encoding="utf-8")
     # Via i blocchi <style> di Markdown Preview Enhanced
     text = re.sub(r"<style>.*?</style>\s*", "", text, flags=re.S)
@@ -89,10 +92,8 @@ def transform_md(src: Path, title: str, pdf_name: str | None) -> str:
     text = fix_tight_blocks(text)
     text = re.sub(r"\n{4,}", "\n\n\n", text).strip() + "\n"
 
-    button = ""
-    if pdf_name:
-        href = urllib.parse.quote(pdf_name)
-        button = f"[:material-file-pdf-box: Scarica il PDF]({href}){{ .md-button }}\n\n"
+    href = urllib.parse.quote(pdf_name)
+    button = f"[:material-file-pdf-box: Scarica il PDF]({href}){{ .md-button }}\n\n"
     return f"---\ntitle: {title}\n---\n\n{button}{text}"
 
 
@@ -151,19 +152,25 @@ def process_folder(src: Path, dest: Path) -> dict:
     main_md = next((m for m in mds if m.stem.lower() == "appunti"), mds[0] if mds else None)
     pages = []
 
+    rel = dest.relative_to(DOCS)
     for md in mds:
         text = md.read_text(encoding="utf-8")
         title = page_title(md, text)
         pdf = md.with_suffix(".pdf")
-        pdf_name = pdf.name if pdf.exists() else None
-        if pdf_name:
+        if pdf.exists():
             paired.add(pdf)
-        out_name = "index.md" if md == main_md else md.name
-        content = transform_md(md, title, pdf_name)
-        if md == main_md:
+        is_index = md == main_md
+        out_name = "index.md" if is_index else md.name
+        # href del pulsante, relativo all'URL della pagina (use_directory_urls)
+        pdf_href = pdf.name if is_index else f"../{pdf.name}"
+        content = transform_md(md, title, pdf_href)
+        if is_index:
             content += material_links(src, dest, paired)
         (dest / out_name).write_text(content, encoding="utf-8")
         pages.append((title, out_name))
+        if not pdf.exists():
+            page_url = f"{rel}/" if is_index else f"{rel}/{md.stem}/"
+            PDF_TARGETS.append({"page": page_url, "pdf": f"{rel}/{pdf.name}", "title": title})
 
     # Sottocartelle con md: ricorsione (es. Scienze sociali/Etica)
     for sub in subdirs:
@@ -218,17 +225,54 @@ def main():
     assets = DOCS / "assets"
     assets.mkdir(exist_ok=True)
     (assets / "extra.css").write_text(
-        """/* Stile del sito appunti */
+        """/* Stile del sito appunti (porta lo stile MPE di Cesa sul tema Material) */
 .md-content h1[align="center"] { margin-bottom: .2em; }
 .md-content p[align="center"] em { color: var(--md-default-fg-color--light); }
 .md-content img { max-width: 100%; border-radius: 4px; }
 mark { background: #fff59d; padding: 0 .15em; border-radius: 2px; }
 [data-md-color-scheme="slate"] mark { background: #8d6e00; color: #fff; }
 .md-typeset .grid.cards > ul > li { border-radius: 8px; }
+
+/* Spaziature compatte come nell'anteprima MPE */
+.md-typeset p, .md-typeset li { line-height: 1.6; }
+.md-typeset p { margin-top: 0; margin-bottom: .3em; }
+.md-typeset h1 { margin-top: 1.5em; margin-bottom: .2em; }
+.md-typeset h2 { margin-top: 1.2em; margin-bottom: .2em; }
+.md-typeset h3 { margin-top: 1.1em; margin-bottom: .2em; }
+
+/* Tabelle: tutta larghezza, intestazione colorata, bordo marcato */
+.md-typeset table:not([class]) { display: table; width: 100%; }
+.md-typeset table:not([class]) th {
+  background: #e8eef7;
+  border-bottom: 2px solid #333;
+}
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th { padding: 6px 10px; }
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: #2b3245;
+  border-bottom-color: #aab;
+}
+
+@media print {
+  .md-typeset .md-button { display: none !important; }  /* niente pulsante PDF dentro il PDF */
+  /* titoli mai staccati dal contenuto che segue */
+  .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+    break-after: avoid; page-break-after: avoid;
+  }
+  .md-typeset h1 + p, .md-typeset h2 + p,
+  .md-typeset h3 + p, .md-typeset h4 + p { break-inside: avoid; }
+  /* stampa anche sfondi e colori (evidenziazioni, intestazioni tabelle) */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
 """, encoding="utf-8")
 
     # Evita la passata Jekyll di GitHub Pages
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")
+
+    # Elenco dei PDF da generare in CI (pagine senza PDF committato)
+    import json
+    PDF_MANIFEST.write_text(json.dumps(PDF_TARGETS, ensure_ascii=False, indent=1),
+                            encoding="utf-8")
 
     n_pages = sum(1 for _ in DOCS.rglob("*.md"))
     print(f"docs/ generata: {len(subjects)} materie, {n_pages} pagine md")

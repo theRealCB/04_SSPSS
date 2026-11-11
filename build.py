@@ -227,6 +227,9 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 2px; }
 .md-typeset .grid.cards > ul > li { border-radius: 8px; }
 """, encoding="utf-8")
 
+    # Evita la passata Jekyll di GitHub Pages
+    (DOCS / ".nojekyll").write_text("", encoding="utf-8")
+
     n_pages = sum(1 for _ in DOCS.rglob("*.md"))
     print(f"docs/ generata: {len(subjects)} materie, {n_pages} pagine md")
 

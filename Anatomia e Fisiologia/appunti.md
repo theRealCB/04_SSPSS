@@ -698,3 +698,29 @@ Il fumo inibisce il movimento delle ciglia
 - L'aria si sposta quindi da fuori verso i polmoni
 
 > <font color="red">IMPORTANTE DA NON DIMENTICARE: CONTRAZIONE = ARIA CHE ENTRA</font>
+
+### Espirazione
+- È un processo <font color="red">PASSIVO</font>
+- Rilassamento dei muscoli &rarr; ritorno elastico dei polmoni (grazie ad ==elastina==)
+- Durante l'espirazione il diaframma si rilassa e <font color="red">SI ALZA</font>, gli intercostali si rilassano e le costole si abbassano
+- Il volume della cavità toracica diminuisce e pertanto diminuisce anche il volume polomanre
+- &Delta;p polmonare > &Delta;p esterno &rarr; aria si sposta verso l'esterno
+
+
+## Respirazione interna ed esterna
+
+<img src="imm/pagina20_img2.png" width="250" style="float: left; margin-right: 30px;">
+
+- **Respirazione esterna**: scambio di gas tra alveoli e capillari polmonari. Questo scambio si verifica attraverso la ==membrana respiratoria==
+La **membrana respiratoria** è molto sottile, per facilitare la diffusione semplice. È formata da:
+    - epitelio semplice dell'alveolo
+    - epitelio semplice del capillare polmonare
+    - le due membrane basali sono fuse
+    - tra le due membrane basali, un sottilissim ostrato di tessuto connettivo
+Distribuzione dei gas nell'atmosfera:
+- 21% O<sub>2</sub>
+- 78% N<sub>2</sub>
+- 1% altri gas
+- 0,04 CO<sub>2</sub>
+
+- **Respirazione interna**: 

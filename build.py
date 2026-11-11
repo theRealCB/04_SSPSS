@@ -519,7 +519,7 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 .md-typeset h3 { margin-top: 1.1em; margin-bottom: .2em; }
 .md-typeset h1:first-child, .md-typeset .md-button + h1 { margin-top: .2em; }
 
-/* Menu sinistro e indice destro collassabili (pulsanti creati da extra.js) */
+/* Menu sinistro collassabile (pulsante in header creato da extra.js) */
 .md-header .sspss-toggle { display: none; }
 .sspss-toggle svg { fill: currentColor; }
 .sspss-toggle--nav { margin-right: .2rem; }
@@ -528,9 +528,25 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
   .md-header .sspss-toggle--nav { display: inline-block; }
   body.sspss-hide-nav .md-sidebar--primary { display: none; }
 }
+
+/* Indice a destra: card a tendina con freccia accanto al titolo */
+.sspss-toc-title { display: flex; align-items: center; cursor: pointer; user-select: none; }
+.sspss-toc-arrow {
+  margin-left: auto;
+  display: inline-flex;
+  padding: .1rem;
+  background: none; border: none; cursor: pointer;
+  border-radius: 6px;
+  color: var(--md-default-fg-color--light);
+}
+.sspss-toc-title:hover .sspss-toc-arrow {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-typeset-a-color);
+}
+.sspss-toc-arrow svg { fill: currentColor; transition: transform .2s; }
+body.sspss-hide-toc .sspss-toc-arrow svg { transform: rotate(-90deg); }
 @media screen and (min-width: 60em) {
-  .md-header .sspss-toggle--toc { display: inline-block; }
-  body.sspss-hide-toc .md-sidebar--secondary { display: none; }
+  body.sspss-hide-toc .md-sidebar--secondary .md-nav--secondary > .md-nav__list { display: none; }
 }
 
 @media print {
@@ -550,59 +566,65 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 
     # JS del sito: pulsanti per collassare menu e indice
     (assets / "extra.js").write_text(
-        """// Pulsanti nella barra in alto per nascondere/mostrare il menu (sx) e l'indice (dx).
+        """// Barra in alto: pulsante per il menu a sinistra. Indice a destra: freccia dropdown sulla card.
 // Lo stato resta salvato nel browser tra una pagina e l'altra.
 (function () {
-  var ICONS = {
-    nav: '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>',
-    toc: '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M7 5h14v2H7V5m0 8v-2h14v2H7M4 4.5A1.5 1.5 0 0 1 5.5 6 1.5 1.5 0 0 1 4 7.5 1.5 1.5 0 0 1 2.5 6 1.5 1.5 0 0 1 4 4.5m0 6A1.5 1.5 0 0 1 5.5 12 1.5 1.5 0 0 1 4 13.5 1.5 1.5 0 0 1 2.5 12 1.5 1.5 0 0 1 4 10.5M7 19v-2h14v2H7m-3-2.5A1.5 1.5 0 0 1 5.5 18 1.5 1.5 0 0 1 4 19.5 1.5 1.5 0 0 1 2.5 18 1.5 1.5 0 0 1 4 16.5Z"/></svg>'
-  };
-  var LABELS = { nav: "menu", toc: "indice" };
+  var NAV_ICON = '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>';
+  var CHEVRON = '<svg viewBox="0 0 24 24" width="22" height="22"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42Z"/></svg>';
 
   function get(key) { try { return localStorage.getItem("sspss-hide-" + key) === "1"; } catch (e) { return false; } }
   function set(key, v) { try { localStorage.setItem("sspss-hide-" + key, v ? "1" : "0"); } catch (e) {} }
 
-  function apply(key, hidden, btn) {
-    document.body.classList.toggle("sspss-hide-" + key, hidden);
-    if (btn) {
-      btn.setAttribute("aria-pressed", hidden ? "false" : "true");
-      btn.title = (hidden ? "Mostra " : "Nascondi ") + LABELS[key];
-      btn.setAttribute("aria-label", btn.title);
-    }
+  function applyNav(hidden, btn) {
+    document.body.classList.toggle("sspss-hide-nav", hidden);
+    btn.setAttribute("aria-pressed", hidden ? "false" : "true");
+    btn.title = (hidden ? "Mostra" : "Nascondi") + " menu";
+    btn.setAttribute("aria-label", btn.title);
   }
 
-  function hasSidebar(key) {
-    var sel = key === "nav" ? ".md-sidebar--primary" : ".md-sidebar--secondary";
-    var el = document.querySelector(sel);
-    return el && !el.hidden && el.querySelector(".md-nav__link");
-  }
-
-  function makeButton(key) {
+  function initNav(header) {
+    var sidebar = document.querySelector(".md-sidebar--primary");
+    if (!sidebar || sidebar.hidden || !sidebar.querySelector(".md-nav__link")) return;
     var btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "md-header__button md-icon sspss-toggle sspss-toggle--" + key;
-    btn.innerHTML = ICONS[key];
+    btn.className = "md-header__button md-icon sspss-toggle sspss-toggle--nav";
+    btn.innerHTML = NAV_ICON;
     btn.addEventListener("click", function () {
-      var hidden = !document.body.classList.contains("sspss-hide-" + key);
-      set(key, hidden);
-      apply(key, hidden, btn);
+      var hidden = !document.body.classList.contains("sspss-hide-nav");
+      set("nav", hidden); applyNav(hidden, btn);
     });
-    apply(key, get(key), btn);
-    return btn;
+    applyNav(get("nav"), btn);
+    header.insertBefore(btn, header.querySelector(".md-header__title"));
+  }
+
+  function applyToc(hidden, btn) {
+    document.body.classList.toggle("sspss-hide-toc", hidden);
+    btn.setAttribute("aria-expanded", hidden ? "false" : "true");
+    btn.title = (hidden ? "Mostra" : "Nascondi") + " indice";
+    btn.setAttribute("aria-label", btn.title);
+  }
+
+  function initToc() {
+    var title = document.querySelector(".md-sidebar--secondary .md-nav--secondary > .md-nav__title");
+    if (!title || !document.querySelector(".md-sidebar--secondary .md-nav__link")) return;
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "sspss-toc-arrow";
+    btn.innerHTML = CHEVRON;
+    title.appendChild(btn);
+    title.classList.add("sspss-toc-title");
+    title.addEventListener("click", function (e) {
+      e.preventDefault();
+      var hidden = !document.body.classList.contains("sspss-hide-toc");
+      set("toc", hidden); applyToc(hidden, btn);
+    });
+    applyToc(get("toc"), btn);
   }
 
   function init() {
     var header = document.querySelector(".md-header__inner");
-    if (!header) return;
-    if (hasSidebar("nav")) {
-      var title = header.querySelector(".md-header__title");
-      header.insertBefore(makeButton("nav"), title);
-    }
-    if (hasSidebar("toc")) {
-      // prima del selettore tema chiaro/scuro
-      var palette = header.querySelector(".md-header__option");
-      header.insertBefore(makeButton("toc"), palette ? palette : null);
-    }
+    if (header) initNav(header);
+    initToc();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

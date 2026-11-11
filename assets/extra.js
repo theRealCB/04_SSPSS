@@ -142,16 +142,19 @@
       .catch(function () { return null; });
   }
   function gcCount(path) {
-    // GoatCounter salva location.pathname così com'è (encodato): prova prima quello
-    return gcFetch(path).then(function (d) {
-      if (d && !d.miss) return parseInt(String(d.count).replace(/\D/g, ""), 10) || 0;
-      var alt = decodeURIComponent(path);
-      if (alt === path) return d ? 0 : null;
-      return gcFetch(alt).then(function (d2) {
-        if (d2 && !d2.miss) return parseInt(String(d2.count).replace(/\D/g, ""), 10) || 0;
-        return d2 ? 0 : null;
+    // GoatCounter normalizza senza slash finale; prova le varianti in ordine
+    var tries = [path.replace(/\/$/, ""), path, decodeURIComponent(path).replace(/\/$/, ""), decodeURIComponent(path)]
+      .filter(function (v, i, a) { return a.indexOf(v) === i; });
+    var sawMiss = false;
+    function next(i) {
+      if (i >= tries.length) return Promise.resolve(sawMiss ? 0 : null);
+      return gcFetch(tries[i]).then(function (d) {
+        if (d && !d.miss) return parseInt(String(d.count).replace(/\D/g, ""), 10) || 0;
+        if (d && d.miss) sawMiss = true;
+        return next(i + 1);
       });
-    });
+    }
+    return next(0);
   }
 
   function siteRoot() {

@@ -129,6 +129,14 @@ body.sspss-hide-mat .sspss-card .sspss-materials > ul { display: none; }
   letter-spacing: .12em; text-transform: uppercase;
   color: var(--md-default-fg-color--light);
 }
+.sspss-materials__group {
+  font-size: .56rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--sspss-red);
+  margin: .6rem 0 0 !important;
+}
+[data-md-color-scheme="slate"] .sspss-materials__group { color: #FF8A75; }
+body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { display: none; }
 .sspss-card .sspss-materials > ul { list-style: none; margin: .4rem 0 0; padding: 0; font-size: .62rem; }
 .sspss-card .sspss-materials > ul li { margin: .15rem 0; display: flex; align-items: center; gap: .3rem; }
 .sspss-materials .twemoji { color: var(--sspss-red); flex: none; display: inline-flex; }

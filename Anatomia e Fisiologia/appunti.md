@@ -738,4 +738,8 @@ Scambio di gas tra cellule dei tessuti e i capillari sistemici
 ## Trasporto di gas nel sangie
 ### O<sub>2</sub>
 ~98% di O<sub>2</sub> è legato all'emoglobina
-**Emoglobina**: proteina formata da 4 catene: 2 &alpha; e 2 &beta; 
+**Emoglobina (Hb)**: proteina formata da 4 catene: 2 &alpha; e 2 &beta; 
+~2% do O<sub>2</sub> sciolto nel plasma
+In ogni catena è presente un gruppo eme (specie chimica non proteica che contiene un atomo di ferro Fe) &rarr; è questo atomo che lega in maniera **<font color="green">reversibile</font>** la molecola di O<sub>2</sub>
+- nei capillari polmonari: Hb &rarr; Hb-O<sub>2</sub>
+- nei capillari sistemici: Hb-O<sub>2</sub> &rarr; Hb

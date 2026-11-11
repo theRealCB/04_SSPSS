@@ -1,2 +1,7 @@
 /Stage
-/Anatomia e Fisiologia/imm
+# Sito (generato dal workflow)
+/docs
+/site
+
+# File temporanei di Office
+~$*

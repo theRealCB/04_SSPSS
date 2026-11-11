@@ -8,6 +8,8 @@ Eseguito dalla GitHub Action a ogni push; si può lanciare anche in locale.
 
 import re
 import shutil
+import subprocess
+import time
 import urllib.parse
 from pathlib import Path
 
@@ -82,7 +84,7 @@ def fix_tight_blocks(text: str) -> str:
     return "\n".join(out)
 
 
-def transform_md(src: Path, title: str, pdf_name: str) -> str:
+def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "") -> str:
     text = src.read_text(encoding="utf-8")
     # Via i blocchi <style> di Markdown Preview Enhanced
     text = re.sub(r"<style>.*?</style>\s*", "", text, flags=re.S)
@@ -94,8 +96,30 @@ def transform_md(src: Path, title: str, pdf_name: str) -> str:
 
     href = urllib.parse.quote(pdf_name)
     button = f"[:material-file-pdf-box: Scarica il PDF]({href}){{ .md-button }}\n\n"
-    return f"---\ntitle: {title}\n---\n\n{button}{text}"
+    return f"---\ntitle: {title}\n---\n\n{crumb}{button}{text}"
 
+
+
+
+def breadcrumb(rel_parts: tuple, current: str, is_index: bool) -> str:
+    """Briciole di pane sopra il titolo: Home / Materia / Pagina."""
+    depth = len(rel_parts) if is_index else len(rel_parts) + 1
+    ancestors = rel_parts[:-1] if is_index else rel_parts
+    items = [f'<a href="{"../" * depth}">Home</a>']
+    for j, part in enumerate(ancestors):
+        items.append(f'<a href="{"../" * (depth - 1 - j)}">{part}</a>')
+    items.append(f"<span>{current}</span>")
+    sep = '<span class="sspss-crumb__sep">/</span>'
+    return '<nav class="sspss-crumb">' + sep.join(items) + "</nav>\n\n"
+
+
+def last_commit_ts(path: Path) -> int:
+    try:
+        r = subprocess.run(["git", "log", "-1", "--format=%ct", "--", str(path)],
+                           capture_output=True, text=True, cwd=ROOT)
+        return int(r.stdout.strip() or 0)
+    except Exception:
+        return 0
 
 def materials_in(folder: Path, paired_pdfs: set[Path]) -> list[Path]:
     """File scaricabili in folder e nelle sottocartelle senza .md."""
@@ -125,13 +149,15 @@ def material_links(folder: Path, dest_folder: Path, paired_pdfs: set[Path]) -> s
     items = materials_in(folder, paired_pdfs)
     if not items:
         return ""
-    lines = ["", "## Materiali", ""]
+    lines = ["", '<div class="sspss-materials" markdown>',
+             '<p class="sspss-materials__title">Materiali</p>', ""]
     for f in items:
         rel = f.relative_to(folder)
         icon = FILE_ICONS.get(f.suffix.lower(), ":material-file-document-outline:")
         href = urllib.parse.quote(str(rel))
         label = f.stem.replace("_", " ")
         lines.append(f"- {icon} [{label}]({href})")
+    lines += ["", "</div>"]
     return "\n".join(lines) + "\n"
 
 
@@ -163,7 +189,8 @@ def process_folder(src: Path, dest: Path) -> dict:
         out_name = "index.md" if is_index else md.name
         # href del pulsante, relativo all'URL della pagina (use_directory_urls)
         pdf_href = pdf.name if is_index else f"../{pdf.name}"
-        content = transform_md(md, title, pdf_href)
+        current = rel.parts[-1] if is_index else title
+        content = transform_md(md, title, pdf_href, breadcrumb(rel.parts, current, is_index))
         if is_index:
             content += material_links(src, dest, paired)
         (dest / out_name).write_text(content, encoding="utf-8")
@@ -188,8 +215,9 @@ def process_folder(src: Path, dest: Path) -> dict:
         body += material_links(src, dest, paired)
         if not body.strip():
             body = "\n*Ancora nessun materiale.*\n"
+        crumb = breadcrumb(rel.parts, rel.parts[-1], True)
         (dest / "index.md").write_text(
-            f"---\ntitle: {src.name}\n---\n\n# {src.name}\n{body}", encoding="utf-8")
+            f"---\ntitle: {src.name}\n---\n\n{crumb}# {src.name}\n{body}", encoding="utf-8")
 
     return {"pages": pages}
 
@@ -206,9 +234,13 @@ def main():
     for d in subjects:
         process_folder(d, DOCS / d.name)
         icon, desc = SUBJECTS.get(d.name, (DEFAULT_ICON, "Appunti e materiali"))
+        ts = last_commit_ts(d)
+        badge = ('<span class="sspss-badge-new">Aggiornato</span>'
+                 if ts and time.time() - ts < 14 * 86400 else "")
         cards.append(
-            f"-   :{icon}:{{ .lg .middle }} __{d.name}__\n\n"
+            f"-   :{icon}:{{ .lg .middle }} __{d.name}__{badge}\n\n"
             f"    ---\n\n    {desc}\n\n    [Apri →](<{d.name}/index.md>)"
+            f'<span class="sspss-views" hidden></span>'
         )
 
     cards_md = "\n\n".join(cards)
@@ -226,8 +258,33 @@ def main():
         '<span class="sspss-stat"><b>PDF</b> per ogni appunto</span>\n'
         "</div>\n\n"
         "</div>\n\n"
+        '<div class="sspss-sort">\n'
+        '<button type="button" class="active" data-sort="az">A–Z</button>\n'
+        '<button type="button" data-sort="views">Più visitate</button>\n'
+        "</div>\n\n"
         f'<div class="grid cards" markdown>\n\n{cards_md}\n\n</div>\n',
         encoding="utf-8")
+
+
+    # Template override: pannello "Materie" a tutta larghezza nell'header
+    ovr = ROOT / "overrides"
+    ovr.mkdir(exist_ok=True)
+    mega_items = []
+    for d in subjects:
+        icon, desc = SUBJECTS.get(d.name, (DEFAULT_ICON, "Appunti e materiali"))
+        icon_path = icon.replace("material-", "material/") + ".svg"
+        href = urllib.parse.quote(d.name) + "/"
+        mega_items.append(
+            f'<a class="sspss-mega__item" href="{{{{ base_url }}}}/{href}">'
+            f'<span class="sspss-mega__icon">{{% include ".icons/{icon_path}" %}}</span>'
+            f'<span class="sspss-mega__text"><b>{d.name}</b><small>{desc}</small></span></a>'
+        )
+    (ovr / "main.html").write_text(
+        "{% extends \"base.html\" %}\n"
+        "{% block header %}\n{{ super() }}\n"
+        '<div class="sspss-mega" id="sspss-mega" hidden>\n'
+        '<div class="sspss-mega__grid">\n' + "\n".join(mega_items) + "\n</div>\n</div>\n"
+        "{% endblock %}\n", encoding="utf-8")
 
     # CSS del sito
     assets = DOCS / "assets"
@@ -306,16 +363,150 @@ def main():
   .md-search__output { border-radius: 16px; margin-top: .4rem; box-shadow: var(--sspss-shadow-lg); }
 }
 
-/* ------ Shell: sidebar e contenuto come card ------ */
+/* ------ Shell: niente menu a sinistra, indice della pagina al suo posto ------ */
+.md-grid { max-width: 72rem; }
 .md-main__inner { margin-top: 1.1rem; }
+.md-sidebar--primary, .md-header label[for="__drawer"] { display: none !important; }
+.md-sidebar--secondary { order: 0; }
 .md-sidebar__scrollwrap { margin: 0 .3rem; }
-.md-sidebar .md-sidebar__inner > .md-nav {
+
+/* Indice: rail dinamico che segue la lettura */
+.md-nav--secondary > .md-nav__title {
+  font-size: .58rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  padding-left: .6rem;
+}
+.md-nav--secondary .md-nav__list { border-left: 2px solid var(--sspss-hairline); }
+.md-nav--secondary .md-nav__item { padding: 0; }
+.md-nav--secondary .md-nav__link {
+  position: relative;
+  margin: 0; padding: .18rem .6rem;
+  border-radius: 0 8px 8px 0;
+  color: var(--md-default-fg-color--light);
+}
+.md-nav--secondary .md-nav__link:hover { background: var(--md-accent-fg-color--transparent); color: var(--md-typeset-a-color); }
+.md-nav--secondary .md-nav__link--active { color: var(--md-typeset-a-color); font-weight: 600; background: var(--md-accent-fg-color--transparent); }
+.md-nav--secondary .md-nav__link--active::before {
+  content: ""; position: absolute; left: -2px; top: 12%;
+  height: 76%; width: 2px; border-radius: 2px;
+  background: var(--sspss-red);
+}
+[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__link--active::before { background: #FF8A75; }
+/* Le sottovoci compaiono solo nella sezione in cui ti trovi */
+.md-nav--secondary .md-nav__item .md-nav { display: none; }
+.md-nav--secondary .md-nav__item:has(.md-nav__link--active) > .md-nav { display: block; }
+
+/* Colonna destra: card Materiali */
+.sspss-right { order: 2; width: 12.1rem; flex-shrink: 0; padding: 1.2rem .3rem 0; align-self: flex-start; position: sticky; top: 4.6rem; }
+.sspss-card {
   background: var(--sspss-surface);
   border: 1px solid var(--sspss-hairline);
   border-radius: 16px;
-  padding: .7rem .7rem;
   box-shadow: var(--sspss-shadow-sm);
+  padding: .65rem .75rem;
 }
+.sspss-card__head { display: flex; align-items: center; cursor: pointer; user-select: none; margin: 0 !important; }
+.sspss-arrow {
+  margin-left: auto; display: inline-flex; padding: .1rem;
+  background: none; border: none; cursor: pointer; border-radius: 6px;
+  color: var(--md-default-fg-color--light);
+}
+.sspss-card__head:hover .sspss-arrow { background: var(--md-accent-fg-color--transparent); color: var(--md-typeset-a-color); }
+.sspss-arrow svg { fill: currentColor; transition: transform .2s; }
+body.sspss-hide-mat .sspss-arrow svg { transform: rotate(-90deg); }
+body.sspss-hide-mat .sspss-card .sspss-materials > ul { display: none; }
+.sspss-materials__title {
+  font-size: .58rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+.sspss-card .sspss-materials > ul { list-style: none; margin: .4rem 0 0; padding: 0; font-size: .62rem; }
+.sspss-card .sspss-materials > ul li { margin: .15rem 0; display: flex; align-items: center; gap: .3rem; }
+.sspss-materials .twemoji { color: var(--sspss-red); flex: none; display: inline-flex; }
+[data-md-color-scheme="slate"] .sspss-materials .twemoji { color: #FF8A75; }
+.sspss-materials .twemoji svg { width: .85rem; height: .85rem; max-height: none; fill: currentColor; }
+.sspss-card .sspss-materials a { color: var(--md-default-fg-color); }
+.sspss-card .sspss-materials a:hover { color: var(--md-typeset-a-color); }
+/* In pagina resta solo su schermi stretti, come blocco in fondo */
+@media screen and (min-width: 60em) { .md-content .sspss-materials { display: none; } }
+@media screen and (max-width: 59.984375em) {
+  .md-content .sspss-materials {
+    margin-top: 1.4rem; padding: .8rem 1rem;
+    background: var(--md-default-bg-color);
+    border: 1px solid var(--sspss-hairline); border-radius: 12px;
+  }
+}
+
+/* Mega menu Materie */
+.sspss-menu-btn {
+  display: inline-flex; align-items: center; gap: .15rem;
+  margin-left: .4rem; padding: .35rem .8rem;
+  border: none; border-radius: 999px;
+  background: none; color: inherit;
+  font: inherit; font-weight: 600; font-size: .7rem;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.sspss-menu-btn svg { fill: currentColor; transition: transform .2s; }
+.sspss-menu-btn:hover, .sspss-menu-btn.open { background: var(--md-accent-fg-color--transparent); color: var(--md-typeset-a-color); }
+.sspss-menu-btn.open svg { transform: rotate(180deg); }
+.sspss-mega {
+  position: fixed; z-index: 3;
+  left: 50%; transform: translateX(-50%) translateY(-8px);
+  width: min(72rem, calc(100% - 1.6rem));
+  background: var(--sspss-surface);
+  border: 1px solid var(--sspss-hairline);
+  border-radius: 20px;
+  box-shadow: var(--sspss-shadow-lg);
+  padding: .8rem;
+  opacity: 0; pointer-events: none; visibility: hidden;
+  transition: opacity .18s, transform .18s, visibility .18s;
+  max-height: calc(100vh - 6rem); overflow: auto;
+}
+.sspss-mega.open { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; visibility: visible; }
+.sspss-mega__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: .3rem; }
+.sspss-mega__item {
+  display: flex; align-items: center; gap: .55rem;
+  padding: .5rem .6rem; border-radius: 12px;
+  color: var(--md-default-fg-color);
+  transition: background .15s, transform .15s;
+}
+.sspss-mega__item:hover { background: var(--md-accent-fg-color--transparent); transform: translateY(-1px); }
+.sspss-mega__icon {
+  flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: 1.9rem; height: 1.9rem; border-radius: 10px;
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--sspss-red);
+}
+[data-md-color-scheme="slate"] .sspss-mega__icon { color: #FF8A75; }
+.sspss-mega__icon svg { width: 1.1rem; height: 1.1rem; fill: currentColor; }
+.sspss-mega__text { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.sspss-mega__text b { font-family: "Space Grotesk", sans-serif; font-size: .68rem; font-weight: 600; }
+.sspss-mega__text small { font-size: .58rem; color: var(--md-default-fg-color--light); }
+.sspss-mega__item--here { background: var(--md-accent-fg-color--transparent); }
+.sspss-mega__item--here b { color: var(--md-typeset-a-color); }
+
+/* Barra di progresso lettura */
+#sspss-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0;
+  background: var(--sspss-red); border-radius: 0 2px 2px 0; z-index: 10;
+}
+[data-md-color-scheme="slate"] #sspss-progress { background: #FF8A75; }
+
+/* Briciole di pane */
+.sspss-crumb {
+  display: flex; flex-wrap: wrap; gap: .5ch;
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: .8rem;
+}
+.sspss-crumb a { color: inherit; }
+.sspss-crumb a:hover { color: var(--md-typeset-a-color); }
+.sspss-crumb > span:last-child { color: var(--sspss-red); }
+[data-md-color-scheme="slate"] .sspss-crumb > span:last-child { color: #FF8A75; }
+.sspss-crumb__sep { opacity: .5; }
 .md-content__inner {
   background: var(--sspss-surface);
   border: 1px solid var(--sspss-hairline);
@@ -473,9 +664,32 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
   vertical-align: 0;
 }
 [data-md-color-scheme="slate"] .md-typeset .grid.cards .twemoji.lg { color: #FF8A75; }
+.md-typeset .grid.cards > ul > li > p:last-child { display: flex; align-items: center; justify-content: space-between; }
 .md-typeset .grid.cards > ul > li > p:last-child a { font-weight: 600; }
 /* Tutta la card è cliccabile */
 .md-typeset .grid.cards > ul > li > p:last-child a::after { content: ""; position: absolute; inset: 0; }
+.sspss-badge-new {
+  margin-left: auto; flex: none;
+  font-size: .52rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--sspss-red);
+  background: var(--md-accent-fg-color--transparent);
+  border: 1px solid var(--sspss-th-border);
+  border-radius: 999px; padding: .2em .7em;
+}
+[data-md-color-scheme="slate"] .sspss-badge-new { color: #FF8A75; }
+.sspss-views { font-size: .6rem; color: var(--md-default-fg-color--light); }
+.sspss-sort { display: flex; gap: .4rem; justify-content: center; margin-bottom: 1.1rem; }
+.sspss-sort button {
+  font: inherit; font-size: .62rem; font-weight: 600;
+  padding: .3em 1em; cursor: pointer;
+  border: 1px solid var(--sspss-hairline); border-radius: 999px;
+  background: var(--sspss-surface); color: var(--md-default-fg-color--light);
+  box-shadow: var(--sspss-shadow-sm);
+  transition: background .15s, color .15s;
+}
+.sspss-sort button:hover { color: var(--md-typeset-a-color); }
+.sspss-sort button.active { background: var(--sspss-red); border-color: var(--sspss-red); color: #fff; }
 
 /* ------ Tabelle ------ */
 .md-typeset table:not([class]) {
@@ -527,38 +741,8 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 .md-typeset h3 { margin-top: 1.1em; margin-bottom: .2em; }
 .md-typeset h1:first-child, .md-typeset .md-button + h1 { margin-top: .2em; }
 
-/* Menu sinistro collassabile (pulsante in header creato da extra.js) */
-.md-header .sspss-toggle { display: none; }
-.sspss-toggle svg { fill: currentColor; }
-.sspss-toggle--nav { margin-right: .2rem; }
-.sspss-toggle[aria-pressed="false"] { opacity: .55; }
-@media screen and (min-width: 76.25em) {
-  .md-header .sspss-toggle--nav { display: inline-block; }
-  body.sspss-hide-nav .md-sidebar--primary { display: none; }
-}
-
-/* Indice a destra: card a tendina con freccia accanto al titolo */
-.sspss-toc-title { display: flex; align-items: center; cursor: pointer; user-select: none; }
-.sspss-toc-arrow {
-  margin-left: auto;
-  display: inline-flex;
-  padding: .1rem;
-  background: none; border: none; cursor: pointer;
-  border-radius: 6px;
-  color: var(--md-default-fg-color--light);
-}
-.sspss-toc-title:hover .sspss-toc-arrow {
-  background: var(--md-accent-fg-color--transparent);
-  color: var(--md-typeset-a-color);
-}
-.sspss-toc-arrow svg { fill: currentColor; transition: transform .2s; }
-body.sspss-hide-toc .sspss-toc-arrow svg { transform: rotate(-90deg); }
-@media screen and (min-width: 60em) {
-  body.sspss-hide-toc .md-sidebar--secondary .md-nav--secondary > .md-nav__list { display: none; }
-}
-
 @media print {
-  .md-typeset .md-button { display: none !important; }  /* niente pulsante PDF dentro il PDF */
+  .md-typeset .md-button, .sspss-materials, .sspss-crumb, #sspss-progress { display: none !important; }
   .md-content__inner { background: #fff; border: none; box-shadow: none; padding: 0; }
   /* titoli mai staccati dal contenuto che segue */
   .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
@@ -574,67 +758,180 @@ body.sspss-hide-toc .sspss-toc-arrow svg { transform: rotate(-90deg); }
 
     # JS del sito: pulsanti per collassare menu e indice
     (assets / "extra.js").write_text(
-        """// Barra in alto: pulsante per il menu a sinistra. Indice a destra: freccia dropdown sulla card.
-// Lo stato resta salvato nel browser tra una pagina e l'altra.
+        """// Interfaccia del sito: mega menu Materie, indice a sinistra, card Materiali,
+// barra di progresso lettura e statistiche GoatCounter.
 (function () {
-  var NAV_ICON = '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>';
-  var CHEVRON = '<svg viewBox="0 0 24 24" width="22" height="22"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42Z"/></svg>';
+  var GOATCOUNTER = "appunti-sspss";  // codice del sito su goatcounter.com
+  var CHEVRON = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42Z"/></svg>';
 
-  function get(key) { try { return localStorage.getItem("sspss-hide-" + key) === "1"; } catch (e) { return false; } }
-  function set(key, v) { try { localStorage.setItem("sspss-hide-" + key, v ? "1" : "0"); } catch (e) {} }
+  function get(key) { try { return localStorage.getItem("sspss-" + key) === "1"; } catch (e) { return false; } }
+  function set(key, v) { try { localStorage.setItem("sspss-" + key, v ? "1" : "0"); } catch (e) {} }
 
-  function applyNav(hidden, btn) {
-    document.body.classList.toggle("sspss-hide-nav", hidden);
-    btn.setAttribute("aria-pressed", hidden ? "false" : "true");
-    btn.title = (hidden ? "Mostra" : "Nascondi") + " menu";
-    btn.setAttribute("aria-label", btn.title);
+  /* --- Logo + titolo riportano alla home --- */
+  function initHome() {
+    var logo = document.querySelector(".md-header__button.md-logo");
+    var title = document.querySelector(".md-header__title");
+    if (!logo || !title) return;
+    title.style.cursor = "pointer";
+    title.setAttribute("role", "link");
+    title.addEventListener("click", function () { location.href = logo.href; });
   }
 
-  function initNav(header) {
-    var sidebar = document.querySelector(".md-sidebar--primary");
-    if (!sidebar || sidebar.hidden || !sidebar.querySelector(".md-nav__link")) return;
+  /* --- Mega menu Materie --- */
+  function initMega() {
+    var header = document.querySelector(".md-header__inner");
+    var panel = document.getElementById("sspss-mega");
+    if (!header || !panel) return;
+    panel.removeAttribute("hidden");
     var btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "md-header__button md-icon sspss-toggle sspss-toggle--nav";
-    btn.innerHTML = NAV_ICON;
-    btn.addEventListener("click", function () {
-      var hidden = !document.body.classList.contains("sspss-hide-nav");
-      set("nav", hidden); applyNav(hidden, btn);
+    btn.className = "sspss-menu-btn";
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-controls", "sspss-mega");
+    btn.innerHTML = "Materie " + CHEVRON;
+    header.insertBefore(btn, document.querySelector(".md-header__option") || null);
+
+    // Evidenzia la materia della pagina corrente
+    var here = decodeURIComponent(location.pathname);
+    panel.querySelectorAll(".sspss-mega__item").forEach(function (a) {
+      var p = decodeURIComponent(new URL(a.href).pathname);
+      if (here.indexOf(p) === 0) a.classList.add("sspss-mega__item--here");
     });
-    applyNav(get("nav"), btn);
-    header.insertBefore(btn, header.querySelector(".md-header__title"));
+
+    function open(v) {
+      if (v) {
+        var r = document.querySelector(".md-header").getBoundingClientRect();
+        panel.style.top = (r.bottom + 8) + "px";
+      }
+      panel.classList.toggle("open", v);
+      btn.classList.toggle("open", v);
+      btn.setAttribute("aria-expanded", v ? "true" : "false");
+    }
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      open(!panel.classList.contains("open"));
+    });
+    document.addEventListener("click", function (e) {
+      if (panel.classList.contains("open") && !panel.contains(e.target)) open(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") open(false);
+    });
   }
 
-  function applyToc(hidden, btn) {
-    document.body.classList.toggle("sspss-hide-toc", hidden);
-    btn.setAttribute("aria-expanded", hidden ? "false" : "true");
-    btn.title = (hidden ? "Mostra" : "Nascondi") + " indice";
-    btn.setAttribute("aria-label", btn.title);
-  }
-
+  /* --- Indice a sinistra: etichetta --- */
   function initToc() {
     var title = document.querySelector(".md-sidebar--secondary .md-nav--secondary > .md-nav__title");
-    if (!title || !document.querySelector(".md-sidebar--secondary .md-nav__link")) return;
+    if (title) title.textContent = "In questa pagina";
+  }
+
+  /* --- Materiali: dal fondo pagina a card richiudibile a destra --- */
+  function initMaterials() {
+    var src = document.querySelector(".md-content .sspss-materials");
+    if (!src) return;
+    if (!window.matchMedia("(min-width: 60em)").matches) return;  // su mobile resta in pagina
+    var inner = document.querySelector(".md-main__inner");
+    if (!inner) return;
+    var rail = document.createElement("aside");
+    rail.className = "sspss-right";
+    var card = document.createElement("div");
+    card.className = "sspss-card";
+    var head = src.querySelector(".sspss-materials__title");
     var btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "sspss-toc-arrow";
+    btn.className = "sspss-arrow";
     btn.innerHTML = CHEVRON;
-    title.appendChild(btn);
-    title.classList.add("sspss-toc-title");
-    title.addEventListener("click", function (e) {
-      e.preventDefault();
-      var hidden = !document.body.classList.contains("sspss-hide-toc");
-      set("toc", hidden); applyToc(hidden, btn);
+    head.appendChild(btn);
+    head.classList.add("sspss-card__head");
+    card.appendChild(src);
+    rail.appendChild(card);
+    inner.appendChild(rail);
+
+    function apply(hidden) {
+      document.body.classList.toggle("sspss-hide-mat", hidden);
+      btn.setAttribute("aria-expanded", hidden ? "false" : "true");
+      btn.title = (hidden ? "Mostra" : "Nascondi") + " materiali";
+      btn.setAttribute("aria-label", btn.title);
+    }
+    head.addEventListener("click", function () {
+      var hidden = !document.body.classList.contains("sspss-hide-mat");
+      set("hide-mat", hidden); apply(hidden);
     });
-    applyToc(get("toc"), btn);
+    apply(get("hide-mat"));
+  }
+
+  /* --- Barra di progresso lettura --- */
+  function initProgress() {
+    if (!document.querySelector(".md-content")) return;
+    var bar = document.createElement("div");
+    bar.id = "sspss-progress";
+    document.body.appendChild(bar);
+    var ticking = false;
+    function update() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+      ticking = false;
+    }
+    addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  }
+
+  /* --- GoatCounter: conteggio visite + visite per materia + ordinamento --- */
+  function gcBase() { return "https://" + GOATCOUNTER + ".goatcounter.com"; }
+
+  function initCount() {
+    if (!GOATCOUNTER || location.hostname === "localhost" || location.hostname === "127.0.0.1") return;
+    var sc = document.createElement("script");
+    sc.async = true;
+    sc.dataset.goatcounter = gcBase() + "/count";
+    sc.src = "https://gc.zgo.at/count.js";
+    document.head.appendChild(sc);
+  }
+
+  function initStats() {
+    var grid = document.querySelector(".grid.cards > ul");
+    if (!grid || !GOATCOUNTER) return;
+    var lis = [].slice.call(grid.children);
+    lis.forEach(function (li, i) { li.dataset.az = i; });
+    lis.forEach(function (li) {
+      var a = li.querySelector("p:last-child a");
+      var span = li.querySelector(".sspss-views");
+      if (!a || !span) return;
+      var path = new URL(a.href).pathname;
+      fetch(gcBase() + "/counter/" + encodeURIComponent(path) + ".json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d) return;
+          var n = parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0;
+          li.dataset.views = n;
+          span.textContent = n + (n === 1 ? " visita" : " visite");
+          span.hidden = false;
+        })
+        .catch(function () {});
+    });
+    document.querySelectorAll(".sspss-sort button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        document.querySelectorAll(".sspss-sort button").forEach(function (x) { x.classList.remove("active"); });
+        b.classList.add("active");
+        var by = b.dataset.sort;
+        [].slice.call(grid.children)
+          .sort(function (x, y) {
+            return by === "views"
+              ? (+(y.dataset.views || 0)) - (+(x.dataset.views || 0))
+              : (+x.dataset.az) - (+y.dataset.az);
+          })
+          .forEach(function (li) { grid.appendChild(li); });
+      });
+    });
   }
 
   function init() {
-    var header = document.querySelector(".md-header__inner");
-    if (header) initNav(header);
-    initToc();
+    initHome(); initMega(); initToc(); initMaterials(); initProgress();
+    initCount(); initStats();
   }
-
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

@@ -21,7 +21,7 @@ h1.no-num::before { content: none; }
 <div style="page-break-after: always;"></div>
 
 # INTRODUZIONE
-## LA COMPOSIZIONE DEL CORPO UMANO
+## La composizione del corpo umano
 - Uomo &rarr; 70% della massa è H~2~O
 - Donna &rarr; 55% della massa è H~2~O (maggior tessuto adiposo)
 
@@ -34,7 +34,7 @@ H~2~O si trova in 2 soluzioni:
 ---
 <div style="page-break-after: always;"></div>
 
-## IL METABOLISMO
+## Il metabolismo
 Insieme di reazioni chimiche che avvengono all'interno delle cellule
 Si divide in:
 - **Anabolismo**: sintesi, produzione di molecole (monomeri &rarr; polimeri)
@@ -49,10 +49,10 @@ Si divide in:
 ---
 <div style="page-break-after: always;"></div>
 
-## LE SOSTANZE ORGANICHE
+## Le sostanze organiche
 Si parla di **macromolecole** (letteralmente, grandi molecole) o **biomolecole** (molecole della vita, prodotte dai viventi)
 Indicate anche come **polimeri** se composte da tante molecole uguali collegate (chiamate **monomeri**)
-### I LIPIDI
+### I lipidi
 - **Acidi grassi**: lunghe catene di carbonio con un'estremità che lega OH e O (con doppio legame)
 In generale si tratta di molecole che non hanno affinità con l'acqua (molecole ==apolari== o ==idrofobe==)
 <br>
@@ -75,7 +75,7 @@ In generale si tratta di molecole che non hanno affinità con l'acqua (molecole 
 
     <img src="imm/pagina04_img2.png" width="300">
 
-### LE PROTEINE
+### Le proteine
 Sono polimeri, dove i monomeri sono gli amminoacidi (20 tipi)
 Gli **amminoacidi** sono composti da un ==gruppo amminico==, un ==gruppo acido== e una ==catena laterale== (unica parte che cambia tra un aa e un altro).
 - ==12 non essenziali==, ovvero prodotte dal nostro corpo
@@ -108,7 +108,7 @@ Funzioni delle proteine:
     <img src="imm/pagina05_img2.png" width="400">
 </span>
 
-### GLI ACIDI NUCLEICI
+### Gli acidi nucleici
 **DNA** e **RNA** composti da **nucleotide** (monomero)
 
 I nucleotidi sono formati da uno ==zucchero pentoso== (5 C), che lega un ==gruppo fosfato== e una ==base azotata==
@@ -134,7 +134,7 @@ Gli acidi nucleici si occupano del flusso di informazioni genetiche
 
 <div style="page-break-after: always;"></div>
 
-## LA MEMBRANA CELLULARE
+## La membrana cellulare
 Ha una **permeabilita selettiva**. Alcune molecole passano naturalmente, alcune hanno bisogno di canali di trasporto attivo o passivo, altre invece non passano del tutto
 
 | Passa naturalmente | Bisogno di canali | Non passano |
@@ -147,7 +147,7 @@ Ha una **permeabilita selettiva**. Alcune molecole passano naturalmente, alcune 
 
 <br>
 
-### I TRASPORTI CELLULARI
+### I trasporti cellulari
 #### Trasporti passivi
 Non necessitano energia, atomi e molecole si spostano semplicemente secondo gradiente di concentrazione ("da dove ce n'è di più a dove ce n'è di meno"). Si dice anche che tendono a un ==equilibrio dinamico==
 Tipi di trasporti passivi:
@@ -196,7 +196,7 @@ Entrambi richiedono ustilizzo di energia per la creazione/distruzione della vesc
 
 <div style="page-break-after: always;"></div>
 
-## LA CELLULA 
+## La cellula 
 La più piccola unita dei viventi. Si dividono in **procarioti** ed **eucarioti** 
 
 
@@ -212,7 +212,7 @@ La più piccola unita dei viventi. Si dividono in **procarioti** ed **eucarioti*
 
 <img src="imm/pagina10_img2.png" width="300">
 
-### GLI ORGANELLI
+### Gli organelli
 Di seguito elenco alcuni degli **organelli** presenti nelle cellule Eucariote
 - **Nucleo**: contiene materiale genetico (DNA)
 - **Ribosomi**: Macromolecole che traducono mRNA in proteine (essenziali per la sintesi proteica)
@@ -223,7 +223,7 @@ Di seguito elenco alcuni degli **organelli** presenti nelle cellule Eucariote
 - **Mitocondio**: organello con membrana dove avviene respirazione cellulare
 
 
-### LA RESPIRAZIONE CELLULARE
+### La respirazione cellulare
 la respirazione cellulare è la produzione di ATP
 Due strategie:
 #### Respirazione cellulare **aerobica** (utilizza O2)
@@ -300,8 +300,8 @@ Esempio: i globuli rossi non possiedono mitocondri, ma devono comunque produrre 
 
 <div style="page-break-after: always;"></div>
 
-## L'ORGANIZZAZIONE GERARCHICA DEL CORPO UMANO
-### DA ATOMI A ORGANISMO
+## L'organizzazione gerarchica del corpo umano
+### Da atomi a organismo
 <img src="imm/pagina12_img2.png" width="400">
 
 >Diversi livelli di organizzazione:
@@ -312,7 +312,7 @@ Alcuni dettagli:
 - un organo ha una o più funzioni
 - più organi vanno a formare un sistema/apparato
 
-### CORRELAZIONE TRA SISTEMI
+### Correlazione tra sistemi
 
 **Gi apparati non funzionano come entità separate**, ma cooperano tra di loro
 
@@ -332,7 +332,7 @@ Se la concentrazione di CO<sub>2</sub> è troppo alta le proteine si denaturano 
 
 CO<sub>2</sub> serve comunque come regolatore di vasodilatazione nel cervello
 
-### I TESSUTI DEL CORPO UMANO
+### I tessuti del corpo umano
 <img src="imm/pagina13_img2.png" width="300" style="float: left; margin-right: 30px;">
 
 In questo esempio vediamo come lo stomaco è composto da diversi tipi di tessuti
@@ -426,7 +426,7 @@ In generale si parla di **parametri** (o **variabili**) **fisiologici**, sempre 
 
 L'omeostasi è mantenuta attraverso **meccanismi** (o **sistemi**) **di controllo omesotatico**
 
-## SISTEMI DI CONTROLLO OMEOSTATICI
+## Sistemi di controllo omeostatici
 
 <img src="imm/pagina14_img2.jpg" width="370" style="float: left; margin-right: 30px;">
 
@@ -462,7 +462,7 @@ La risposta si ==oppone== allo stimolo iniziale
 - **Feedback positivo** (meccanismo di retroazione positiva): La risposta ==rinforza== lo stimolo, allontanado la variabile ancora di più dal valore di riferimento, finche un fattore esterno (fattore d'arresto) termina il ciclo di feedback positivo
     > Esempio: nel parto, le contrazioni sono regolate da un feedback positivo &rarr; contrazioni sempre più frequenti finche il figlio nasce (fattore esterno)
 
-## TIPI DI RECETTORI
+## Tipi di recettori
 Possono essere o ==neuroni== o ==cellule specializzate==
 I **recettori** sono in grado di rilevare diverse forme di energia
 <img src="imm/pagina15_img1.png" width="400">
@@ -478,7 +478,7 @@ I **recettori** sono in grado di rilevare diverse forme di energia
 
 5. **Chemiocettori** misurano ==energia chimica==
 
-## I CENTRI DI CONTROLLO
+## I centri di controllo
 
 ### Il sistema nervoso come centro di controllo
 

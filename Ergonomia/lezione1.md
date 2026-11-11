@@ -1,7 +1,7 @@
 [TOC]
 
 # ERGONOMIA
-## LA COLONNA VERTEBRALE
+## La colonna vertebrale
 ### Ossa
 Insieme anatomico costituito da elementi ossei, legamentosi e muscolari
 - cervicale -> disco da 5mm
@@ -25,7 +25,7 @@ in profondità piccoli muscoli che collegano una vertebra all'altra. Più estern
 
 ---
 
-## LOWER BACK PAIN (LBP)
+## Lower back pain (LBP)
 - **LBP** è sintomo, non malattia
     - diverse cause (postura, movimento, sport, affaticamento prolungato)
     - Aspecifico (senza causa)
@@ -42,7 +42,7 @@ in profondità piccoli muscoli che collegano una vertebra all'altra. Più estern
 
 ---
 
-## COSA SIGNIFICA ERGONOMIA
+## Cosa significa ergonomia
 Dal latino **ergòn** (lavoro) e **nòrmos** (regole, norme)
 
 Significa modificare elementi di un sistema (noi + ambiente) per migliorare la soddisfazione e ridurre rischio all'utente finale
@@ -52,7 +52,7 @@ Significa modificare elementi di un sistema (noi + ambiente) per migliorare la s
 2. **Progettazione** di situazioni e tecnologie &rarr; il contesto viene adattato all'operatore, non viceversa
 3. **Prevenzione** &rarr; agire prima
 ---
-## TERMINI UTILI
+## Termini utili
 - **Forza di gravità**: è esercitata costantemente sul corpo. Si mantiene tono muscolare per contrastarla
 - **Base d'appoggio**: area di superficie del terreno con cui il corpo entra in contatto
 - **Centro di massa**: punto di eguilibrio all'interno dell'oggetto
@@ -60,7 +60,7 @@ Significa modificare elementi di un sistema (noi + ambiente) per migliorare la s
 - **Equilibrio**: centro di gravità all'interno dell'area di appoggio
 ---
 
-## STRAGIE ATTUABILI
+## Stragie attuabili
 Cosa possiamo fare nella pratica (in generale e in ambito socio-sanitario)
 
 - Base d'appoggio ampia: più stabilità, evitare posizioni sfavorevoli

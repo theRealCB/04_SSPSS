@@ -2,7 +2,7 @@ name: Aggiorna statistiche visite
 
 on:
   schedule:
-    - cron: "23 3 * * *"   # ogni notte alle 04:23 CET
+    - cron: "7 * * * *"    # ogni ora, al minuto 07
   workflow_dispatch:
 
 permissions:
@@ -22,6 +22,8 @@ jobs:
           ref: gh-pages
           path: gh
       - run: python scripts/update_stats.py gh/assets/stats.json
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
       - name: Pubblica se cambiato
         run: |
           cd gh

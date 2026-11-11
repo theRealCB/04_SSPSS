@@ -26,6 +26,8 @@ jobs:
       - run: python build.py
       - run: python scripts/update_stats.py docs/assets/stats.json
         continue-on-error: true
+        env:
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
       - run: mkdocs build
       - run: python make_pdfs.py
       - run: ghp-import -n -p -f -m "Deploy sito appunti" site

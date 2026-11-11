@@ -142,12 +142,12 @@
       .catch(function () { return null; });
   }
   function gcCount(path) {
-    // prova il percorso com'è; se non esiste, la variante decodificata
-    return gcFetch(path).then(function (d) {
+    // GoatCounter salva i percorsi decodificati: prova prima quello
+    var first = decodeURIComponent(path);
+    return gcFetch(first).then(function (d) {
       if (d && !d.miss) return parseInt(String(d.count).replace(/\D/g, ""), 10) || 0;
-      var alt = decodeURIComponent(path);
-      if (alt === path) return d ? 0 : null;
-      return gcFetch(alt).then(function (d2) {
+      if (first === path) return d ? 0 : null;
+      return gcFetch(path).then(function (d2) {
         if (d2 && !d2.miss) return parseInt(String(d2.count).replace(/\D/g, ""), 10) || 0;
         return d2 ? 0 : null;
       });

@@ -226,6 +226,41 @@ def main():
     assets.mkdir(exist_ok=True)
     (assets / "extra.css").write_text(
         """/* Stile del sito appunti (porta lo stile MPE di Cesa sul tema Material) */
+
+/* Palette rossa (primary/accent: custom in mkdocs.yml) */
+:root {
+  --sspss-red: #B3261E;
+  --md-primary-fg-color: #B3261E;
+  --md-primary-fg-color--light: #D0453B;
+  --md-primary-fg-color--dark: #8A1A14;
+  --md-primary-bg-color: #FFFFFF;
+  --md-accent-fg-color: #E0533F;
+  --md-accent-fg-color--transparent: rgba(224, 83, 63, .1);
+  --md-typeset-a-color: #A3211A;
+  --sspss-th-bg: #FBE9E7;
+  --sspss-th-border: #8A1A14;
+}
+[data-md-color-scheme="slate"] {
+  --md-hue: 0;                                /* grigio caldo invece del blu di default */
+  --md-default-bg-color: hsla(0, 5%, 12%, 1);
+  --md-code-bg-color: hsla(0, 5%, 16%, 1);
+  --md-primary-fg-color: #8E1D18;
+  --md-primary-fg-color--light: #B3261E;
+  --md-primary-fg-color--dark: #6A140F;
+  --md-accent-fg-color: #FF8A75;
+  --md-accent-fg-color--transparent: rgba(255, 138, 117, .1);
+  --md-typeset-a-color: #FF9E8E;
+  --sspss-th-bg: #3A2523;
+  --sspss-th-border: #C98C85;
+}
+/* Voce attiva di menu e indice */
+.md-nav__link--active, .md-nav__item--active > .md-nav__link { color: var(--md-typeset-a-color); }
+.md-typeset h1, .md-typeset h2 { color: var(--md-primary-fg-color--dark); }
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2 { color: #F2B8B0; }
+[data-md-color-scheme="slate"] .md-typeset .md-button:not(:hover) {
+  color: var(--md-typeset-a-color); border-color: currentColor;
+}
 .md-content h1[align="center"] { margin-bottom: .2em; }
 .md-content p[align="center"] em { color: var(--md-default-fg-color--light); }
 .md-content img { max-width: 100%; border-radius: 4px; }
@@ -247,14 +282,24 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 2px; }
 /* Tabelle: tutta larghezza, intestazione colorata, bordo marcato */
 .md-typeset table:not([class]) { display: table; width: 100%; }
 .md-typeset table:not([class]) th {
-  background: #e8eef7;
-  border-bottom: 2px solid #333;
+  background: var(--sspss-th-bg);
+  border-bottom: 2px solid var(--sspss-th-border);
 }
 .md-typeset table:not([class]) td,
 .md-typeset table:not([class]) th { padding: 6px 10px; }
-[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
-  background: #2b3245;
-  border-bottom-color: #aab;
+
+/* Menu sinistro e indice destro collassabili (pulsanti creati da extra.js) */
+.md-header .sspss-toggle { display: none; }
+.sspss-toggle svg { fill: currentColor; }
+.sspss-toggle--nav { margin-right: .2rem; }
+.sspss-toggle[aria-pressed="false"] { opacity: .65; }
+@media screen and (min-width: 76.25em) {
+  .md-header .sspss-toggle--nav { display: inline-block; }
+  body.sspss-hide-nav .md-sidebar--primary { display: none; }
+}
+@media screen and (min-width: 60em) {
+  .md-header .sspss-toggle--toc { display: inline-block; }
+  body.sspss-hide-toc .md-sidebar--secondary { display: none; }
 }
 
 @media print {
@@ -268,6 +313,69 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 2px; }
   /* stampa anche sfondi e colori (evidenziazioni, intestazioni tabelle) */
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
+""", encoding="utf-8")
+
+
+    # JS del sito: pulsanti per collassare menu e indice
+    (assets / "extra.js").write_text(
+        """// Pulsanti nella barra in alto per nascondere/mostrare il menu (sx) e l'indice (dx).
+// Lo stato resta salvato nel browser tra una pagina e l'altra.
+(function () {
+  var ICONS = {
+    nav: '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>',
+    toc: '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M7 5h14v2H7V5m0 8v-2h14v2H7M4 4.5A1.5 1.5 0 0 1 5.5 6 1.5 1.5 0 0 1 4 7.5 1.5 1.5 0 0 1 2.5 6 1.5 1.5 0 0 1 4 4.5m0 6A1.5 1.5 0 0 1 5.5 12 1.5 1.5 0 0 1 4 13.5 1.5 1.5 0 0 1 2.5 12 1.5 1.5 0 0 1 4 10.5M7 19v-2h14v2H7m-3-2.5A1.5 1.5 0 0 1 5.5 18 1.5 1.5 0 0 1 4 19.5 1.5 1.5 0 0 1 2.5 18 1.5 1.5 0 0 1 4 16.5Z"/></svg>'
+  };
+  var LABELS = { nav: "menu", toc: "indice" };
+
+  function get(key) { try { return localStorage.getItem("sspss-hide-" + key) === "1"; } catch (e) { return false; } }
+  function set(key, v) { try { localStorage.setItem("sspss-hide-" + key, v ? "1" : "0"); } catch (e) {} }
+
+  function apply(key, hidden, btn) {
+    document.body.classList.toggle("sspss-hide-" + key, hidden);
+    if (btn) {
+      btn.setAttribute("aria-pressed", hidden ? "false" : "true");
+      btn.title = (hidden ? "Mostra " : "Nascondi ") + LABELS[key];
+      btn.setAttribute("aria-label", btn.title);
+    }
+  }
+
+  function hasSidebar(key) {
+    var sel = key === "nav" ? ".md-sidebar--primary" : ".md-sidebar--secondary";
+    var el = document.querySelector(sel);
+    return el && !el.hidden && el.querySelector(".md-nav__link");
+  }
+
+  function makeButton(key) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "md-header__button md-icon sspss-toggle sspss-toggle--" + key;
+    btn.innerHTML = ICONS[key];
+    btn.addEventListener("click", function () {
+      var hidden = !document.body.classList.contains("sspss-hide-" + key);
+      set(key, hidden);
+      apply(key, hidden, btn);
+    });
+    apply(key, get(key), btn);
+    return btn;
+  }
+
+  function init() {
+    var header = document.querySelector(".md-header__inner");
+    if (!header) return;
+    if (hasSidebar("nav")) {
+      var title = header.querySelector(".md-header__title");
+      header.insertBefore(makeButton("nav"), title);
+    }
+    if (hasSidebar("toc")) {
+      // prima del selettore tema chiaro/scuro
+      var palette = header.querySelector(".md-header__option");
+      header.insertBefore(makeButton("toc"), palette ? palette : null);
+    }
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
 """, encoding="utf-8")
 
     # Evita la passata Jekyll di GitHub Pages

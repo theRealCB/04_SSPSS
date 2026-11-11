@@ -101,3 +101,8 @@ subiscono test psicologico, ma divisi casualmente
 
 
 LEGGERE, SINTETIZZARE ED ESPLICARE IL CASO &rarr; COME IL CONTESTO MANIPOLA L'INDIVIDUO. 
+
+
+# I GRUPPI SOCIALI (fascicolo 3)
+# Definizione di gruppo
+- individui devono conoscersi

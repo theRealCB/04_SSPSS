@@ -15,6 +15,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -29,7 +30,8 @@ TOKEN = os.environ.get("GOATCOUNTER_TOKEN", "").strip()
 
 
 def subjects() -> list[str]:
-    return [d.name for d in sorted(ROOT.iterdir())
+    # NFC: i nomi di cartella salvati da macOS (NFD) devono combaciare con gli URL del browser
+    return [unicodedata.normalize("NFC", d.name) for d in sorted(ROOT.iterdir())
             if d.is_dir() and d.name not in EXCLUDE_DIRS and not d.name.startswith(".")]
 
 
@@ -64,7 +66,7 @@ def from_api():
             "end": now.strftime("%Y-%m-%dT%H:00:00Z")}
     total = to_int(api_get("stats/total", span).get("total", 0))
     hits = api_get("stats/hits", {**span, "daily": "false", "limit": 100}).get("hits", [])
-    by_path = {urllib.parse.unquote(h.get("path", "")): to_int(h.get("count", 0)) for h in hits}
+    by_path = {unicodedata.normalize("NFC", urllib.parse.unquote(h.get("path", ""))): to_int(h.get("count", 0)) for h in hits}
     paths = {}
     for name in subjects():
         p = BASE_PATH + name + "/"

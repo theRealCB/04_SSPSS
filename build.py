@@ -31,6 +31,7 @@ FILE_ICONS = {
 # Icona e descrizione per la card in homepage
 SUBJECTS = {
     "Adattamento e responsabilità": ("material-account-heart", "Relazione di cura, sensazione e percezione"),
+    "Atelier": ("material-arm-flex", "Atelier di fisioterapia"),
     "Anatomia e Fisiologia": ("material-heart-pulse", "Cellula, tessuti, sistema nervoso e apparati"),
     "Comunicazione": ("material-forum", "Sistemi, assiomi e comunicazione umana"),
     "Ergonomia": ("material-chair-rolling", "Colonna vertebrale e movimenti corretti"),

@@ -24,6 +24,8 @@ jobs:
           python-version: "3.x"
       - run: pip install mkdocs-material playwright
       - run: python build.py
+      - run: python scripts/update_stats.py docs/assets/stats.json
+        continue-on-error: true
       - run: mkdocs build
       - run: python make_pdfs.py
       - run: ghp-import -n -p -f -m "Deploy sito appunti" site

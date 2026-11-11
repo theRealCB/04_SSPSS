@@ -1,0 +1,33 @@
+name: Aggiorna statistiche visite
+
+on:
+  schedule:
+    - cron: "23 3 * * *"   # ogni notte alle 04:23 CET
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stats
+  cancel-in-progress: true
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh
+      - run: python scripts/update_stats.py gh/assets/stats.json
+      - name: Pubblica se cambiato
+        run: |
+          cd gh
+          if git diff --quiet; then echo "Nessun cambiamento"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/stats.json
+          git commit -m "Aggiorna statistiche visite"
+          git push

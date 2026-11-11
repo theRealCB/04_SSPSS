@@ -19,7 +19,7 @@ PDF_MANIFEST = ROOT / "pdf_manifest.json"
 PDF_TARGETS: list[dict] = []  # pagine per cui generare il PDF in CI se non committato
 
 # Cartelle/file da non pubblicare
-EXCLUDE_DIRS = {".git", ".github", "docs", "site", "overrides", "Stage", "__pycache__"}
+EXCLUDE_DIRS = {".git", ".github", "docs", "site", "overrides", "Stage", "__pycache__", "scripts", "gh"}
 SKIP_EXT = {".zip", ".html", ".pyc"}          # html MPE: sostituiti dal sito
 IMG_EXT = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"}
 MATERIAL_EXT = {".pdf", ".docx", ".doc", ".pptx", ".ppt", ".xlsx", ".odt"}
@@ -938,29 +938,51 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
     });
   }
 
-  function initStats() {
-    if (!GOATCOUNTER) return;
-    gcFetch("TOTAL").then(function (d) {
-      if (!d || d.miss) return;  // GoatCounter assente o counter pubblico disattivato
-      var n = parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0;
-      var chip = document.querySelector(".sspss-stat--visits");
-      if (chip) {
-        chip.querySelector("b").textContent = n.toLocaleString("it-CH");
-        chip.hidden = false;
-      }
-      initCardViews();
-    });
-    initSwitch();
+  function siteRoot() {
+    var logo = document.querySelector(".md-header__button.md-logo");
+    return logo ? logo.href : location.href;
   }
 
-  function initCardViews() {
+  function initStats() {
+    if (!GOATCOUNTER) return;
+    initSwitch();
+    // Prima il file statico aggiornato dalla CI (stesso dominio: passa anche con gli ad-blocker)
+    fetch(new URL("assets/stats.json", siteRoot()))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; })
+      .then(function (st) {
+        if (st && st.total != null) {
+          renderTotal(st.total);
+          initCardViews(function (path) {
+            var key = decodeURIComponent(path);
+            return Promise.resolve(st.paths && key in st.paths ? st.paths[key] : null);
+          });
+        } else {
+          // Fallback: chiamate live a GoatCounter
+          gcFetch("TOTAL").then(function (d) {
+            if (!d || d.miss) return;
+            renderTotal(parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0);
+            initCardViews(gcCount);
+          });
+        }
+      });
+  }
+
+  function renderTotal(n) {
+    var chip = document.querySelector(".sspss-stat--visits");
+    if (!chip) return;
+    chip.querySelector("b").textContent = n.toLocaleString("it-CH");
+    chip.hidden = false;
+  }
+
+  function initCardViews(counter) {
     var grid = document.querySelector(".grid.cards > ul");
     if (!grid) return;
     [].slice.call(grid.children).forEach(function (li) {
       var a = li.querySelector("p:last-child a");
       var span = li.querySelector(".sspss-views");
       if (!a || !span) return;
-      gcCount(new URL(a.href).pathname).then(function (n) {
+      counter(new URL(a.href).pathname).then(function (n) {
         if (n == null) return;
         li.dataset.views = n;
         span.textContent = n.toLocaleString("it-CH") + (n === 1 ? " visita" : " visite");

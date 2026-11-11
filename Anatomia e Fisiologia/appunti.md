@@ -734,3 +734,8 @@ Scambio di gas tra cellule dei tessuti e i capillari sistemici
 - pO<sub>2</sub> cellulare < pO<sub>2</sub> capillare (O<sub>2</sub> consumaot dalla respirazione cellulare)
 - diffusione netta di O<sub>2</sub> dal capillare alle cellule 
 - pCO<sub>2</sub> cellulare > pCO<sub>2</sub> capillare(CO<sub>2</sub> della respirazione cellulare accumulato nella cellula)
+
+## Trasporto di gas nel sangie
+### O<sub>2</sub>
+~98% di O<sub>2</sub> è legato all'emoglobina
+**Emoglobina**: proteina formata da 4 catene: 2 &alpha; e 2 &beta; 

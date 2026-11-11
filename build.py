@@ -887,6 +887,7 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
   /* --- Barra di progresso lettura --- */
   function initProgress() {
     if (!document.querySelector(".md-content")) return;
+    if (document.querySelector(".sspss-hero")) return;  // niente barra in home
     var bar = document.createElement("div");
     bar.id = "sspss-progress";
     document.body.appendChild(bar);

@@ -87,6 +87,31 @@ def fix_tight_blocks(text: str) -> str:
     return "\n".join(out)
 
 
+def demote_headings(text: str) -> str:
+    """MPE usa più h1 come sezioni; Material vuole un solo h1 per pagina
+    (il template dell'indice mostra solo i figli del primo h1).
+    Con 2+ h1 markdown declassa tutti i titoli di un livello."""
+    lines = text.split("\n")
+    h1 = 0
+    in_fence = False
+    for line in lines:
+        if line.lstrip().startswith(("```", "~~~")):
+            in_fence = not in_fence
+        elif not in_fence and re.match(r"^#\s", line):
+            h1 += 1
+    if h1 < 2:
+        return text
+    out, in_fence = [], False
+    for line in lines:
+        if line.lstrip().startswith(("```", "~~~")):
+            in_fence = not in_fence
+        m = re.match(r"^(#{1,5})(\s)", line) if not in_fence else None
+        if m:
+            line = "#" + line
+        out.append(line)
+    return "\n".join(out)
+
+
 def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "") -> str:
     text = src.read_text(encoding="utf-8")
     # Via i blocchi <style> di Markdown Preview Enhanced
@@ -95,6 +120,7 @@ def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "") -> str:
     text = re.sub(r"^#{1,3}\s*table of content.*$", "", text, flags=re.M | re.I)
     text = re.sub(r"^\[TOC\]\s*$", "", text, flags=re.M)
     text = fix_tight_blocks(text)
+    text = demote_headings(text)
     text = re.sub(r"\n{4,}", "\n\n\n", text).strip() + "\n"
 
     href = urllib.parse.quote(pdf_name)

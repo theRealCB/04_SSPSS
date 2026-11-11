@@ -46,13 +46,22 @@ def api_get(endpoint: str, params: dict):
         "Authorization": f"Bearer {TOKEN}",
         "Content-Type": "application/json",
     })
-    with urllib.request.urlopen(req, timeout=15) as r:
-        return json.load(r)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        body = ""
+        try:
+            body = e.read().decode("utf-8", "replace")[:300]
+        except Exception:
+            pass
+        raise RuntimeError(f"{endpoint} -> HTTP {e.code}: {body}") from None
 
 
 def from_api():
-    span = {"start": "2020-01-01",
-            "end": (datetime.now(timezone.utc) + timedelta(days=1)).strftime("%Y-%m-%d")}
+    now = datetime.now(timezone.utc)
+    span = {"start": "2020-01-01T00:00:00Z",
+            "end": now.strftime("%Y-%m-%dT%H:00:00Z")}
     total = to_int(api_get("stats/total", span).get("total", 0))
     hits = api_get("stats/hits", {**span, "daily": "false", "limit": 100}).get("hits", [])
     by_path = {urllib.parse.unquote(h.get("path", "")): to_int(h.get("count", 0)) for h in hits}

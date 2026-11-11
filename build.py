@@ -254,13 +254,15 @@ def main():
         "consultabili online, scaricabili in PDF, con i materiali del corso.</p>\n\n"
         '<div class="sspss-stats">\n'
         f'<span class="sspss-stat"><b>{len(subjects)}</b> materie</span>\n'
-        f'<span class="sspss-stat"><b>{n_pages_now}</b> pagine di appunti</span>\n'
+        f'<span class="sspss-stat"><b>{n_pages_now}</b> fascicoli di appunti</span>\n'
         '<span class="sspss-stat"><b>PDF</b> per ogni appunto</span>\n'
+        '<span class="sspss-stat sspss-stat--visits" hidden><b></b> visite al sito</span>\n'
         "</div>\n\n"
         "</div>\n\n"
-        '<div class="sspss-sort">\n'
-        '<button type="button" class="active" data-sort="az">A–Z</button>\n'
-        '<button type="button" data-sort="views">Più visitate</button>\n'
+        '<div class="sspss-switch" data-active="az" role="group" aria-label="Ordinamento materie">\n'
+        '<span class="sspss-switch__thumb"></span>\n'
+        '<button type="button" data-sort="az" aria-pressed="true">A–Z</button>\n'
+        '<button type="button" data-sort="views" aria-pressed="false">Più visitate</button>\n'
         "</div>\n\n"
         f'<div class="grid cards" markdown>\n\n{cards_md}\n\n</div>\n',
         encoding="utf-8")
@@ -679,17 +681,39 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 }
 [data-md-color-scheme="slate"] .sspss-badge-new { color: #FF8A75; }
 .sspss-views { font-size: .6rem; color: var(--md-default-fg-color--light); }
-.sspss-sort { display: flex; gap: .4rem; justify-content: center; margin-bottom: 1.1rem; }
-.sspss-sort button {
-  font: inherit; font-size: .62rem; font-weight: 600;
-  padding: .3em 1em; cursor: pointer;
-  border: 1px solid var(--sspss-hairline); border-radius: 999px;
-  background: var(--sspss-surface); color: var(--md-default-fg-color--light);
-  box-shadow: var(--sspss-shadow-sm);
-  transition: background .15s, color .15s;
+/* Interruttore di ordinamento: segmented control con cursore che scivola */
+.sspss-switch {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  width: 15rem; max-width: 100%;
+  margin: 0 auto 1.1rem;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(28, 25, 23, .07);
+  border: 1px solid var(--sspss-hairline);
+  cursor: pointer; user-select: none;
 }
-.sspss-sort button:hover { color: var(--md-typeset-a-color); }
-.sspss-sort button.active { background: var(--sspss-red); border-color: var(--sspss-red); color: #fff; }
+[data-md-color-scheme="slate"] .sspss-switch { background: rgba(237, 231, 228, .08); }
+.sspss-switch__thumb {
+  position: absolute; top: 3px; bottom: 3px; left: 3px;
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: var(--sspss-surface);
+  box-shadow: 0 2px 8px rgba(28, 25, 23, .18);
+  transition: transform .35s cubic-bezier(.3, 1.45, .45, 1);
+}
+[data-md-color-scheme="slate"] .sspss-switch__thumb { background: #3A302D; box-shadow: 0 2px 8px rgba(0,0,0,.5); }
+.sspss-switch[data-active="views"] .sspss-switch__thumb { transform: translateX(100%); }
+.sspss-switch button {
+  position: relative; z-index: 1;
+  font: inherit; font-size: .62rem; font-weight: 600;
+  padding: .42em 0;
+  background: none; border: none; cursor: pointer;
+  color: var(--md-default-fg-color--light);
+  transition: color .2s;
+}
+.sspss-switch button[aria-pressed="true"] { color: var(--sspss-red); }
+[data-md-color-scheme="slate"] .sspss-switch button[aria-pressed="true"] { color: #FF8A75; }
 
 /* ------ Tabelle ------ */
 .md-typeset table:not([class]) {
@@ -891,40 +915,79 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
     document.head.appendChild(sc);
   }
 
+  /* Conteggi: TOTAL decide se GoatCounter è attivo; i percorsi 404 valgono 0 */
+  function gcFetch(path) {
+    return fetch(gcBase() + "/counter/" + encodeURIComponent(path) + ".json")
+      .then(function (r) {
+        if (r.status === 404) return { miss: true };
+        if (!r.ok) return null;
+        return r.json();
+      })
+      .catch(function () { return null; });
+  }
+  function gcCount(path) {
+    // prova il percorso com'è; se non esiste, la variante decodificata
+    return gcFetch(path).then(function (d) {
+      if (d && !d.miss) return parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0;
+      var alt = decodeURIComponent(path);
+      if (alt === path) return d ? 0 : null;
+      return gcFetch(alt).then(function (d2) {
+        if (d2 && !d2.miss) return parseInt(String(d2.count).replace(/\\D/g, ""), 10) || 0;
+        return d2 ? 0 : null;
+      });
+    });
+  }
+
   function initStats() {
+    if (!GOATCOUNTER) return;
+    gcFetch("TOTAL").then(function (d) {
+      if (!d || d.miss) return;  // GoatCounter assente o counter pubblico disattivato
+      var n = parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0;
+      var chip = document.querySelector(".sspss-stat--visits");
+      if (chip) {
+        chip.querySelector("b").textContent = n.toLocaleString("it-CH");
+        chip.hidden = false;
+      }
+      initCardViews();
+    });
+    initSwitch();
+  }
+
+  function initCardViews() {
     var grid = document.querySelector(".grid.cards > ul");
-    if (!grid || !GOATCOUNTER) return;
-    var lis = [].slice.call(grid.children);
-    lis.forEach(function (li, i) { li.dataset.az = i; });
-    lis.forEach(function (li) {
+    if (!grid) return;
+    [].slice.call(grid.children).forEach(function (li) {
       var a = li.querySelector("p:last-child a");
       var span = li.querySelector(".sspss-views");
       if (!a || !span) return;
-      var path = new URL(a.href).pathname;
-      fetch(gcBase() + "/counter/" + encodeURIComponent(path) + ".json")
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
-          if (!d) return;
-          var n = parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0;
-          li.dataset.views = n;
-          span.textContent = n + (n === 1 ? " visita" : " visite");
-          span.hidden = false;
-        })
-        .catch(function () {});
-    });
-    document.querySelectorAll(".sspss-sort button").forEach(function (b) {
-      b.addEventListener("click", function () {
-        document.querySelectorAll(".sspss-sort button").forEach(function (x) { x.classList.remove("active"); });
-        b.classList.add("active");
-        var by = b.dataset.sort;
-        [].slice.call(grid.children)
-          .sort(function (x, y) {
-            return by === "views"
-              ? (+(y.dataset.views || 0)) - (+(x.dataset.views || 0))
-              : (+x.dataset.az) - (+y.dataset.az);
-          })
-          .forEach(function (li) { grid.appendChild(li); });
+      gcCount(new URL(a.href).pathname).then(function (n) {
+        if (n == null) return;
+        li.dataset.views = n;
+        span.textContent = n.toLocaleString("it-CH") + (n === 1 ? " visita" : " visite");
+        span.hidden = false;
       });
+    });
+  }
+
+  function initSwitch() {
+    var sw = document.querySelector(".sspss-switch");
+    var grid = document.querySelector(".grid.cards > ul");
+    if (!sw || !grid) return;
+    var lis = [].slice.call(grid.children);
+    lis.forEach(function (li, i) { li.dataset.az = i; });
+    sw.addEventListener("click", function () {
+      var by = sw.dataset.active === "az" ? "views" : "az";
+      sw.dataset.active = by;
+      sw.querySelectorAll("button").forEach(function (b) {
+        b.setAttribute("aria-pressed", b.dataset.sort === by ? "true" : "false");
+      });
+      [].slice.call(grid.children)
+        .sort(function (x, y) {
+          return by === "views"
+            ? (+(y.dataset.views || 0)) - (+(x.dataset.views || 0))
+            : (+x.dataset.az) - (+y.dataset.az);
+        })
+        .forEach(function (li) { grid.appendChild(li); });
     });
   }
 

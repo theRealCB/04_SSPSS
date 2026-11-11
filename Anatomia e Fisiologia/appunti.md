@@ -709,18 +709,28 @@ Il fumo inibisce il movimento delle ciglia
 
 ## Respirazione interna ed esterna
 
-<img src="imm/pagina20_img2.png" width="250" style="float: left; margin-right: 30px;">
+<img src="imm/pagina20_img2.png" width="250">
 
-- **Respirazione esterna**: scambio di gas tra alveoli e capillari polmonari. Questo scambio si verifica attraverso la ==membrana respiratoria==
+### Respirazione esterna
+Scambio di gas tra alveoli e capillari polmonari. Questo scambio si verifica attraverso la ==membrana respiratoria==
 La **membrana respiratoria** è molto sottile, per facilitare la diffusione semplice. È formata da:
-    - epitelio semplice dell'alveolo
-    - epitelio semplice del capillare polmonare
-    - le due membrane basali sono fuse
-    - tra le due membrane basali, un sottilissim ostrato di tessuto connettivo
+- epitelio semplice dell'alveolo
+- epitelio semplice del capillare polmonare
+- le due membrane basali sono fuse
+- tra le due membrane basali, un sottilissim ostrato di tessuto connettivo
 Distribuzione dei gas nell'atmosfera:
 - 21% O<sub>2</sub>
 - 78% N<sub>2</sub>
 - 1% altri gas
 - 0,04 CO<sub>2</sub>
 
-- **Respirazione interna**: 
+Guardiamo ora cosa succede a livello di pressione a livello alveolare e capillare:
+- pO<sub>2</sub> alveolare > pO<sub>2</sub> capillare (perche l'ossigeno nel sangue è gia stato usato dalle cellule dei tessuti)
+- diffusione netta di O<sub>2</sub> degli alveoli al capillare polmonare
+- pCO<sub>2</sub> alveolare < pCO<sub>2</sub> capillare (CO<sub>2</sub> della respirazione cellulare arriva nel sangue)
+
+### Respirazione interna 
+Scambio di gas tra cellule dei tessuti e i capillari sistemici
+- pO<sub>2</sub> cellulare < pO<sub>2</sub> capillare (O<sub>2</sub> consumaot dalla respirazione cellulare)
+- diffusione netta di O<sub>2</sub> dal capillare alle cellule 
+- pCO<sub>2</sub> cellulare > pCO<sub>2</sub> capillare(CO<sub>2</sub> della respirazione cellulare accumulato nella cellula)

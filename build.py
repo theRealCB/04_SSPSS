@@ -225,15 +225,44 @@ def main():
     assets = DOCS / "assets"
     assets.mkdir(exist_ok=True)
     (assets / "extra.css").write_text(
-        """/* Stile del sito appunti */
+        """/* Stile del sito appunti (porta lo stile MPE di Cesa sul tema Material) */
 .md-content h1[align="center"] { margin-bottom: .2em; }
 .md-content p[align="center"] em { color: var(--md-default-fg-color--light); }
 .md-content img { max-width: 100%; border-radius: 4px; }
 mark { background: #fff59d; padding: 0 .15em; border-radius: 2px; }
 [data-md-color-scheme="slate"] mark { background: #8d6e00; color: #fff; }
 .md-typeset .grid.cards > ul > li { border-radius: 8px; }
+
+/* Spaziature compatte come nell'anteprima MPE */
+.md-typeset p, .md-typeset li { line-height: 1.6; }
+.md-typeset p { margin-top: 0; margin-bottom: .3em; }
+.md-typeset h1 { margin-top: 1.5em; margin-bottom: .2em; }
+.md-typeset h2 { margin-top: 1.2em; margin-bottom: .2em; }
+.md-typeset h3 { margin-top: 1.1em; margin-bottom: .2em; }
+
+/* Tabelle: tutta larghezza, intestazione colorata, bordo marcato */
+.md-typeset table:not([class]) { display: table; width: 100%; }
+.md-typeset table:not([class]) th {
+  background: #e8eef7;
+  border-bottom: 2px solid #333;
+}
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th { padding: 6px 10px; }
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: #2b3245;
+  border-bottom-color: #aab;
+}
+
 @media print {
   .md-typeset .md-button { display: none !important; }  /* niente pulsante PDF dentro il PDF */
+  /* titoli mai staccati dal contenuto che segue */
+  .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+    break-after: avoid; page-break-after: avoid;
+  }
+  .md-typeset h1 + p, .md-typeset h2 + p,
+  .md-typeset h3 + p, .md-typeset h4 + p { break-inside: avoid; }
+  /* stampa anche sfondi e colori (evidenziazioni, intestazioni tabelle) */
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 }
 """, encoding="utf-8")
 

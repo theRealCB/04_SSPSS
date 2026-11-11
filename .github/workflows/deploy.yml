@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - run: pip install mkdocs-material
+      - run: pip install mkdocs-material playwright
       - run: python build.py
-      - run: mkdocs gh-deploy --force
+      - run: mkdocs build
+      - run: python make_pdfs.py
+      - run: ghp-import -n -p -f -m "Deploy sito appunti" site

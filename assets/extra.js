@@ -1,64 +1,177 @@
-// Barra in alto: pulsante per il menu a sinistra. Indice a destra: freccia dropdown sulla card.
-// Lo stato resta salvato nel browser tra una pagina e l'altra.
+// Interfaccia del sito: mega menu Materie, indice a sinistra, card Materiali,
+// barra di progresso lettura e statistiche GoatCounter.
 (function () {
-  var NAV_ICON = '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>';
-  var CHEVRON = '<svg viewBox="0 0 24 24" width="22" height="22"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42Z"/></svg>';
+  var GOATCOUNTER = "appunti-sspss";  // codice del sito su goatcounter.com
+  var CHEVRON = '<svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6 1.41-1.42Z"/></svg>';
 
-  function get(key) { try { return localStorage.getItem("sspss-hide-" + key) === "1"; } catch (e) { return false; } }
-  function set(key, v) { try { localStorage.setItem("sspss-hide-" + key, v ? "1" : "0"); } catch (e) {} }
+  function get(key) { try { return localStorage.getItem("sspss-" + key) === "1"; } catch (e) { return false; } }
+  function set(key, v) { try { localStorage.setItem("sspss-" + key, v ? "1" : "0"); } catch (e) {} }
 
-  function applyNav(hidden, btn) {
-    document.body.classList.toggle("sspss-hide-nav", hidden);
-    btn.setAttribute("aria-pressed", hidden ? "false" : "true");
-    btn.title = (hidden ? "Mostra" : "Nascondi") + " menu";
-    btn.setAttribute("aria-label", btn.title);
+  /* --- Logo + titolo riportano alla home --- */
+  function initHome() {
+    var logo = document.querySelector(".md-header__button.md-logo");
+    var title = document.querySelector(".md-header__title");
+    if (!logo || !title) return;
+    title.style.cursor = "pointer";
+    title.setAttribute("role", "link");
+    title.addEventListener("click", function () { location.href = logo.href; });
   }
 
-  function initNav(header) {
-    var sidebar = document.querySelector(".md-sidebar--primary");
-    if (!sidebar || sidebar.hidden || !sidebar.querySelector(".md-nav__link")) return;
+  /* --- Mega menu Materie --- */
+  function initMega() {
+    var header = document.querySelector(".md-header__inner");
+    var panel = document.getElementById("sspss-mega");
+    if (!header || !panel) return;
+    panel.removeAttribute("hidden");
     var btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "md-header__button md-icon sspss-toggle sspss-toggle--nav";
-    btn.innerHTML = NAV_ICON;
-    btn.addEventListener("click", function () {
-      var hidden = !document.body.classList.contains("sspss-hide-nav");
-      set("nav", hidden); applyNav(hidden, btn);
+    btn.className = "sspss-menu-btn";
+    btn.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-controls", "sspss-mega");
+    btn.innerHTML = "Materie " + CHEVRON;
+    header.insertBefore(btn, document.querySelector(".md-header__option") || null);
+
+    // Evidenzia la materia della pagina corrente
+    var here = decodeURIComponent(location.pathname);
+    panel.querySelectorAll(".sspss-mega__item").forEach(function (a) {
+      var p = decodeURIComponent(new URL(a.href).pathname);
+      if (here.indexOf(p) === 0) a.classList.add("sspss-mega__item--here");
     });
-    applyNav(get("nav"), btn);
-    header.insertBefore(btn, header.querySelector(".md-header__title"));
+
+    function open(v) {
+      if (v) {
+        var r = document.querySelector(".md-header").getBoundingClientRect();
+        panel.style.top = (r.bottom + 8) + "px";
+      }
+      panel.classList.toggle("open", v);
+      btn.classList.toggle("open", v);
+      btn.setAttribute("aria-expanded", v ? "true" : "false");
+    }
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      open(!panel.classList.contains("open"));
+    });
+    document.addEventListener("click", function (e) {
+      if (panel.classList.contains("open") && !panel.contains(e.target)) open(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") open(false);
+    });
   }
 
-  function applyToc(hidden, btn) {
-    document.body.classList.toggle("sspss-hide-toc", hidden);
-    btn.setAttribute("aria-expanded", hidden ? "false" : "true");
-    btn.title = (hidden ? "Mostra" : "Nascondi") + " indice";
-    btn.setAttribute("aria-label", btn.title);
-  }
-
+  /* --- Indice a sinistra: etichetta --- */
   function initToc() {
     var title = document.querySelector(".md-sidebar--secondary .md-nav--secondary > .md-nav__title");
-    if (!title || !document.querySelector(".md-sidebar--secondary .md-nav__link")) return;
+    if (title) title.textContent = "In questa pagina";
+  }
+
+  /* --- Materiali: dal fondo pagina a card richiudibile a destra --- */
+  function initMaterials() {
+    var src = document.querySelector(".md-content .sspss-materials");
+    if (!src) return;
+    if (!window.matchMedia("(min-width: 60em)").matches) return;  // su mobile resta in pagina
+    var inner = document.querySelector(".md-main__inner");
+    if (!inner) return;
+    var rail = document.createElement("aside");
+    rail.className = "sspss-right";
+    var card = document.createElement("div");
+    card.className = "sspss-card";
+    var head = src.querySelector(".sspss-materials__title");
     var btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "sspss-toc-arrow";
+    btn.className = "sspss-arrow";
     btn.innerHTML = CHEVRON;
-    title.appendChild(btn);
-    title.classList.add("sspss-toc-title");
-    title.addEventListener("click", function (e) {
-      e.preventDefault();
-      var hidden = !document.body.classList.contains("sspss-hide-toc");
-      set("toc", hidden); applyToc(hidden, btn);
+    head.appendChild(btn);
+    head.classList.add("sspss-card__head");
+    card.appendChild(src);
+    rail.appendChild(card);
+    inner.appendChild(rail);
+
+    function apply(hidden) {
+      document.body.classList.toggle("sspss-hide-mat", hidden);
+      btn.setAttribute("aria-expanded", hidden ? "false" : "true");
+      btn.title = (hidden ? "Mostra" : "Nascondi") + " materiali";
+      btn.setAttribute("aria-label", btn.title);
+    }
+    head.addEventListener("click", function () {
+      var hidden = !document.body.classList.contains("sspss-hide-mat");
+      set("hide-mat", hidden); apply(hidden);
     });
-    applyToc(get("toc"), btn);
+    apply(get("hide-mat"));
+  }
+
+  /* --- Barra di progresso lettura --- */
+  function initProgress() {
+    if (!document.querySelector(".md-content")) return;
+    var bar = document.createElement("div");
+    bar.id = "sspss-progress";
+    document.body.appendChild(bar);
+    var ticking = false;
+    function update() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
+      ticking = false;
+    }
+    addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  }
+
+  /* --- GoatCounter: conteggio visite + visite per materia + ordinamento --- */
+  function gcBase() { return "https://" + GOATCOUNTER + ".goatcounter.com"; }
+
+  function initCount() {
+    if (!GOATCOUNTER || location.hostname === "localhost" || location.hostname === "127.0.0.1") return;
+    var sc = document.createElement("script");
+    sc.async = true;
+    sc.dataset.goatcounter = gcBase() + "/count";
+    sc.src = "https://gc.zgo.at/count.js";
+    document.head.appendChild(sc);
+  }
+
+  function initStats() {
+    var grid = document.querySelector(".grid.cards > ul");
+    if (!grid || !GOATCOUNTER) return;
+    var lis = [].slice.call(grid.children);
+    lis.forEach(function (li, i) { li.dataset.az = i; });
+    lis.forEach(function (li) {
+      var a = li.querySelector("p:last-child a");
+      var span = li.querySelector(".sspss-views");
+      if (!a || !span) return;
+      var path = new URL(a.href).pathname;
+      fetch(gcBase() + "/counter/" + encodeURIComponent(path) + ".json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d) return;
+          var n = parseInt(String(d.count).replace(/\D/g, ""), 10) || 0;
+          li.dataset.views = n;
+          span.textContent = n + (n === 1 ? " visita" : " visite");
+          span.hidden = false;
+        })
+        .catch(function () {});
+    });
+    document.querySelectorAll(".sspss-sort button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        document.querySelectorAll(".sspss-sort button").forEach(function (x) { x.classList.remove("active"); });
+        b.classList.add("active");
+        var by = b.dataset.sort;
+        [].slice.call(grid.children)
+          .sort(function (x, y) {
+            return by === "views"
+              ? (+(y.dataset.views || 0)) - (+(x.dataset.views || 0))
+              : (+x.dataset.az) - (+y.dataset.az);
+          })
+          .forEach(function (li) { grid.appendChild(li); });
+      });
+    });
   }
 
   function init() {
-    var header = document.querySelector(".md-header__inner");
-    if (header) initNav(header);
-    initToc();
+    initHome(); initMega(); initToc(); initMaterials(); initProgress();
+    initCount(); initStats();
   }
-
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();

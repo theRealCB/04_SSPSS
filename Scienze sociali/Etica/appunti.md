@@ -1,4 +1,4 @@
-<h1 align="center">Anatomia e Fisiologia</h1>
+<h1 align="center">Etica</h1>
 <p align="center"><em>MC anno 2026/2027</em></p>
 
 [TOC]

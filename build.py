@@ -225,48 +225,181 @@ def main():
     assets = DOCS / "assets"
     assets.mkdir(exist_ok=True)
     (assets / "extra.css").write_text(
-        """/* Stile del sito appunti (porta lo stile MPE di Cesa sul tema Material) */
+        """/* Stile del sito appunti — look "editoriale moderno" sul tema Material */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-/* Palette rossa (primary/accent: custom in mkdocs.yml) */
+/* ------ Palette e tipografia ------ */
 :root {
+  --md-text-font: "Inter";
   --sspss-red: #B3261E;
+  --sspss-red-dark: #8A1A14;
+  --sspss-ink: #1C1917;
   --md-primary-fg-color: #B3261E;
   --md-primary-fg-color--light: #D0453B;
   --md-primary-fg-color--dark: #8A1A14;
   --md-primary-bg-color: #FFFFFF;
-  --md-accent-fg-color: #E0533F;
-  --md-accent-fg-color--transparent: rgba(224, 83, 63, .1);
+  --md-accent-fg-color: #D0453B;
+  --md-accent-fg-color--transparent: rgba(179, 38, 30, .08);
   --md-typeset-a-color: #A3211A;
+  --md-footer-bg-color: #211D1C;
+  --md-footer-bg-color--dark: #181514;
   --sspss-th-bg: #FBE9E7;
-  --sspss-th-border: #8A1A14;
+  --sspss-th-border: rgba(179, 38, 30, .35);
+  --sspss-card-shadow: 0 14px 28px rgba(138, 26, 20, .10), 0 2px 6px rgba(28, 25, 23, .06);
+  --sspss-header-bg: rgba(255, 255, 255, .82);
+  --sspss-hairline: rgba(28, 25, 23, .09);
+  --sspss-zebra: rgba(28, 25, 23, .025);
 }
 [data-md-color-scheme="slate"] {
-  --md-hue: 0;                                /* grigio caldo invece del blu di default */
-  --md-default-bg-color: hsla(0, 5%, 12%, 1);
-  --md-code-bg-color: hsla(0, 5%, 16%, 1);
-  --md-primary-fg-color: #8E1D18;
-  --md-primary-fg-color--light: #B3261E;
-  --md-primary-fg-color--dark: #6A140F;
+  --md-hue: 15;                               /* grigio caldo invece del blu di default */
+  --md-default-bg-color: hsla(15, 6%, 11%, 1);
+  --md-code-bg-color: hsla(15, 6%, 16%, 1);
+  --sspss-ink: #EDE7E4;
   --md-accent-fg-color: #FF8A75;
-  --md-accent-fg-color--transparent: rgba(255, 138, 117, .1);
+  --md-accent-fg-color--transparent: rgba(255, 138, 117, .12);
   --md-typeset-a-color: #FF9E8E;
-  --sspss-th-bg: #3A2523;
-  --sspss-th-border: #C98C85;
+  --sspss-th-bg: #352220;
+  --sspss-th-border: rgba(255, 138, 117, .4);
+  --sspss-card-shadow: 0 14px 28px rgba(0, 0, 0, .35);
+  --sspss-header-bg: rgba(26, 23, 22, .85);
+  --sspss-hairline: rgba(237, 231, 228, .12);
+  --sspss-zebra: rgba(237, 231, 228, .03);
 }
-/* Voce attiva di menu e indice */
-.md-nav__link--active, .md-nav__item--active > .md-nav__link { color: var(--md-typeset-a-color); }
-.md-typeset h1, .md-typeset h2 { color: var(--md-primary-fg-color--dark); }
-[data-md-color-scheme="slate"] .md-typeset h1,
-[data-md-color-scheme="slate"] .md-typeset h2 { color: #F2B8B0; }
-[data-md-color-scheme="slate"] .md-typeset .md-button:not(:hover) {
-  color: var(--md-typeset-a-color); border-color: currentColor;
+
+/* ------ Barra in alto: chiara, traslucida, con logo rosso ------ */
+.md-header {
+  background: var(--sspss-header-bg);
+  color: var(--md-default-fg-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sspss-hairline);
 }
+.md-header:not(.md-header--shadow) { transition: none; }
+.md-header[data-md-state="shadow"], .md-header--shadow { box-shadow: 0 2px 12px rgba(28,25,23,.06); }
+.md-header__button.md-logo { color: var(--sspss-red); }
+[data-md-color-scheme="slate"] .md-header__button.md-logo { color: #FF8A75; }
+.md-header__title { font-family: "Space Grotesk", sans-serif; font-weight: 600; letter-spacing: -.01em; }
+.md-search__form { background: rgba(28, 25, 23, .06); border-radius: 8px; }
+[data-md-color-scheme="slate"] .md-search__form { background: rgba(237, 231, 228, .08); }
+.md-search__input { color: inherit; }
+.md-search__input::placeholder, .md-search__icon { color: var(--md-default-fg-color--light); }
+[dir="ltr"] .md-search__form:hover { background: rgba(28, 25, 23, .1); }
+[data-md-color-scheme="slate"] [dir="ltr"] .md-search__form:hover { background: rgba(237, 231, 228, .12); }
+
+/* ------ Titoli: Space Grotesk, quasi neri, accento rosso sotto gli h2 ------ */
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--sspss-ink);
+  letter-spacing: -.02em;
+}
+.md-typeset h1 { font-weight: 700; }
+.md-typeset h2 { font-weight: 600; }
+.md-typeset h3 { font-weight: 600; }
+.md-typeset h2::after {
+  content: "";
+  display: block;
+  width: 2rem; height: 3px;
+  margin-top: .25rem;
+  background: var(--sspss-red);
+  border-radius: 2px;
+}
+[data-md-color-scheme="slate"] .md-typeset h2::after { background: #FF8A75; }
 .md-content h1[align="center"] { margin-bottom: .2em; }
-.md-content p[align="center"] em { color: var(--md-default-fg-color--light); }
-.md-content img { max-width: 100%; border-radius: 4px; }
-mark { background: #fff59d; padding: 0 .15em; border-radius: 2px; }
+.md-content p[align="center"] em {
+  color: var(--md-default-fg-color--light);
+  font-style: normal;
+  font-size: .8em;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+}
+
+/* ------ Contenuto ------ */
+.md-content img { max-width: 100%; border-radius: 10px; }
+mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 [data-md-color-scheme="slate"] mark { background: #8d6e00; color: #fff; }
-.md-typeset .grid.cards > ul > li { border-radius: 8px; }
+.md-typeset a { text-underline-offset: 3px; }
+
+/* Pulsante PDF: pillola rossa piena */
+.md-typeset .md-button {
+  background: var(--sspss-red);
+  color: #fff !important;
+  border: none;
+  border-radius: 999px;
+  padding: .5em 1.3em;
+  font-weight: 600;
+  font-size: .72rem;
+  box-shadow: 0 6px 14px rgba(179, 38, 30, .25);
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.md-typeset .md-button:hover {
+  background: var(--sspss-red-dark);
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(179, 38, 30, .32);
+}
+
+/* ------ Menu a sinistra e indice a destra ------ */
+.md-nav__title { font-family: "Space Grotesk", sans-serif; letter-spacing: .02em; }
+.md-sidebar .md-nav__link { border-radius: 7px; padding: .15rem .45rem; margin: 0 -.45rem; }
+.md-sidebar .md-nav__link:hover { background: var(--md-accent-fg-color--transparent); }
+.md-nav__link--active, .md-nav__item--active > .md-nav__link { color: var(--md-typeset-a-color); }
+.md-sidebar--primary .md-nav__item--active > .md-nav__link--active {
+  background: var(--md-accent-fg-color--transparent);
+  font-weight: 600;
+}
+.md-sidebar--secondary .md-nav__link--active { font-weight: 600; }
+
+/* ------ Card della homepage ------ */
+.md-typeset .grid.cards > ul > li {
+  border: 1px solid var(--sspss-hairline);
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sspss-card-shadow);
+  border-color: rgba(179, 38, 30, .35);
+}
+.md-typeset .grid.cards > ul > li > hr { margin: .6em 0; border-bottom: 1px solid var(--sspss-hairline); }
+.md-typeset .grid.cards > ul > li > p:first-child { display: flex; align-items: center; gap: .6rem; }
+.md-typeset .grid.cards > ul > li > p:first-child strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: .78rem;
+  letter-spacing: -.01em;
+}
+.md-typeset .grid.cards .twemoji.lg {
+  display: inline-flex;
+  padding: .5rem;
+  border-radius: 11px;
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--sspss-red);
+}
+.md-typeset .grid.cards .twemoji.lg svg { width: 1.35rem; height: 1.35rem; max-height: none; }
+[data-md-color-scheme="slate"] .md-typeset .grid.cards .twemoji.lg { color: #FF8A75; }
+.md-typeset .grid.cards > ul > li > p:last-child a { font-weight: 600; }
+
+/* ------ Tabelle: angoli morbidi, righe alternate ------ */
+.md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  border: 1px solid var(--sspss-hairline);
+  border-radius: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(28, 25, 23, .04);
+}
+.md-typeset table:not([class]) th {
+  background: var(--sspss-th-bg);
+  border-bottom: 2px solid var(--sspss-th-border);
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: .01em;
+}
+.md-typeset table:not([class]) td { border-top: 1px solid var(--sspss-hairline); }
+.md-typeset table:not([class]) tbody tr:nth-child(even) { background: var(--sspss-zebra); }
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th { padding: 7px 12px; }
 
 /* Le liste scorrono attorno alle immagini con float, come in MPE
    (Material le mette in flow-root, che le blocca in colonna accanto al float) */
@@ -279,20 +412,11 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 2px; }
 .md-typeset h2 { margin-top: 1.2em; margin-bottom: .2em; }
 .md-typeset h3 { margin-top: 1.1em; margin-bottom: .2em; }
 
-/* Tabelle: tutta larghezza, intestazione colorata, bordo marcato */
-.md-typeset table:not([class]) { display: table; width: 100%; }
-.md-typeset table:not([class]) th {
-  background: var(--sspss-th-bg);
-  border-bottom: 2px solid var(--sspss-th-border);
-}
-.md-typeset table:not([class]) td,
-.md-typeset table:not([class]) th { padding: 6px 10px; }
-
 /* Menu sinistro e indice destro collassabili (pulsanti creati da extra.js) */
 .md-header .sspss-toggle { display: none; }
 .sspss-toggle svg { fill: currentColor; }
 .sspss-toggle--nav { margin-right: .2rem; }
-.sspss-toggle[aria-pressed="false"] { opacity: .65; }
+.sspss-toggle[aria-pressed="false"] { opacity: .55; }
 @media screen and (min-width: 76.25em) {
   .md-header .sspss-toggle--nav { display: inline-block; }
   body.sspss-hide-nav .md-sidebar--primary { display: none; }

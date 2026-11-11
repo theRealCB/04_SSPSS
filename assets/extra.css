@@ -387,17 +387,39 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 }
 [data-md-color-scheme="slate"] .sspss-badge-new { color: #FF8A75; }
 .sspss-views { font-size: .6rem; color: var(--md-default-fg-color--light); }
-.sspss-sort { display: flex; gap: .4rem; justify-content: center; margin-bottom: 1.1rem; }
-.sspss-sort button {
-  font: inherit; font-size: .62rem; font-weight: 600;
-  padding: .3em 1em; cursor: pointer;
-  border: 1px solid var(--sspss-hairline); border-radius: 999px;
-  background: var(--sspss-surface); color: var(--md-default-fg-color--light);
-  box-shadow: var(--sspss-shadow-sm);
-  transition: background .15s, color .15s;
+/* Interruttore di ordinamento: segmented control con cursore che scivola */
+.sspss-switch {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  width: 15rem; max-width: 100%;
+  margin: 0 auto 1.1rem;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(28, 25, 23, .07);
+  border: 1px solid var(--sspss-hairline);
+  cursor: pointer; user-select: none;
 }
-.sspss-sort button:hover { color: var(--md-typeset-a-color); }
-.sspss-sort button.active { background: var(--sspss-red); border-color: var(--sspss-red); color: #fff; }
+[data-md-color-scheme="slate"] .sspss-switch { background: rgba(237, 231, 228, .08); }
+.sspss-switch__thumb {
+  position: absolute; top: 3px; bottom: 3px; left: 3px;
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: var(--sspss-surface);
+  box-shadow: 0 2px 8px rgba(28, 25, 23, .18);
+  transition: transform .35s cubic-bezier(.3, 1.45, .45, 1);
+}
+[data-md-color-scheme="slate"] .sspss-switch__thumb { background: #3A302D; box-shadow: 0 2px 8px rgba(0,0,0,.5); }
+.sspss-switch[data-active="views"] .sspss-switch__thumb { transform: translateX(100%); }
+.sspss-switch button {
+  position: relative; z-index: 1;
+  font: inherit; font-size: .62rem; font-weight: 600;
+  padding: .42em 0;
+  background: none; border: none; cursor: pointer;
+  color: var(--md-default-fg-color--light);
+  transition: color .2s;
+}
+.sspss-switch button[aria-pressed="true"] { color: var(--sspss-red); }
+[data-md-color-scheme="slate"] .sspss-switch button[aria-pressed="true"] { color: #FF8A75; }
 
 /* ------ Tabelle ------ */
 .md-typeset table:not([class]) {

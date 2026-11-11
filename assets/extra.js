@@ -131,40 +131,79 @@
     document.head.appendChild(sc);
   }
 
+  /* Conteggi: TOTAL decide se GoatCounter è attivo; i percorsi 404 valgono 0 */
+  function gcFetch(path) {
+    return fetch(gcBase() + "/counter/" + encodeURIComponent(path) + ".json")
+      .then(function (r) {
+        if (r.status === 404) return { miss: true };
+        if (!r.ok) return null;
+        return r.json();
+      })
+      .catch(function () { return null; });
+  }
+  function gcCount(path) {
+    // prova il percorso com'è; se non esiste, la variante decodificata
+    return gcFetch(path).then(function (d) {
+      if (d && !d.miss) return parseInt(String(d.count).replace(/\D/g, ""), 10) || 0;
+      var alt = decodeURIComponent(path);
+      if (alt === path) return d ? 0 : null;
+      return gcFetch(alt).then(function (d2) {
+        if (d2 && !d2.miss) return parseInt(String(d2.count).replace(/\D/g, ""), 10) || 0;
+        return d2 ? 0 : null;
+      });
+    });
+  }
+
   function initStats() {
+    if (!GOATCOUNTER) return;
+    gcFetch("TOTAL").then(function (d) {
+      if (!d || d.miss) return;  // GoatCounter assente o counter pubblico disattivato
+      var n = parseInt(String(d.count).replace(/\D/g, ""), 10) || 0;
+      var chip = document.querySelector(".sspss-stat--visits");
+      if (chip) {
+        chip.querySelector("b").textContent = n.toLocaleString("it-CH");
+        chip.hidden = false;
+      }
+      initCardViews();
+    });
+    initSwitch();
+  }
+
+  function initCardViews() {
     var grid = document.querySelector(".grid.cards > ul");
-    if (!grid || !GOATCOUNTER) return;
-    var lis = [].slice.call(grid.children);
-    lis.forEach(function (li, i) { li.dataset.az = i; });
-    lis.forEach(function (li) {
+    if (!grid) return;
+    [].slice.call(grid.children).forEach(function (li) {
       var a = li.querySelector("p:last-child a");
       var span = li.querySelector(".sspss-views");
       if (!a || !span) return;
-      var path = new URL(a.href).pathname;
-      fetch(gcBase() + "/counter/" + encodeURIComponent(path) + ".json")
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
-          if (!d) return;
-          var n = parseInt(String(d.count).replace(/\D/g, ""), 10) || 0;
-          li.dataset.views = n;
-          span.textContent = n + (n === 1 ? " visita" : " visite");
-          span.hidden = false;
-        })
-        .catch(function () {});
-    });
-    document.querySelectorAll(".sspss-sort button").forEach(function (b) {
-      b.addEventListener("click", function () {
-        document.querySelectorAll(".sspss-sort button").forEach(function (x) { x.classList.remove("active"); });
-        b.classList.add("active");
-        var by = b.dataset.sort;
-        [].slice.call(grid.children)
-          .sort(function (x, y) {
-            return by === "views"
-              ? (+(y.dataset.views || 0)) - (+(x.dataset.views || 0))
-              : (+x.dataset.az) - (+y.dataset.az);
-          })
-          .forEach(function (li) { grid.appendChild(li); });
+      gcCount(new URL(a.href).pathname).then(function (n) {
+        if (n == null) return;
+        li.dataset.views = n;
+        span.textContent = n.toLocaleString("it-CH") + (n === 1 ? " visita" : " visite");
+        span.hidden = false;
       });
+    });
+  }
+
+  function initSwitch() {
+    var sw = document.querySelector(".sspss-switch");
+    var grid = document.querySelector(".grid.cards > ul");
+    if (!sw || !grid) return;
+    var lis = [].slice.call(grid.children);
+    lis.forEach(function (li, i) { li.dataset.az = i; });
+    sw.addEventListener("click", function () {
+      var by = sw.dataset.active === "az" ? "views" : "az";
+      sw.dataset.active = by;
+      sw.querySelectorAll("button").forEach(function (b) {
+        b.setAttribute("aria-pressed", b.dataset.sort === by ? "true" : "false");
+      });
+      [].slice.call(grid.children)
+        .sort(function (x, y) {
+          return by === "views"
+            ? (+(y.dataset.views || 0)) - (+(x.dataset.views || 0))
+            : (+x.dataset.az) - (+y.dataset.az);
+        })
+        .forEach(function (li) { grid.appendChild(li); });
     });
   }
 

@@ -458,12 +458,20 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 }
 .md-typeset .grid.cards .twemoji.lg {
   display: inline-flex;
-  padding: .5rem;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem; height: 2.35rem;
+  flex: none;
   border-radius: 12px;
   background: var(--md-accent-fg-color--transparent);
   color: var(--sspss-red);
 }
-.md-typeset .grid.cards .twemoji.lg svg { width: 1.35rem; height: 1.35rem; max-height: none; }
+.md-typeset .grid.cards .twemoji.lg svg {
+  display: block;
+  width: 1.35rem; height: 1.35rem;
+  max-height: none;
+  vertical-align: 0;
+}
 [data-md-color-scheme="slate"] .md-typeset .grid.cards .twemoji.lg { color: #FF8A75; }
 .md-typeset .grid.cards > ul > li > p:last-child a { font-weight: 600; }
 /* Tutta la card è cliccabile */

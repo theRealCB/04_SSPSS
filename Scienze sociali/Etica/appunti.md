@@ -265,3 +265,26 @@ Tutto al fine di garantire:
 
 ### Estratto della Costituzione Svizzera
 Vedi file
+
+### Etica deontologica ed etica professionale
+Nell, etica professionale, l'etica deontologica sta al fondamento dei **diritti dei pazienti** e del rispettivo **codice deontologico**, una serie di regole, norme, doveri che l'operatore sanitario deve sempre e comunque seguire
+- Dovere di curare ogni paziente in quanto persona
+- Dovere di trattare tutti i pazienti in maniera equa, garantendo la pratià di trattamento, e la non discriminazione
+- Dovere di rispettare la libertà di scelta informata del paziente, la sua autonomia (se il paziente non fosse capace di discernimento, vi può essere un rappresentante legale e ci si basa sulla **volontà presnunta**)
+
+## Etica delle conseguenze
+- Etica sociale: *"promuovere il piacere, il benessere, la felicità. Contrastare il dispiacere, il malessere e la sofferenza, del singolo e della collettività"*
+
+Nel nostro settore usiamo 
+  - Benessere = salute (stato di benessere fisico mentale e sociale, non solo assenza di malattia)
+  - Malessere = malattia
+
+L'idea di fondo è che *più le persone intorno a me stanno bene, sono felici, più star?o bene io*
+
+### Utilitarismo
+azione piu giusta = piu benessere, piu salute
+azione piu sbagliata = piu palessere, piu malattia
+Per tutti o almeno la maggioranta
+
+
+

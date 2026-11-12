@@ -238,3 +238,30 @@ Il Concetto si riporta anche all'etica professionale sanitaria:
 
 ### Il Criterio di proporzionalità
 La misura che va contro il diritto deontologico deve essere meno invasiva possibile
+
+### Uguaglianza dei diritti fondamentali
+
+```mermaid
+graph TD
+  A["Uguaglianza dei diritti fondamentali"]
+  B["<b>Diritti fondamentali</b><br>────────────────<br>Costituzione &rarr; diritti dei pazienti" ]
+  M1["&harr;"]
+  C["<b>Doveri di rispettare i diritti degli altri</b><br>────────────────<br>Doveri assoluti <br> Ultima ratio <br> Proporzionalità"]
+
+
+  A --> B
+  A ~~~ M1
+  A --> C
+
+
+  classDef freccia fill:none,stroke:none,font-size:28px
+  class M1,M2 freccia
+```
+
+- Principi ideali: obbiettivi a cui tendere
+Tutto al fine di garantire:
+- Integrità fisica (non fare violenza fisica)
+- Integrità psichica (Non fare violenza psichica)
+
+### Estratto della Costituzione Svizzera
+Vedi file

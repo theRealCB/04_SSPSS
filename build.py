@@ -19,7 +19,7 @@ PDF_MANIFEST = ROOT / "pdf_manifest.json"
 PDF_TARGETS: list[dict] = []  # pagine per cui generare il PDF in CI se non committato
 
 # Cartelle/file da non pubblicare
-EXCLUDE_DIRS = {".git", ".github", "docs", "site", "overrides", "Stage", "__pycache__"}
+EXCLUDE_DIRS = {".git", ".github", "docs", "site", "overrides", "Stage", "__pycache__", "scripts", "gh"}
 SKIP_EXT = {".zip", ".html", ".pyc"}          # html MPE: sostituiti dal sito
 IMG_EXT = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg"}
 MATERIAL_EXT = {".pdf", ".docx", ".doc", ".pptx", ".ppt", ".xlsx", ".odt"}
@@ -43,6 +43,9 @@ SUBJECTS = {
     "Scienze sociali": ("material-account-group", "Etica e sociologia"),
     "Scienze umane e della salute": ("material-hospital-box", "Determinanti della salute e storia sanitaria"),
     "Situazioni di cura": ("material-stethoscope", "Infezioni, igiene e multiresistenze"),
+    # Sotto-materie
+    "Etica": ("material-scale-balance", "La morale sociale e l'etica professionale"),
+    "Sociologia": ("material-account-group", "Esperimenti e dinamiche sociali"),
 }
 DEFAULT_ICON = "material-notebook-outline"
 
@@ -84,6 +87,31 @@ def fix_tight_blocks(text: str) -> str:
     return "\n".join(out)
 
 
+def demote_headings(text: str) -> str:
+    """MPE usa più h1 come sezioni; Material vuole un solo h1 per pagina
+    (il template dell'indice mostra solo i figli del primo h1).
+    Con 2+ h1 markdown declassa tutti i titoli di un livello."""
+    lines = text.split("\n")
+    h1 = 0
+    in_fence = False
+    for line in lines:
+        if line.lstrip().startswith(("```", "~~~")):
+            in_fence = not in_fence
+        elif not in_fence and re.match(r"^#\s", line):
+            h1 += 1
+    if h1 < 2:
+        return text
+    out, in_fence = [], False
+    for line in lines:
+        if line.lstrip().startswith(("```", "~~~")):
+            in_fence = not in_fence
+        m = re.match(r"^(#{1,5})(\s)", line) if not in_fence else None
+        if m:
+            line = "#" + line
+        out.append(line)
+    return "\n".join(out)
+
+
 def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "") -> str:
     text = src.read_text(encoding="utf-8")
     # Via i blocchi <style> di Markdown Preview Enhanced
@@ -92,6 +120,7 @@ def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "") -> str:
     text = re.sub(r"^#{1,3}\s*table of content.*$", "", text, flags=re.M | re.I)
     text = re.sub(r"^\[TOC\]\s*$", "", text, flags=re.M)
     text = fix_tight_blocks(text)
+    text = demote_headings(text)
     text = re.sub(r"\n{4,}", "\n\n\n", text).strip() + "\n"
 
     href = urllib.parse.quote(pdf_name)
@@ -121,43 +150,51 @@ def last_commit_ts(path: Path) -> int:
     except Exception:
         return 0
 
-def materials_in(folder: Path, paired_pdfs: set[Path]) -> list[Path]:
-    """File scaricabili in folder e nelle sottocartelle senza .md."""
-    out = []
+def natkey(p: Path):
+    """Ordinamento naturale (Booklet_2 prima di Booklet_10)."""
+    return [int(t) if t.isdigit() else t.lower()
+            for t in re.split(r"(\d+)", p.name)]
+
+
+def materials_in(folder: Path, paired_pdfs: set[Path]) -> list[tuple]:
+    """File scaricabili raggruppati: (None, file sciolti), poi una voce per
+    ogni sottocartella senza .md. Deduplica per nome tra i gruppi."""
+    groups, seen = [], set()
+
+    def add(name, files):
+        unique = [f for f in sorted(files, key=natkey) if f.name not in seen]
+        seen.update(f.name for f in unique)
+        if unique:
+            groups.append((name, unique))
+
+    add(None, [p for p in folder.iterdir()
+               if p.is_file() and not is_junk(p)
+               and p.suffix.lower() in MATERIAL_EXT and p not in paired_pdfs])
     for p in sorted(folder.iterdir()):
-        if is_junk(p):
-            continue
-        if p.is_file() and p.suffix.lower() in MATERIAL_EXT and p not in paired_pdfs:
-            out.append(p)
-        elif p.is_dir() and not any(c.suffix == ".md" for c in p.rglob("*") if not is_junk(c)):
-            out.extend(c for c in sorted(p.rglob("*"))
-                       if c.is_file() and not is_junk(c) and c.suffix.lower() in MATERIAL_EXT)
-    # Deduplica per nome file (es. booklet presenti sia sciolti sia nella sottocartella)
-    seen, unique = set(), []
-    for p in out:
-        if p.name not in seen:
-            seen.add(p.name)
-            unique.append(p)
-    # Ordinamento naturale (Booklet_2 prima di Booklet_10)
-    def natkey(p: Path):
-        return [int(t) if t.isdigit() else t.lower()
-                for t in re.split(r"(\d+)", p.name)]
-    return sorted(unique, key=natkey)
+        if (p.is_dir() and not is_junk(p)
+                and not any(c.suffix == ".md" for c in p.rglob("*") if not is_junk(c))):
+            add(p.name, [c for c in p.rglob("*")
+                         if c.is_file() and not is_junk(c) and c.suffix.lower() in MATERIAL_EXT])
+    return groups
 
 
 def material_links(folder: Path, dest_folder: Path, paired_pdfs: set[Path]) -> str:
-    items = materials_in(folder, paired_pdfs)
-    if not items:
+    groups = materials_in(folder, paired_pdfs)
+    if not groups:
         return ""
     lines = ["", '<div class="sspss-materials" markdown>',
              '<p class="sspss-materials__title">Materiali</p>', ""]
-    for f in items:
-        rel = f.relative_to(folder)
-        icon = FILE_ICONS.get(f.suffix.lower(), ":material-file-document-outline:")
-        href = urllib.parse.quote(str(rel))
-        label = f.stem.replace("_", " ")
-        lines.append(f"- {icon} [{label}]({href})")
-    lines += ["", "</div>"]
+    for gname, files in groups:
+        if gname:
+            lines += [f'<p class="sspss-materials__group">{gname.replace("_", " ")}</p>', ""]
+        for f in files:
+            rel = f.relative_to(folder)
+            icon = FILE_ICONS.get(f.suffix.lower(), ":material-file-document-outline:")
+            href = urllib.parse.quote(str(rel))
+            label = f.stem.replace("_", " ")
+            lines.append(f"- {icon} [{label}]({href})")
+        lines.append("")
+    lines.append("</div>")
     return "\n".join(lines) + "\n"
 
 
@@ -210,8 +247,15 @@ def process_folder(src: Path, dest: Path) -> dict:
                       if any(c.suffix == ".md" for c in s.rglob("*") if not is_junk(c))]
         body = ""
         if md_subdirs:
-            body += "\n" + "\n".join(
-                f"- :material-folder-open: [{s.name}](<{s.name}/index.md>)" for s in md_subdirs) + "\n"
+            sub_cards = []
+            for sub2 in md_subdirs:
+                icon, desc = SUBJECTS.get(sub2.name, (DEFAULT_ICON, "Appunti e materiali"))
+                sub_cards.append(
+                    f"-   :{icon}:{{ .lg .middle }} __{sub2.name}__\n\n"
+                    f"    ---\n\n    {desc}\n\n    [Apri →](<{sub2.name}/index.md>)"
+                )
+            body += ('\n<div class="grid cards" markdown>\n\n'
+                     + "\n\n".join(sub_cards) + "\n\n</div>\n")
         body += material_links(src, dest, paired)
         if not body.strip():
             body = "\n*Ancora nessun materiale.*\n"
@@ -254,13 +298,15 @@ def main():
         "consultabili online, scaricabili in PDF, con i materiali del corso.</p>\n\n"
         '<div class="sspss-stats">\n'
         f'<span class="sspss-stat"><b>{len(subjects)}</b> materie</span>\n'
-        f'<span class="sspss-stat"><b>{n_pages_now}</b> pagine di appunti</span>\n'
+        f'<span class="sspss-stat"><b>{n_pages_now}</b> fascicoli di appunti</span>\n'
         '<span class="sspss-stat"><b>PDF</b> per ogni appunto</span>\n'
+        '<span class="sspss-stat sspss-stat--visits" hidden><b></b> visite al sito</span>\n'
         "</div>\n\n"
         "</div>\n\n"
-        '<div class="sspss-sort">\n'
-        '<button type="button" class="active" data-sort="az">A–Z</button>\n'
-        '<button type="button" data-sort="views">Più visitate</button>\n'
+        '<div class="sspss-switch" data-active="az" role="group" aria-label="Ordinamento materie">\n'
+        '<span class="sspss-switch__thumb"></span>\n'
+        '<button type="button" data-sort="az" aria-pressed="true">A–Z</button>\n'
+        '<button type="button" data-sort="views" aria-pressed="false">Più visitate</button>\n'
         "</div>\n\n"
         f'<div class="grid cards" markdown>\n\n{cards_md}\n\n</div>\n',
         encoding="utf-8")
@@ -421,6 +467,14 @@ body.sspss-hide-mat .sspss-card .sspss-materials > ul { display: none; }
   letter-spacing: .12em; text-transform: uppercase;
   color: var(--md-default-fg-color--light);
 }
+.sspss-materials__group {
+  font-size: .56rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--sspss-red);
+  margin: .6rem 0 0 !important;
+}
+[data-md-color-scheme="slate"] .sspss-materials__group { color: #FF8A75; }
+body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { display: none; }
 .sspss-card .sspss-materials > ul { list-style: none; margin: .4rem 0 0; padding: 0; font-size: .62rem; }
 .sspss-card .sspss-materials > ul li { margin: .15rem 0; display: flex; align-items: center; gap: .3rem; }
 .sspss-materials .twemoji { color: var(--sspss-red); flex: none; display: inline-flex; }
@@ -679,17 +733,39 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 }
 [data-md-color-scheme="slate"] .sspss-badge-new { color: #FF8A75; }
 .sspss-views { font-size: .6rem; color: var(--md-default-fg-color--light); }
-.sspss-sort { display: flex; gap: .4rem; justify-content: center; margin-bottom: 1.1rem; }
-.sspss-sort button {
-  font: inherit; font-size: .62rem; font-weight: 600;
-  padding: .3em 1em; cursor: pointer;
-  border: 1px solid var(--sspss-hairline); border-radius: 999px;
-  background: var(--sspss-surface); color: var(--md-default-fg-color--light);
-  box-shadow: var(--sspss-shadow-sm);
-  transition: background .15s, color .15s;
+/* Interruttore di ordinamento: segmented control con cursore che scivola */
+.sspss-switch {
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr;
+  width: 15rem; max-width: 100%;
+  margin: 0 auto 1.1rem;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(28, 25, 23, .07);
+  border: 1px solid var(--sspss-hairline);
+  cursor: pointer; user-select: none;
 }
-.sspss-sort button:hover { color: var(--md-typeset-a-color); }
-.sspss-sort button.active { background: var(--sspss-red); border-color: var(--sspss-red); color: #fff; }
+[data-md-color-scheme="slate"] .sspss-switch { background: rgba(237, 231, 228, .08); }
+.sspss-switch__thumb {
+  position: absolute; top: 3px; bottom: 3px; left: 3px;
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: var(--sspss-surface);
+  box-shadow: 0 2px 8px rgba(28, 25, 23, .18);
+  transition: transform .35s cubic-bezier(.3, 1.45, .45, 1);
+}
+[data-md-color-scheme="slate"] .sspss-switch__thumb { background: #3A302D; box-shadow: 0 2px 8px rgba(0,0,0,.5); }
+.sspss-switch[data-active="views"] .sspss-switch__thumb { transform: translateX(100%); }
+.sspss-switch button {
+  position: relative; z-index: 1;
+  font: inherit; font-size: .62rem; font-weight: 600;
+  padding: .42em 0;
+  background: none; border: none; cursor: pointer;
+  color: var(--md-default-fg-color--light);
+  transition: color .2s;
+}
+.sspss-switch button[aria-pressed="true"] { color: var(--sspss-red); }
+[data-md-color-scheme="slate"] .sspss-switch button[aria-pressed="true"] { color: #FF8A75; }
 
 /* ------ Tabelle ------ */
 .md-typeset table:not([class]) {
@@ -863,6 +939,7 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
   /* --- Barra di progresso lettura --- */
   function initProgress() {
     if (!document.querySelector(".md-content")) return;
+    if (document.querySelector(".sspss-hero")) return;  // niente barra in home
     var bar = document.createElement("div");
     bar.id = "sspss-progress";
     document.body.appendChild(bar);
@@ -891,40 +968,104 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
     document.head.appendChild(sc);
   }
 
+  /* Conteggi: TOTAL decide se GoatCounter è attivo; i percorsi 404 valgono 0 */
+  function gcFetch(path) {
+    return fetch(gcBase() + "/counter/" + encodeURIComponent(path) + ".json")
+      .then(function (r) {
+        if (r.status === 404) return { miss: true };
+        if (!r.ok) return null;
+        return r.json();
+      })
+      .catch(function () { return null; });
+  }
+  function gcCount(path) {
+    // GoatCounter normalizza senza slash finale; prova le varianti in ordine
+    var tries = [path.replace(/\\/$/, ""), path, decodeURIComponent(path).replace(/\\/$/, ""), decodeURIComponent(path)]
+      .filter(function (v, i, a) { return a.indexOf(v) === i; });
+    var sawMiss = false;
+    function next(i) {
+      if (i >= tries.length) return Promise.resolve(sawMiss ? 0 : null);
+      return gcFetch(tries[i]).then(function (d) {
+        if (d && !d.miss) return parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0;
+        if (d && d.miss) sawMiss = true;
+        return next(i + 1);
+      });
+    }
+    return next(0);
+  }
+
+  function siteRoot() {
+    var logo = document.querySelector(".md-header__button.md-logo");
+    return logo ? logo.href : location.href;
+  }
+
   function initStats() {
+    if (!GOATCOUNTER) return;
+    initSwitch();
+    // Prima il file statico aggiornato dalla CI (stesso dominio: passa anche con gli ad-blocker)
+    fetch(new URL("assets/stats.json", siteRoot()))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; })
+      .then(function (st) {
+        if (st && st.total != null) {
+          renderTotal(st.total);
+          initCardViews(function (path) {
+            var key = decodeURIComponent(path);
+            return Promise.resolve(st.paths && key in st.paths ? st.paths[key] : null);
+          });
+        } else {
+          // Fallback: chiamate live a GoatCounter
+          gcFetch("TOTAL").then(function (d) {
+            if (!d || d.miss) return;
+            renderTotal(parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0);
+            initCardViews(gcCount);
+          });
+        }
+      });
+  }
+
+  function renderTotal(n) {
+    var chip = document.querySelector(".sspss-stat--visits");
+    if (!chip) return;
+    chip.querySelector("b").textContent = n.toLocaleString("it-CH");
+    chip.hidden = false;
+  }
+
+  function initCardViews(counter) {
     var grid = document.querySelector(".grid.cards > ul");
-    if (!grid || !GOATCOUNTER) return;
-    var lis = [].slice.call(grid.children);
-    lis.forEach(function (li, i) { li.dataset.az = i; });
-    lis.forEach(function (li) {
+    if (!grid) return;
+    [].slice.call(grid.children).forEach(function (li) {
       var a = li.querySelector("p:last-child a");
       var span = li.querySelector(".sspss-views");
       if (!a || !span) return;
-      var path = new URL(a.href).pathname;
-      fetch(gcBase() + "/counter/" + encodeURIComponent(path) + ".json")
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
-          if (!d) return;
-          var n = parseInt(String(d.count).replace(/\\D/g, ""), 10) || 0;
-          li.dataset.views = n;
-          span.textContent = n + (n === 1 ? " visita" : " visite");
-          span.hidden = false;
-        })
-        .catch(function () {});
-    });
-    document.querySelectorAll(".sspss-sort button").forEach(function (b) {
-      b.addEventListener("click", function () {
-        document.querySelectorAll(".sspss-sort button").forEach(function (x) { x.classList.remove("active"); });
-        b.classList.add("active");
-        var by = b.dataset.sort;
-        [].slice.call(grid.children)
-          .sort(function (x, y) {
-            return by === "views"
-              ? (+(y.dataset.views || 0)) - (+(x.dataset.views || 0))
-              : (+x.dataset.az) - (+y.dataset.az);
-          })
-          .forEach(function (li) { grid.appendChild(li); });
+      counter(new URL(a.href).pathname).then(function (n) {
+        if (n == null) return;
+        li.dataset.views = n;
+        span.textContent = n.toLocaleString("it-CH") + (n === 1 ? " visita" : " visite");
+        span.hidden = false;
       });
+    });
+  }
+
+  function initSwitch() {
+    var sw = document.querySelector(".sspss-switch");
+    var grid = document.querySelector(".grid.cards > ul");
+    if (!sw || !grid) return;
+    var lis = [].slice.call(grid.children);
+    lis.forEach(function (li, i) { li.dataset.az = i; });
+    sw.addEventListener("click", function () {
+      var by = sw.dataset.active === "az" ? "views" : "az";
+      sw.dataset.active = by;
+      sw.querySelectorAll("button").forEach(function (b) {
+        b.setAttribute("aria-pressed", b.dataset.sort === by ? "true" : "false");
+      });
+      [].slice.call(grid.children)
+        .sort(function (x, y) {
+          return by === "views"
+            ? (+(y.dataset.views || 0)) - (+(x.dataset.views || 0))
+            : (+x.dataset.az) - (+y.dataset.az);
+        })
+        .forEach(function (li) { grid.appendChild(li); });
     });
   }
 

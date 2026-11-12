@@ -185,13 +185,12 @@ def material_links(folder: Path, dest_folder: Path, paired_pdfs: set[Path]) -> s
         return ""
     rel = dest_folder.relative_to(DOCS)
     for gname, files in groups:
-        sub = rel.parts[1] if len(rel.parts) > 1 else None
-        group = " · ".join(x for x in (sub, gname.replace("_", " ") if gname else None) if x) or None
         for f in files:
             frel = f.relative_to(folder)
             DOWNLOADS.append({
                 "subject": rel.parts[0],
-                "group": group,
+                "sub": rel.parts[1] if len(rel.parts) > 1 else None,
+                "folder": gname.replace("_", " ") if gname else None,
                 "label": f.stem.replace("_", " "),
                 "ext": f.suffix.lower().lstrip("."),
                 "url": "/".join(urllib.parse.quote(x) for x in (*rel.parts, *frel.parts)),
@@ -251,7 +250,8 @@ def process_folder(src: Path, dest: Path) -> dict:
             PDF_TARGETS.append({"page": page_url, "pdf": f"{rel}/{pdf.name}", "title": title})
         DOWNLOADS.append({
             "subject": rel.parts[0],
-            "group": rel.parts[1] if len(rel.parts) > 1 else None,
+            "sub": rel.parts[1] if len(rel.parts) > 1 else None,
+            "folder": None,
             "label": f"{title} — appunti",
             "ext": "pdf",
             "url": "/".join(urllib.parse.quote(x) for x in (*rel.parts, pdf.name)),
@@ -312,6 +312,7 @@ def main():
     n_pages_now = sum(1 for _ in DOCS.rglob("*.md"))
     (DOCS / "index.md").write_text(
         "---\ntitle: Home\nhide:\n  - navigation\n  - toc\n---\n\n"
+        '[:material-folder-download: Centro download](download/){ .md-button .sspss-dlbtn }\n\n'
         '<div class="sspss-hero" markdown>\n\n'
         '<p class="sspss-kicker">Moduli complementari SUP &middot; anno 2026/2027</p>\n\n'
         "# Appunti SSPSS\n\n"
@@ -344,6 +345,26 @@ def main():
     by_subject: dict[str, list[dict]] = {}
     for item in DOWNLOADS:
         by_subject.setdefault(item["subject"], []).append(item)
+
+    def dl_item(it):
+        zip_path = "/".join(x for x in (it["subject"], it["sub"], it["folder"],
+                                        f'{it["label"]}.{it["ext"]}') if x)
+        return (f'<label class="sspss-dl__item"><input type="checkbox" class="sspss-dl-box" '
+                f'data-url="../{it["url"]}" data-zip="{zip_path}">'
+                f'<span>{it["label"]}</span><em>.{it["ext"]}</em></label>')
+
+    def dl_block(items):
+        lines = []
+        items = sorted(items, key=lambda x: ((x["folder"] or ""), natkey(Path(x["label"]))))
+        last = object()
+        for it in items:
+            if it["folder"] != last:
+                if it["folder"]:
+                    lines += [f'<p class="sspss-materials__group">{it["folder"]}</p>', ""]
+                last = it["folder"]
+            lines.append(dl_item(it))
+        return lines
+
     dl_lines = ["---", "title: Centro download", "---", "",
                 '<nav class="sspss-crumb"><a href="../">Home</a>'
                 '<span class="sspss-crumb__sep">/</span><span>Centro download</span></nav>', "",
@@ -354,22 +375,15 @@ def main():
         items = by_subject.get(subj)
         if not items:
             continue
-        items.sort(key=lambda x: ((x["group"] or ""), natkey(Path(x["label"]))))
         dl_lines += [f"## {subj}", "",
                      f'<div class="sspss-dl" data-subject="{subj}" markdown>',
                      '<label class="sspss-dl__all"><input type="checkbox" class="sspss-dl-all">'
                      " Seleziona tutto</label>", ""]
-        last_group = object()
-        for it in items:
-            if it["group"] != last_group:
-                if it["group"]:
-                    dl_lines += [f'<p class="sspss-materials__group">{it["group"]}</p>', ""]
-                last_group = it["group"]
-            zip_path = "/".join(x for x in (subj, it["group"], f'{it["label"]}.{it["ext"]}') if x)
-            dl_lines.append(
-                f'<label class="sspss-dl__item"><input type="checkbox" class="sspss-dl-box" '
-                f'data-url="../{it["url"]}" data-zip="{zip_path}">'
-                f'<span>{it["label"]}</span><em>.{it["ext"]}</em></label>')
+        dl_lines += dl_block([it for it in items if not it["sub"]])
+        subs = sorted({it["sub"] for it in items if it["sub"]})
+        for sub in subs:
+            dl_lines += ["", f"### {sub}", ""]
+            dl_lines += dl_block([it for it in items if it["sub"] == sub])
         dl_lines += ["", "</div>", ""]
     dl_lines += ['<div class="sspss-dlbar">',
                  '<span class="sspss-dlbar__count">Nessun file selezionato</span>',
@@ -612,13 +626,24 @@ body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { displ
 
 /* Centro download */
 .sspss-dl__lead { color: var(--md-default-fg-color--light); }
-.sspss-dl { margin: .4rem 0 1rem; }
+.sspss-dl { position: relative; margin: .4rem 0 1.4rem; }
 .sspss-dl__all {
   display: inline-flex; align-items: center; gap: .45rem;
   font-size: .62rem; font-weight: 600; cursor: pointer;
   color: var(--md-default-fg-color--light);
-  margin-bottom: .2rem;
 }
+/* La spunta sta sulla riga del titolo della materia */
+@media screen and (min-width: 45em) {
+  .sspss-dl__all { position: absolute; right: 0; top: -2.15rem; }
+}
+.sspss-dl__all:hover { color: var(--md-typeset-a-color); }
+/* Sotto-materie (h3 dentro la sezione): divisione ben visibile */
+.sspss-dl h3 {
+  margin: 1.1em 0 .25em !important;
+  padding-top: .7em;
+  border-top: 1px solid var(--sspss-hairline);
+}
+.sspss-dl .sspss-materials__group { margin: .55rem 0 .1rem !important; }
 .sspss-dl__item {
   display: flex; align-items: center; gap: .55rem;
   padding: .32rem .5rem; margin: 0 -.5rem;
@@ -647,6 +672,17 @@ body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { displ
 }
 .sspss-dlbar__count { font-size: .66rem; color: var(--md-default-fg-color--light); }
 .sspss-dlbar__go:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
+
+/* Pulsante Centro download in alto a destra nella home */
+.md-content__inner { position: relative; }
+.md-typeset .sspss-dlbtn { display: inline-flex; align-items: center; gap: .35em; }
+.md-typeset .sspss-dlbtn .twemoji svg { width: 1em; height: 1em; max-height: none; fill: currentColor; }
+@media screen and (min-width: 60em) {
+  .md-content__inner:has(.sspss-hero) .sspss-dlbtn { position: absolute; top: 1.2rem; right: 0; margin: 0; }
+}
+@media screen and (max-width: 59.984375em) {
+  .md-content__inner:has(.sspss-hero) .sspss-dlbtn { display: table; margin: .6rem auto 0; }
+}
 
 /* Banner verso il centro download (home) */
 .sspss-dlbanner {

@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent
 DOCS = ROOT / "docs"
 PDF_MANIFEST = ROOT / "pdf_manifest.json"
 PDF_TARGETS: list[dict] = []  # pagine per cui generare il PDF in CI se non committato
+DOWNLOADS: list[dict] = []    # file per il centro download: materia -> gruppo -> file
 
 # Cartelle/file da non pubblicare
 EXCLUDE_DIRS = {".git", ".github", "docs", "site", "overrides", "Stage", "__pycache__", "scripts", "gh"}
@@ -182,6 +183,19 @@ def material_links(folder: Path, dest_folder: Path, paired_pdfs: set[Path]) -> s
     groups = materials_in(folder, paired_pdfs)
     if not groups:
         return ""
+    rel = dest_folder.relative_to(DOCS)
+    for gname, files in groups:
+        sub = rel.parts[1] if len(rel.parts) > 1 else None
+        group = " · ".join(x for x in (sub, gname.replace("_", " ") if gname else None) if x) or None
+        for f in files:
+            frel = f.relative_to(folder)
+            DOWNLOADS.append({
+                "subject": rel.parts[0],
+                "group": group,
+                "label": f.stem.replace("_", " "),
+                "ext": f.suffix.lower().lstrip("."),
+                "url": "/".join(urllib.parse.quote(x) for x in (*rel.parts, *frel.parts)),
+            })
     lines = ["", '<div class="sspss-materials" markdown>',
              '<p class="sspss-materials__title">Materiali</p>', ""]
     for gname, files in groups:
@@ -235,6 +249,13 @@ def process_folder(src: Path, dest: Path) -> dict:
         if not pdf.exists():
             page_url = f"{rel}/" if is_index else f"{rel}/{md.stem}/"
             PDF_TARGETS.append({"page": page_url, "pdf": f"{rel}/{pdf.name}", "title": title})
+        DOWNLOADS.append({
+            "subject": rel.parts[0],
+            "group": rel.parts[1] if len(rel.parts) > 1 else None,
+            "label": f"{title} — appunti",
+            "ext": "pdf",
+            "url": "/".join(urllib.parse.quote(x) for x in (*rel.parts, pdf.name)),
+        })
 
     # Sottocartelle con md: ricorsione (es. Scienze sociali/Etica)
     for sub in subdirs:
@@ -308,9 +329,53 @@ def main():
         '<button type="button" data-sort="az" aria-pressed="true">A–Z</button>\n'
         '<button type="button" data-sort="views" aria-pressed="false">Più visitate</button>\n'
         "</div>\n\n"
-        f'<div class="grid cards" markdown>\n\n{cards_md}\n\n</div>\n',
+        f'<div class="grid cards" markdown>\n\n{cards_md}\n\n</div>\n\n'
+        '<div class="sspss-dlbanner" markdown>\n\n'
+        ':material-folder-download:{ .lg .middle } **Ti serve tutto insieme?** '
+        "Nel centro download spunti appunti e materiali e li scarichi in un unico zip. "
+        "[Apri il centro download →](download/)\n\n"
+        "</div>\n",
         encoding="utf-8")
 
+
+
+    # Centro download: pagina con checkbox per materia, zip costruito dal browser
+    subj_order = [d.name for d in subjects]
+    by_subject: dict[str, list[dict]] = {}
+    for item in DOWNLOADS:
+        by_subject.setdefault(item["subject"], []).append(item)
+    dl_lines = ["---", "title: Centro download", "---", "",
+                '<nav class="sspss-crumb"><a href="../">Home</a>'
+                '<span class="sspss-crumb__sep">/</span><span>Centro download</span></nav>', "",
+                "# Centro download", "",
+                '<p class="sspss-dl__lead">Spunta quello che ti serve — appunti in PDF e materiali '
+                "del corso, materia per materia — e scaricalo in un unico file zip.</p>", ""]
+    for subj in subj_order:
+        items = by_subject.get(subj)
+        if not items:
+            continue
+        items.sort(key=lambda x: ((x["group"] or ""), natkey(Path(x["label"]))))
+        dl_lines += [f"## {subj}", "",
+                     f'<div class="sspss-dl" data-subject="{subj}" markdown>',
+                     '<label class="sspss-dl__all"><input type="checkbox" class="sspss-dl-all">'
+                     " Seleziona tutto</label>", ""]
+        last_group = object()
+        for it in items:
+            if it["group"] != last_group:
+                if it["group"]:
+                    dl_lines += [f'<p class="sspss-materials__group">{it["group"]}</p>', ""]
+                last_group = it["group"]
+            zip_path = "/".join(x for x in (subj, it["group"], f'{it["label"]}.{it["ext"]}') if x)
+            dl_lines.append(
+                f'<label class="sspss-dl__item"><input type="checkbox" class="sspss-dl-box" '
+                f'data-url="../{it["url"]}" data-zip="{zip_path}">'
+                f'<span>{it["label"]}</span><em>.{it["ext"]}</em></label>')
+        dl_lines += ["", "</div>", ""]
+    dl_lines += ['<div class="sspss-dlbar">',
+                 '<span class="sspss-dlbar__count">Nessun file selezionato</span>',
+                 '<button type="button" class="md-button sspss-dlbar__go" disabled>'
+                 "Scarica lo zip</button>", "</div>", ""]
+    (DOCS / "download.md").write_text("\n".join(dl_lines), encoding="utf-8")
 
     # Template override: pannello "Materie" a tutta larghezza nell'header
     ovr = ROOT / "overrides"
@@ -329,7 +394,11 @@ def main():
         "{% extends \"base.html\" %}\n"
         "{% block header %}\n{{ super() }}\n"
         '<div class="sspss-mega" id="sspss-mega" hidden>\n'
-        '<div class="sspss-mega__grid">\n' + "\n".join(mega_items) + "\n</div>\n</div>\n"
+        '<div class="sspss-mega__grid">\n' + "\n".join(mega_items) + "\n</div>\n"
+        '<a class="sspss-mega__dl" href="{{ base_url }}/download/">'
+        '<span class="sspss-mega__icon">{% include ".icons/material/folder-download.svg" %}</span>'
+        '<span class="sspss-mega__text"><b>Centro download</b>'
+        "<small>Appunti e materiali in un unico zip</small></span></a>\n</div>\n"
         "{% endblock %}\n", encoding="utf-8")
 
     # CSS del sito
@@ -540,6 +609,76 @@ body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { displ
 .sspss-mega__text small { font-size: .58rem; color: var(--md-default-fg-color--light); }
 .sspss-mega__item--here { background: var(--md-accent-fg-color--transparent); }
 .sspss-mega__item--here b { color: var(--md-typeset-a-color); }
+
+/* Centro download */
+.sspss-dl__lead { color: var(--md-default-fg-color--light); }
+.sspss-dl { margin: .4rem 0 1rem; }
+.sspss-dl__all {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .62rem; font-weight: 600; cursor: pointer;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: .2rem;
+}
+.sspss-dl__item {
+  display: flex; align-items: center; gap: .55rem;
+  padding: .32rem .5rem; margin: 0 -.5rem;
+  border-radius: 8px; cursor: pointer;
+  font-size: .68rem;
+}
+.sspss-dl__item:hover { background: var(--md-accent-fg-color--transparent); }
+.sspss-dl__item em {
+  margin-left: auto; font-style: normal;
+  font-size: .55rem; font-weight: 700; letter-spacing: .04em;
+  color: var(--sspss-red);
+  background: var(--md-accent-fg-color--transparent);
+  border-radius: 999px; padding: .1em .6em;
+}
+[data-md-color-scheme="slate"] .sspss-dl__item em { color: #FF8A75; }
+.sspss-dl input[type="checkbox"], .sspss-dlbanner input { accent-color: var(--sspss-red); }
+.sspss-dl input[type="checkbox"] { width: .85rem; height: .85rem; flex: none; }
+.sspss-dlbar {
+  position: sticky; bottom: .8rem; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  margin-top: 1.4rem; padding: .55rem .6rem .55rem 1rem;
+  background: var(--sspss-surface);
+  border: 1px solid var(--sspss-hairline);
+  border-radius: 999px;
+  box-shadow: var(--sspss-shadow-lg);
+}
+.sspss-dlbar__count { font-size: .66rem; color: var(--md-default-fg-color--light); }
+.sspss-dlbar__go:disabled { opacity: .45; cursor: not-allowed; transform: none !important; }
+
+/* Banner verso il centro download (home) */
+.sspss-dlbanner {
+  display: flex; align-items: center; gap: .8rem;
+  margin-top: 1.2rem; padding: .9rem 1.2rem;
+  background: var(--sspss-surface);
+  border: 1px dashed var(--sspss-th-border);
+  border-radius: 16px;
+  font-size: .72rem;
+}
+.sspss-dlbanner p { margin: 0 !important; }
+.sspss-dlbanner .twemoji.lg {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.1rem; height: 2.1rem; flex: none;
+  border-radius: 11px;
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--sspss-red);
+}
+[data-md-color-scheme="slate"] .sspss-dlbanner .twemoji.lg { color: #FF8A75; }
+.sspss-dlbanner .twemoji.lg svg { width: 1.2rem; height: 1.2rem; max-height: none; }
+
+/* Voce centro download nel mega menu */
+.sspss-mega__dl {
+  display: flex; align-items: center; gap: .55rem;
+  margin-top: .5rem; padding: .55rem .6rem;
+  border-top: 1px solid var(--sspss-hairline);
+  border-radius: 0 0 12px 12px;
+  color: var(--md-default-fg-color);
+}
+.sspss-mega__dl:hover { background: var(--md-accent-fg-color--transparent); }
+.sspss-mega__dl b { font-family: "Space Grotesk", sans-serif; font-size: .68rem; font-weight: 600; }
+.sspss-mega__dl small { display: block; font-size: .58rem; color: var(--md-default-fg-color--light); }
 
 /* Barra di progresso lettura */
 #sspss-progress {
@@ -1069,14 +1208,97 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
     });
   }
 
+  /* --- Centro download: checkbox e zip --- */
+  function initDownloads() {
+    var boxes = [].slice.call(document.querySelectorAll(".sspss-dl-box"));
+    var bar = document.querySelector(".sspss-dlbar");
+    if (!boxes.length || !bar) return;
+    var count = bar.querySelector(".sspss-dlbar__count");
+    var go = bar.querySelector(".sspss-dlbar__go");
+
+    function refresh() {
+      var sel = boxes.filter(function (b) { return b.checked; });
+      go.disabled = !sel.length;
+      count.textContent = !sel.length ? "Nessun file selezionato"
+        : sel.length === 1 ? "1 file selezionato" : sel.length + " file selezionati";
+      document.querySelectorAll(".sspss-dl").forEach(function (sec) {
+        var all = sec.querySelector(".sspss-dl-all");
+        var own = [].slice.call(sec.querySelectorAll(".sspss-dl-box"));
+        var n = own.filter(function (b) { return b.checked; }).length;
+        all.checked = n === own.length;
+        all.indeterminate = n > 0 && n < own.length;
+      });
+    }
+    boxes.forEach(function (b) { b.addEventListener("change", refresh); });
+    document.querySelectorAll(".sspss-dl").forEach(function (sec) {
+      sec.querySelector(".sspss-dl-all").addEventListener("change", function () {
+        var v = this.checked;
+        sec.querySelectorAll(".sspss-dl-box").forEach(function (b) { b.checked = v; });
+        refresh();
+      });
+    });
+    refresh();
+
+    function loadJSZip() {
+      if (window.JSZip) return Promise.resolve();
+      return new Promise(function (ok, no) {
+        var sc = document.createElement("script");
+        sc.src = new URL("assets/jszip.min.js", siteRoot());
+        sc.onload = ok; sc.onerror = no;
+        document.head.appendChild(sc);
+      });
+    }
+
+    go.addEventListener("click", function () {
+      var sel = boxes.filter(function (b) { return b.checked; });
+      if (!sel.length) return;
+      go.disabled = true;
+      var done = 0, failed = [];
+      loadJSZip().then(function () {
+        var zip = new JSZip();
+        return Promise.all(sel.map(function (b) {
+          return fetch(b.dataset.url)
+            .then(function (r) { if (!r.ok) throw 0; return r.blob(); })
+            .then(function (blob) { zip.file(b.dataset.zip, blob); })
+            .catch(function () { failed.push(b.dataset.zip.split("/").pop()); })
+            .then(function () {
+              done += 1;
+              go.textContent = "Preparo lo zip… " + done + "/" + sel.length;
+            });
+        })).then(function () {
+          go.textContent = "Comprimo…";
+          return zip.generateAsync({ type: "blob" });
+        }).then(function (blob) {
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "appunti-sspss.zip";
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(function () { URL.revokeObjectURL(a.href); }, 30000);
+          go.textContent = "Scarica lo zip";
+          go.disabled = false;
+          count.textContent = failed.length
+            ? "Zip pronto; " + failed.length + " file non trovati: " + failed.join(", ")
+            : "Zip scaricato";
+        });
+      }).catch(function () {
+        go.textContent = "Scarica lo zip";
+        go.disabled = false;
+        count.textContent = "Errore nel preparare lo zip, riprova";
+      });
+    });
+  }
+
   function init() {
     initHome(); initMega(); initToc(); initMaterials(); initProgress();
-    initCount(); initStats();
+    initCount(); initStats(); initDownloads();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
 """, encoding="utf-8")
+
+    # Libreria zip servita dal sito stesso (niente CDN esterne)
+    shutil.copy2(ROOT / "scripts" / "vendor" / "jszip.min.js", assets / "jszip.min.js")
 
     # Evita la passata Jekyll di GitHub Pages
     (DOCS / ".nojekyll").write_text("", encoding="utf-8")

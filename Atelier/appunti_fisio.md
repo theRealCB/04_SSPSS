@@ -4,32 +4,32 @@
 # Evidence Based Practice (EBP)
 composta da:
 - best scientific Evidence
-- patience value: i valori e capacità del paziente, ci prendiamo a carico tutta la persona
+- patient values: i valori e capacità del paziente, ci prendiamo a carico tutta la persona
 - clinical experience: esperienza su diagnosi e cure passate molto utili
 
 ## Piramide delle evidenze
-Non tutta l'evidenza scienzifica vale allo stesso modo
+Non tutta l'evidenza scientifica vale allo stesso modo
 dal meno al piu qualitativo
-- infromazioni di background, opinione dell'esperto (per quando formate, non è oggettica)
+- informazioni di background, opinione dell'esperto (per quanto formata, non è oggettiva)
 - casi individuali: caso speciale che vediamo da qualche parte, vediamo magari pure un report, ma non ha validità
 - studio di caso
 - cohort study
 - non randomized control trials
 - randomized control trials (campioni di persone divisi casualmente)
 - letteratura con pratiche evidence based
-- sistematic review (mettere assieme diversi studi e letteratura)
+- systematic review (mettere assieme diversi studi e letteratura)
 - Meta analisi: prendono diversi concetti su un argomento e fanno una "mega" analisi
 
 ## Importanza dell'EBP
 - Le linee guida cambiano: nuove evidenze e nuove raccomandazioni
-- Diritto del paziente a decisioni informate: Esperienza clinica da sola non basta. Il paziente a diritto a cure aggiornate
-- Responsabilita professionale: il professionista sanitario ha l'obbligo etico di tenersi aggiornato
+- Diritto del paziente a decisioni informate: Esperienza clinica da sola non basta. Il paziente ha diritto a cure aggiornate
+- Responsabilità professionale: il professionista sanitario ha l'obbligo etico di tenersi aggiornato
 
 ## Come scegliere le evidenze
 spin = distorsione nella comunicazione dei fatti
-Succede quando un ricercatore, ufficio stampa, giornale ecc, presenta riusltati di uno studio in modo da far sembrare il trattamento piu efficace di quanto i dati supportano
+Succede quando un ricercatore, ufficio stampa, giornale ecc, presenta risultati di uno studio in modo da far sembrare il trattamento piu efficace di quanto i dati supportano
 - tabloid: assolutamente inaffidabili
-- siti istituzionali: piu accurati dei tabloid, utile per orientamento sul tema, non riporta risultati grzzi, non ha occhio clinico, non sostituisce letteratura scientifica
+- siti istituzionali: piu accurati dei tabloid, utile per orientamento sul tema, non riporta risultati grezzi, non ha occhio clinico, non sostituisce letteratura scientifica
 - studio scientifico: accurato e utile se interpretato con cura
 
 # Il modello biopsicosociale
@@ -46,7 +46,7 @@ Il cervello interpreta il dolore. Noi possiamo andare ad agire
 
 Sentire male non significa perforza che qualcosa si sta rompendo
 
->Definizione IASP: epserienza sensoriale ed emozionale associata con un effettivo o potenziale danno tessutale
+>Definizione IASP: esperienza sensoriale ed emozionale associata con un effettivo o potenziale danno tessutale
 
 ## Il dolore può essere considerato un allarme
 
@@ -59,8 +59,8 @@ Quando il cervello percepisce un danno o la minaccia di un danno si sente dolore
 
 ## Teoria
 - Il **nocicettore** sente lo stimolo chimico, meccanico, termico
-- questi recettori inviano dei segnali di pericolo dal nostro corpo al **modillo spinale**
-- Il midollo spinale può essere considerato come un centralinista che dopo aver elaborato un informazione la può inviare al cercello 
+- questi recettori inviano dei segnali di pericolo dal nostro corpo al **midollo spinale**
+- Il midollo spinale può essere considerato come un centralinista che dopo aver elaborato un'informazione la può inviare al cervello 
 
 ## Regolazione del dolore
 - **Regolazione periferica**: quando il tessuto è danneggiato, i nocicettori periferici diventano più sensibili: questo si chiama sensibilizzazione periferica 
@@ -79,7 +79,7 @@ PEACE AND LOVE
 **E**levation
 **A**void anti inflammatory
 **C**ompression
-**E**ducazion
+**E**ducation
 **&** 
 **L**oad
 **O**ptimism
@@ -88,20 +88,20 @@ PEACE AND LOVE
 
 # Cos'è la fisioterapia
 
-- Il fisioterapista ripristina, sviluppa o mantiene il movimento delle abilità funzionali della persona durante le carie fasi della vita
+- Il fisioterapista ripristina, sviluppa o mantiene il movimento delle abilità funzionali della persona durante le varie fasi della vita
 
 - Offre interventi in caso che delle funzioni per l'attività quotidiana, professionale o sportiva risultino compromessi o minacciati
 
-- Identificare e massimizzare il potenziale di movimento nell'ottica della promozione e prevenzione della saluta
+- Identificare e massimizzare il potenziale di movimento nell'ottica della promozione e prevenzione della salute
 
-- Educare in merito a disturbi, dolore, caratteristiche dell'approcio fisioterapico
+- Educare in merito a disturbi, dolore, caratteristiche dell'approccio fisioterapico
 
-## Il processo fisoterapico:
-- assesment: capire che problema ha
+## Il processo fisioterapico:
+- assessment: capire che problema ha
 - pianificazione d'intervento
 - implementare intervento
 - evaluation
-- scaric del paziente
+- scarico del paziente
 
 ## Ambienti di specializzazione
 - cardiorespiratorio
@@ -113,7 +113,7 @@ PEACE AND LOVE
 - sport ed esercizio
 - pavimento pelvico
 - oncologico
-- cure paliative
+- cure palliative
 - reumatologico
 - vestibolare
 - salute mentale

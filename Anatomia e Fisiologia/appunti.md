@@ -99,7 +99,7 @@ Funzioni delle proteine:
 </span>
 
 
-### GLI ZUCCHERI (carboidrati)
+### Gli zuccheri (carboidrati)
 - **Monosaccaridi**: unità base degli zuccheri (monomero) &rarr; glucosio
 - **Disaccardi**: formati da 2 monosaccaridi (glucosio + fruttosio &rarr;saccarosio)
 - **Polisaccaridi**: formati da molti monosaccaridi. (amido, cellulosa, glicogeno). Fungono da riserva di energia
@@ -391,7 +391,7 @@ Si dividono in tre tipi:
     - **Foglietto viscerale**: foglietto direttamente a contatto con l'organo (==riveste l'organo==)
     - **Foglietto parietale**: ==riveste la parete== della cavità che ospita l'organo in questione
     
-    lo spazio tra i due foglietti è rimepito da un liquido lubrificante (prodotto dai due foglietti)
+    lo spazio tra i due foglietti è riempito da un liquido lubrificante (prodotto dai due foglietti)
     
     >Possiediamo **3 membrane sierose** (tutte possiedeno foglietto parietale e viscerale):
         1. Pleura (riveste i polmoni)
@@ -731,11 +731,11 @@ Guardiamo ora cosa succede a livello di pressione a livello alveolare e capillar
 
 ### Respirazione interna 
 Scambio di gas tra cellule dei tessuti e i capillari sistemici
-- pO<sub>2</sub> cellulare < pO<sub>2</sub> capillare (O<sub>2</sub> consumaot dalla respirazione cellulare)
+- pO<sub>2</sub> cellulare < pO<sub>2</sub> capillare (O<sub>2</sub> consumato dalla respirazione cellulare)
 - diffusione netta di O<sub>2</sub> dal capillare alle cellule 
 - pCO<sub>2</sub> cellulare > pCO<sub>2</sub> capillare(CO<sub>2</sub> della respirazione cellulare accumulato nella cellula)
 
-## Trasporto di gas nel sangie
+## Trasporto di gas nel sangue
 ### O<sub>2</sub>
 ~98% di O<sub>2</sub> è legato all'emoglobina
 **Emoglobina (Hb)**: proteina formata da 4 catene: 2 &alpha; e 2 &beta; 

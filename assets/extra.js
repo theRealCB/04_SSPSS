@@ -233,9 +233,89 @@
     });
   }
 
+  /* --- Centro download: checkbox e zip --- */
+  function initDownloads() {
+    var boxes = [].slice.call(document.querySelectorAll(".sspss-dl-box"));
+    var bar = document.querySelector(".sspss-dlbar");
+    if (!boxes.length || !bar) return;
+    var count = bar.querySelector(".sspss-dlbar__count");
+    var go = bar.querySelector(".sspss-dlbar__go");
+
+    function refresh() {
+      var sel = boxes.filter(function (b) { return b.checked; });
+      go.disabled = !sel.length;
+      count.textContent = !sel.length ? "Nessun file selezionato"
+        : sel.length === 1 ? "1 file selezionato" : sel.length + " file selezionati";
+      document.querySelectorAll(".sspss-dl").forEach(function (sec) {
+        var all = sec.querySelector(".sspss-dl-all");
+        var own = [].slice.call(sec.querySelectorAll(".sspss-dl-box"));
+        var n = own.filter(function (b) { return b.checked; }).length;
+        all.checked = n === own.length;
+        all.indeterminate = n > 0 && n < own.length;
+      });
+    }
+    boxes.forEach(function (b) { b.addEventListener("change", refresh); });
+    document.querySelectorAll(".sspss-dl").forEach(function (sec) {
+      sec.querySelector(".sspss-dl-all").addEventListener("change", function () {
+        var v = this.checked;
+        sec.querySelectorAll(".sspss-dl-box").forEach(function (b) { b.checked = v; });
+        refresh();
+      });
+    });
+    refresh();
+
+    function loadJSZip() {
+      if (window.JSZip) return Promise.resolve();
+      return new Promise(function (ok, no) {
+        var sc = document.createElement("script");
+        sc.src = new URL("assets/jszip.min.js", siteRoot());
+        sc.onload = ok; sc.onerror = no;
+        document.head.appendChild(sc);
+      });
+    }
+
+    go.addEventListener("click", function () {
+      var sel = boxes.filter(function (b) { return b.checked; });
+      if (!sel.length) return;
+      go.disabled = true;
+      var done = 0, failed = [];
+      loadJSZip().then(function () {
+        var zip = new JSZip();
+        return Promise.all(sel.map(function (b) {
+          return fetch(b.dataset.url)
+            .then(function (r) { if (!r.ok) throw 0; return r.blob(); })
+            .then(function (blob) { zip.file(b.dataset.zip, blob); })
+            .catch(function () { failed.push(b.dataset.zip.split("/").pop()); })
+            .then(function () {
+              done += 1;
+              go.textContent = "Preparo lo zip… " + done + "/" + sel.length;
+            });
+        })).then(function () {
+          go.textContent = "Comprimo…";
+          return zip.generateAsync({ type: "blob" });
+        }).then(function (blob) {
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "appunti-sspss.zip";
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(function () { URL.revokeObjectURL(a.href); }, 30000);
+          go.textContent = "Scarica lo zip";
+          go.disabled = false;
+          count.textContent = failed.length
+            ? "Zip pronto; " + failed.length + " file non trovati: " + failed.join(", ")
+            : "Zip scaricato";
+        });
+      }).catch(function () {
+        go.textContent = "Scarica lo zip";
+        go.disabled = false;
+        count.textContent = "Errore nel preparare lo zip, riprova";
+      });
+    });
+  }
+
   function init() {
     initHome(); initMega(); initToc(); initMaterials(); initProgress();
-    initCount(); initStats();
+    initCount(); initStats(); initDownloads();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

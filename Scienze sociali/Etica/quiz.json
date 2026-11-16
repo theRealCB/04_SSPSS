@@ -7,7 +7,8 @@
    "Un elenco di risposte assolute",
    "La religione di una società"
   ],
-  "why": "È detta anche filosofia morale."
+  "why": "È detta anche filosofia morale.",
+  "cap": "COS'È L'ETICA"
  },
  {
   "q": "Cos'è la morale sociale?",
@@ -17,7 +18,8 @@
    "Il codice della mia professione",
    "Una teoria filosofica"
   ],
-  "why": "Limita la libertà degli individui per garantire l'ordine sociale."
+  "why": "Limita la libertà degli individui per garantire l'ordine sociale.",
+  "cap": "ETICA PERSONALE, SOCIALE E PROFESSIONALE"
  },
  {
   "q": "Quando si parla di obiezione di coscienza?",
@@ -27,7 +29,8 @@
    "Quando la legge vieta un trattamento",
    "Quando due colleghi non sono d'accordo"
   ],
-  "why": ""
+  "why": "",
+  "cap": "ETICA PERSONALE, SOCIALE E PROFESSIONALE"
  },
  {
   "q": "Cosa garantisce il consenso libero e informato?",
@@ -37,7 +40,8 @@
    "Che il paziente non possa cambiare idea",
    "Che la cura sia sempre efficace"
   ],
-  "why": "È l'espressione del principio di autonomia."
+  "why": "È l'espressione del principio di autonomia.",
+  "cap": "Caso: interruzione di gravidanza"
  },
  {
   "q": "Nell'etica deontologica, il fine giustifica i mezzi?",
@@ -47,7 +51,8 @@
    "Solo se la maggioranza è d'accordo",
    "Solo in ambito sanitario"
   ],
-  "why": "I principi vanno rispettati indipendentemente dalle conseguenze."
+  "why": "I principi vanno rispettati indipendentemente dalle conseguenze.",
+  "cap": "Etica deontologica"
  },
  {
   "q": "Cosa significa «ultima ratio»?",
@@ -57,7 +62,8 @@
    "Una regola senza eccezioni",
    "La decisione del medico più anziano"
   ],
-  "why": "Es. contenzione o trattamento senza consenso solo in casi eccezionali, e nel modo meno invasivo (proporzionalità)."
+  "why": "Es. contenzione o trattamento senza consenso solo in casi eccezionali, e nel modo meno invasivo (proporzionalità).",
+  "cap": "Etica deontologica"
  },
  {
   "q": "Secondo l'utilitarismo, quando un'azione è giusta?",
@@ -67,7 +73,8 @@
    "Quando fa il bene di chi la compie",
    "Quando non ha conseguenze"
   ],
-  "why": "Etica delle conseguenze (Bentham e Mill): qui il fine può giustificare i mezzi."
+  "why": "Etica delle conseguenze (Bentham e Mill): qui il fine può giustificare i mezzi.",
+  "cap": "Utilitarismo"
  },
  {
   "q": "Di cosa è responsabile l'operatore secondo l'etica delle conseguenze?",
@@ -77,7 +84,8 @@
    "Solo delle sue intenzioni",
    "Di nulla, se segue gli ordini"
   ],
-  "why": "Per la deontologica è invece responsabile di rispettare i principi. Di solito le due vanno applicate insieme."
+  "why": "Per la deontologica è invece responsabile di rispettare i principi. Di solito le due vanno applicate insieme.",
+  "cap": "Deontologica + Conseguenze insieme"
  },
  {
   "q": "Qual è la differenza tra «cure» e «care»?",
@@ -87,7 +95,8 @@
    "Cure = prendersi cura; care = terapia",
    "Cure è per i medici, care per i pazienti"
   ],
-  "why": "L'etica della cura riguarda il «care»."
+  "why": "L'etica della cura riguarda il «care».",
+  "cap": "Etica della cura"
  },
  {
   "q": "Cos'è la cura autentica?",
@@ -97,6 +106,51 @@
    "Quella fatta solo da professionisti",
    "Quella che evita ogni relazione"
   ],
-  "why": "«Curare affinché l'altro sappia prendersi cura di sé»."
+  "why": "«Curare affinché l'altro sappia prendersi cura di sé».",
+  "cap": "Etica della cura"
+ },
+ {
+  "q": "In Svizzera l'eutanasia attiva (iniezione letale eseguita dal curante) è…",
+  "correct": "Illegale",
+  "wrong": [
+   "Legale in ogni caso",
+   "Legale con il consenso dei familiari",
+   "Legale solo in ospedale"
+  ],
+  "why": "È legale in Belgio, Olanda, Canada. In Svizzera è ammesso il suicidio assistito, in cui è la persona stessa a compiere il gesto.",
+  "cap": "Problemi etici / morali"
+ },
+ {
+  "q": "Come si decide cosa è giusto in una società democratica e liberale?",
+  "correct": "Attraverso il dialogo tra opinioni diverse",
+  "wrong": [
+   "Con il monologo dell'autorità",
+   "Lo decide sempre il medico",
+   "Seguendo la tradizione senza discutere"
+  ],
+  "why": "Nella società autoritaria uno o pochi decidono (paternalismo medico); in quella democratica nascono i diritti dei pazienti.",
+  "cap": "TEORIE ETICHE"
+ },
+ {
+  "q": "Cosa stabilisce l'articolo 7 della Costituzione svizzera?",
+  "correct": "La dignità della persona va rispettata e protetta",
+  "wrong": [
+   "Il diritto al segreto professionale",
+   "L'obbligo di vaccinazione",
+   "La libertà di credo"
+  ],
+  "why": "Art. 8 uguaglianza, art. 10 diritto alla vita e alla libertà personale, art. 13 sfera privata, art. 15 libertà di credo.",
+  "cap": "Etica deontologica"
+ },
+ {
+  "q": "Come definisce la salute l'OMS (1948)?",
+  "correct": "Stato di completo benessere fisico, psichico e sociale, non semplice assenza di malattia",
+  "wrong": [
+   "Assenza di malattia",
+   "Capacità di lavorare",
+   "Buon funzionamento degli organi"
+  ],
+  "why": "È il riferimento dell'etica delle conseguenze in ambito sanitario: fare il bene = promuovere benessere e salute.",
+  "cap": "Applicazione all'etica professionale"
  }
 ]

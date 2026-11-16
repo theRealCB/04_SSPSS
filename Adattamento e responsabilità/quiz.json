@@ -7,7 +7,8 @@
    "Reciproca: ci si aiuta a vicenda",
    "Gerarchica: il paziente deve adattarsi al curante"
   ],
-  "why": "Nella relazione d'aiuto non c'è reciprocità: è chi aiuta che deve assumersi la responsabilità e adattarsi."
+  "why": "Nella relazione d'aiuto non c'è reciprocità: è chi aiuta che deve assumersi la responsabilità e adattarsi.",
+  "cap": "Intro"
  },
  {
   "q": "Che cos'è la sensazione?",
@@ -17,7 +18,8 @@
    "Un'emozione provocata da un ricordo",
    "La rappresentazione mentale costruita dalla corteccia"
   ],
-  "why": "La sensazione è il primo passo, fisiologico: organi di senso, nervi, cervello."
+  "why": "La sensazione è il primo passo, fisiologico: organi di senso, nervi, cervello.",
+  "cap": "La sensazione"
  },
  {
   "q": "Che cos'è la percezione?",
@@ -27,7 +29,8 @@
    "Un riflesso involontario del midollo spinale",
    "La trasmissione del segnale lungo i nervi"
   ],
-  "why": "La percezione è ciò che capita nel cervello dopo lo stimolo, e dipende anche da personalità, esperienze e inconscio."
+  "why": "La percezione è ciò che capita nel cervello dopo lo stimolo, e dipende anche da personalità, esperienze e inconscio.",
+  "cap": "La percezione"
  },
  {
   "q": "Quale regola della percezione formularono gli psicologi della Gestalt?",
@@ -37,17 +40,8 @@
    "Percepiamo prima i dettagli e poi l'insieme",
    "Ogni stimolo viene percepito allo stesso modo da tutti"
   ],
-  "why": "Non percepiamo in modo analitico ma globale: l'esempio delle facce di Arcimboldo."
- },
- {
-  "q": "Da cosa parte l'elaborazione bottom-up?",
-  "correct": "Dallo stimolo esterno raccolto dai sensi",
-  "wrong": [
-   "Dalle aspettative e dalla conoscenza pregressa",
-   "Dalla memoria a lungo termine",
-   "Dal contesto culturale"
-  ],
-  "why": "Bottom-up: guidata dai dati sensoriali, un elemento alla volta."
+  "why": "Non percepiamo in modo analitico ma globale: l'esempio delle facce di Arcimboldo.",
+  "cap": "La percezione"
  },
  {
   "q": "Da cosa è guidata l'elaborazione top-down?",
@@ -57,7 +51,8 @@
    "Dai recettori periferici",
    "Dall'intensità dello stimolo"
   ],
-  "why": "Top-down: conoscenza pregressa e aspettative danno senso agli stimoli. I due processi lavorano insieme."
+  "why": "Top-down: conoscenza pregressa e aspettative danno senso agli stimoli. I due processi lavorano insieme.",
+  "cap": "Elaborazione Top-Down"
  },
  {
   "q": "Cosa ci insegna il test di Rorschach sulla percezione?",
@@ -67,36 +62,7 @@
    "Che la percezione dipende solo dalla vista",
    "Che le emozioni non influenzano ciò che vediamo"
   ],
-  "why": "La percezione è costruita da esperienze, emozioni, cultura, stato fisico e mentale."
- },
- {
-  "q": "Perché è utile sapere che la percezione è soggettiva, lavorando con i pazienti?",
-  "correct": "Per non giudicare reazioni che sembrano esagerate ma sono coerenti con la loro percezione",
-  "wrong": [
-   "Per poter correggere le percezioni sbagliate del paziente",
-   "Per ignorare ciò che il paziente riferisce",
-   "Per dimostrare che il curante ha ragione"
-  ],
-  "why": "Capirlo significa non giudicare né sottovalutare le reazioni dell'utente."
- },
- {
-  "q": "Nel caso «Il dolore che non si vede», la paziente sorride ma riferisce dolore 8/10. Qual è l'approccio corretto?",
-  "correct": "Prendere sul serio ciò che riferisce, valutare il dolore e comunicarlo al responsabile",
-  "wrong": [
-   "Aspettare: se sorride non può avere così male",
-   "Dirle che sta esagerando",
-   "Chiedere alla figlia se il dolore è reale"
-  ],
-  "why": "Confondere l'espressione del viso con l'intensità del dolore è un rischio: il dolore è ciò che il paziente riferisce."
- },
- {
-  "q": "Qual è la sequenza corretta dal mondo esterno all'azione?",
-  "correct": "Stimolo → sensazione → percezione/interpretazione → comportamento",
-  "wrong": [
-   "Percezione → stimolo → sensazione → comportamento",
-   "Comportamento → sensazione → stimolo → percezione",
-   "Sensazione → comportamento → stimolo → percezione"
-  ],
-  "why": "La sensazione genera un bisogno, da cui nasce l'azione."
+  "why": "La percezione è costruita da esperienze, emozioni, cultura, stato fisico e mentale.",
+  "cap": "Il test di Rorschach"
  }
 ]

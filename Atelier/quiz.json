@@ -7,7 +7,8 @@
    "Linee guida, protocolli, opinione dell'esperto",
    "Studi clinici, statistiche, costi"
   ],
-  "why": "EBP = best scientific evidence + patient values + clinical experience."
+  "why": "EBP = best scientific evidence + patient values + clinical experience.",
+  "cap": "Evidence Based Practice (EBP)"
  },
  {
   "q": "Cosa sta in cima alla piramide delle evidenze?",
@@ -17,7 +18,8 @@
    "I casi individuali",
    "Gli studi di coorte"
   ],
-  "why": "Mettono insieme più studi: sono il livello più alto di qualità."
+  "why": "Mettono insieme più studi: sono il livello più alto di qualità.",
+  "cap": "Piramide delle evidenze"
  },
  {
   "q": "Cosa si intende per «spin» nella comunicazione scientifica?",
@@ -27,7 +29,8 @@
    "La ripetizione di uno studio",
    "La pubblicazione di dati grezzi"
   ],
-  "why": "È una distorsione nella comunicazione dei fatti."
+  "why": "È una distorsione nella comunicazione dei fatti.",
+  "cap": "Come scegliere le evidenze"
  },
  {
   "q": "Cosa afferma il modello biopsicosociale?",
@@ -37,17 +40,8 @@
    "Che la malattia è sempre psicologica",
    "Che l'ambiente sociale non influisce"
   ],
-  "why": "Considera insieme aspetti biologici, psicologici e sociali (Engel, 1977)."
- },
- {
-  "q": "Come definisce il dolore la IASP?",
-  "correct": "Esperienza sensoriale ed emozionale associata a un danno tessutale effettivo o potenziale",
-  "wrong": [
-   "Segnale che indica sempre una lesione in corso",
-   "Risposta puramente fisica a uno stimolo",
-   "Sensazione prodotta solo dai nocicettori"
-  ],
-  "why": "Il danno può essere anche solo potenziale: sentire male non significa per forza che qualcosa si sta rompendo."
+  "why": "Considera insieme aspetti biologici, psicologici e sociali (Engel, 1977).",
+  "cap": "Il modello biopsicosociale"
  },
  {
   "q": "Quale affermazione sul dolore è corretta?",
@@ -57,7 +51,8 @@
    "Più dura, più il danno è grave",
    "Nasce direttamente nei muscoli"
   ],
-  "why": "Il dolore è un allarme, non una misura precisa del danno; se persiste a lungo la relazione dolore-danno è debole."
+  "why": "Il dolore è un allarme, non una misura precisa del danno; se persiste a lungo la relazione dolore-danno è debole.",
+  "cap": "Il dolore può essere considerato un allarme"
  },
  {
   "q": "Che ruolo ha il midollo spinale nella regolazione del dolore?",
@@ -67,7 +62,8 @@
    "Genera il dolore",
    "Blocca sempre il segnale"
   ],
-  "why": "Come un megafono o un riduttore, in base a inibizione o facilitazione discendente."
+  "why": "Come un megafono o un riduttore, in base a inibizione o facilitazione discendente.",
+  "cap": "Regolazione del dolore"
  },
  {
   "q": "Per cosa sta la «A» di PEACE nel protocollo PEACE & LOVE?",
@@ -77,26 +73,7 @@
    "Assessment (valutazione)",
    "Analgesia"
   ],
-  "why": "P-rotection, E-levation, A-void anti-inflammatory, C-ompression, E-ducation."
- },
- {
-  "q": "Qual è il primo passo del processo fisioterapico?",
-  "correct": "L'assessment: capire che problema ha il paziente",
-  "wrong": [
-   "L'implementazione dell'intervento",
-   "La dimissione",
-   "La valutazione finale"
-  ],
-  "why": "Assessment → pianificazione → intervento → valutazione → scarico del paziente."
- },
- {
-  "q": "Perché la mobilizzazione può diminuire il dolore?",
-  "correct": "Lo stimolo dei meccanocettori inibisce lo stimolo del dolore",
-  "wrong": [
-   "Perché distrae il paziente",
-   "Perché aumenta l'infiammazione",
-   "Perché blocca i nervi"
-  ],
-  "why": "Inoltre recupera mobilità e funzione ed evita decubiti e accorciamenti muscolari."
+  "why": "P-rotection, E-levation, A-void anti-inflammatory, C-ompression, E-ducation.",
+  "cap": "Primo intervento in caso di infortunio"
  }
 ]

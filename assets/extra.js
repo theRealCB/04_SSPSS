@@ -88,6 +88,14 @@
     link.classList.add("sspss-quizlink--rail");
     rail.appendChild(link);
   }
+  function initGlossLink() {
+    var link = document.querySelector(".md-content a.sspss-glosslink");
+    if (!link || !wide()) return;
+    var rail = getRail();
+    if (!rail) return;
+    link.classList.add("sspss-glosslink--rail");
+    rail.appendChild(link);
+  }
 
   function initMaterials() {
     var src = document.querySelector(".md-content .sspss-materials");
@@ -357,15 +365,39 @@
       .then(function (all) { run(all); })
       .catch(function () { box.textContent = "Non riesco a caricare il quiz. Ricarica la pagina."; });
 
+    function norm(t) { return String(t).toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g, ""); }
+
+    // Capitoli degli appunti: titolo -> ancora, letti dalla pagina della materia
+    var back = box.dataset.back || "../";
+    var anchors = fetch(back)
+      .then(function (r) { return r.ok ? r.text() : ""; })
+      .then(function (html) {
+        var map = {};
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        doc.querySelectorAll(".md-content h1[id], .md-content h2[id], .md-content h3[id], .md-content h4[id], .md-content h5[id]")
+          .forEach(function (h) {
+            var c = h.cloneNode(true);
+            c.querySelectorAll(".headerlink").forEach(function (x) { x.remove(); });
+            var k = norm(c.textContent);
+            if (!(k in map)) map[k] = h.id;
+          });
+        return map;
+      })
+      .catch(function () { return {}; });
+
     function run(all) {
-      var qs = shuffle(all), i = 0, score = 0;
+      var qs = shuffle(all), i = 0, log = [];
+      function score() { return log.filter(function (a) { return a.ok; }).length; }
 
       function question() {
         box.innerHTML = "";
         var q = qs[i];
         var head = el("div", "sspss-quiz__head");
         head.appendChild(el("span", "sspss-quiz__count", "Domanda " + (i + 1) + " di " + qs.length));
-        head.appendChild(el("span", "sspss-quiz__score", "Corrette: " + score));
+        var stop = el("button", "sspss-quiz__stop", "Termina ora");
+        stop.type = "button";
+        stop.addEventListener("click", result);
+        head.appendChild(stop);
         box.appendChild(head);
         var bar = el("div", "sspss-quiz__bar");
         var fill = el("span");
@@ -381,7 +413,7 @@
           b.type = "button";
           b.addEventListener("click", function () {
             var ok = text === q.correct;
-            if (ok) score += 1;
+            log.push({ cap: q.cap || "", ok: ok });
             [].forEach.call(opts.children, function (o) {
               o.disabled = true;
               if (o.textContent === q.correct) o.classList.add("is-right");
@@ -405,19 +437,66 @@
 
       function result() {
         box.innerHTML = "";
-        var pct = Math.round(score / qs.length * 100);
-        box.appendChild(el("p", "sspss-quiz__final", score + " / " + qs.length));
-        box.appendChild(el("p", "sspss-quiz__msg",
-          pct >= 90 ? "Ottimo, la materia la sai." :
-          pct >= 60 ? "Buona base: ripassa i punti sbagliati." :
-                      "Da ripassare: rileggi gli appunti e riprova."));
-        var again = el("button", "md-button", "Riprova");
+        var done = log.length, right = score();
+        var row = el("div", "sspss-quiz__row");
+        var again = el("button", "md-button", done ? "Riprova" : "Ricomincia");
         again.type = "button";
         again.addEventListener("click", function () { run(all); });
-        var back = el("a", "sspss-quiz__back", "Torna agli appunti");
-        back.href = box.dataset.back || "../";
-        var row = el("div", "sspss-quiz__row");
-        row.appendChild(again); row.appendChild(back);
+        var home = el("a", "sspss-quiz__back", "Torna agli appunti");
+        home.href = back;
+        row.appendChild(again); row.appendChild(home);
+
+        if (!done) {
+          box.appendChild(el("p", "sspss-quiz__msg", "Non hai risposto a nessuna domanda, quindi non c'è niente da valutare."));
+          box.appendChild(row);
+          return;
+        }
+        var pct = Math.round(right / done * 100);
+        box.appendChild(el("p", "sspss-quiz__final", right + " / " + done));
+        if (done < qs.length) {
+          box.appendChild(el("p", "sspss-quiz__partial",
+            "Hai terminato prima: valutazione su " + done + " domande delle " + qs.length + " disponibili."));
+        }
+
+        // Analisi per capitolo
+        var caps = {}, order = [];
+        log.forEach(function (a) {
+          if (!caps[a.cap]) { caps[a.cap] = { ok: 0, ko: 0 }; order.push(a.cap); }
+          caps[a.cap][a.ok ? "ok" : "ko"] += 1;
+        });
+        var weak = order.filter(function (c) { return caps[c].ko > 0; })
+          .sort(function (x, y) { return caps[y].ko - caps[x].ko; });
+        var strong = order.filter(function (c) { return caps[c].ko === 0; });
+
+        var msg;
+        if (!weak.length) msg = "Tutte giuste: su questi argomenti sei solido.";
+        else if (pct >= 80) msg = "Buon risultato. Gli errori sono concentrati in " +
+          (weak.length === 1 ? "un solo capitolo" : weak.length + " capitoli") + ": basta un ripasso mirato.";
+        else if (pct >= 50) msg = "Base discreta, ma " + (weak.length === 1 ? "un capitolo va rivisto" : weak.length + " capitoli vanno rivisti") + " prima di sentirti sicuro.";
+        else msg = "C'è ancora da lavorare: conviene rileggere i capitoli qui sotto e poi riprovare.";
+        if (weak.length && strong.length) {
+          msg += " Vanno bene invece " + strong.length + (strong.length === 1 ? " capitolo" : " capitoli") + " su " + order.length + ".";
+        }
+        box.appendChild(el("p", "sspss-quiz__msg", msg));
+
+        if (weak.length) {
+          box.appendChild(el("p", "sspss-quiz__label", "Da ripassare"));
+          var ul = el("ul", "sspss-quiz__review");
+          weak.forEach(function (c) {
+            var li = el("li");
+            var a = el("a", null, c || "Appunti");
+            a.href = back;
+            li.appendChild(a);
+            var n = caps[c].ko, tot = caps[c].ko + caps[c].ok;
+            li.appendChild(el("span", null, n + (n === 1 ? " errore" : " errori") + " su " + tot));
+            ul.appendChild(li);
+            anchors.then(function (map) {
+              var id = map[norm(c)];
+              if (id) a.href = back + "#" + id;
+            });
+          });
+          box.appendChild(ul);
+        }
         box.appendChild(row);
       }
 
@@ -450,7 +529,7 @@
   }
 
   function init() {
-    initHome(); initMega(); initToc(); initQuizLink(); initMaterials(); initProgress();
+    initHome(); initMega(); initToc(); initQuizLink(); initGlossLink(); initMaterials(); initProgress();
     initCount(); initStats(); initDownloads(); initQuiz(); initZoom();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

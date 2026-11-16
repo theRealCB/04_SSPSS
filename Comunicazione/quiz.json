@@ -7,7 +7,8 @@
    "Una catena lineare di cause ed effetti",
    "Un insieme di regole senza elementi"
   ],
-  "why": "Ogni cambiamento porta a una modifica del sistema, che tende all'omeostasi."
+  "why": "Ogni cambiamento porta a una modifica del sistema, che tende all'omeostasi.",
+  "cap": "Una definizione"
  },
  {
   "q": "Cosa afferma il principio di non-sommatività?",
@@ -17,17 +18,8 @@
    "Ogni parte funziona da sola",
    "Le parti non si influenzano"
   ],
-  "why": "Analizzare i singoli componenti non spiega il sistema."
- },
- {
-  "q": "Cosa dice il principio di equifinalità?",
-  "correct": "Stessi esiti possono derivare da condizioni di partenza diverse",
-  "wrong": [
-   "Stesse cause producono sempre stessi esiti",
-   "Ogni sistema ha un solo esito possibile",
-   "Il risultato dipende solo dall'inizio"
-  ],
-  "why": "E le stesse cause non producono per forza gli stessi esiti."
+  "why": "Analizzare i singoli componenti non spiega il sistema.",
+  "cap": "Caratteristiche dei sistemi"
  },
  {
   "q": "Cosa afferma il primo assioma della comunicazione?",
@@ -37,7 +29,8 @@
    "La comunicazione è sempre intenzionale",
    "Il silenzio non comunica nulla"
   ],
-  "why": "Non esiste un non-comportamento."
+  "why": "Non esiste un non-comportamento.",
+  "cap": "1o assioma"
  },
  {
   "q": "Secondo il secondo assioma, quali livelli ha ogni messaggio?",
@@ -47,7 +40,8 @@
    "Emittente e ricevente",
    "Causa ed effetto"
   ],
-  "why": "È la relazione che determina il contenuto, non viceversa."
+  "why": "È la relazione che determina il contenuto, non viceversa.",
+  "cap": "2o assioma"
  },
  {
   "q": "Che cos'è la disconferma?",
@@ -57,7 +51,8 @@
    "Rifiutare una proposta",
    "Confermare a metà"
   ],
-  "why": "È più grave del rifiuto: nega l'altro come persona."
+  "why": "È più grave del rifiuto: nega l'altro come persona.",
+  "cap": "2o assioma"
  },
  {
   "q": "Cosa si intende per «punteggiatura» nel terzo assioma?",
@@ -67,7 +62,8 @@
    "Le pause nel discorso",
    "Il tono della voce"
   ],
-  "why": "Ognuno individua un «inizio» diverso: così nascono i circoli viziosi."
+  "why": "Ognuno individua un «inizio» diverso: così nascono i circoli viziosi.",
+  "cap": "3o assioma"
  },
  {
   "q": "A cosa corrisponde la comunicazione analogica?",
@@ -77,7 +73,8 @@
    "Allo scritto",
    "Al digitale"
   ],
-  "why": "Quarto assioma: analogica = non verbale, digitale = verbale."
+  "why": "Quarto assioma: analogica = non verbale, digitale = verbale.",
+  "cap": "4o assioma"
  },
  {
   "q": "Cosa riguarda il canale prossemico?",
@@ -87,7 +84,8 @@
    "La tempistica",
    "I gesti"
   ],
-  "why": "Cinesico = movimento, cronemico = tempo, aptico = contatto, prossemico = distanza."
+  "why": "Cinesico = movimento, cronemico = tempo, aptico = contatto, prossemico = distanza.",
+  "cap": "4o assioma"
  },
  {
   "q": "Qual è il rischio di un'interazione simmetrica?",
@@ -97,6 +95,7 @@
    "L'abuso di potere",
    "La disconferma"
   ],
-  "why": "Nella complementare il rischio è invece rigidità dei ruoli e abuso di potere."
+  "why": "Nella complementare il rischio è invece rigidità dei ruoli e abuso di potere.",
+  "cap": "5o assioma"
  }
 ]

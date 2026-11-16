@@ -9,7 +9,7 @@ composta da:
 
 ## Piramide delle evidenze
 Non tutta l'evidenza scientifica vale allo stesso modo
-dal meno al piu qualitativo
+dal meno al più qualitativo
 - informazioni di background, opinione dell'esperto (per quanto formata, non è oggettiva)
 - casi individuali: caso speciale che vediamo da qualche parte, vediamo magari pure un report, ma non ha validità
 - studio di caso
@@ -18,7 +18,7 @@ dal meno al piu qualitativo
 - randomized control trials (campioni di persone divisi casualmente)
 - letteratura con pratiche evidence based
 - systematic review (mettere assieme diversi studi e letteratura)
-- Meta analisi: prendono diversi concetti su un argomento e fanno una "mega" analisi
+- Meta-analisi: prendono diversi concetti su un argomento e fanno una "mega" analisi
 
 ## Importanza dell'EBP
 - Le linee guida cambiano: nuove evidenze e nuove raccomandazioni
@@ -27,13 +27,13 @@ dal meno al piu qualitativo
 
 ## Come scegliere le evidenze
 spin = distorsione nella comunicazione dei fatti
-Succede quando un ricercatore, ufficio stampa, giornale ecc, presenta risultati di uno studio in modo da far sembrare il trattamento piu efficace di quanto i dati supportano
+Succede quando un ricercatore, ufficio stampa, giornale ecc, presenta risultati di uno studio in modo da far sembrare il trattamento più efficace di quanto i dati supportano
 - tabloid: assolutamente inaffidabili
-- siti istituzionali: piu accurati dei tabloid, utile per orientamento sul tema, non riporta risultati grezzi, non ha occhio clinico, non sostituisce letteratura scientifica
+- siti istituzionali: più accurati dei tabloid, utile per orientamento sul tema, non riporta risultati grezzi, non ha occhio clinico, non sostituisce letteratura scientifica
 - studio scientifico: accurato e utile se interpretato con cura
 
 # Il modello biopsicosociale
-==**IL PAZIENTE È MOLTO DI PIU DELLA SUA DIAGNOSI**==
+==**IL PAZIENTE È MOLTO DI PIÙ DELLA SUA DIAGNOSI**==
 > *"Il modello biopsicosociale non è solo una checklist, è una maniera completamente diversa di concepire la malattia"* Engel, 1977
 
 Composto da diversi aspetti:
@@ -65,7 +65,7 @@ Quando il cervello percepisce un danno o la minaccia di un danno si sente dolore
 ## Regolazione del dolore
 - **Regolazione periferica**: quando il tessuto è danneggiato, i nocicettori periferici diventano più sensibili: questo si chiama sensibilizzazione periferica 
 - **Regolazione centrale**: in base all'inibizione discendente o alle facilitazioni dal cervello, il midollo spinale può modificare la sua sensibilità e alterare la quantità di segnale che invia al cervello
-    &rarr; il midollo spinale puo quindi comportarsi come un megafono oppure come un riduttore per il dolore
+    &rarr; il midollo spinale può quindi comportarsi come un megafono oppure come un riduttore per il dolore
 
 Il dolore viene influenzato molto secondo il modello psicosociale &rarr; possiamo andare a intervenire su diversi aspetti
 
@@ -118,7 +118,7 @@ PEACE AND LOVE
 - vestibolare
 - salute mentale
 
-Importanza del team multidisciplinare. Non si puo essere esperti in tutto
+Importanza del team multidisciplinare. Non si può essere esperti in tutto
 Top 3 sono fisi, ergo, infermieristica
 
 # Mobilitazione

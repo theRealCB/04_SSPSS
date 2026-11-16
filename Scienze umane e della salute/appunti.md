@@ -32,7 +32,7 @@ Fino agli anni 80, circa, si pensava che le politiche per la salute si dovessero
 Si sviluppano sensibilmente in quel decennio le politiche di prevenzione delle malattie e di promozione della salute
 Contesto internazionale: la **"Carta di Ottawa"**
 
-### Carta di Ottawa: per la promozione della salute (OMS, 1989)
+### Carta di Ottawa: per la promozione della salute (OMS, 1986)
 - "La salute è un diritto fondamentale di ogni essere umano, essa non è un fine ma una risorsa per la vita quotidiana"
 - "La promozione della salute è il processo che consente alle persone di aumentare il controllo sulla propria salute e migliorarla"
 - Non sono leggi, bensì raccomandazioni

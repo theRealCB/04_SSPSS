@@ -1,0 +1,102 @@
+[
+ {
+  "q": "Quanta parte della massa corporea di un uomo adulto è acqua?",
+  "correct": "Circa il 70%",
+  "wrong": [
+   "Circa il 30%",
+   "Circa il 55%",
+   "Circa il 90%"
+  ],
+  "why": "Uomo ~70%, donna ~55% (maggior tessuto adiposo)."
+ },
+ {
+  "q": "Come sono fatti i fosfolipidi?",
+  "correct": "Testa idrofila con gruppo fosfato e due code idrofobe di acidi grassi",
+  "wrong": [
+   "Tre acidi grassi legati al glicerolo",
+   "Catene di amminoacidi",
+   "Anelli di carbonio senza gruppi fosfato"
+  ],
+  "why": "Sono i componenti della membrana cellulare: come un trigliceride in cui un acido grasso è sostituito da un fosfato."
+ },
+ {
+  "q": "Cosa fa la pompa sodio-potassio?",
+  "correct": "Trasporta attivamente Na⁺ fuori e K⁺ dentro la cellula consumando energia",
+  "wrong": [
+   "Fa passare l'acqua per osmosi",
+   "Trasporta glucosio senza consumare energia",
+   "Fa entrare Na⁺ e uscire K⁺ secondo gradiente"
+  ],
+  "why": "È un trasporto attivo: va contro gradiente e consuma ATP."
+ },
+ {
+  "q": "Cosa distingue la respirazione cellulare aerobica da quella anaerobica?",
+  "correct": "L'aerobica utilizza ossigeno",
+  "wrong": [
+   "L'aerobica non produce energia",
+   "L'anaerobica avviene solo nei polmoni",
+   "L'anaerobica utilizza più ossigeno"
+  ],
+  "why": "Aerobica: con O₂. Anaerobica: senza O₂."
+ },
+ {
+  "q": "Che cos'è l'omeostasi?",
+  "correct": "Il mantenimento di un equilibrio interno stabile nonostante i cambiamenti esterni",
+  "wrong": [
+   "La produzione di ormoni da parte del pancreas",
+   "La divisione delle cellule",
+   "Il trasporto dei gas nel sangue"
+  ],
+  "why": "È regolata da recettori, centri di controllo ed effettori."
+ },
+ {
+  "q": "Cosa fa un feedback negativo?",
+  "correct": "Contrasta lo stimolo riportando la variabile verso il valore di riferimento",
+  "wrong": [
+   "Rinforza lo stimolo allontanando la variabile dal valore di riferimento",
+   "Blocca ogni risposta dell'organismo",
+   "Agisce solo sul sistema nervoso"
+  ],
+  "why": "Esempio: la regolazione della glicemia."
+ },
+ {
+  "q": "Quale di questi è un esempio di feedback positivo?",
+  "correct": "Le contrazioni durante il parto",
+  "wrong": [
+   "La regolazione della glicemia",
+   "La regolazione della temperatura corporea",
+   "La regolazione della pressione"
+  ],
+  "why": "Le contrazioni diventano sempre più frequenti finché un fattore esterno (la nascita) interrompe il ciclo."
+ },
+ {
+  "q": "Perché il polmone sinistro è più piccolo del destro?",
+  "correct": "Perché deve lasciare spazio al cuore",
+  "wrong": [
+   "Perché riceve meno sangue",
+   "Perché ha più lobi",
+   "Perché è meno utilizzato"
+  ],
+  "why": "Il cuore occupa parte dello spazio a sinistra."
+ },
+ {
+  "q": "Come viene trasportato l'ossigeno nel sangue?",
+  "correct": "Per circa il 98% legato all'emoglobina",
+  "wrong": [
+   "Quasi tutto sciolto nel plasma",
+   "Legato ai globuli bianchi",
+   "Sotto forma di bicarbonato"
+  ],
+  "why": "Solo ~2% è sciolto nel plasma; l'O₂ si lega in modo reversibile al ferro del gruppo eme."
+ },
+ {
+  "q": "Nella respirazione esterna, in che direzione diffonde l'ossigeno?",
+  "correct": "Dagli alveoli al capillare polmonare",
+  "wrong": [
+   "Dal capillare agli alveoli",
+   "Dalle cellule al capillare",
+   "Dal sangue all'aria espirata"
+  ],
+  "why": "La pO₂ alveolare è maggiore di quella capillare, quindi l'O₂ diffonde verso il sangue."
+ }
+]

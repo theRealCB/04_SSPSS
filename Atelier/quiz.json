@@ -1,0 +1,102 @@
+[
+ {
+  "q": "Da quali tre elementi è composta l'Evidence Based Practice?",
+  "correct": "Migliori evidenze scientifiche, valori del paziente, esperienza clinica",
+  "wrong": [
+   "Diagnosi, terapia, prognosi",
+   "Linee guida, protocolli, opinione dell'esperto",
+   "Studi clinici, statistiche, costi"
+  ],
+  "why": "EBP = best scientific evidence + patient values + clinical experience."
+ },
+ {
+  "q": "Cosa sta in cima alla piramide delle evidenze?",
+  "correct": "Meta-analisi e revisioni sistematiche",
+  "wrong": [
+   "L'opinione dell'esperto",
+   "I casi individuali",
+   "Gli studi di coorte"
+  ],
+  "why": "Mettono insieme più studi: sono il livello più alto di qualità."
+ },
+ {
+  "q": "Cosa si intende per «spin» nella comunicazione scientifica?",
+  "correct": "Presentare i risultati in modo che il trattamento sembri più efficace di quanto i dati supportino",
+  "wrong": [
+   "Un errore di calcolo statistico",
+   "La ripetizione di uno studio",
+   "La pubblicazione di dati grezzi"
+  ],
+  "why": "È una distorsione nella comunicazione dei fatti."
+ },
+ {
+  "q": "Cosa afferma il modello biopsicosociale?",
+  "correct": "Che il paziente è molto di più della sua diagnosi",
+  "wrong": [
+   "Che conta solo la causa biologica",
+   "Che la malattia è sempre psicologica",
+   "Che l'ambiente sociale non influisce"
+  ],
+  "why": "Considera insieme aspetti biologici, psicologici e sociali (Engel, 1977)."
+ },
+ {
+  "q": "Come definisce il dolore la IASP?",
+  "correct": "Esperienza sensoriale ed emozionale associata a un danno tessutale effettivo o potenziale",
+  "wrong": [
+   "Segnale che indica sempre una lesione in corso",
+   "Risposta puramente fisica a uno stimolo",
+   "Sensazione prodotta solo dai nocicettori"
+  ],
+  "why": "Il danno può essere anche solo potenziale: sentire male non significa per forza che qualcosa si sta rompendo."
+ },
+ {
+  "q": "Quale affermazione sul dolore è corretta?",
+  "correct": "È sempre creato dal cervello, ma questo non vuol dire che sia «nella tua testa»",
+  "wrong": [
+   "Indica sempre con precisione la gravità del danno",
+   "Più dura, più il danno è grave",
+   "Nasce direttamente nei muscoli"
+  ],
+  "why": "Il dolore è un allarme, non una misura precisa del danno; se persiste a lungo la relazione dolore-danno è debole."
+ },
+ {
+  "q": "Che ruolo ha il midollo spinale nella regolazione del dolore?",
+  "correct": "Può amplificare o ridurre il segnale inviato al cervello",
+  "wrong": [
+   "Trasmette il segnale sempre invariato",
+   "Genera il dolore",
+   "Blocca sempre il segnale"
+  ],
+  "why": "Come un megafono o un riduttore, in base a inibizione o facilitazione discendente."
+ },
+ {
+  "q": "Per cosa sta la «A» di PEACE nel protocollo PEACE & LOVE?",
+  "correct": "Avoid anti-inflammatory (evitare antinfiammatori)",
+  "wrong": [
+   "Activity (attività)",
+   "Assessment (valutazione)",
+   "Analgesia"
+  ],
+  "why": "P-rotection, E-levation, A-void anti-inflammatory, C-ompression, E-ducation."
+ },
+ {
+  "q": "Qual è il primo passo del processo fisioterapico?",
+  "correct": "L'assessment: capire che problema ha il paziente",
+  "wrong": [
+   "L'implementazione dell'intervento",
+   "La dimissione",
+   "La valutazione finale"
+  ],
+  "why": "Assessment → pianificazione → intervento → valutazione → scarico del paziente."
+ },
+ {
+  "q": "Perché la mobilizzazione può diminuire il dolore?",
+  "correct": "Lo stimolo dei meccanocettori inibisce lo stimolo del dolore",
+  "wrong": [
+   "Perché distrae il paziente",
+   "Perché aumenta l'infiammazione",
+   "Perché blocca i nervi"
+  ],
+  "why": "Inoltre recupera mobilità e funzione ed evita decubiti e accorciamenti muscolari."
+ }
+]

@@ -66,14 +66,35 @@
   }
 
   /* --- Materiali: dal fondo pagina a card richiudibile a destra --- */
+  /* --- Colonna destra (creata solo quando serve) --- */
+  function getRail() {
+    var rail = document.querySelector(".sspss-right");
+    if (rail) return rail;
+    var inner = document.querySelector(".md-main__inner");
+    if (!inner) return null;
+    rail = document.createElement("aside");
+    rail.className = "sspss-right";
+    inner.appendChild(rail);
+    return rail;
+  }
+  function wide() { return window.matchMedia("(min-width: 60em)").matches; }
+
+  /* --- Pulsante "Fai il quiz": su desktop sale nella colonna destra --- */
+  function initQuizLink() {
+    var link = document.querySelector(".md-content a.sspss-quizlink");
+    if (!link || !wide()) return;  // su mobile resta accanto al pulsante PDF
+    var rail = getRail();
+    if (!rail) return;
+    link.classList.add("sspss-quizlink--rail");
+    rail.appendChild(link);
+  }
+
   function initMaterials() {
     var src = document.querySelector(".md-content .sspss-materials");
     if (!src) return;
-    if (!window.matchMedia("(min-width: 60em)").matches) return;  // su mobile resta in pagina
-    var inner = document.querySelector(".md-main__inner");
-    if (!inner) return;
-    var rail = document.createElement("aside");
-    rail.className = "sspss-right";
+    if (!wide()) return;  // su mobile resta in pagina
+    var rail = getRail();
+    if (!rail) return;
     var card = document.createElement("div");
     card.className = "sspss-card";
     var head = src.querySelector(".sspss-materials__title");
@@ -85,7 +106,6 @@
     head.classList.add("sspss-card__head");
     card.appendChild(src);
     rail.appendChild(card);
-    inner.appendChild(rail);
 
     function apply(hidden) {
       document.body.classList.toggle("sspss-hide-mat", hidden);
@@ -313,9 +333,125 @@
     });
   }
 
+  /* --- Quiz --- */
+  function shuffle(a) {
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function initQuiz() {
+    var box = document.querySelector(".sspss-quiz");
+    if (!box) return;
+    fetch(box.dataset.src)
+      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function (all) { run(all); })
+      .catch(function () { box.textContent = "Non riesco a caricare il quiz. Ricarica la pagina."; });
+
+    function run(all) {
+      var qs = shuffle(all), i = 0, score = 0;
+
+      function question() {
+        box.innerHTML = "";
+        var q = qs[i];
+        var head = el("div", "sspss-quiz__head");
+        head.appendChild(el("span", "sspss-quiz__count", "Domanda " + (i + 1) + " di " + qs.length));
+        head.appendChild(el("span", "sspss-quiz__score", "Corrette: " + score));
+        box.appendChild(head);
+        var bar = el("div", "sspss-quiz__bar");
+        var fill = el("span");
+        fill.style.width = (i / qs.length * 100) + "%";
+        bar.appendChild(fill);
+        box.appendChild(bar);
+        box.appendChild(el("p", "sspss-quiz__q", q.q));
+
+        var opts = el("div", "sspss-quiz__opts");
+        var after = el("div", "sspss-quiz__after");
+        shuffle([q.correct].concat(q.wrong)).forEach(function (text) {
+          var b = el("button", "sspss-quiz__opt", text);
+          b.type = "button";
+          b.addEventListener("click", function () {
+            var ok = text === q.correct;
+            if (ok) score += 1;
+            [].forEach.call(opts.children, function (o) {
+              o.disabled = true;
+              if (o.textContent === q.correct) o.classList.add("is-right");
+            });
+            if (!ok) b.classList.add("is-wrong");
+            after.appendChild(el("p", "sspss-quiz__verdict " + (ok ? "is-right" : "is-wrong"),
+              ok ? "Giusto." : "Non proprio."));
+            if (q.why) after.appendChild(el("p", "sspss-quiz__why", q.why));
+            var next = el("button", "md-button sspss-quiz__next",
+              i + 1 < qs.length ? "Avanti" : "Vedi il risultato");
+            next.type = "button";
+            next.addEventListener("click", function () { i += 1; i < qs.length ? question() : result(); });
+            after.appendChild(next);
+            next.focus();
+          });
+          opts.appendChild(b);
+        });
+        box.appendChild(opts);
+        box.appendChild(after);
+      }
+
+      function result() {
+        box.innerHTML = "";
+        var pct = Math.round(score / qs.length * 100);
+        box.appendChild(el("p", "sspss-quiz__final", score + " / " + qs.length));
+        box.appendChild(el("p", "sspss-quiz__msg",
+          pct >= 90 ? "Ottimo, la materia la sai." :
+          pct >= 60 ? "Buona base: ripassa i punti sbagliati." :
+                      "Da ripassare: rileggi gli appunti e riprova."));
+        var again = el("button", "md-button", "Riprova");
+        again.type = "button";
+        again.addEventListener("click", function () { run(all); });
+        var back = el("a", "sspss-quiz__back", "Torna agli appunti");
+        back.href = box.dataset.back || "../";
+        var row = el("div", "sspss-quiz__row");
+        row.appendChild(again); row.appendChild(back);
+        box.appendChild(row);
+      }
+
+      question();
+    }
+  }
+
+  /* --- Ingrandimento delle immagini al clic --- */
+  function initZoom() {
+    var imgs = document.querySelectorAll(".md-content img");
+    if (!imgs.length) return;
+    var layer = null;
+    function close() { if (layer) { layer.remove(); layer = null; } }
+    function open(img) {
+      close();
+      layer = el("div", "sspss-lightbox");
+      var big = document.createElement("img");
+      big.src = img.currentSrc || img.src;
+      big.alt = img.alt || "";
+      layer.appendChild(big);
+      layer.addEventListener("click", close);
+      document.body.appendChild(layer);
+    }
+    [].forEach.call(imgs, function (img) {
+      if (img.closest("a")) return;
+      img.classList.add("sspss-zoomable");
+      img.addEventListener("click", function () { open(img); });
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  }
+
   function init() {
-    initHome(); initMega(); initToc(); initMaterials(); initProgress();
-    initCount(); initStats(); initDownloads();
+    initHome(); initMega(); initToc(); initQuizLink(); initMaterials(); initProgress();
+    initCount(); initStats(); initDownloads(); initQuiz(); initZoom();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

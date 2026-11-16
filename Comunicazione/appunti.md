@@ -1,3 +1,6 @@
+<h1 align="center">Comunicazione</h1>
+<p align="center"><em>MC anno 2026/2027</em></p>
+
 [TOC]
 
 ---
@@ -7,7 +10,7 @@
 ### Cos'è un sistema?
 
 Dal greco *syn + histanai* (mettere insieme)
-Esempio delle volpi e conigli: per studiare le volpi bisogna necessariamente i conigli e viceversa.
+Esempio delle volpi e conigli: per studiare le volpi bisogna necessariamente studiare i conigli e viceversa.
 Il sistema si eterodetermina: il sistema si regola in base al rapporto tra gli elementi
 
 Il modello circolare sottende la supremazia dell'inter-relazione
@@ -35,7 +38,7 @@ Possiamo rappresentare schematicamente un sistema come una rete con alcuni nodi
 
 > <span style="color:red">A &rarr; B</span>: frammenta e semplifica la complessità della realtà e non tiene sufficientemente conto di ==variabili== e ==contesto==
 
-Fornice realta **semplificate**, non descrizioni esaustive
+Fornisce realtà **semplificate**, non descrizioni esaustive
 
 ### Linearità vs Circolarità
 
@@ -52,12 +55,12 @@ Limite: gli effetti producono la causa, ma non esistono cause separate dagli eff
 
 ### Feedback loop
 
-È una **struttura circolare** di elementi connessi **Causalmente** in cui una causa iniziale si propaga lungo le connsessioni del circuito, così che ognuni input ha un effetto sul successivo, fino a che l'ultimo elemento ha l'effetto sul primo elemento del ciclo.
+È una **struttura circolare** di elementi connessi **Causalmente** in cui una causa iniziale si propaga lungo le connessioni del circuito, così che ogni input ha un effetto sul successivo, fino a che l'ultimo elemento ha l'effetto sul primo elemento del ciclo.
 La prima connessione risulta essere influenzata dall'ultima e ciò produce **autoregolazione** del sistema
 
 ### L'omeostasi: Un equilibrio Dinamico
 
-I sistemi tendono al mmantenimento di un certo equilibrio attraverso la stabilizzazione di regole, comportamenti ricorrenti e schemi standard &rarr; **Pattern**
+I sistemi tendono al mantenimento di un certo equilibrio attraverso la stabilizzazione di regole, comportamenti ricorrenti e schemi standard &rarr; **Pattern**
 
 - <span style="color:green">Feedback Positivo</span>
 - <span style="color:red">Feedback Negativo</span>
@@ -103,7 +106,7 @@ L'interlocutore può decidere come porsi rispetto alla decisione relazionale. Co
 
 <img src="img/imm1.png" width="300">
 
-Con disconferma si intende la totale negazioneed alienazione dell'interlocutore. In breve: "l'interlocutore prende e se ne va".
+Con disconferma si intende la totale negazione ed alienazione dell'interlocutore. In breve: "l'interlocutore prende e se ne va".
 >La disconferma nega l'esistenza stessa dell'interlocutore come persona, trasmettendo il messaggio implicito: "Tu per me non esisti".
 
 
@@ -151,13 +154,13 @@ Codice verbale tra significato e significante
 
 I canali della comunicazione
 - **Canale cinesico**: movimento. Comunico qualcosa rispetto a come occupo lo spazio (gesti, come mi muovo, postura, ecc)
-- **Canale cromenico**: relativo alla tempistica
+- **Canale cronemico**: relativo alla tempistica
 - **canale aptico**:  contatto fisico
 - **Canale prossemico**: distanza, vicinanza
 
 #### Come interagiscono digitale e analogico
 - **ripetizione**: il non verbale coincide e rinforza il verbale
-- **Contraddizione**: incongruenza tra i due codici: il messaggio è dunque ambivalente, e l'analogico tenge a prevalere
+- **Contraddizione**: incongruenza tra i due codici: il messaggio è dunque ambivalente, e l'analogico tende a prevalere
 - **Sostituzione**: quando il non verbale sostituisce il verbale
 - **Complementarietà**: l'analogico complementa ed aggiunge qualcosa al messaggio del digitale. (es. *Lo sai che il mio cane mi ha svegliato alle 3 di notte?*, se sorrido significa che ero contento di vedere il mio cane, se sono triste indico che non volevo essere svegliato)
 - **Accentuazione**: il non verbale enfatizza alcuni significati

@@ -21,7 +21,7 @@ Composto da nucleo polposo e anelli fibrosi all'esterno
 - legamenti
 diversi, come se la colonna fosse "fasciata"
 - muscoli
-in profondità piccoli muscoli che collegano una vertebra all'altra. Più esternamente muscoli erettori della spinale (lunghe fascie verticali)
+in profondità piccoli muscoli che collegano una vertebra all'altra. Più esternamente muscoli erettori della spinale (lunghe fasce verticali)
 
 ---
 
@@ -55,12 +55,12 @@ Significa modificare elementi di un sistema (noi + ambiente) per migliorare la s
 ## Termini utili
 - **Forza di gravità**: è esercitata costantemente sul corpo. Si mantiene tono muscolare per contrastarla
 - **Base d'appoggio**: area di superficie del terreno con cui il corpo entra in contatto
-- **Centro di massa**: punto di eguilibrio all'interno dell'oggetto
+- **Centro di massa**: punto di equilibrio all'interno dell'oggetto
 - **Centro di gravità**: proiezione sul terreno del centro di massa
 - **Equilibrio**: centro di gravità all'interno dell'area di appoggio
 ---
 
-## Stragie attuabili
+## Strategie attuabili
 Cosa possiamo fare nella pratica (in generale e in ambito socio-sanitario)
 
 - Base d'appoggio ampia: più stabilità, evitare posizioni sfavorevoli
@@ -70,9 +70,9 @@ Cosa possiamo fare nella pratica (in generale e in ambito socio-sanitario)
 - Usare le capacità del paziente:
     - dare tempo
     - spiegare movimento all'utente
-    - chiarire aspettative per la partecipazione ativa
+    - chiarire aspettative per la partecipazione attiva
     - rassicurare
 
     =>EMPOWERMENT DEL PAZIENTE
 
-per quanto riguarda flettere la schiena sotto sforzo: la letteratura non evidenza una differenza negli sforzi mondani tra presenza e assenza di flessione come causa di LBP
+per quanto riguarda flettere la schiena sotto sforzo: la letteratura non evidenzia una differenza negli sforzi mondani tra presenza e assenza di flessione come causa di LBP

@@ -4,59 +4,38 @@
 [TOC]
 
 # COS'È L'ETICA
-Scienza che prova a rispondere alla domanda "cosa è giusto e cosa è sbagliato?"
+Scienza che prova a rispondere alla domanda *"cosa è giusto e cosa è sbagliato?"*
 Chiaramente non esiste una risposta oggettiva e assoluta &rarr; ci basiamo su diverse correnti e teorie
 
-L'**etica** si rifà e deriva molto dalla **filosofia**. 
+L'**etica** si rifà e deriva molto dalla **filosofia**: possiamo usare ==etica== e ==**filosofia morale**== in maniera intercambiabile
+> L'etica è *la riflessione critica e razionale su ciò che è giusto e sbagliato, sui principi, sui valori e sulle norme di una determinata società o individuo*
 
-Più in particolare possiamo usare i termini ==etica== e ==**filosofia morale**== in maniera intercambiabile.
+> In breve: la filosofia/etica applicata ci serve come aiuto ad analizzare e risolvere problemi pratici (problemi etici)
 
-> In breve: filosofia/etica applicata ci serve come aiuto ad analizzare e risolvere problemi pratici (problemi etici)
-
-## **Problemi etici / morali**
-Esempi in ambito sanitario: 
-- **Eutanasia** (In svizzera: qualsiasi gesto eseguito dai curanti che non è volto alla guarigione, ma che aiuta il paziente a morire)
-- **Suicidio assistito**: In questo caso è la persona stessa a commettere il gesto (Exit e altre sono associazioni private senza scopo di lucro, che svolgono il servizio per motivi etici &rarr; per il bene del paziente)
-- **Eutanasia attiva**: Situazione in cui il medico o infermiere esegue un iniezione letale (in CH ==illegale==, ma legale in Belgio, Olanda, Canada, ...)
-- **Rinanimazione** del paziente (REA o NO REA). Si ragiona sulla qualità di vita del paziente dopo la rinanimazione
-- **Segreto professionale**: banalmente, quando sono i casi in cui mantenere il segreto o quando no
+## Problemi etici / morali
+Esempi in ambito sanitario:
+- **Eutanasia** (in Svizzera: qualsiasi gesto eseguito dai curanti che non è volto alla guarigione, ma che aiuta il paziente a morire)
+- **Suicidio assistito**: è la persona stessa a compiere il gesto (Exit e simili: associazioni private senza scopo di lucro, per il bene del paziente)
+- **Eutanasia attiva**: il medico/infermiere esegue un'iniezione letale (in CH ==illegale==; legale in Belgio, Olanda, Canada, ...)
+- **Rianimazione** (REA o NO REA): si ragiona sulla qualità di vita del paziente dopo la rianimazione
+- **Segreto professionale**: quando mantenerlo e quando no
 - **Aborto**
 
-Altri esempi più un generale:
-- **Pena di morte**
-- **Etica dell IA**
-- **Esiste una guerra giusta?**: che si collega ai temi di leva obbligatoria e obbiezione di coscienza
+Esempi più in generale: pena di morte, etica dell'IA, "esiste una guerra giusta?" (&rarr; leva obbligatoria e obiezione di coscienza)
+
+&rArr; La risposta a questi temi cambia col punto di vista della ==società==. Il ruolo dell'etica non è dare risposte assolute, ma ==analizzare i vari punti di vista e le varie correnti di pensiero==
+
+## Obiettivi e programma del corso
+**Obiettivo principale**: acquisire le basi per lo studio futuro dell'etica in ambito sanitario
+- conoscere principi, valori e norme alla base della società e delle professioni sanitarie
+- saper analizzare casi pratici con concetti, teorie e modelli etici
+- saper argomentare il proprio punto di vista su questioni professionali
+
+Programma: **introduzione** (etica personale/sociale/professionale) &rarr; **teorie etiche** (deontologica, delle conseguenze, della cura) &rarr; **bioetica** (aborto, fecondazione assistita, eutanasia; sacralità vs qualità della vita)
+> Come linee guida nazionali: Accademia Svizzera delle Scienze Mediche (**ASSM**)
 
 
-=>La risposta a questi temi cambia rispetto al punto di vista della ==società==. Il ruolo dell'etica in tutto ciò non è dare risposte assolute a queste tematiche, ma anlizzare i vari punti di vista e le varie correnti di pensiero
-
-## Obbiettivi del corso di etica
-- Concoscere e saper riflettere sui principi, sui valori, sulle norme che stanno a fondamento della nostra società
-- Conoscere e saper riflettere sui principi, sui valori, sulle norme che stanno a fondamento delle professioni sanitarie
-- Saper riflettere sulla propria etica personale nei confronti delle professioni sanitarie
-- Saper analizzare situazioni e casi pratici che sollevano interrogativi etici
-- Conoscere, comprendere e saper spiegare concetti, teorie e modelli etici
-- Saper applicare concetti, teorie e modelli etici alla pratica professionale, a situazioni e casi pratici
-- Saper argomentare il proprio punto di vista su questioni professionali tramite concetti, teorie e modelli etici
-
-=> **OBBIETTIVO PRINCIPALE**: acquisire basi per lo studio futuro dell'etica in ambito sanitario
-
-## Sintesi del programma
-- **Introduzione generale** all'etica: etica personale, etica sociale ed etica professionale (analisi di casi pratici)
-- **Teorie etiche**:
-    - **Etica Deontologica**, diritti dei pazienti, doveri dei curanti, codici deontologici, e applicare a casi pratici
-    - **Etica delle conseguenze**: fare il bene del paziente, promozione del benessere e della salute, e applicazione a casi pratici
-    - **Etica della cura**: ascolto dei bisogni del paziente, empatia, solidarietà, e applicazioni a casi pratici
-- **Bioetica**: questioni bioetice (aborto, fecondazione assistita, eutanasia, ecc), etica della Sacralità della Vita ed Etica della Qualità della Vita, e analisi di casi pratici
-
->Come linee guida: Associazione Svizzera Scienze Mediche (ASSM) &rarr; linee guida nazionali
-
-
-<div style="page-break-after: always;"></div>
-
----
-# INTRODUZIONE ALL'ETICA
-
+# ETICA PERSONALE, SOCIALE E PROFESSIONALE
 
 ```mermaid
 graph LR
@@ -65,226 +44,193 @@ graph LR
   C <==> A
 ```
 
-- **Etica Personale**: cosa è giusto o sbagliato per me (quali sono i miei principi e i miei valori)
-- **Etica Sociale**: cosa è giusto o sbagliato per la società (quali sono i principi, i valori e le norme della società &rarr; la legge)
-- **Etica Professionale**: cosa è giusto o sbagliato nella mia professione (quali sono i principi, valori, e norme della mia professione) 
+- **Etica personale**: cosa è giusto o sbagliato ==per me== (i miei principi e valori)
+- **Etica sociale**: cosa è giusto o sbagliato ==per la società== &rarr; la **morale sociale**: l'insieme di principi, valori e norme di una società
+    - Norme ==scritte== &rarr; le leggi (non uccidere, non rubare, non fare violenza)
+    - Norme ==non scritte== &rarr; abitudini e consuetudini sociali
+    - La morale ==limita la libertà degli individui== per garantire l'**ordine sociale** &rarr; lo scopo è la ==sopravvivenza== della società (pace/sicurezza sociale)
+- **Etica professionale**: cosa è giusto o sbagliato ==nella mia professione== (principi, valori e norme della professione)
 
-Questi tre elementi interagiscono, si relazionano, e si influenzano
+I tre livelli interagiscono e si influenzano. Quando etica personale ed etica professionale entrano in conflitto si parla di **obiezione di coscienza** &rarr; che si interfaccia spesso col principio di **non discriminazione** (es: non assumere un'infermiera cattolica perché contraria all'aborto = discriminazione)
+
+Nell'etica professionale c'è una differenza tra i due saperi, che si completano a vicenda:
+
+```mermaid
+graph LR
+  A["<b>Capacità tecnico-scientifica</b><br>───────────────<br><i>Come curiamo il paziente?</i>"]
+  B["<b>Sapere etico-filosofico</b><br>───────────────<br><i>Perché curiamo il paziente?<br>Cosa è giusto fare?</i>"]
+  A <==> B
+```
 
 ## Caso: interruzione di gravidanza
->Una ragazza di 20 anni che sta frequentando una scuola univeritaria professionale scopre di essere incinta alla sesta settimana di gravidanza
-Con il suo ragazzo di 22, anche lui studente e con il quale ha una relazione da tre mesi, hanno sempre usato le dovute precauzioni, ma qualcosa è andato storto
-La ragazza non sa se abortire o no.
-Si rivolge a un OS per una consulenza.
-- **Qual'è l'ambito dell'Etica personale?** Ovvero il ragionamento che farà la ragazza per la propria salute e per il proprio futuro
-- **Qual'è l'ambito dell'Etica sociale?** In breve, aborto permesso per legge in Svizzera, quindi l'etica sociale lo permette
-- **Qual'è l'amito dell'Etica professionale?** Richiede ==oggettività==. Da parte dell'OS è richiesto solo di permettere alla ragazza di fare una scelta informata (ovviamente non puo scegliere l'OS per lei). È sempre il paziente a decidere &rarr; ==La libertà di scelta del paziente è un diritto==.
-Si parla di **principio di autonomia/autodeterminazione** &rarr; capacità del paziente di riflettere e decidere cosa è giusto o sbagliato per se stesso
+>Una ragazza di 20 anni, studentessa, scopre di essere incinta alla sesta settimana. Col ragazzo (22, studente, relazione da tre mesi) hanno sempre usato le precauzioni, ma qualcosa è andato storto. Non sa se abortire o no e si rivolge a un OS per una consulenza.
 
-Come si fa a rimanere oggettivi in etica? Diamo ragioni a favore e contro &rarr; l'obbiettivo è assicurare imparzialità
+- **Etica personale** &rarr; il ragionamento che farà la ragazza per la propria salute e il proprio futuro
+- **Etica sociale** &rarr; l'aborto è permesso per legge in Svizzera, quindi l'etica sociale lo permette
+- **Etica professionale** &rarr; richiede ==oggettività==: l'OS deve solo permettere alla ragazza di fare una ==scelta informata== (non può scegliere per lei). ==La libertà di scelta del paziente è un diritto==
 
-Il paziente firma sempre il **consenso libero e informato**. Sta proprio a indicare l'oggettività della consulenza e la libera scelta &rarr; il paziente si prende la sua responsabilità individuale
+Concetti chiave che escono dal caso:
+- **Principio di autonomia / autodeterminazione** &rarr; capacità del paziente di riflettere e decidere cosa è giusto per sé
+- Per restare oggettivi in etica: dare ragioni ==a favore e contro== &rarr; assicurare imparzialità
+- **Consenso libero e informato**: il paziente firma sempre &rarr; indica l'oggettività della consulenza e la libera scelta (si prende la sua responsabilità individuale)
 
-Nel caso incontriamo un conflitto tra etica personale e etica professionale parliamo di **obiezione di coscienza**
-
-Il diritto all'**obiezione di coscienza** si interfaccia spesso con il pricipio di **discriminazione** (es: se non assumo una infermiera cattolica perche contraria all'aborto sto discriminando)
-
-## La morale sociale 
-L'insieme di principi, valori e norme di una società che stabiliscono cosa é giusto e cosa é sbagliato
-
-- Norme ==scritte== &rarr; leggi.
-    Norme fondamentali: Non uccidere, non rubare, non fare violenza
-- Norme ==non scritte== &rarr; abitudini, consuetudini sociali
-
-==La libertà degli individui viene limitata dalla **morale**== vigente nella società, perchè se non ci fosse la società sprofonderebbe nel caos &rarr; lo scopo è la ==**sopravvivenza**==
-
-Obbiettivo della morale è la **pace sociale** o **sicurezza sociale** &rarr; garantire l'**ordine sociale**
-
-La riflessione qui é capire quali principi fondamentali devono essere scritti nella Costituzione
-
-### L'etica è la filosofia morale
-Se la **morale** è l'insieme di principi, valori e norme di una determinata società, allora l'**Etica** é ... 
-&rarr; *la riflessione critica e razionale su ciò che è giusto e sbagliato, sui principi, sui valori e sulle norme di una determinata società o individuo*
-
-## L'etica professionale
-
-Vi è una differenza tra sapere tecnico-scientifico e sapere etico filosofico
-
-```mermaid
-graph LR
-  A["<b>Capacità tecnico-scientifica</b><br>───────────────<br><i>Come curiamo il paziente? <br><br><br><br> </i>"]
-  B["<b>Sapere etico-filososfico</b><br>───────────────<br><i>Perchè curiamo il paziente? Cosa è giusto fare? <br> Fondamenti etici del lavoro sanitario <br> Cosa è giusto fare?</i>"]
-
-  A <==> B
-```
-### Casi pratici
-#### La sonda alimentare
-
-In casa anziani paziente con demenza in fase avanzata non mangia più. Sarebbe necessario un sondino PEG per nutrizione artificiale. Non tutti i curanti sono d'accordo
-
-```mermaid
-graph LR
-  A["<b>Capacità tecnico-scientifica</b><br>───────────────<br><i>Come funziona una sonda PEG?
-    Quali sono i rischi?
-  </i>"]
-  B["<b>Sapere etico-filososfico</b><br>───────────────<br><i>È giusto nutrire artificialmente?
-  È ciò che vorrebbe il paziente?</i>"]
-  A <==> B
-```
-
-#### Anna e Monica
-
-
-
-1. Individua il probelma etico
-Chiaramente il problema in questione è la contrapposizione del concetto di isolamento per prevenire contatti indiretti e isolamento come causa di depressione (gia presente)
-
-2. Giudizio individuale immediato:
-Sembrerebbe che prima di concedere questo privilegio, siano state applicate diverse misure di protezione preventive, perciò direi che è lecito lasciar passeggiare Monica.
-
-3. Giustifica
-Quando ci prendiamo a carico il paziente non prendiamo a carico solo la malattia (in questo caso alluce infetto), ma tutta la persona. Data la correlazione che intercorre tra salute fisica e salute mentale, mi sembra corretto permettere a Monica, date le precauzioni prese, di poter passeggiare per il corridoio. in sintsi è un piccolo gesto per noi che però aiuta molto la paziente 
-
+## Analisi di casi pratici
+Schema in 5 passi usato in classe:
+1. Individua il problema etico
+2. Giudizio individuale immediato
+3. Giustifica il giudizio
 4. Confronta la propria posizione con gli altri
+5. Prova a trovare una soluzione condivisa (valutando gli altri punti di vista)
 
-5. Provate a trovare una soluzione condivisa
-    - valutare gli altri punti di vista
-    - cosa fareste concretamente a risolvere il problema da stagista
+### La sonda alimentare
+>In casa anziani, paziente con demenza in fase avanzata non mangia più. Sarebbe necessario un sondino PEG per la nutrizione artificiale. Non tutti i curanti sono d'accordo.
+
+- *Sapere tecnico-scientifico*: come funziona una sonda PEG? Quali sono i rischi?
+- *Sapere etico-filosofico*: è giusto nutrire artificialmente? È ciò che vorrebbe il paziente?
+
+### Anna e Monica
+>Anna è in stage in chirurgia. Le norme igieniche sono particolarmente severe per i pazienti ==MRSA positivi==, che devono restare in isolamento. Anna si stupisce quando scopre che a Monica — appena amputata di un alluce per una ferita infetta — è concesso, rispettando le precauzioni (disinfezione mani, camice pulito, ferita bendata), di passeggiare nel reparto. Il "privilegio" serve a evitare che l'isolamento aggravi la ==depressione== di cui Monica soffre.
+
+1. **Problema etico**: contrapposizione tra isolamento per prevenire contagi (indiretti) e isolamento come aggravante della depressione (già presente)
+2. **Giudizio immediato**: prima di concedere il privilegio sono state applicate diverse misure preventive, perciò è lecito lasciar passeggiare Monica
+3. **Giustificazione**: quando ci prendiamo a carico il paziente non prendiamo a carico solo la malattia (l'alluce infetto), ma ==tutta la persona==. Data la correlazione tra salute fisica e mentale, date le precauzioni prese, è corretto permettere a Monica di passeggiare: un piccolo gesto per noi che aiuta molto la paziente
+
+### Gli altri casi visti in classe
+- **Chiara e Camilla**: in casa anziani gli ospiti vengono ==legati alla sedia== durante i pasti per evitare cadute; Camilla (82, instabile sulle gambe ma lucida) chiede di essere "liberata dal guinzaglio" &rarr; contenzione/sicurezza vs libertà e dignità della persona
+- **Marco e Renzo**: Renzo ha un tumore al pancreas in stadio avanzato ma ==non conosce la diagnosi== (i figli hanno chiesto di non dirgliela); chiede a Marco "Ce la farò, vero?" &rarr; verità al paziente e autonomia vs protezione dal dolore
+- **Piero e Sara**: Sara (sclerosi multipla + anoressia) rifiuta spesso il cibo; a Piero viene chiesto di collaborare a una somministrazione contro la sua volontà &rarr; beneficenza vs autodeterminazione
 
 
 # TEORIE ETICHE
+Una **teoria etica** è un modello di pensiero che ci può dire cosa è giusto o sbagliato, e come comportarci, in determinati casi, a partire da un certo punto di vista
 
-una **teoria etica** è un modello di pensiero che ci può dire cosa è giusto o sbagliato. e come comportarci, in determinati casi a partire da un certo punto di vista
 ```mermaid
 graph LR
-  A["<b>Società più autoritaria</b><br>────────────────────────<br><i>Uno o pochi decidono l'etica sociale. Autorità fa un <b>monologo</b>, e decide cosa è giusto sbagliato<br>────────────────<br>Paternalismo medico: il medico ha sempre ragione, e decideva lui cosa era giusto o sbagliato fare con il paziente &rarr; il paziente non aveva diritti. Persino Ippocrate non ha definito il concetto di liberetà del curato</i>"]
-  B["<b>Società più democratica e liberale</b><br>────────────────────────<br><i>Diverse opinioni di ciò che è giusto o sbagliato. Si decide attraverso il <b>dialogo</b><br>────────────────<br>Discussione tra curante e paziente, ma sorpattutto dialogo tra i membri dell'equipe (dialogo tra curanti). Nascono in parallelo i diritti dei pazienti e il principio di autonomia (il paziente decide per se stesso).</i>"]
-
-
+  A["<b>Società più autoritaria</b><br>────────────────────────<br><i>Uno o pochi decidono l'etica sociale: l'autorità fa un <b>monologo</b> e decide cosa è giusto o sbagliato<br>────────────────<br>Paternalismo medico: il medico ha sempre ragione e decideva lui per il paziente &rarr; il paziente non aveva diritti (persino Ippocrate non ha definito la libertà del curato)</i>"]
+  B["<b>Società più democratica e liberale</b><br>────────────────────────<br><i>Diverse opinioni su ciò che è giusto o sbagliato: si decide attraverso il <b>dialogo</b><br>────────────────<br>Dialogo tra curante e paziente e soprattutto tra i membri dell'equipe. Nascono i diritti dei pazienti e il principio di autonomia</i>"]
   A --> B
 ```
 
+Le tre teorie del corso: ==**Etica Deontologica**== · ==**Etica delle Conseguenze**== · ==**Etica della Cura**==
 
 ## Etica deontologica
+Dal greco *Deon* &rarr; **dovere**. Logica di base: ==i miei diritti sono rispettati dai doveri altrui, e viceversa== &rarr; voglio che i diritti valgano per tutti, così ho la garanzia che valgano anche per me (e si evitano abusi di potere)
 
-Dal greco *Deon* &rarr; Dovere. In breve: I miei diritti sono rispettati dai doveri altrui, e viceversa
-
-logica di base di questa teoria. Voglio che i diritti valgano per tutti, cosi ho la garanzia che valgano anche per me, e per evitare abusi di potere
-
-
-
-Cambiamento nell'**etica sociale** &rarr; cambiamento nell'**etica professionale**
-
-
-
-```mermaid
-graph TD
-  A["<b>Etica sociale</b><br>────────────────────────<br><i>Esprime il valore di ogni vita umana, in quanto persona. I diritti di ripettare ogni persona, il dovere dirispettare ogni persona </i>"]
-  B["<b>Etica professionale</b><br>────────────────<br><i>Perchè curiamo gli altri?<br>────────────────<br>Il diritto di ognuno alla cura e alla salute in quanto persona. Il dovere universale di curare e promuovere la salute in ogni persona</i>"]
-
-  A --> B
-```
-
-```mermaid
-graph TD
-  A["<b>Uguaglianza dei diritti fondamentali</b>"]
-  B["<b>Diritti</b><br>────────────────<br><i>Alla vita, libertà di parola, espressione, credenza<br>────────────────<br>Per i curati: <b>Diritto</b> alla cura e alla salute</i>"]
-  C["<b>Doveri</b><br>────────────────<br><i>Non uccidere, dovere di rispettare e tollerare<br>────────────────<br>Per i curanti: <b>Dovere</b> di curare tutti i pazienti, secondo il principio di <b>uguaglianza</b> e <b>non discriminazione<b></i>"]
-
-  A --> B
-  A --> C
-```
+**Genealogia** — da dove arriva:
 
 ```mermaid
 %%{init: {"flowchart": {"nodeSpacing": 1, "rankSpacing": 30}}}%%
 graph TD
-  A["<b>Etica deontologica</b><br>────────────────<br>Nasce con la filosofia dell'Illuminismo, dalla rivoluzione francese (1789)"]
+  A["<b>Etica deontologica</b><br>────────────────<br>Nasce con la filosofia dell'Illuminismo e la Rivoluzione francese (1789)"]
   B["<b>Libertà, uguaglianza, solidarietà</b>"]
-  C["<b>Dichiarazione universale dei Diritti dell'Uomo (ONU 1948)</b>"]
+  C["<b>Dichiarazione universale dei Diritti dell'Uomo (ONU, 1948)</b>"]
   D["<b>Costituzione Svizzera</b>"]
   E["Diritti dei pazienti"]
-  M["&harr;"]
   F["Doveri degli operatori &rarr; <b>Codice deontologico</b>"]
-
   A --> B
   B --> C
   C --> D
   D --> E
-  D ~~~ M
   D --> F
-
-  classDef freccia fill:none,stroke:none,font-size:28px
-  class M freccia
 ```
 
-Secondo l'etica deontologica ci sono **principi**, **valori** e **doveri** che bisogna rispettare sempre e comunque. sono **assoluti**.
-Questi principi, valori doveri assoluti devono valere sempre, **indipendetemente delle conseguenze** delle azioni, se non in casi del tutto eccezionali, come "**ultima ratio**". In caso di ultima ratio, la violazione dei principi, valori, doveri assoluti deve seguire il **criterio di proporzionalità**
+**Diritti e doveri** — due facce dell'uguaglianza dei diritti fondamentali:
+- **Diritti**: alla vita, libertà di parola, espressione, credenza &rarr; per i curati: ==diritto alla cura e alla salute== in quanto persona
+- **Doveri**: non uccidere, rispettare, tollerare &rarr; per i curanti: ==dovere di curare tutti i pazienti==, secondo **uguaglianza** e **non discriminazione**
+    - *Vogliamo vivere in una società dove gli operatori sanitari scelgono chi curare e chi no?* &rarr; nessuno può decidere chi può essere curato e chi no
 
-### Esempio: Perchè uccidere è sbagliato?
+**Principi chiave**:
+- I principi sono ==assoluti==: vanno rispettati sempre, ==indipendentemente dalle conseguenze== &rarr; rispetto ai principi assoluti, ==il fine non giustifica mai i mezzi==
+- **Ultima ratio**: una misura che va contro un diritto fondamentale è ammessa solo come ultimissima risorsa (es. contenzione, trattamento senza consenso, violazione del segreto professionale &rarr; solo in casi eccezionali)
+- **Criterio di proporzionalità**: la misura che va contro il diritto deve essere la ==meno invasiva possibile==
+- Principi ideali (obiettivi a cui tendere): **integrità fisica** (non fare violenza fisica) e **integrità psichica** (non fare violenza psichica)
 
-- Diritto alla vita vale per tutti &rarr; uguaglianza dei diritti
-  Dovere assoluto di non uccidere nessuno
-- Le regole valgono per tutti, allora valgono anche per me
-- *Volete vivere in una società dove uccidere è illegale?*
-- Secondo l'etica deontologica introdotta da Kant, nessuno può decidere chi si meriti di vivere e chi no
-- **Legittima difesa**? &rarr; concetto di *ultima ratio*: legittima difesa concessa quando è in pericolo la mia vita (non ho altra scelta, ultima spiaggia) &rarr; Principio della proporzionalità della forza
+**Estratto della Costituzione Svizzera** (capitolo "Diritti fondamentali") — gli articoli chiave:
+- Art. 7 — la ==dignità umana== va rispettata e protetta
+- Art. 8 — ==uguaglianza giuridica==: nessuno può essere discriminato (origine, sesso, età, lingua, posizione sociale, convinzioni, disabilità, ...)
+- Art. 10 — ==diritto alla vita== (pena di morte vietata) e alla ==libertà personale== (integrità fisica e psichica); tortura vietata
+- Art. 11 — protezione di fanciulli e adolescenti
+- Art. 12 — diritto all'==aiuto in situazioni di bisogno== (esistenza dignitosa)
+- Art. 13 — protezione della ==sfera privata==
+- Art. 15 — libertà di ==credo e coscienza==
 
+**Etica deontologica ed etica professionale**: sta a fondamento dei **diritti dei pazienti** e del **codice deontologico** — regole, norme e doveri che l'operatore deve sempre seguire:
+- dovere di curare ogni paziente ==in quanto persona==
+- parità di trattamento e ==non discriminazione==
+- rispetto della ==libertà di scelta informata== e dell'autonomia (se il paziente non è capace di discernimento: rappresentante legale e **volontà presunta**)
 
-Il Concetto si riporta anche all'etica professionale sanitaria:
-- diritto alla cura
-- dovere di curare tutti per il criterio di non discriminazione
-- *Vogliamo vivere in una società dove gli operatori sanitari scelgono chi curare e chi no?*
-- nessuno puo decidere chi può essere curato e chi no
-
-### Il Criterio di proporzionalità
-La misura che va contro il diritto deontologico deve essere meno invasiva possibile
-
-### Uguaglianza dei diritti fondamentali
-
-```mermaid
-graph TD
-  A["Uguaglianza dei diritti fondamentali"]
-  B["<b>Diritti fondamentali</b><br>────────────────<br>Costituzione &rarr; diritti dei pazienti" ]
-  M1["&harr;"]
-  C["<b>Doveri di rispettare i diritti degli altri</b><br>────────────────<br>Doveri assoluti <br> Ultima ratio <br> Proporzionalità"]
-
-
-  A --> B
-  A ~~~ M1
-  A --> C
-
-
-  classDef freccia fill:none,stroke:none,font-size:28px
-  class M1,M2 freccia
-```
-
-- Principi ideali: obbiettivi a cui tendere
-Tutto al fine di garantire:
-- Integrità fisica (non fare violenza fisica)
-- Integrità psichica (Non fare violenza psichica)
-
-### Estratto della Costituzione Svizzera
-Vedi file
-
-### Etica deontologica ed etica professionale
-Nell, etica professionale, l'etica deontologica sta al fondamento dei **diritti dei pazienti** e del rispettivo **codice deontologico**, una serie di regole, norme, doveri che l'operatore sanitario deve sempre e comunque seguire
-- Dovere di curare ogni paziente in quanto persona
-- Dovere di trattare tutti i pazienti in maniera equa, garantendo la pratià di trattamento, e la non discriminazione
-- Dovere di rispettare la libertà di scelta informata del paziente, la sua autonomia (se il paziente non fosse capace di discernimento, vi può essere un rappresentante legale e ci si basa sulla **volontà presnunta**)
+**I codici deontologici** (cure infermieristiche, ergoterapia, fisioterapia): principi comuni &rarr; rispetto della persona, della sua **autonomia** e **dignità**; informazione comprensibile e **consenso**; promozione/mantenimento dell'autonomia del paziente; **segreto professionale** e protezione dei dati
 
 ## Etica delle conseguenze
-- Etica sociale: *"promuovere il piacere, il benessere, la felicità. Contrastare il dispiacere, il malessere e la sofferenza, del singolo e della collettività"*
+*(in corso a lezione — da integrare con quanto diremo in classe)*
 
-Nel nostro settore usiamo 
-  - Benessere = salute (stato di benessere fisico mentale e sociale, non solo assenza di malattia)
-  - Malessere = malattia
-
-L'idea di fondo è che *più le persone intorno a me stanno bene, sono felici, più star?o bene io*
+A differenza della deontologica, ==non ci sono principi, valori o norme assolute== da rispettare sempre: ciò che conta sono le **conseguenze delle azioni**
+- Un'azione è giusta o sbagliata ==in base ai suoi effetti== positivi e negativi sulle persone coinvolte &rarr; vanno valutati, calcolati e **bilanciati**
+- In questa filosofia ==il fine può giustificare i mezzi== (nella deontologica mai)
 
 ### Utilitarismo
-azione piu giusta = piu benessere, piu salute
-azione piu sbagliata = piu palessere, piu malattia
-Per tutti o almeno la maggioranta
+La principale etica delle conseguenze (**J. Bentham e J.S. Mill**):
+- si stabilisce cosa è bene per tutti, un valore condiviso: il ==piacere, il benessere, la felicità== (a seconda delle versioni)
+- azione **giusta** = produce più piacere/benessere/felicità ==per la maggioranza== delle persone coinvolte
+- azione **sbagliata** = produce più dispiacere/malessere/sofferenza (o fa il bene solo mio a scapito degli altri)
+> *"...più le persone intorno a me stanno bene, sono felici, più starò bene anche io..."* &rarr; se non riusciamo a fare il bene di tutti, almeno della maggioranza
+
+Esempi di ragionamento consequenzialista:
+- **Uccidere?** Di norma no (sofferenza per la persona, i cari, la società; "bene" solo per l'assassino) — ma uccidere un tiranno ==può essere lecito== se migliora il benessere di un popolo (es. discussioni su Saddam Hussein, Bin Laden) &rarr; valutando sempre *tutte* le conseguenze
+- **Rubare?** Di norma no — ma rubare 1 miliardo a Jeff Bezos per darlo in beneficenza? Per il consequenzialismo può essere giusto; per la deontologica solo come *ultima ratio*. Rischio: se tutti rubassero ai ricchi &rarr; caos e abusi
+- **Mentire?** "Cristina vuole uccidere Maria e ti chiede dove si trova": per le conseguenze, mentire qui è giusto
+- **Responsabilità e intenzione**: investire un pedone non visto a 50 km/h &rarr; distinzione tra ==doloso== (intenzionale) e ==colposo== (non intenzionale)
+
+### Applicazione all'etica professionale
+Riferimento alla definizione di salute dell'**OMS (1948)**: *"stato di completo benessere fisico, psichico e sociale e non semplice assenza di malattia"*
+- scopo dell'operatore: **fare il bene** (promuovere benessere e salute) e **contrastare il male** (malessere e malattia), del singolo e di tutti i pazienti di cui è responsabile
+- da valutare: ==costi/benefici==, maleficenza/beneficenza, per il singolo e per la collettività
+
+### Deontologica + Conseguenze insieme
+| **Etica deontologica** | **Etica delle conseguenze** |
+|---|---|
+| Diritti e doveri fondamentali | Fare il bene: benessere, salute |
+| Principi ==assoluti== | Contrastare il male: malessere, malattia |
+| Ultima ratio, proporzionalità | ==Valutare e calcolare== le conseguenze |
+| Diritti dei pazienti, codice deontologico | Azione giusta = + benessere, + salute |
+| Libertà, autonomia, uguaglianza, dignità, integrità | Per tutti o per la maggioranza |
+| Il fine ==non giustifica mai== i mezzi | Il fine ==può giustificare== i mezzi |
+| Responsabili di ==rispettare i principi== | Responsabili delle ==conseguenze== delle azioni |
+
+> Nella maggioranza dei casi vanno ==applicate insieme==: rispettare i principi primi e i diritti dei pazienti, *e* valutare le conseguenze in termini di benessere/malessere per paziente e collettività
+
+## Etica della cura
+**"Cura"** ha più significati: sollecitudine, dedizione, attenzione, assistenza / terapia per guarire una malattia. Qui si intende il ==prendersi cura== degli altri (e di sé)
+> In inglese: **cure** (curare, terapia medica) vs **care** (prendersi cura, dedicarsi a qualcuno)
+
+È un'etica della vita e delle ==relazioni==, che può essere anche etica professionale. Riferimenti: **C. Gilligan** (*Con voce di donna*, 1982), esistenzialismo e fenomenologia (Heidegger, E. Stein)
+
+I fondamenti:
+1. **Una "voce femminile" dell'etica**: storicamente la cura è stata compiuta dalle donne (madri, infermiere) nel privato, mentre gli uomini dibattevano nel pubblico &rarr; risposta alle relazioni ==uniche e individuali== dimenticate dalle "etiche maschili" (deontologica e conseguenze)
+2. **L'essere umano è fragile**: più di ogni altra specie necessita della cura degli altri per sopravvivere, dalla nascita in poi — e può sempre ==ricadere nella dipendenza== (incidenti, malattie, invecchiamento)
+3. **Esistere = essere in relazione**: diventiamo qualcuno a partire da relazioni di dipendenza, educazione e cura &rarr; ==siamo tutti potenzialmente a rischio di avere bisogno di cure==: ci si aiuta per solidarietà *e perché un giorno toccherà anche a me*
+4. **Comprensione empatica**: capire il vissuto e i bisogni dell'altro ==proiettandosi in lui== (come la madre col bambino che piange) &rarr; l'empatia permette di capire anche chi non riesce a esprimersi a parole
+5. **Cura autentica vs inautentica**:
+    - ==inautentica== &rarr; "assistenzialista"/"maternalista": rende l'altro dipendente da me (non taglia il cordone ombelicale)
+    - ==autentica== &rarr; parte dalla dipendenza ma ha come scopo l'**autonomia**: *"curare affinché l'altro sappia prendersi cura di sé"*
+
+> **N.B.**: l'etica della cura non ci dice cosa è giusto o sbagliato fare, ma ==cosa bisognerebbe fare sempre e prima di tutto==: assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni
+
+## Schema di analisi di un problema morale
+1. Comprendere i ==vari punti di vista== delle persone coinvolte
+2. Analizzare **pro e contro** applicando le teorie:
+
+| PROBLEMA MORALE: ... | PRO | CONTRO |
+|---|---|---|
+| Etica deontologica | | |
+| Etica delle conseguenze | | |
+
+&nbsp;&nbsp;&nbsp;&nbsp;con l'**etica della cura** come base di partenza (ascolto, empatia, bisogni)
+
+3. Trovare la ==soluzione migliore e più giusta==
+
+Esempi di problemi da analizzare: "è giusto vietare il fumo?", "è giusto imporre le vaccinazioni?", "è giusto donare gli organi?"
 
 
-
+# BIOETICA
+*(ancora da trattare a lezione: aborto, fecondazione assistita, eutanasia; etica della Sacralità della Vita vs etica della Qualità della Vita)*

@@ -172,8 +172,8 @@ Richiede energia, solitamente spostamento ==contro gradiente==
 ##### La pompa Sodio (Na<sup>+</sup>) Potassio (K<sup>+</sup>)
 Esempio di ==trasporto attivo== (detta anche Na<sup>+</sup>/K<sup>+</sup> ATPasi)
 
-Scopo: Mantenere il tono e volume cellulare (cosi che la cellula non esploda) &rarr; mantiene equilibrio osmotico e pressione
->Curiosità: serve anche nei neuroni e nelle cellule muscolari per mantenere il potenziale elettrico (cosi che rimangano eccitabili e possano trasmettere impulsi elettrici)
+Scopo: Mantenere il tono e volume cellulare (così che la cellula non esploda) &rarr; mantiene equilibrio osmotico e pressione
+>Curiosità: serve anche nei neuroni e nelle cellule muscolari per mantenere il potenziale elettrico (così che rimangano eccitabili e possano trasmettere impulsi elettrici)
 
 Ecco il funzionamento:
 - Situazione di partenza: Alta concentrazione di K<sup>+</sup> all'interno della cellula, mentre all'esterno bassa. Opposto invece per Na<sup>+</sup>, molto concentrato all'esterno della cellula, ma poco all'interno.
@@ -447,7 +447,7 @@ Stimolo misurato dal recettore &rarr; segnale inviato al **centro di controllo**
 4. **Effettore** (solitamente o muscolo o ghiandola): riceve precise istruzioni dal centro di controllo per agire e ripristinare l'omeostasi
 
 - **Via afferente** (riporta stimolo rilevato da recettore): può essere via **nervosa** o via **ormonale**. Nella maggior parte dei casi si tratta di una via nervosa
-- **Via ennerente** (riporta la risposta del centro di controllo all'effettore): come prima, può essere via **nervosa** o **ormonale**
+- **Via efferente** (riporta la risposta del centro di controllo all'effettore): come prima, può essere via **nervosa** o **ormonale**
 
 
 L'omeostasi è mantenuta attraverso dai meccanismi di controllo omeostatico: 
@@ -459,7 +459,7 @@ La risposta si ==oppone== allo stimolo iniziale
         - Valore è alto &rarr; feedback negativo lo fa scendere
         - Valore è basso &rarr; feedback negativo lo fa alzare
 
-- **Feedback positivo** (meccanismo di retroazione positiva): La risposta ==rinforza== lo stimolo, allontanado la variabile ancora di più dal valore di riferimento, finché un fattore esterno (fattore d'arresto) termina il ciclo di feedback positivo
+- **Feedback positivo** (meccanismo di retroazione positiva): La risposta ==rinforza== lo stimolo, allontanando la variabile ancora di più dal valore di riferimento, finché un fattore esterno (fattore d'arresto) termina il ciclo di feedback positivo
     > Esempio: nel parto, le contrazioni sono regolate da un feedback positivo &rarr; contrazioni sempre più frequenti finché il figlio nasce (fattore esterno)
 
 ## Tipi di recettori

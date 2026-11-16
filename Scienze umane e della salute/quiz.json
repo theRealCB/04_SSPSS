@@ -1,0 +1,102 @@
+[
+ {
+  "q": "Cosa sono i determinanti della salute?",
+  "correct": "Fattori che modificano in positivo o in negativo lo stato di salute di persone e popolazioni",
+  "wrong": [
+   "Le malattie più diffuse",
+   "Gli esami diagnostici",
+   "I farmaci essenziali"
+  ],
+  "why": ""
+ },
+ {
+  "q": "In che anno è stata firmata la Carta di Ottawa?",
+  "correct": "1986",
+  "wrong": [
+   "1948",
+   "1989",
+   "2001"
+  ],
+  "why": "Carta dell'OMS per la promozione della salute."
+ },
+ {
+  "q": "Cosa significa salutogenesi?",
+  "correct": "Costruzione della salute",
+  "wrong": [
+   "Origine delle malattie",
+   "Cura dei sintomi",
+   "Storia della medicina"
+  ],
+  "why": "La ricerca si orienta sui fattori della salute, non solo sulla malattia."
+ },
+ {
+  "q": "Qual è la grande novità di Ippocrate?",
+  "correct": "Spiegare la malattia con cause naturali",
+  "wrong": [
+   "Inventare l'ospedale",
+   "Scoprire i germi",
+   "Introdurre la dissezione"
+  ],
+  "why": "Salute = equilibrio dei quattro umori."
+ },
+ {
+  "q": "Perché gli errori anatomici di Galeno durarono secoli?",
+  "correct": "Perché studiò soprattutto animali e le sue opere rimasero l'autorità indiscussa",
+  "wrong": [
+   "Perché nessuno leggeva i suoi testi",
+   "Perché furono tradotti male",
+   "Perché si occupava solo di chirurgia"
+  ],
+  "why": "Dominarono fino al Rinascimento."
+ },
+ {
+  "q": "Chi criticò Galeno con il «De humani corporis fabrica» (1543)?",
+  "correct": "Andrea Vesalio",
+  "wrong": [
+   "William Harvey",
+   "Louis Pasteur",
+   "Avicenna"
+  ],
+  "why": "Con la dissezione diretta del cadavere."
+ },
+ {
+  "q": "Cosa dimostrò William Harvey?",
+  "correct": "La circolazione del sangue",
+  "wrong": [
+   "La teoria dei germi",
+   "L'utilità dell'anestesia",
+   "L'efficacia del vaccino"
+  ],
+  "why": ""
+ },
+ {
+  "q": "Chi introdusse la vaccinazione contro il vaiolo?",
+  "correct": "Edward Jenner",
+  "wrong": [
+   "Joseph Lister",
+   "Ignaz Semmelweis",
+   "Robert Koch"
+  ],
+  "why": "Fine del Settecento."
+ },
+ {
+  "q": "A chi si deve l'importanza del lavaggio delle mani?",
+  "correct": "Ignaz Semmelweis",
+  "wrong": [
+   "Rudolf Virchow",
+   "René Laennec",
+   "Claude Bernard"
+  ],
+  "why": ""
+ },
+ {
+  "q": "Cosa significa «primum non nocere»?",
+  "correct": "Prima di tutto non nuocere",
+  "wrong": [
+   "Prima di tutto guarire",
+   "Prima di tutto informare",
+   "Prima di tutto obbedire"
+  ],
+  "why": "È la massima dell'etica medica ippocratica."
+ }
+]

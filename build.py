@@ -113,7 +113,19 @@ def demote_headings(text: str) -> str:
     return "\n".join(out)
 
 
-def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "") -> str:
+MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio",
+        "agosto", "settembre", "ottobre", "novembre", "dicembre"]
+
+
+def updated_on(src: Path) -> str:
+    """Data dell'ultima modifica (ultimo commit, altrimenti data del file)."""
+    ts = last_commit_ts(src) or int(src.stat().st_mtime)
+    d = time.localtime(ts)
+    return f"{d.tm_mday} {MESI[d.tm_mon - 1]} {d.tm_year}"
+
+
+def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "",
+                 subject: str = "", quiz_href: str | None = None) -> str:
     text = src.read_text(encoding="utf-8")
     # Via i blocchi <style> di Markdown Preview Enhanced
     text = re.sub(r"<style>.*?</style>\s*", "", text, flags=re.S)
@@ -124,9 +136,21 @@ def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "") -> str:
     text = demote_headings(text)
     text = re.sub(r"\n{4,}", "\n\n\n", text).strip() + "\n"
 
+    when = updated_on(src)
+    # Copertina: visibile solo in stampa, quindi solo nel PDF
+    cover = ('<div class="sspss-cover">'
+             '<p class="sspss-cover__kicker">Appunti SSPSS &middot; Moduli complementari SUP</p>'
+             f'<p class="sspss-cover__title">{title}</p>'
+             + (f'<p class="sspss-cover__sub">{subject}</p>' if subject and subject != title else "")
+             + f'<p class="sspss-cover__meta">Anno 2026/2027 &middot; aggiornato il {when}</p>'
+             "</div>\n\n")
     href = urllib.parse.quote(pdf_name)
-    button = f"[:material-file-pdf-box: Scarica il PDF]({href}){{ .md-button }}\n\n"
-    return f"---\ntitle: {title}\n---\n\n{crumb}{button}{text}"
+    button = f"[:material-file-pdf-box: Scarica il PDF]({href}){{ .md-button }}\n"
+    if quiz_href:
+        button += f"[:material-head-question: Fai il quiz]({quiz_href}){{ .md-button .sspss-quizlink }}\n"
+    button += "\n"
+    footer = f'\n<p class="sspss-updated">Ultimo aggiornamento: {when}</p>\n'
+    return f"---\ntitle: {title}\n---\n\n{cover}{crumb}{button}{text}{footer}"
 
 
 
@@ -240,7 +264,10 @@ def process_folder(src: Path, dest: Path) -> dict:
         # href del pulsante, relativo all'URL della pagina (use_directory_urls)
         pdf_href = pdf.name if is_index else f"../{pdf.name}"
         current = rel.parts[-1] if is_index else title
-        content = transform_md(md, title, pdf_href, breadcrumb(rel.parts, current, is_index))
+        has_quiz = (src / "quiz.json").exists()
+        quiz_href = ("quiz/" if is_index else "../quiz/") if has_quiz else None
+        content = transform_md(md, title, pdf_href, breadcrumb(rel.parts, current, is_index),
+                               subject=" · ".join(rel.parts), quiz_href=quiz_href)
         if is_index:
             content += material_links(src, dest, paired)
         (dest / out_name).write_text(content, encoding="utf-8")
@@ -256,6 +283,16 @@ def process_folder(src: Path, dest: Path) -> dict:
             "ext": "pdf",
             "url": "/".join(urllib.parse.quote(x) for x in (*rel.parts, pdf.name)),
         })
+
+    # Pagina del quiz (se la cartella ha un quiz.json)
+    if mds and (src / "quiz.json").exists():
+        name = rel.parts[-1]
+        (dest / "quiz.md").write_text(
+            f"---\ntitle: Quiz — {name}\nhide:\n  - toc\n---\n\n"
+            + breadcrumb(rel.parts, "Quiz", False)
+            + f"# Quiz — {name}\n\n"
+            '<div class="sspss-quiz" data-src="../quiz.json" data-back="../"></div>\n',
+            encoding="utf-8")
 
     # Sottocartelle con md: ricorsione (es. Scienze sociali/Etica)
     for sub in subdirs:
@@ -309,7 +346,7 @@ def main():
         )
 
     cards_md = "\n\n".join(cards)
-    n_pages_now = sum(1 for _ in DOCS.rglob("*.md"))
+    n_pages_now = sum(1 for p in DOCS.rglob("*.md") if p.name != "quiz.md")
     (DOCS / "index.md").write_text(
         "---\ntitle: Home\nhide:\n  - navigation\n  - toc\n---\n\n"
         '[:material-folder-download: Centro download](download/){ .md-button .sspss-dlbtn }\n\n'
@@ -340,8 +377,18 @@ def main():
 
 
 
+    # Glossario: pagina con PDF, scaricabile dal centro download
+    gloss = ROOT / "glossario.md"
+    if gloss.exists():
+        (DOCS / "glossario.md").write_text(
+            transform_md(gloss, "Glossario", "../glossario.pdf",
+                         breadcrumb((), "Glossario", False)), encoding="utf-8")
+        PDF_TARGETS.append({"page": "glossario/", "pdf": "glossario.pdf", "title": "Glossario"})
+        DOWNLOADS.append({"subject": "Generale", "sub": None, "folder": None,
+                          "label": "Glossario", "ext": "pdf", "url": "glossario.pdf"})
+
     # Centro download: pagina con checkbox per materia, zip costruito dal browser
-    subj_order = [d.name for d in subjects]
+    subj_order = ["Generale"] + [d.name for d in subjects]
     by_subject: dict[str, list[dict]] = {}
     for item in DOWNLOADS:
         by_subject.setdefault(item["subject"], []).append(item)
@@ -409,10 +456,16 @@ def main():
         "{% block header %}\n{{ super() }}\n"
         '<div class="sspss-mega" id="sspss-mega" hidden>\n'
         '<div class="sspss-mega__grid">\n' + "\n".join(mega_items) + "\n</div>\n"
+        '<div class="sspss-mega__foot">'
         '<a class="sspss-mega__dl" href="{{ base_url }}/download/">'
         '<span class="sspss-mega__icon">{% include ".icons/material/folder-download.svg" %}</span>'
         '<span class="sspss-mega__text"><b>Centro download</b>'
-        "<small>Appunti e materiali in un unico zip</small></span></a>\n</div>\n"
+        "<small>Appunti e materiali in un unico zip</small></span></a>"
+        '<a class="sspss-mega__dl" href="{{ base_url }}/glossario/">'
+        '<span class="sspss-mega__icon">{% include ".icons/material/book-alphabet.svg" %}</span>'
+        '<span class="sspss-mega__text"><b>Glossario</b>'
+        "<small>I termini chiave, materia per materia</small></span></a>"
+        "</div>\n</div>\n"
         "{% endblock %}\n", encoding="utf-8")
 
     # CSS del sito
@@ -716,6 +769,77 @@ body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { displ
 .sspss-mega__dl b { font-family: "Space Grotesk", sans-serif; font-size: .68rem; font-weight: 600; }
 .sspss-mega__dl small { display: block; font-size: .58rem; color: var(--md-default-fg-color--light); }
 
+/* Piede del mega menu: centro download e glossario */
+.sspss-mega__foot { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .5rem; padding-top: .4rem; border-top: 1px solid var(--sspss-hairline); }
+.sspss-mega__foot .sspss-mega__dl { flex: 1 1 14rem; margin-top: 0; border-top: none; border-radius: 12px; }
+
+/* Data di aggiornamento in fondo alla pagina */
+.sspss-updated {
+  margin-top: 2rem !important; padding-top: .7rem;
+  border-top: 1px solid var(--sspss-hairline);
+  font-size: .62rem; color: var(--md-default-fg-color--light);
+}
+
+/* Copertina: solo nel PDF */
+.sspss-cover { display: none; }
+
+/* Pulsante quiz */
+.md-typeset .sspss-quizlink { margin-left: .4rem; display: inline-flex; align-items: center; gap: .35em; }
+.md-typeset .sspss-quizlink .twemoji svg, .sspss-quizlink--rail .twemoji svg { width: 1em; height: 1em; max-height: none; fill: currentColor; }
+.sspss-quizlink--rail {
+  display: flex; align-items: center; justify-content: center; gap: .4em;
+  margin: 0 0 .6rem;
+  padding: .6em 1em;
+  border-radius: 14px;
+  background: var(--sspss-red); color: #fff;
+  font-size: .68rem; font-weight: 600;
+  box-shadow: 0 6px 14px rgba(179, 38, 30, .25);
+  transition: transform .15s, background .15s;
+}
+.sspss-quizlink--rail:hover { background: var(--sspss-red-dark); color: #fff; transform: translateY(-1px); }
+.sspss-quizlink--rail .twemoji { display: inline-flex; }
+
+/* Quiz */
+.sspss-quiz { max-width: 34rem; margin: 1rem 0; }
+.sspss-quiz__head { display: flex; justify-content: space-between; font-size: .62rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--md-default-fg-color--light); }
+.sspss-quiz__bar { height: 4px; margin: .4rem 0 1rem; border-radius: 4px; background: var(--sspss-hairline); overflow: hidden; }
+.sspss-quiz__bar span { display: block; height: 100%; background: var(--sspss-red); transition: width .3s; }
+.sspss-quiz__q { font-family: "Space Grotesk", sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.35 !important; color: var(--sspss-ink); margin-bottom: .9rem !important; }
+.sspss-quiz__opts { display: grid; gap: .45rem; }
+.sspss-quiz__opt {
+  font: inherit; font-size: .72rem; text-align: left; line-height: 1.4;
+  padding: .65rem .9rem; cursor: pointer;
+  background: var(--sspss-surface); color: var(--md-default-fg-color);
+  border: 1px solid var(--sspss-hairline); border-radius: 12px;
+  transition: border-color .15s, background .15s, transform .15s;
+}
+.sspss-quiz__opt:hover:not(:disabled) { border-color: var(--sspss-th-border); background: var(--md-accent-fg-color--transparent); transform: translateY(-1px); }
+.sspss-quiz__opt:disabled { cursor: default; opacity: .6; }
+.sspss-quiz__opt.is-right { opacity: 1; border-color: #2E7D32; background: rgba(46, 125, 50, .12); font-weight: 600; }
+.sspss-quiz__opt.is-wrong { opacity: 1; border-color: var(--sspss-red); background: rgba(179, 38, 30, .1); }
+.sspss-quiz__after { margin-top: .9rem; }
+.sspss-quiz__verdict { font-weight: 700; margin: 0 !important; }
+.sspss-quiz__verdict.is-right { color: #2E7D32; }
+.sspss-quiz__verdict.is-wrong { color: var(--sspss-red); }
+[data-md-color-scheme="slate"] .sspss-quiz__verdict.is-right { color: #81C784; }
+[data-md-color-scheme="slate"] .sspss-quiz__verdict.is-wrong { color: #FF8A75; }
+.sspss-quiz__why { font-size: .7rem; color: var(--md-default-fg-color--light); margin: .2rem 0 .8rem !important; }
+.sspss-quiz__final { font-family: "Space Grotesk", sans-serif; font-size: 3rem; font-weight: 700; line-height: 1 !important; color: var(--sspss-red); margin: 1rem 0 .3rem !important; }
+[data-md-color-scheme="slate"] .sspss-quiz__final { color: #FF8A75; }
+.sspss-quiz__row { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
+.sspss-quiz__back { font-size: .7rem; font-weight: 600; }
+
+/* Ingrandimento immagini */
+.md-content img.sspss-zoomable { cursor: zoom-in; }
+.sspss-lightbox {
+  position: fixed; inset: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.2rem;
+  background: rgba(20, 16, 15, .88);
+  cursor: zoom-out;
+}
+.sspss-lightbox img { max-width: 100%; max-height: 100%; border-radius: 10px; background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+
 /* Barra di progresso lettura */
 #sspss-progress {
   position: fixed; top: 0; left: 0; height: 3px; width: 0;
@@ -993,7 +1117,19 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 .md-typeset h1:first-child, .md-typeset .md-button + h1 { margin-top: .2em; }
 
 @media print {
-  .md-typeset .md-button, .sspss-materials, .sspss-crumb, #sspss-progress { display: none !important; }
+  .md-typeset .md-button, .sspss-materials, .sspss-crumb, #sspss-progress, .sspss-right, .sspss-lightbox { display: none !important; }
+  .sspss-cover {
+    display: flex; flex-direction: column; justify-content: center;
+    height: 245mm;
+    padding: 0 8mm;
+    border-left: 6mm solid #B3261E;
+    break-after: page; page-break-after: always;
+  }
+  .sspss-cover p { margin: 0 !important; }
+  .sspss-cover__kicker { font-size: 11pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #B3261E; }
+  .sspss-cover .sspss-cover__title { font-family: "Space Grotesk", sans-serif; font-size: 40pt; font-weight: 700; line-height: 1.1 !important; letter-spacing: -.02em; color: #1C1917; margin: 8mm 0 4mm !important; }
+  .sspss-cover__sub { font-size: 15pt; color: #57534E; }
+  .sspss-cover .sspss-cover__meta { font-size: 10pt; color: #78716C; margin-top: 30mm !important; }
   .md-content__inner { background: #fff; border: none; box-shadow: none; padding: 0; }
   /* titoli mai staccati dal contenuto che segue */
   .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
@@ -1077,14 +1213,35 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
   }
 
   /* --- Materiali: dal fondo pagina a card richiudibile a destra --- */
+  /* --- Colonna destra (creata solo quando serve) --- */
+  function getRail() {
+    var rail = document.querySelector(".sspss-right");
+    if (rail) return rail;
+    var inner = document.querySelector(".md-main__inner");
+    if (!inner) return null;
+    rail = document.createElement("aside");
+    rail.className = "sspss-right";
+    inner.appendChild(rail);
+    return rail;
+  }
+  function wide() { return window.matchMedia("(min-width: 60em)").matches; }
+
+  /* --- Pulsante "Fai il quiz": su desktop sale nella colonna destra --- */
+  function initQuizLink() {
+    var link = document.querySelector(".md-content a.sspss-quizlink");
+    if (!link || !wide()) return;  // su mobile resta accanto al pulsante PDF
+    var rail = getRail();
+    if (!rail) return;
+    link.classList.add("sspss-quizlink--rail");
+    rail.appendChild(link);
+  }
+
   function initMaterials() {
     var src = document.querySelector(".md-content .sspss-materials");
     if (!src) return;
-    if (!window.matchMedia("(min-width: 60em)").matches) return;  // su mobile resta in pagina
-    var inner = document.querySelector(".md-main__inner");
-    if (!inner) return;
-    var rail = document.createElement("aside");
-    rail.className = "sspss-right";
+    if (!wide()) return;  // su mobile resta in pagina
+    var rail = getRail();
+    if (!rail) return;
     var card = document.createElement("div");
     card.className = "sspss-card";
     var head = src.querySelector(".sspss-materials__title");
@@ -1096,7 +1253,6 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
     head.classList.add("sspss-card__head");
     card.appendChild(src);
     rail.appendChild(card);
-    inner.appendChild(rail);
 
     function apply(hidden) {
       document.body.classList.toggle("sspss-hide-mat", hidden);
@@ -1324,9 +1480,125 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
     });
   }
 
+  /* --- Quiz --- */
+  function shuffle(a) {
+    a = a.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  function initQuiz() {
+    var box = document.querySelector(".sspss-quiz");
+    if (!box) return;
+    fetch(box.dataset.src)
+      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function (all) { run(all); })
+      .catch(function () { box.textContent = "Non riesco a caricare il quiz. Ricarica la pagina."; });
+
+    function run(all) {
+      var qs = shuffle(all), i = 0, score = 0;
+
+      function question() {
+        box.innerHTML = "";
+        var q = qs[i];
+        var head = el("div", "sspss-quiz__head");
+        head.appendChild(el("span", "sspss-quiz__count", "Domanda " + (i + 1) + " di " + qs.length));
+        head.appendChild(el("span", "sspss-quiz__score", "Corrette: " + score));
+        box.appendChild(head);
+        var bar = el("div", "sspss-quiz__bar");
+        var fill = el("span");
+        fill.style.width = (i / qs.length * 100) + "%";
+        bar.appendChild(fill);
+        box.appendChild(bar);
+        box.appendChild(el("p", "sspss-quiz__q", q.q));
+
+        var opts = el("div", "sspss-quiz__opts");
+        var after = el("div", "sspss-quiz__after");
+        shuffle([q.correct].concat(q.wrong)).forEach(function (text) {
+          var b = el("button", "sspss-quiz__opt", text);
+          b.type = "button";
+          b.addEventListener("click", function () {
+            var ok = text === q.correct;
+            if (ok) score += 1;
+            [].forEach.call(opts.children, function (o) {
+              o.disabled = true;
+              if (o.textContent === q.correct) o.classList.add("is-right");
+            });
+            if (!ok) b.classList.add("is-wrong");
+            after.appendChild(el("p", "sspss-quiz__verdict " + (ok ? "is-right" : "is-wrong"),
+              ok ? "Giusto." : "Non proprio."));
+            if (q.why) after.appendChild(el("p", "sspss-quiz__why", q.why));
+            var next = el("button", "md-button sspss-quiz__next",
+              i + 1 < qs.length ? "Avanti" : "Vedi il risultato");
+            next.type = "button";
+            next.addEventListener("click", function () { i += 1; i < qs.length ? question() : result(); });
+            after.appendChild(next);
+            next.focus();
+          });
+          opts.appendChild(b);
+        });
+        box.appendChild(opts);
+        box.appendChild(after);
+      }
+
+      function result() {
+        box.innerHTML = "";
+        var pct = Math.round(score / qs.length * 100);
+        box.appendChild(el("p", "sspss-quiz__final", score + " / " + qs.length));
+        box.appendChild(el("p", "sspss-quiz__msg",
+          pct >= 90 ? "Ottimo, la materia la sai." :
+          pct >= 60 ? "Buona base: ripassa i punti sbagliati." :
+                      "Da ripassare: rileggi gli appunti e riprova."));
+        var again = el("button", "md-button", "Riprova");
+        again.type = "button";
+        again.addEventListener("click", function () { run(all); });
+        var back = el("a", "sspss-quiz__back", "Torna agli appunti");
+        back.href = box.dataset.back || "../";
+        var row = el("div", "sspss-quiz__row");
+        row.appendChild(again); row.appendChild(back);
+        box.appendChild(row);
+      }
+
+      question();
+    }
+  }
+
+  /* --- Ingrandimento delle immagini al clic --- */
+  function initZoom() {
+    var imgs = document.querySelectorAll(".md-content img");
+    if (!imgs.length) return;
+    var layer = null;
+    function close() { if (layer) { layer.remove(); layer = null; } }
+    function open(img) {
+      close();
+      layer = el("div", "sspss-lightbox");
+      var big = document.createElement("img");
+      big.src = img.currentSrc || img.src;
+      big.alt = img.alt || "";
+      layer.appendChild(big);
+      layer.addEventListener("click", close);
+      document.body.appendChild(layer);
+    }
+    [].forEach.call(imgs, function (img) {
+      if (img.closest("a")) return;
+      img.classList.add("sspss-zoomable");
+      img.addEventListener("click", function () { open(img); });
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  }
+
   function init() {
-    initHome(); initMega(); initToc(); initMaterials(); initProgress();
-    initCount(); initStats(); initDownloads();
+    initHome(); initMega(); initToc(); initQuizLink(); initMaterials(); initProgress();
+    initCount(); initStats(); initDownloads(); initQuiz(); initZoom();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

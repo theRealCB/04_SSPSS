@@ -1,0 +1,102 @@
+[
+ {
+  "q": "Chi ha coniato il termine «sociologia»?",
+  "correct": "Auguste Comte",
+  "wrong": [
+   "Émile Durkheim",
+   "Karl Marx",
+   "Max Weber"
+  ],
+  "why": "Prima la chiamava «fisica sociale»."
+ },
+ {
+  "q": "Quali sono i tre stadi della legge di Comte?",
+  "correct": "Teologico, metafisico, positivo",
+  "wrong": [
+   "Primitivo, feudale, capitalista",
+   "Meccanico, organico, anomico",
+   "Personale, sociale, professionale"
+  ],
+  "why": ""
+ },
+ {
+  "q": "Qual è il primo principio di Durkheim?",
+  "correct": "Studia i fatti sociali come cose",
+  "wrong": [
+   "La storia è storia di lotte di classi",
+   "Il tutto è la somma delle parti",
+   "Le idee contano più dell'economia"
+  ],
+  "why": "I fatti sociali sono esterni agli individui e coercitivi."
+ },
+ {
+  "q": "Che cos'è l'anomia?",
+  "correct": "La carenza di valori e norme provocata dal rapido cambiamento sociale",
+  "wrong": [
+   "Un eccesso di regole",
+   "La solidarietà tra simili",
+   "La divisione del lavoro"
+  ],
+  "why": ""
+ },
+ {
+  "q": "Secondo Durkheim, il suicidio egoistico dipende da…",
+  "correct": "Una carenza di integrazione sociale",
+  "wrong": [
+   "Un eccesso di integrazione sociale",
+   "Una carenza di regolazione sociale",
+   "Un eccesso di regolazione sociale"
+  ],
+  "why": "Altruistico = eccesso di integrazione; anomico = carenza di regolazione; fatalistico = eccesso di regolazione."
+ },
+ {
+  "q": "Che cos'è il plusvalore per Marx?",
+  "correct": "Ciò che il lavoro produce oltre il salario, di cui si appropria il capitalista",
+  "wrong": [
+   "Il salario dell'operaio",
+   "Il valore dei mezzi di produzione",
+   "La tassa pagata allo Stato"
+  ],
+  "why": "È alla base dello sfruttamento."
+ },
+ {
+  "q": "Cosa intende Weber con «gabbia d'acciaio»?",
+  "correct": "Una società iper-razionalizzata e burocratizzata che soffoca lo spirito umano",
+  "wrong": [
+   "La prigione di Stanford",
+   "Il conflitto di classe",
+   "La solidarietà meccanica"
+  ],
+  "why": ""
+ },
+ {
+  "q": "Qual è la differenza tra socializzazione primaria e secondaria?",
+  "correct": "La primaria avviene nei primi anni (competenze di base), la secondaria dall'ingresso a scuola (ruoli sociali)",
+  "wrong": [
+   "La primaria avviene a scuola, la secondaria al lavoro",
+   "La primaria è formale, la secondaria informale",
+   "Non c'è differenza"
+  ],
+  "why": ""
+ },
+ {
+  "q": "Cosa dimostra l'esperimento di Asch?",
+  "correct": "Che molti si conformano a una maggioranza unanime anche quando sbaglia palesemente",
+  "wrong": [
+   "Che l'autorità ottiene sempre obbedienza",
+   "Che la paura si può condizionare",
+   "Che i gruppi democratici producono di più"
+  ],
+  "why": "Fino al 75% si conforma almeno una volta: influenza sociale normativa."
+ },
+ {
+  "q": "Quale leadership produce i risultati migliori secondo Lewin?",
+  "correct": "Quella democratica",
+  "wrong": [
+   "Quella autoritaria",
+   "Quella anarchica",
+   "Dipende solo dai membri del gruppo"
+  ],
+  "why": "Tanta qualità, anche se meno quantità di quella autoritaria."
+ }
+]

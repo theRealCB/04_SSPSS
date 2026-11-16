@@ -125,7 +125,8 @@ def updated_on(src: Path) -> str:
 
 
 def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "",
-                 subject: str = "", quiz_href: str | None = None) -> str:
+                 subject: str = "", quiz_href: str | None = None,
+                 gloss_href: str | None = None) -> str:
     text = src.read_text(encoding="utf-8")
     # Via i blocchi <style> di Markdown Preview Enhanced
     text = re.sub(r"<style>.*?</style>\s*", "", text, flags=re.S)
@@ -148,6 +149,8 @@ def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "",
     button = f"[:material-file-pdf-box: Scarica il PDF]({href}){{ .md-button }}\n"
     if quiz_href:
         button += f"[:material-head-question: Fai il quiz]({quiz_href}){{ .md-button .sspss-quizlink }}\n"
+    if gloss_href:
+        button += f"[:material-book-alphabet: Glossario]({gloss_href}){{ .md-button .sspss-glosslink }}\n"
     button += "\n"
     footer = f'\n<p class="sspss-updated">Ultimo aggiornamento: {when}</p>\n'
     return f"---\ntitle: {title}\n---\n\n{cover}{crumb}{button}{text}{footer}"
@@ -249,7 +252,10 @@ def process_folder(src: Path, dest: Path) -> dict:
             shutil.copy2(p, target)
 
     paired = set()
-    main_md = next((m for m in mds if m.stem.lower() == "appunti"), mds[0] if mds else None)
+    notes = [m for m in mds if m.stem.lower() != "glossario"]
+    has_gloss = len(notes) != len(mds)
+    main_md = next((m for m in notes if m.stem.lower() == "appunti"),
+                   notes[0] if notes else (mds[0] if mds else None))
     pages = []
 
     rel = dest.relative_to(DOCS)
@@ -264,10 +270,14 @@ def process_folder(src: Path, dest: Path) -> dict:
         # href del pulsante, relativo all'URL della pagina (use_directory_urls)
         pdf_href = pdf.name if is_index else f"../{pdf.name}"
         current = rel.parts[-1] if is_index else title
-        has_quiz = (src / "quiz.json").exists()
+        is_gloss = md.stem.lower() == "glossario"
+        has_quiz = (src / "quiz.json").exists() and not is_gloss
         quiz_href = ("quiz/" if is_index else "../quiz/") if has_quiz else None
+        gloss_href = (("glossario/" if is_index else "../glossario/")
+                      if has_gloss and not is_gloss else None)
         content = transform_md(md, title, pdf_href, breadcrumb(rel.parts, current, is_index),
-                               subject=" · ".join(rel.parts), quiz_href=quiz_href)
+                               subject=" · ".join(rel.parts), quiz_href=quiz_href,
+                               gloss_href=gloss_href)
         if is_index:
             content += material_links(src, dest, paired)
         (dest / out_name).write_text(content, encoding="utf-8")
@@ -279,7 +289,7 @@ def process_folder(src: Path, dest: Path) -> dict:
             "subject": rel.parts[0],
             "sub": rel.parts[1] if len(rel.parts) > 1 else None,
             "folder": None,
-            "label": f"{title} — appunti",
+            "label": "Glossario" if is_gloss else f"{title} — appunti",
             "ext": "pdf",
             "url": "/".join(urllib.parse.quote(x) for x in (*rel.parts, pdf.name)),
         })
@@ -346,7 +356,7 @@ def main():
         )
 
     cards_md = "\n\n".join(cards)
-    n_pages_now = sum(1 for p in DOCS.rglob("*.md") if p.name != "quiz.md")
+    n_pages_now = sum(1 for p in DOCS.rglob("*.md") if p.name not in ("quiz.md", "glossario.md"))
     (DOCS / "index.md").write_text(
         "---\ntitle: Home\nhide:\n  - navigation\n  - toc\n---\n\n"
         '[:material-folder-download: Centro download](download/){ .md-button .sspss-dlbtn }\n\n'
@@ -377,18 +387,8 @@ def main():
 
 
 
-    # Glossario: pagina con PDF, scaricabile dal centro download
-    gloss = ROOT / "glossario.md"
-    if gloss.exists():
-        (DOCS / "glossario.md").write_text(
-            transform_md(gloss, "Glossario", "../glossario.pdf",
-                         breadcrumb((), "Glossario", False)), encoding="utf-8")
-        PDF_TARGETS.append({"page": "glossario/", "pdf": "glossario.pdf", "title": "Glossario"})
-        DOWNLOADS.append({"subject": "Generale", "sub": None, "folder": None,
-                          "label": "Glossario", "ext": "pdf", "url": "glossario.pdf"})
-
     # Centro download: pagina con checkbox per materia, zip costruito dal browser
-    subj_order = ["Generale"] + [d.name for d in subjects]
+    subj_order = [d.name for d in subjects]
     by_subject: dict[str, list[dict]] = {}
     for item in DOWNLOADS:
         by_subject.setdefault(item["subject"], []).append(item)
@@ -461,10 +461,6 @@ def main():
         '<span class="sspss-mega__icon">{% include ".icons/material/folder-download.svg" %}</span>'
         '<span class="sspss-mega__text"><b>Centro download</b>'
         "<small>Appunti e materiali in un unico zip</small></span></a>"
-        '<a class="sspss-mega__dl" href="{{ base_url }}/glossario/">'
-        '<span class="sspss-mega__icon">{% include ".icons/material/book-alphabet.svg" %}</span>'
-        '<span class="sspss-mega__text"><b>Glossario</b>'
-        "<small>I termini chiave, materia per materia</small></span></a>"
         "</div>\n</div>\n"
         "{% endblock %}\n", encoding="utf-8")
 
@@ -799,7 +795,41 @@ body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { displ
 .sspss-quizlink--rail:hover { background: var(--sspss-red-dark); color: #fff; transform: translateY(-1px); }
 .sspss-quizlink--rail .twemoji { display: inline-flex; }
 
+/* Pulsante glossario */
+.md-typeset .sspss-glosslink { margin-left: .4rem; display: inline-flex; align-items: center; gap: .35em; }
+.md-typeset .sspss-glosslink .twemoji svg, .sspss-glosslink--rail .twemoji svg { width: 1em; height: 1em; max-height: none; fill: currentColor; }
+.sspss-glosslink--rail {
+  display: flex; align-items: center; justify-content: center; gap: .4em;
+  margin: 0 0 .6rem; padding: .55em 1em;
+  border-radius: 14px;
+  background: var(--sspss-surface); color: var(--md-typeset-a-color);
+  border: 1px solid var(--sspss-th-border);
+  font-size: .68rem; font-weight: 600;
+  transition: transform .15s, background .15s;
+}
+.sspss-glosslink--rail:hover { background: var(--md-accent-fg-color--transparent); transform: translateY(-1px); }
+.sspss-glosslink--rail .twemoji { display: inline-flex; }
+
 /* Quiz */
+.sspss-quiz__stop {
+  font: inherit; font-size: .6rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  padding: .15em .8em; cursor: pointer;
+  background: none; color: var(--md-default-fg-color--light);
+  border: 1px solid var(--sspss-hairline); border-radius: 999px;
+}
+.sspss-quiz__stop:hover { color: var(--md-typeset-a-color); border-color: var(--sspss-th-border); }
+.sspss-quiz__head { align-items: center; }
+.sspss-quiz__partial { font-size: .66rem; color: var(--md-default-fg-color--light); }
+.sspss-quiz__label { font-size: .58rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--md-default-fg-color--light); margin: 1.1rem 0 .3rem !important; }
+.md-typeset ul.sspss-quiz__review { list-style: none; margin: 0; padding: 0; }
+.md-typeset ul.sspss-quiz__review li {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  margin: 0; padding: .45rem .1rem;
+  border-bottom: 1px solid var(--sspss-hairline);
+  font-size: .72rem;
+}
+.sspss-quiz__review a { font-weight: 600; }
+.sspss-quiz__review span { flex: none; font-size: .62rem; color: var(--md-default-fg-color--light); }
 .sspss-quiz { max-width: 34rem; margin: 1rem 0; }
 .sspss-quiz__head { display: flex; justify-content: space-between; font-size: .62rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--md-default-fg-color--light); }
 .sspss-quiz__bar { height: 4px; margin: .4rem 0 1rem; border-radius: 4px; background: var(--sspss-hairline); overflow: hidden; }
@@ -1235,6 +1265,14 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
     link.classList.add("sspss-quizlink--rail");
     rail.appendChild(link);
   }
+  function initGlossLink() {
+    var link = document.querySelector(".md-content a.sspss-glosslink");
+    if (!link || !wide()) return;
+    var rail = getRail();
+    if (!rail) return;
+    link.classList.add("sspss-glosslink--rail");
+    rail.appendChild(link);
+  }
 
   function initMaterials() {
     var src = document.querySelector(".md-content .sspss-materials");
@@ -1504,15 +1542,39 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
       .then(function (all) { run(all); })
       .catch(function () { box.textContent = "Non riesco a caricare il quiz. Ricarica la pagina."; });
 
+    function norm(t) { return String(t).toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g, ""); }
+
+    // Capitoli degli appunti: titolo -> ancora, letti dalla pagina della materia
+    var back = box.dataset.back || "../";
+    var anchors = fetch(back)
+      .then(function (r) { return r.ok ? r.text() : ""; })
+      .then(function (html) {
+        var map = {};
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        doc.querySelectorAll(".md-content h1[id], .md-content h2[id], .md-content h3[id], .md-content h4[id], .md-content h5[id]")
+          .forEach(function (h) {
+            var c = h.cloneNode(true);
+            c.querySelectorAll(".headerlink").forEach(function (x) { x.remove(); });
+            var k = norm(c.textContent);
+            if (!(k in map)) map[k] = h.id;
+          });
+        return map;
+      })
+      .catch(function () { return {}; });
+
     function run(all) {
-      var qs = shuffle(all), i = 0, score = 0;
+      var qs = shuffle(all), i = 0, log = [];
+      function score() { return log.filter(function (a) { return a.ok; }).length; }
 
       function question() {
         box.innerHTML = "";
         var q = qs[i];
         var head = el("div", "sspss-quiz__head");
         head.appendChild(el("span", "sspss-quiz__count", "Domanda " + (i + 1) + " di " + qs.length));
-        head.appendChild(el("span", "sspss-quiz__score", "Corrette: " + score));
+        var stop = el("button", "sspss-quiz__stop", "Termina ora");
+        stop.type = "button";
+        stop.addEventListener("click", result);
+        head.appendChild(stop);
         box.appendChild(head);
         var bar = el("div", "sspss-quiz__bar");
         var fill = el("span");
@@ -1528,7 +1590,7 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
           b.type = "button";
           b.addEventListener("click", function () {
             var ok = text === q.correct;
-            if (ok) score += 1;
+            log.push({ cap: q.cap || "", ok: ok });
             [].forEach.call(opts.children, function (o) {
               o.disabled = true;
               if (o.textContent === q.correct) o.classList.add("is-right");
@@ -1552,19 +1614,66 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
 
       function result() {
         box.innerHTML = "";
-        var pct = Math.round(score / qs.length * 100);
-        box.appendChild(el("p", "sspss-quiz__final", score + " / " + qs.length));
-        box.appendChild(el("p", "sspss-quiz__msg",
-          pct >= 90 ? "Ottimo, la materia la sai." :
-          pct >= 60 ? "Buona base: ripassa i punti sbagliati." :
-                      "Da ripassare: rileggi gli appunti e riprova."));
-        var again = el("button", "md-button", "Riprova");
+        var done = log.length, right = score();
+        var row = el("div", "sspss-quiz__row");
+        var again = el("button", "md-button", done ? "Riprova" : "Ricomincia");
         again.type = "button";
         again.addEventListener("click", function () { run(all); });
-        var back = el("a", "sspss-quiz__back", "Torna agli appunti");
-        back.href = box.dataset.back || "../";
-        var row = el("div", "sspss-quiz__row");
-        row.appendChild(again); row.appendChild(back);
+        var home = el("a", "sspss-quiz__back", "Torna agli appunti");
+        home.href = back;
+        row.appendChild(again); row.appendChild(home);
+
+        if (!done) {
+          box.appendChild(el("p", "sspss-quiz__msg", "Non hai risposto a nessuna domanda, quindi non c'è niente da valutare."));
+          box.appendChild(row);
+          return;
+        }
+        var pct = Math.round(right / done * 100);
+        box.appendChild(el("p", "sspss-quiz__final", right + " / " + done));
+        if (done < qs.length) {
+          box.appendChild(el("p", "sspss-quiz__partial",
+            "Hai terminato prima: valutazione su " + done + " domande delle " + qs.length + " disponibili."));
+        }
+
+        // Analisi per capitolo
+        var caps = {}, order = [];
+        log.forEach(function (a) {
+          if (!caps[a.cap]) { caps[a.cap] = { ok: 0, ko: 0 }; order.push(a.cap); }
+          caps[a.cap][a.ok ? "ok" : "ko"] += 1;
+        });
+        var weak = order.filter(function (c) { return caps[c].ko > 0; })
+          .sort(function (x, y) { return caps[y].ko - caps[x].ko; });
+        var strong = order.filter(function (c) { return caps[c].ko === 0; });
+
+        var msg;
+        if (!weak.length) msg = "Tutte giuste: su questi argomenti sei solido.";
+        else if (pct >= 80) msg = "Buon risultato. Gli errori sono concentrati in " +
+          (weak.length === 1 ? "un solo capitolo" : weak.length + " capitoli") + ": basta un ripasso mirato.";
+        else if (pct >= 50) msg = "Base discreta, ma " + (weak.length === 1 ? "un capitolo va rivisto" : weak.length + " capitoli vanno rivisti") + " prima di sentirti sicuro.";
+        else msg = "C'è ancora da lavorare: conviene rileggere i capitoli qui sotto e poi riprovare.";
+        if (weak.length && strong.length) {
+          msg += " Vanno bene invece " + strong.length + (strong.length === 1 ? " capitolo" : " capitoli") + " su " + order.length + ".";
+        }
+        box.appendChild(el("p", "sspss-quiz__msg", msg));
+
+        if (weak.length) {
+          box.appendChild(el("p", "sspss-quiz__label", "Da ripassare"));
+          var ul = el("ul", "sspss-quiz__review");
+          weak.forEach(function (c) {
+            var li = el("li");
+            var a = el("a", null, c || "Appunti");
+            a.href = back;
+            li.appendChild(a);
+            var n = caps[c].ko, tot = caps[c].ko + caps[c].ok;
+            li.appendChild(el("span", null, n + (n === 1 ? " errore" : " errori") + " su " + tot));
+            ul.appendChild(li);
+            anchors.then(function (map) {
+              var id = map[norm(c)];
+              if (id) a.href = back + "#" + id;
+            });
+          });
+          box.appendChild(ul);
+        }
         box.appendChild(row);
       }
 
@@ -1597,7 +1706,7 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
   }
 
   function init() {
-    initHome(); initMega(); initToc(); initQuizLink(); initMaterials(); initProgress();
+    initHome(); initMega(); initToc(); initQuizLink(); initGlossLink(); initMaterials(); initProgress();
     initCount(); initStats(); initDownloads(); initQuiz(); initZoom();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

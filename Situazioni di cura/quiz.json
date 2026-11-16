@@ -7,7 +7,8 @@
    "A 0 °C",
    "Dai 17 °C"
   ],
-  "why": "Tra 17 e 39 °C la proliferazione è veloce; sotto i 5 °C non crescono ma non muoiono."
+  "why": "Tra 17 e 39 °C la proliferazione è veloce; sotto i 5 °C non crescono ma non muoiono.",
+  "cap": "Importanza delle temperature"
  },
  {
   "q": "Qual è la differenza tra goccioline e trasmissione aerea?",
@@ -17,7 +18,8 @@
    "La trasmissione aerea avviene solo per contatto",
    "Non c'è differenza"
   ],
-  "why": ""
+  "why": "",
+  "cap": "Mezzi di trasmissione"
  },
  {
   "q": "Quale mascherina protegge dalla trasmissione aerea?",
@@ -27,7 +29,8 @@
    "Nessuna",
    "La visiera"
   ],
-  "why": "La chirurgica protegge dalle goccioline."
+  "why": "La chirurgica protegge dalle goccioline.",
+  "cap": "Mezzi di protezione"
  },
  {
   "q": "Quale percentuale delle infezioni legate ad atti di cura viaggia sulle mani?",
@@ -37,7 +40,8 @@
    "Circa il 30%",
    "Circa il 50%"
   ],
-  "why": ""
+  "why": "",
+  "cap": "Un cambio di prospettiva"
  },
  {
   "q": "Qual è il metodo più efficace per eliminare i germi dalle mani?",
@@ -47,7 +51,8 @@
    "Il lavaggio con sapone",
    "Indossare i guanti"
   ],
-  "why": "99,999% della flora transitoria in 20 secondi."
+  "why": "99,999% della flora transitoria in 20 secondi.",
+  "cap": "Mezzi di protezione"
  },
  {
   "q": "I guanti sostituiscono la disinfezione delle mani?",
@@ -57,7 +62,8 @@
    "Sì, se sono sterili",
    "Solo con pazienti infetti"
   ],
-  "why": "Il 25-30% dei germi passa comunque."
+  "why": "Il 25-30% dei germi passa comunque.",
+  "cap": "Mezzi di protezione"
  },
  {
   "q": "Quali sono i quattro elementi del cerchio di Sinner?",
@@ -67,7 +73,8 @@
    "Pulizia, disinfezione, sterilizzazione, asepsi",
    "Contatto, goccioline, aria, sangue"
   ],
-  "why": "Se ne togli uno, devi compensare con gli altri."
+  "why": "Se ne togli uno, devi compensare con gli altri.",
+  "cap": "Mezzi di protezione"
  },
  {
   "q": "Cos'è la flora residente?",
@@ -77,7 +84,8 @@
    "I germi presenti solo in ospedale",
    "I germi che causano sempre malattia"
   ],
-  "why": "Quella transitoria è acquisita durante le attività quotidiane."
+  "why": "Quella transitoria è acquisita durante le attività quotidiane.",
+  "cap": "I microrganismi (germi)"
  },
  {
   "q": "Oggi si ragiona per…",
@@ -87,7 +95,8 @@
    "Luogo più o meno pulito",
    "Germi buoni e germi cattivi"
   ],
-  "why": "Non è il luogo che crea l'infezione, ma l'azione."
+  "why": "Non è il luogo che crea l'infezione, ma l'azione.",
+  "cap": "Un cambio di prospettiva"
  },
  {
   "q": "Fino a dove va riempito un contenitore per taglienti?",
@@ -97,6 +106,7 @@
    "Fino a metà",
    "Non c'è un limite"
   ],
-  "why": ""
+  "why": "",
+  "cap": "Biancheria, taglienti e rifiuti sanitari"
  }
 ]

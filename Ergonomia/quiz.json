@@ -7,17 +7,8 @@
    "Nella zona toracica",
    "È uguale ovunque"
   ],
-  "why": "Cervicale ~5 mm, toracica ~7 mm, lombare ~10 mm: deve supportare più peso."
- },
- {
-  "q": "Com'è fatto il disco intervertebrale?",
-  "correct": "Nucleo polposo al centro e anelli fibrosi all'esterno",
-  "wrong": [
-   "Solo tessuto osseo",
-   "Solo cartilagine compatta",
-   "Un legamento unico"
-  ],
-  "why": ""
+  "why": "Cervicale ~5 mm, toracica ~7 mm, lombare ~10 mm: deve supportare più peso.",
+  "cap": "Ossa"
  },
  {
   "q": "Il Lower Back Pain è…",
@@ -27,17 +18,8 @@
    "Sempre causato da un'ernia",
    "Raro negli adulti"
   ],
-  "why": "È molto comune e nella maggior parte dei casi non è grave (cause serie <1%)."
- },
- {
-  "q": "Quanto è diffuso il LBP negli adulti?",
-  "correct": "Circa il 37%",
-  "wrong": [
-   "Circa il 5%",
-   "Circa il 70%",
-   "Meno dell'1%"
-  ],
-  "why": "Tra 9 e 18 anni è intorno al 40%."
+  "why": "È molto comune e nella maggior parte dei casi non è grave (cause serie <1%).",
+  "cap": "Lower back pain (LBP)"
  },
  {
   "q": "Cosa significa ergonomia?",
@@ -47,17 +29,8 @@
    "Sollevare pesi nel modo più veloce",
    "Adattare l'operatore al contesto"
   ],
-  "why": "Il contesto viene adattato all'operatore, non viceversa."
- },
- {
-  "q": "Quali sono i tre livelli dell'ergonomia?",
-  "correct": "Analisi, progettazione, prevenzione",
-  "wrong": [
-   "Diagnosi, terapia, riabilitazione",
-   "Forza, equilibrio, resistenza",
-   "Postura, movimento, riposo"
-  ],
-  "why": ""
+  "why": "Il contesto viene adattato all'operatore, non viceversa.",
+  "cap": "Cosa significa ergonomia"
  },
  {
   "q": "Che cos'è il centro di gravità?",
@@ -67,17 +40,8 @@
    "L'area di contatto con il terreno",
    "Il peso totale del corpo"
   ],
-  "why": "C'è equilibrio quando il centro di gravità cade dentro la base d'appoggio."
- },
- {
-  "q": "Perché conviene una base d'appoggio ampia?",
-  "correct": "Dà più stabilità",
-  "wrong": [
-   "Fa consumare meno ossigeno",
-   "Riduce la forza di gravità",
-   "Allunga i muscoli"
-  ],
-  "why": ""
+  "why": "C'è equilibrio quando il centro di gravità cade dentro la base d'appoggio.",
+  "cap": "Termini utili"
  },
  {
   "q": "Cosa bisogna evitare durante uno sforzo?",
@@ -87,16 +51,7 @@
    "Usare il peso del corpo",
    "Spiegare il movimento al paziente"
   ],
-  "why": "Si respira durante gli sforzi."
- },
- {
-  "q": "Perché si usano le capacità del paziente durante una mobilizzazione?",
-  "correct": "Per favorirne l'empowerment e la partecipazione attiva",
-  "wrong": [
-   "Per fare più in fretta",
-   "Perché l'operatore non deve mai toccarlo",
-   "Per evitare di spiegargli il movimento"
-  ],
-  "why": "Dare tempo, spiegare, chiarire le aspettative, rassicurare."
+  "why": "Si respira durante gli sforzi.",
+  "cap": "Strategie attuabili"
  }
 ]

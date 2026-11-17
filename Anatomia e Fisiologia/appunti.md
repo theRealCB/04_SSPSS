@@ -17,15 +17,17 @@ h1.no-num { counter-increment: none; }
 h1.no-num::before { content: none; }
 </style>
 
-
 <div style="page-break-after: always;"></div>
 
 # INTRODUZIONE
+
 ## La composizione del corpo umano
+
 - Uomo &rarr; 70% della massa è H~2~O
 - Donna &rarr; 55% della massa è H~2~O (maggior tessuto adiposo)
 
 H~2~O si trova in 2 soluzioni:
+
 1. **Liquido intracellulare**: all'interno della cellula (citoplasma, ~66% dell'acqua)
 2. **Liquido extracellulare**: all'esterno della cellula, diviso in:
     - ==3 litri== plasma sanguigno
@@ -35,8 +37,10 @@ H~2~O si trova in 2 soluzioni:
 <div style="page-break-after: always;"></div>
 
 ## Il metabolismo
+
 Insieme di reazioni chimiche che avvengono all'interno delle cellule
 Si divide in:
+
 - **Anabolismo**: sintesi, produzione di molecole (monomeri &rarr; polimeri)
     Un esempio è la **condensazione** (o disidratazione):
     >**Condensazione** in breve: due molecole per unirsi liberano un gruppo ==OH<sup>-</sup>==, mentre l'altra libera ==H<sup>+</sup>==, che si uniscono a formare ==H~2~O==  
@@ -50,21 +54,26 @@ Si divide in:
 <div style="page-break-after: always;"></div>
 
 ## Le sostanze organiche
+
 Si parla di **macromolecole** (letteralmente, grandi molecole) o **biomolecole** (molecole della vita, prodotte dai viventi)
 Indicate anche come **polimeri** se composte da tante molecole uguali collegate (chiamate **monomeri**)
+
 ### I lipidi
+
 - **Acidi grassi**: lunghe catene di carbonio con un'estremità che lega OH e O (con doppio legame)
 In generale si tratta di molecole che non hanno affinità con l'acqua (molecole ==apolari== o ==idrofobe==)
 <br>
 
 - **I trigliceridi**: sono costituiti da 1 molecola di glicerolo unita a tre acidi grassi. Possono essere ==saturi== (tutti i carboni degli acidi grassi fanno legami singoli con C o H) o ==insaturi== (alcuni carboni degli acidi grassi fanno legami doppi o tripli tra di loro)
 <img src="imm/pagina03_img1.png" width="600">
+
 <br>
 
 - **I fosfolipidi** caratterizzati da ==testa idrofila== contenente gruppo fosfato e   due code di acidi grassi (idrofobe). Da pensare come un trigliceride, solo che un acido grasso è sostituito da un fosfato
     > La membrana cellulare è costituita da un **doppio strato fosfolipidico**: le teste si orientano verso l'esterno e l'interno rispettivamente ("verso l'acqua"). di conseguenza le code stanno una contro l'altra
-    
+
     <img src="imm/pagina04_img1.png" width="600">
+
 <br>
 
 - **Gli steroidi**: Composti da uno scheletro di base composto da 4 anelli di carbonio (Colesterolo)
@@ -76,16 +85,20 @@ In generale si tratta di molecole che non hanno affinità con l'acqua (molecole 
     <img src="imm/pagina04_img2.png" width="300">
 
 ### Le proteine
+
 Sono polimeri, dove i monomeri sono gli amminoacidi (20 tipi)
 Gli **amminoacidi** sono composti da un ==gruppo amminico==, un ==gruppo acido== e una ==catena laterale== (unica parte che cambia tra un aa e un altro).
+
 - ==12 non essenziali==, ovvero prodotte dal nostro corpo
 - ==8 essenziali==, da assumere con la dieta, dall'esterno
->Approfondimento: 
+
+>Approfondimento:
     - **Acido**: soluzione che contiene ioni liberi H<sup>+</sup>
-    - **Base**: soluzione che contiene OH<sup>-</sup> 
+    - **Base**: soluzione che contiene OH<sup>-</sup>
 
 Ogni proteina svolge la sua funzione grazie alla sua tridimensionalità
 Funzioni delle proteine:
+
 - **Proteine strutturali**: collagene (sostegno)
 - **Proteine regolatrici**: ormoni (insulina,...)
 - **Proteine di trasporto**: emoglobina (trasporta O<sub>2</sub> nel sangue)
@@ -98,17 +111,19 @@ Funzioni delle proteine:
     <img src="imm/pagina06_img2.png" width="200">
 </span>
 
-
 ### Gli zuccheri (carboidrati)
+
 - **Monosaccaridi**: unità base degli zuccheri (monomero) &rarr; glucosio
 - **Disaccardi**: formati da 2 monosaccaridi (glucosio + fruttosio &rarr;saccarosio)
 - **Polisaccaridi**: formati da molti monosaccaridi. (amido, cellulosa, glicogeno). Fungono da riserva di energia
 <span align="center">
     <img src="imm/pagina05_img1.png" width="400">
     <img src="imm/pagina05_img2.png" width="400">
+
 </span>
 
 ### Gli acidi nucleici
+
 **DNA** e **RNA** composti da **nucleotide** (monomero)
 
 I nucleotidi sono formati da uno ==zucchero pentoso== (5 C), che lega un ==gruppo fosfato== e una ==base azotata==
@@ -135,6 +150,7 @@ Gli acidi nucleici si occupano del flusso di informazioni genetiche
 <div style="page-break-after: always;"></div>
 
 ## La membrana cellulare
+
 Ha una **permeabilita selettiva**. Alcune molecole passano naturalmente, alcune hanno bisogno di canali di trasporto attivo o passivo, altre invece non passano del tutto
 
 | Passa naturalmente | Bisogno di canali | Non passano |
@@ -148,9 +164,12 @@ Ha una **permeabilita selettiva**. Alcune molecole passano naturalmente, alcune 
 <br>
 
 ### I trasporti cellulari
+
 #### Trasporti passivi
+
 Non necessitano energia, atomi e molecole si spostano semplicemente secondo gradiente di concentrazione ("da dove ce n'è di più a dove ce n'è di meno"). Si dice anche che tendono a un ==equilibrio dinamico==
 Tipi di trasporti passivi:
+
 - **Diffusione semplice**: Molecole che semplicemente attraversano la membrana
 - **Diffusione facilitata**: Speciali proteine trans-membrana specifiche (ogni molecola ha la sua proteina corrispondente ==specifica==)
 <img src="imm/pagina08_img2.png" width="300">
@@ -161,21 +180,26 @@ Tipi di trasporti passivi:
 <br>
 
 #### Energia nelle cellule
+>
 >**ATP**= **A**denosina-**T**ri**P**hosfato &rarr; Principalmente prodotta nel mitocondrio
 
 ATP come scorta di energia chimica a rapido rilascio. Più nel dettaglio, quando ATP perde un gruppo fosfato rilascia energia. Per rigenerare ATP da ADP + gruppo fosfato, si usa energia (dal glucosio principalmente, ma anche da altre fonti) per ricreare ATP
 
 > ATP &harr; ADP + P + Energia
+>
 #### Trasporti attivi
+
 Richiede energia, solitamente spostamento ==contro gradiente==
 
 ##### La pompa Sodio (Na<sup>+</sup>) Potassio (K<sup>+</sup>)
+
 Esempio di ==trasporto attivo== (detta anche Na<sup>+</sup>/K<sup>+</sup> ATPasi)
 
 Scopo: Mantenere il tono e volume cellulare (cosi che la cellula non esploda) &rarr; mantiene equilibrio osmotico e pressione
 >Curiosità: serve anche nei neuroni e nelle cellule muscolari per mantenere il potenziale elettrico (cosi che rimangano eccitabili e possano trasmettere impulsi elettrici)
 
 Ecco il funzionamento:
+
 - Situazione di partenza: Alta concentrazione di K<sup>+</sup> all'interno della cellula, mentre all'esterno bassa. Opposto invece per Na<sup>+</sup>, molto concentrato all'esterno della cellula, ma poco all'interno.
 - Essendo ioni caricati non possono diffondere attraverso la membrana cellulare, percio avviene osmosi &rarr; tendenza a creare un equilibrio
 - La pompa sodio/potassio sposta Na<sup>+</sup> e K<sup>+</sup> contro gradiente usando ATP (espelle 3 Na<sup>+</sup> e "importa" 2 K<sup>+</sup>)
@@ -185,20 +209,22 @@ Ecco il funzionamento:
 <br>
 
 ##### Eso/Endo-Citosi
+
 Entrambi richiedono ustilizzo di energia per la creazione/distruzione della vescicola e per il trasporto della vescicola nella cellula
+
 - **Esocitosi**: Vescicola interna alla cellula, composta da doppio strato fosfolipidico, contenente molecole molto grandi, si fonde con la membrana cellulare e rilascia all'esterno il contenuto
 - **Endocitosi**: la membrana cellulare forma una fossetta in cui "ingloba" la macromolecola all'esterno, e va a formare una vescicola all'interno della cellula
-    >Endocitosi si distingue in **fagocitosi** per materiale solido e **pinocitosi** per materiale liquido 
+    >Endocitosi si distingue in **fagocitosi** per materiale solido e **pinocitosi** per materiale liquido
 
 <img src="imm/pagina10_img1.png" width="300">
- 
+
  ---
 
 <div style="page-break-after: always;"></div>
 
-## La cellula 
-La più piccola unita dei viventi. Si dividono in **procarioti** ed **eucarioti** 
+## La cellula
 
+La più piccola unita dei viventi. Si dividono in **procarioti** ed **eucarioti**
 
 | Caratteristica | Cellula Procariote | Cellula Eucariote |
 | :--- | :--- | :--- |
@@ -213,20 +239,24 @@ La più piccola unita dei viventi. Si dividono in **procarioti** ed **eucarioti*
 <img src="imm/pagina10_img2.png" width="300">
 
 ### Gli organelli
+
 Di seguito elenco alcuni degli **organelli** presenti nelle cellule Eucariote
+
 - **Nucleo**: contiene materiale genetico (DNA)
 - **Ribosomi**: Macromolecole che traducono mRNA in proteine (essenziali per la sintesi proteica)
 - **Reticolo Endoplasmatico**: insieme di membrane che ricoprono il nucleoide  
-    - Reticolo Endoplasmatico **Rugoso (RER)**: rete di membrane coperta da ribosomi
-    - Reticolo Endoplasmatico **Liscio (REL)**: privo di ribosomi, sintetizza lipidi e disintossica la cellula
+  - Reticolo Endoplasmatico **Rugoso (RER)**: rete di membrane coperta da ribosomi
+  - Reticolo Endoplasmatico **Liscio (REL)**: privo di ribosomi, sintetizza lipidi e disintossica la cellula
 - **Apparato di Golgi**: detto "il centro logistico" della cellula, modifica, impachetta e ditribuisce molecole in vescicole (dette **lisosomi** se contengono enzimi)
 - **Mitocondio**: organello con membrana dove avviene respirazione cellulare
 
-
 ### La respirazione cellulare
+
 la respirazione cellulare è la produzione di ATP
 Due strategie:
+
 #### Respirazione cellulare **aerobica** (utilizza O2)
+
 - Il processo inizia nel citoplasma (1.glicolisi)
 - Il resto avviene nel mitocondrio (2.ciclo di Krebs + 3.fosforilazione ossidativa)
 - reazione chimica complessiva della respiratione cellulare:
@@ -236,6 +266,7 @@ Due strategie:
     >in breve: *Trigliceride &rarr; Acetyl-CoA*
 
 Le tre tappe della respirazione cellulare aerobica:
+
 1. Glicolisi: (<span style="color:red">avviene nel citoplasma</span>):
     > In breve: *Glucosio &rarr; 2 Piruvato &rarr; acetyl-CoA*
 
@@ -249,18 +280,16 @@ Le tre tappe della respirazione cellulare aerobica:
     Produzione di <span style="color:red">2 ATP</span>
     Nel mitocondio il piruvato viene trasformato in **Acetyl-CoA** (Coenzima-A)
     >Coenzima-A: è un cofattore (molecola organica) che consente agli enzimi di svolgere efficacemtne la loro funzione
-    
+
     <br>
 
 2. Ciclo di Krebs (nel mitocondrio)
-    >In breve: 2 piruvato &rarr; Acetyl-CoA &rarr; 6 NADH 
+    >In breve: 2 piruvato &rarr; Acetyl-CoA &rarr; 6 NADH
 
     Il ciclo di Krebs è una serie di reazioni chimiche che consente all'organismo di produrre <span style="color:red">2ATP</span>
     È durante questa tappa che si forma CO<sub>2</sub>
     (NADH si occupa di trasportare gli elettroni)
 <br>
-
-
 
 3. Fosforilazione ossidativa (nel mitocondrio)
 Si tratta di un trasporto di elettroni .
@@ -271,6 +300,7 @@ Durante questo processo si producono <span style="color:red">34 ATP</span> e H<s
 <br>
 
 #### Respirazione cellulare **anaerobica** (senza O2)
+
 Esempio: i globuli rossi non possiedono mitocondri, ma devono comunque produrre ATP
 
 - metabolismo anaerobico **lattacido**
@@ -291,23 +321,23 @@ Esempio: i globuli rossi non possiedono mitocondri, ma devono comunque produrre 
     Sistema utilizzato principalmente dai muscoli
     Chiamato così perche partecipa alla reazione una molecola di creatina con attaccato un fosfato (CP)
     >in breve: fosfato di CP viene trasferito a un ADP &rarr; si crea una molecola di creatina e una di ATP
-    
 
-
-    Più creatina è presente nei muscoli, piu CP viene formato nel muscolo. 
+    Più creatina è presente nei muscoli, piu CP viene formato nel muscolo.
     Meccanismo rapidissimo
-
 
 <div style="page-break-after: always;"></div>
 
 ## L'organizzazione gerarchica del corpo umano
+
 ### Da atomi a organismo
+
 <img src="imm/pagina12_img2.png" width="400">
 
 >Diversi livelli di organizzazione:
 Atomi &rarr; molecole &rarr; cellule &rarr; tessuti &rarr; organi &rarr; apparati (o sistemi) &rarr; organismo
 
 Alcuni dettagli:
+
 - un organo è formato da ==due o più tessuti==
 - un organo ha una o più funzioni
 - più organi vanno a formare un sistema/apparato
@@ -322,10 +352,10 @@ Alcuni dettagli:
 - Tra cellule e sangue avvengono scambi di glucosio, O<sub>2</sub> (esce dal sangue ed entra nelle cellule), mentre CO<sub>2</sub> e rifiuti azotati (prodotti del metabolismo delle proteine).
 - I rifiuti azotati sono tossici (causano la morte delle cellule) e vanno rimossi. Entrano nel sangue e poi smaltiti dall'apparato escretore (dai reni)
 
-
 <div style="clear: both;"></div>
 
 #### CO<sub>2</sub> nell'organismo
+
 Perche il corpo deve espellere immediatamente CO<sub>2</sub>? Perche ==acidifica il sangue==
 CO<sub>2</sub> + H~2~O &rarr; H<sub>2</sub>CO<sub>3</sub>(acido carbonico) &rarr; HCO<sub>3</sub><sup>−</sup>(ione carbonato) + H<sup>+</sup>
 Se la concentrazione di CO<sub>2</sub> è troppo alta le proteine si denaturano (perdono la loro tridimensionalità)
@@ -333,6 +363,7 @@ Se la concentrazione di CO<sub>2</sub> è troppo alta le proteine si denaturano 
 CO<sub>2</sub> serve comunque come regolatore di vasodilatazione nel cervello
 
 ### I tessuti del corpo umano
+
 <img src="imm/pagina13_img2.png" width="300" style="float: left; margin-right: 30px;">
 
 In questo esempio vediamo come lo stomaco è composto da diversi tipi di tessuti
@@ -340,30 +371,32 @@ In questo esempio vediamo come lo stomaco è composto da diversi tipi di tessuti
 <div style="clear: both;"></div>
 
 #### Il tessuto epiteliale
+
 Tessuto epiteliale composto da cellule adagiate su una ==membrana basale==
 **Membrana basale**: in parte prodotta da cellule del tessuto epiteliale e in parte da cellule del tessuto connettivo
-> Nell'immagine sopra, dettaglio del tessuto epiteliale: la membrana basale è indicata in giallo 
+> Nell'immagine sopra, dettaglio del tessuto epiteliale: la membrana basale è indicata in giallo
 
 <font color="red">Il tessuto epiteliale è **<font color="red">avascolare</font>**</font>: sproffisto di vasi sanguigni. Il sostentamento delle cellule epiteliali è dato dal tessuto connettivo su cui è adagiato
 
 I tessuti epiteliali si rinnovano molto rapidamente (cellule morte vengono sostituite velocemente da cellule nuove)
 
 Classificazione:
+
 - Tessuto epiteliale di **rivestimento**
     Si presenta in due forme:
-    - epitelio **semplice**: singolo strato di cellule, funzione di ==assorbimento==. Lo troviamo come rivestimento del tubo digerente.
+  - epitelio **semplice**: singolo strato di cellule, funzione di ==assorbimento==. Lo troviamo come rivestimento del tubo digerente.
         >Diffusione semplice è efficace su brevi distanze, percio il singolo strato è adatto alle mucose digerenti (o in generale per tessuti che necessitano la funzione di diffusione semplice)
 
-    - epitelio **stratificato**: più strati di cellule &rarr; solo uno strato è a contatto con  la membrana basale.
+  - epitelio **stratificato**: più strati di cellule &rarr; solo uno strato è a contatto con  la membrana basale.
     Funzione ==protettiva==
 - Tessuto epiteliale **ghiandolare**
-    Forma la porzione della **ghiandola** che secerne (produzione e liberazione) il contenuto specifico 
+    Forma la porzione della **ghiandola** che secerne (produzione e liberazione) il contenuto specifico
     Le ghiandole che si trovano nel nostro corpo sono classificate in ==tre categorie==:
-    1. Ghiandole **endocrine** (es.tiroide): versano il contenuto direttamente nel sangue. Nello specifico le molecole prodotte e riversate nel sangue da queste ghiandole si chiamano **ormoni** 
+    1. Ghiandole **endocrine** (es.tiroide): versano il contenuto direttamente nel sangue. Nello specifico le molecole prodotte e riversate nel sangue da queste ghiandole si chiamano **ormoni**
     2. Ghiandole **esocrine** (es. ghiandole sudoripare): riversano il contenuto fuori dal corpo, oppure all'interno di una sua cavità (es nel tubo digerente)
     3. Ghiandole **miste** (es. pancreas): hanno capacita sia endocrine che esocrine
         > ~99% del pancreas è esocrino &rarr; produce succo pancreatico (cocktail di enzimi)
-        ~1% endocrino (Isole di Langherans) &rarr; produce due ormoni (insulina e glucagone) per la regolazione di glucosio nel sangue 
+        ~1% endocrino (Isole di Langherans) &rarr; produce due ormoni (insulina e glucagone) per la regolazione di glucosio nel sangue
 
 #### Il tessuto connettivo
 
@@ -372,17 +405,16 @@ In generale, con il termine **tessuto connettivo**, si intende:
 
 La **matrice cellulare** è prodotta dalle cellule del tessuto connettivo stesso, e può essere liquida, solida o gelatinosa
 
-
-
-
 #### Le membrane epiteliali e connettivali
+
 Le **membrane epiteliali** sono membrane costituite da epitelio e un sottile strato di tessuto connettivo sottostante
 Si dividono in tre tipi:
+
 1. Membrane **mucose**(o semplicemente **mucose**)
     Rivestono ==le cavità del corpo== che comunicano direttamente con l'esterno &rarr; costantemente umide perche bagnate da **secreti**
-    >Esempi: 
+    >Esempi:
         - L'esofago è ricoperto da una mucosa stratificata &rarr; durante il passaggio del bolo alimentare, molte cellule della mucosa vengono portate via. I numerosi strati servono per proteggere da danni all'esofago
-        - Nell'intestino la mucosa invece è composta da strato epiteliale semplice &rarr; funzione di assorbimento dell'intestino favorita dal singolo strato 
+        - Nell'intestino la mucosa invece è composta da strato epiteliale semplice &rarr; funzione di assorbimento dell'intestino favorita dal singolo strato
     In generale: a dipendenza della mucosa troviamo ==diverse strutture in base alla  diverse funzioni==
 
 2. Membrane **sierose**(o solamente **sierose**)
@@ -390,25 +422,24 @@ Si dividono in tre tipi:
     Ogni membrana sierosa è costituita da due foglietti
     - **Foglietto viscerale**: foglietto direttamente a contatto con l'organo (==riveste l'organo==)
     - **Foglietto parietale**: ==riveste la parete== della cavità che ospita l'organo in questione
-    
+
     lo spazio tra i due foglietti è riempito da un liquido lubrificante (prodotto dai due foglietti)
-    
+
     >Possiediamo **3 membrane sierose** (tutte possiedeno foglietto parietale e viscerale):
         1. Pleura (riveste i polmoni)
         2. Pericardio (riveste il cuore)
         3. Peritoneo (riveste organi della cavità addominale, tranne i reni, che venono chiamati *retroperineali*) &rarr; membrana sierosa più grande
-    
+
 3. Membrane **cutanee** (o semplicemente cute, pelle):
     Strato esterno, funzione di protezione
 
 4. **Membrane connettivali**: costituite unicamente da ==tessuto connettivo==
->Esempio: **Membrana sioviale**: composta solo da tessuto connettivo, e localizzata nelle aritcolazioni sinoviali (articolazioni mobili)
 
+>Esempio: **Membrana sioviale**: composta solo da tessuto connettivo, e localizzata nelle aritcolazioni sinoviali (articolazioni mobili)
 
 #### Il tessuto muscolare
 
 #### Il tessuto nervoso
-
 
 <div style="page-break-after: always;"></div>
 
@@ -430,8 +461,6 @@ L'omeostasi è mantenuta attraverso **meccanismi** (o **sistemi**) **di controll
 
 <img src="imm/pagina14_img2.jpg" width="370" style="float: left; margin-right: 30px;">
 
-
-
 Commenti all'immagine:
 
 1. **Stimolo**: ==variazione==/alterazione di una variabile fisiologica (vaolre può aumentare o diminuire)
@@ -449,9 +478,9 @@ Stimolo misurato dal recettore &rarr; segnale inviato al **centro di controllo**
 - **Via afferente** (riporta stimolo rilevato da recettore): puo essere via **nervosa** o via **ormonale**. Nella maggior parte dei casi si tratta di una via nervosa
 - **Via ennerente** (riporta la risposta del centro di controllo all'effettore): come prima, puo essere via **nervosa** o **ormonale**
 
-
-L'omeostasi è mantenuta attraverso dai meccanismi di controllo omeostatico: 
+L'omeostasi è mantenuta attraverso dai meccanismi di controllo omeostatico:
 <img src="imm/pagina16_img1.png" width="400">
+
 - **Feedback negativo** (meccanismo di retroazione negativa): <font color="red">La quasi totalità dell'omeostasi è regolata attraverso meccanismi a feedback negativo</font>
 La risposta si ==oppone== allo stimolo iniziale
 
@@ -463,6 +492,7 @@ La risposta si ==oppone== allo stimolo iniziale
     > Esempio: nel parto, le contrazioni sono regolate da un feedback positivo &rarr; contrazioni sempre più frequenti finche il figlio nasce (fattore esterno)
 
 ## Tipi di recettori
+
 Possono essere o ==neuroni== o ==cellule specializzate==
 I **recettori** sono in grado di rilevare diverse forme di energia
 <img src="imm/pagina15_img1.png" width="400">
@@ -488,31 +518,31 @@ I **recettori** sono in grado di rilevare diverse forme di energia
 - **Sistema nervoso periferico**: composto da nervi e gangli.
     I **nervi** sono composti da fasci di assoni.
     Si dividono in:
-    - Nervi **spinali**: nascono dal ==midollo spinale==. Abbiamo 31 paia (62 totali) nervi spinali
-    - Nervi **cranici**: nascono dall'==encefalo==. Abbiamo 12 paia (24 totali)
+  - Nervi **spinali**: nascono dal ==midollo spinale==. Abbiamo 31 paia (62 totali) nervi spinali
+  - Nervi **cranici**: nascono dall'==encefalo==. Abbiamo 12 paia (24 totali)
 
 Sia che facciamo riferimento al sistema nervoso centralo o periferico, la cellula base è il neurone
 
 <img src="imm/neurone.png" width="400" style="float: left; margin-right: 30px;">
 
-Commenti sull'immagine: 
-- **Dendrite**: breve prolungamento del neurone che trasporta ==informazioni al corpo cellulare== 
+Commenti sull'immagine:
+
+- **Dendrite**: breve prolungamento del neurone che trasporta ==informazioni al corpo cellulare==
 - **Soma** (o **corpo cellulare**): regione del neurone che contiene il nucleo e altri organelli con membrana
 - **Assone**: prolungamento più lungo del neurone. È in grado di generare e trasportare un ==impulso nervoso==. L'impulso è generato nel corpo cellulare e viene trasmesso lungo l'assone fino ai terminali dell'assone
     > Concetto del tutto o nulla. Se una determinata soglia di potenziale elettrico viene raggiunta, allora l'assone genera e trasporta l'impulso nervoso, altrimenti non genera nulla
-- **Terminale degli assoni** (o **bottone sinaptico**): Rigonfiamento terminale dell'assone. Contiene ==vescicole con neurotrasmettitori== 
+- **Terminale degli assoni** (o **bottone sinaptico**): Rigonfiamento terminale dell'assone. Contiene ==vescicole con neurotrasmettitori==
 - **Guaine mieliniche**: Rivestimento lipidico prodotto dalle cellule di Schwann (nel SNP)
 <br>
 
 - **SNP**: composto da
-    - <font color="red">motoneuroni</font>: corpo cellulare all'interno del midollo spinale. Trasferisce informazioni dal SNC alla periferia del corpo
-    - <font color="blue">neuroni sensoriali</font>: corpo cellulare all'interno dei gangli. Trasferisce informazioni dalla periferia al SNC
-    - Ganglio: è un rigonfiamento della radice dorsale che contiene i corpi cellulari dei neuroni sensoriali. 
+  - <font color="red">motoneuroni</font>: corpo cellulare all'interno del midollo spinale. Trasferisce informazioni dal SNC alla periferia del corpo
+  - <font color="blue">neuroni sensoriali</font>: corpo cellulare all'interno dei gangli. Trasferisce informazioni dalla periferia al SNC
+  - Ganglio: è un rigonfiamento della radice dorsale che contiene i corpi cellulari dei neuroni sensoriali.
 
 - **SNC**: <font color="green">interneuroni</font>: ubicato o nel midollo spinale o nell'encefalo. Posizionato tra un neurone sensoriale e un motoneurone (non sempre così).
 
 <img src="imm/sezione_spinale.png" width="400">
-
 
 >In breve: Meccanismo del riflesso &rarr; informazione rilevata arriva da neurone sensoriale, interneurone trasferisce l'info al motoneurone, che manda l'info al muscolo di muoversi. Non passa dall'encefalo. Informazione viene trasferita ed elaborata molto più velocemente con questo **circuito**, rispetto a quando l'info viene processata dall'encefalo
 
@@ -527,8 +557,9 @@ La maggior parte delle ghiandole endocrine sono controllate dall'asse **ipotalam
 - L'**ipotalamo** è una regione dell'encefalo che svolge funzioni fondamentali che consentono il mantenimento dell'omeostasi. L'ipotalamo produce diversi ormoni che servono a regolare l'attività dell'ipofisi
 
 - L'**ipofisi** è una piccola ghiandola endocrina posta alla base del capo. È suddivisa in due regioni:
-    - **Neuroipofisi** (posteriore): prolungamento dell'ipotalamo, non produce ormoni propri. Funge da "magazzino" due ormoni prodotti dall'ipotalamo, ovvero **ossitocina** e **ADH** (detto anche vasopressina, ormone antidiuretico).
-    - **Adenoipofisi** (anteriore): produce ormoni propri, sotto regolazione dell'ipotalamo
+  - **Neuroipofisi** (posteriore): prolungamento dell'ipotalamo, non produce ormoni propri. Funge da "magazzino" due ormoni prodotti dall'ipotalamo, ovvero **ossitocina** e **ADH** (detto anche vasopressina, ormone antidiuretico).
+  - **Adenoipofisi** (anteriore): produce ormoni propri, sotto regolazione dell'ipotalamo
+
 <div style="clear: both;"></div>
 
 ## LA REGOLAZIONE DELLA GLICEMIA (feedback negativo)
@@ -537,51 +568,55 @@ La maggior parte delle ghiandole endocrine sono controllate dall'asse **ipotalam
 
 **Glicemia**: concentrazione di glucosio nel sangue
 
-
 ### Iperglicemia
+
 1. **Iperglicemia**: dopo un pasto la concentrazione di glucosio nel sangue è aumentato
 2. **Cellule &beta;** del pancreas "leggono" questo valore iperglicemico e producono **insulina**
-3. L'insulina si lega alla membrana delle cellule. La cellula risponde trasportando la proteina di trasporto del glucosio sulla membrana &rarr; glucosio entra nelle cellule. 
+3. L'insulina si lega alla membrana delle cellule. La cellula risponde trasportando la proteina di trasporto del glucosio sulla membrana &rarr; glucosio entra nelle cellule.
 Questo meccanismo non avviene nel fegato
 4. L'insulina agisce anche sul fegato che produce glicogeno con il glucosio in glicogeno
 5. il meccanismo 3 e 4 fanno ==diminuire il glucosio nel sangue &rarr; glicemia diminuisce.==
 
 ### Ipoglicemia
+
 Avviene durante o dopo uno sforzo fisico
+
 1. **Ipoglicemia**: poco glucosio nel sangue
 2. Cellule &alpha; nel pancreas leggono questo cambiamento e producono **glucagone**.
 3. Il glucagone stimola il fegato a scindere glicogeno, liberando glucosio nel sangue
 4. ==Glicemia aumenta== e ritorna a valore omeostatico
 
 ### Il diabete mellito
+
 Il **diabete mellito** è un disturbo cronico caratterizzato da un'alta concentrazione di zuccheri nel sangue. Iperglicemia perenne
 
-|                    |Diabete di tipo 1 |Diabete di tipo 2|
+||Diabete di tipo 1|Diabete di tipo 2|
 |-|-|-|
-|Percentuale dei casi|~10%              |~90%             |
-|Chi colpisce        |Individui molto giovani| Si manifesta in persone a partire dai ~40 anni. L'età si sta abbassando sempre di più|
-|Come si sviluppa|È una malattia autoimmune. Cellule &beta; distrutte completamente| In questa forma di diabete si assiste ad una forma di riduzione dell'azione dell'insulina (a livello della cellula) &rarr; Si parla perciò di **insulino-resistenza**. Insulina non più efficace a far assorbire glucosio dalle cellule|
-|Altro|Si definisce **insulino-dipendente** &rarr; la persona non può produrre insulina| Si definisce quindi **insulino-indipendente** &rarr; la persona può produrre insulina|
-|Terapia|Erogatore di insulina|**Dieta** + cura farmacologica (metformina: riduce produzione epatica di glucosio e aumenta la sensibilità insulinica) |
-
+|Percentuale dei casi|~10%|~90%|
+|Chi colpisce|Individui molto giovani|Si manifesta in persone a partire dai ~40 anni. L'età si sta abbassando sempre di più|
+|Come si sviluppa|È una malattia autoimmune. Cellule &beta; distrutte completamente|In questa forma di diabete si assiste ad una forma di riduzione dell'azione dell'insulina (a livello della cellula) &rarr; Si parla perciò di **insulino-resistenza**. Insulina non più efficace a far assorbire glucosio dalle cellule|
+|Altro|Si definisce **insulino-dipendente** &rarr; la persona non può produrre insulina|Si definisce quindi **insulino-indipendente** &rarr; la persona può produrre insulina|
+|Terapia|Erogatore di insulina|**Dieta** + cura farmacologica (metformina: riduce produzione epatica di glucosio e aumenta la sensibilità insulinica)|
 
 #### Il diabete mellito di tipo II
+
 - Legato alla ==presenza eccessiva di trigliceridi==
-- Ormoni proteici (come insulina) non posso attraversare il doppio strato fosfolipidico. Sulla cellula bersaglio (sulla membrana) ci sarà quindi un recettore specifico per l'insulina. 
+- Ormoni proteici (come insulina) non posso attraversare il doppio strato fosfolipidico. Sulla cellula bersaglio (sulla membrana) ci sarà quindi un recettore specifico per l'insulina.
 - L'insulina va a legarsi al recettore, ed avviene una risposta all'interno della cellula
 - Quando le zone di deposito dei trigliceridi (sottocutanee, ventrale), allora le cellule si riempiono a loro volta di trigliceridi
 - <font color="red">I trigliceridi inibiscono la risposta insulinica</font>
     In che modo?
-    - la cellula contiene vescicole contenenti proteine canali per glucosio
-    - In situazioni normali la risposta insulinica fa si che queste proteine canale vengano trasportate sulla membrana
-    - L'alta presenza di trigliceridi blocca/inibisce (┤) proprio questo trasporto di proteine canale 
+  - la cellula contiene vescicole contenenti proteine canali per glucosio
+  - In situazioni normali la risposta insulinica fa si che queste proteine canale vengano trasportate sulla membrana
+  - L'alta presenza di trigliceridi blocca/inibisce (┤) proprio questo trasporto di proteine canale
 
 ## IL PARTO (feedback positivo)
 
 <img src="imm/pagina17_img1.png" width="200" style="float: left; margin-right: 30px;">
 
 Stimolo che viene amplificato sempre di più, fino all'arrivo del fattore esterno
-1. Il feto è pronto per nascere, e si sposta in profondità. 
+
+1. Il feto è pronto per nascere, e si sposta in profondità.
 2. La testa spinge verso la parete dell'utero (presenza di pressorecettori che rilevano la pressione/movimento).
 3. Stimoli afferenti traferiti all'ipotalamo
 4. A sua volta l'ipotalamo segnala alla neuroipofisi (che non produce ormoni proprio).
@@ -591,37 +626,38 @@ Stimolo che viene amplificato sempre di più, fino all'arrivo del fattore estern
 
 Una volta che il feto nasce, questo *fattore esterno* interrompe il ciclo di feedback positivo
 
-
 Alcuni commenti:
+
 - la muscolatura dell'utero è muscolatura liscia, ovvero involontaria
 
 <div style="page-break-after: always;"></div>
 
 # L'APPARATO RESPIRATORIO
+
 <img src="imm/pagina18_img1.jpg" width="300" style="float: left; margin-right: 30px;">
 
 Funzioni:
+
 - Scambi di gas (immettere O<sub>2</sub> ed emettere CO<sub>2</sub>)
 - Percezione degli odori (tramite **epitelio olfattivo**)
 - Regolazione del pH del sangue (a breve termine)
-- Emissione di suoni 
+- Emissione di suoni
 
 ## Anatomia dell'apparato
-- Vie aeree **superiori**:
-    - **naso**
-    - **faringe**: canale condiviso tra apparato respiratorio e digerente. È un canale che si divide ulteriormente in tre semgenti (dall'alto verso il basso): nasofaringe (comunica con la cavità nasale) &rarr; orofaringe (regione che comunica con la cavità orale) &rarr; laringofaringe (comunica con la laringe) 
-- Vie aeree **inferiori**:
-    - **laringe** 
-    - **trachea**
-    - **bronchi** 
-    - **bronchioli**
-    - **Polmoni**: polmone destro, sinistro e alveoli
 
+- Vie aeree **superiori**:
+  - **naso**
+  - **faringe**: canale condiviso tra apparato respiratorio e digerente. È un canale che si divide ulteriormente in tre semgenti (dall'alto verso il basso): nasofaringe (comunica con la cavità nasale) &rarr; orofaringe (regione che comunica con la cavità orale) &rarr; laringofaringe (comunica con la laringe)
+- Vie aeree **inferiori**:
+  - **laringe**
+  - **trachea**
+  - **bronchi**
+  - **bronchioli**
+  - **Polmoni**: polmone destro, sinistro e alveoli
 
 ## Percorso dell'aria in entrata/uscita
 
 Vie di conduzione dell'aria:
-
 
 <font color="red">Punti evidenziati rappresentano i punti specifici dove la mucosa respiratoria è presente</font>
 
@@ -634,6 +670,7 @@ Vie di conduzione dell'aria:
 - <font color="red">alveoli</font>: unità funzionali dell'apparato respiratorio. È qui che avvengono gli scambi di gas &rarr; avvengono per &Delta;p
 
 Avvengono 3 processi importanti nelle vie di conduzione
+
 - Riscaldata
 - Umidificata (O<sub>2</sub> in aria secca irrita le mucose)
 - Purificata
@@ -653,6 +690,7 @@ Il fumo inibisce il movimento delle ciglia
 <div style="clear: both;"></div>
 
 ## I polmoni
+
 <img src="imm/pagina18_img1.jpg" width="350" style="float: left; margin-right: 30px;">
 
 - Organi localizzati nella ==cavità toracica==
@@ -661,6 +699,7 @@ Il fumo inibisce il movimento delle ciglia
 - Il polmone sinistro è quindi ==piu piccolo== del polmone destro
 - I polmoni sono costituiti da tessuto connettivo ==**elastico**== e alveoli. Ciò fa si che si possono allargare e poi ritornare alla posizione originale
 - I polmoni sono rivestiti dalla pleura viscerale
+
 <div style="clear: both;"></div>
 
 ## Le pleure
@@ -669,6 +708,7 @@ Il fumo inibisce il movimento delle ciglia
 
 - La parete della cavità toracica che ospita i polmoni è rivestita dalla pleura parietale
 - Il liquido pleurico fa si che vi sia un ambiente privo di attrito per poter permettere il movimento dei polmoni
+
 <div style="clear: both;"></div>
 
 ## La deglutizione
@@ -677,20 +717,23 @@ Il fumo inibisce il movimento delle ciglia
 
 - La deglutizione è un riflesso &rarr; risposta **involontaria** ad uno stimolo
 - <font color="red">La deglutizione però è un riflesso particolare, perche inizia in maniera volontaria, e poi procede in maniera involontaria</font>:
-    - **Parte volontaria**: Spostamento del bolo verso la faringe da parte della lingua
-    - **Parte involontaria**: quando il bolo arriva nella faringe, il riflesso procede in maniera involontaria (non controlliamo più il movimento della farigne)
+  - **Parte volontaria**: Spostamento del bolo verso la faringe da parte della lingua
+  - **Parte involontaria**: quando il bolo arriva nella faringe, il riflesso procede in maniera involontaria (non controlliamo più il movimento della farigne)
 - L'**epiglottide** è una lamina (sottile strato) cartilaginea. Nel corso della deglutizione l'epiglottide si ==abbassa==, e chiude l'entrata alle vie respiratorie
 
 ## La ventilazione polmonare
+
 <img src="imm/pagina20_img1.jpg" width="450" style="float: left; margin-right: 30px;">
 
 - Movimento meccanico che consente di ==rinnovare l'aria== all'interno dei polmoni. Comprende due fasi: **inspirazione** ed **espirazione**
+
 <div style="clear: both;"></div>
 
 > Praentesi di fisica: quando si comprime dell'aria, il volume diminuisce e la pressione aumenta. Viceversa quando si decomprime un gas, il volume aumenta e la pressione diminuisce &rarr; **questo meccanismo è usato per la respirazione**
 
 ### Inspirazione
-- IN GENERALE: necessaria **contrazione** 
+
+- IN GENERALE: necessaria **contrazione**
 - È un processo ==**attivo**== (è richiesta la contrazione muscolare, che consuma atp)
 - Durante l'inspirazione, il diaframma si contrae e <font color="red">SI ABBASSA</font>.
 - Anche i muscoli intercostali si contraggono e sollevano le costole.
@@ -700,20 +743,22 @@ Il fumo inibisce il movimento delle ciglia
 > <font color="red">IMPORTANTE DA NON DIMENTICARE: CONTRAZIONE = ARIA CHE ENTRA</font>
 
 ### Espirazione
+
 - È un processo <font color="red">PASSIVO</font>
 - Rilassamento dei muscoli &rarr; ritorno elastico dei polmoni (grazie ad ==elastina==)
 - Durante l'espirazione il diaframma si rilassa e <font color="red">SI ALZA</font>, gli intercostali si rilassano e le costole si abbassano
 - Il volume della cavità toracica diminuisce e pertanto diminuisce anche il volume polomanre
 - &Delta;p polmonare > &Delta;p esterno &rarr; aria si sposta verso l'esterno
 
-
 ## Respirazione interna ed esterna
 
 <img src="imm/pagina20_img2.png" width="250">
 
 ### Respirazione esterna
+
 Scambio di gas tra alveoli e capillari polmonari. Questo scambio si verifica attraverso la ==membrana respiratoria==
 La **membrana respiratoria** è molto sottile, per facilitare la diffusione semplice. È formata da:
+
 - epitelio semplice dell'alveolo
 - epitelio semplice del capillare polmonare
 - le due membrane basali sono fuse
@@ -725,21 +770,97 @@ Distribuzione dei gas nell'atmosfera:
 - 0,04 CO<sub>2</sub>
 
 Guardiamo ora cosa succede a livello di pressione a livello alveolare e capillare:
+
 - pO<sub>2</sub> alveolare > pO<sub>2</sub> capillare (perche l'ossigeno nel sangue è gia stato usato dalle cellule dei tessuti)
 - diffusione netta di O<sub>2</sub> degli alveoli al capillare polmonare
 - pCO<sub>2</sub> alveolare < pCO<sub>2</sub> capillare (CO<sub>2</sub> della respirazione cellulare arriva nel sangue)
 
-### Respirazione interna 
+### Respirazione interna
+
 Scambio di gas tra cellule dei tessuti e i capillari sistemici
+
 - pO<sub>2</sub> cellulare < pO<sub>2</sub> capillare (O<sub>2</sub> consumato dalla respirazione cellulare)
-- diffusione netta di O<sub>2</sub> dal capillare alle cellule 
+- diffusione netta di O<sub>2</sub> dal capillare alle cellule
 - pCO<sub>2</sub> cellulare > pCO<sub>2</sub> capillare(CO<sub>2</sub> della respirazione cellulare accumulato nella cellula)
 
 ## Trasporto di gas nel sangue
+
 ### O<sub>2</sub>
+
 ~98% di O<sub>2</sub> è legato all'emoglobina
-**Emoglobina (Hb)**: proteina formata da 4 catene: 2 &alpha; e 2 &beta; 
+**Emoglobina (Hb)**: proteina formata da 4 catene: 2 &alpha; e 2 &beta;
 ~2% do O<sub>2</sub> sciolto nel plasma
 In ogni catena è presente un gruppo eme (specie chimica non proteica che contiene un atomo di ferro Fe) &rarr; è questo atomo che lega in maniera **<font color="green">reversibile</font>** la molecola di O<sub>2</sub>
+
 - nei capillari polmonari: Hb &rarr; Hb-O<sub>2</sub>
 - nei capillari sistemici: Hb-O<sub>2</sub> &rarr; Hb
+
+<img src="imm/pagina21_img2.png" width="300">
+
+### CO<sub>2</sub>
+
+Trasporto di CO<sub>2</sub> nel sangue:
+
+- ~7% è sciolta nel plasma
+- ~23% è legata all'emoglobina
+- ~70% trasportata come ione bicarbonato (HCO<sub>3</sub><sup>−</sup>)
+
+<img src="imm/pagina21_img3.png" width="300" style="float: left; margin-right: 30px;">
+
+- Nel globulo rosso la CO<sub>2</sub> reagisce con H~2~O,formando **acido carbonico** H<sub>2</sub>CO<sub>3</sub>
+- Acido carbonico si scompone in H<sup>+</sup> (che si lega all'emoglobina) e HCO<sub>3</sub><sup>−</sup>(ione bicarbonato, che diffonde nel plasma).
+    > Reazione chimica CO<sub>2</sub> + H<sub>2</sub>O &rarr; H<sub>2</sub>CO<sub>3</sub> &rarr; H<sup>+</sup> + HCO<sub>3</sub><sup>−</sup> (che esce dal globluo rosso)
+- Nei capillari sistemici, l'intera reazione chimica che si verifica nei globuli rossi, è spostata verso destra, cioè verso la formazione di ioni carbonato.
+
+**A livello alveolare**:
+
+- La CO<sub>2</sub> disciolta nell'acqua passa agli alveoli per prima
+- HCO<sub>3</sub><sup>−</sup> non puo essere direttamente espulso dai polmoni.
+   > reazione chimica: HCO<sub>3</sub><sup>−</sup> (che rientra nel globulo rosso) + H<sup>+</sup> &rarr; H<sub>2</sub>CO<sub>3</sub> &rarr; CO<sub>2</sub> + H<sub>2</sub>O 
+- Questa reazione chimica che si verifica nei globuli rossi è ora spostata nel senso opposto, cioè verso la formazione di CO<sub>2</sub> che può essere così eliminata
+
+
+## La regolazione della respirazione
+
+<img src="imm/pagina21_img1.png" width="400">
+
+- **Centri del ponte** e **centri del midollo allungato** si trovano nel **tronco encefalico**.
+- **Centri del ponte** regolano l'attività dei centri del midollo allungato
+- **Centri del midollo allungato**: determinano il ritmo di base della respirazione
+
+
+
+Omeostasi del pH nel sangue: 7.35 - 7.45
+- Aumento di CO<sub>2</sub> nel sangue &rarr; ==pH diminuisce== (pH < 7.35) &rarr; **acidosi** &rarr; centri respiratori nel cervello &rarr; **iperventilazione** per eliminare CO<sub>2</sub> &rarr; ritorno all'equilibrio omeostatico
+
+- Diminuzione del CO<sub>2</sub> nel sangue &rarr; ==pH aumenta== (pH > 7.45) &rarr; **alcalosi** &rarr; centri respiratori nel cervello &rarr; **ipoventilazione** per far aumenare CO<sub>2</sub> nel sangue
+
+### Situazioni in cui l'omeostasi del pH del sangue non può essere mantenuta
+
+- problemi respiratori &rarr; acidosi causata dall'ipoventilazione &rarr; compensazione dell'acidosi: **broncodilatatori**
+
+- Attacco di panico &rarr; alcalosi causata dall'iperventilazione &rarr; compensazione dell'alcalosi: respirare in un sacchetto.
+
+
+# L'APPARATO CARDIOCIRCOLATORIO
+
+<img src="imm/pagina22_img1.png" width="300" style="float: left; margin-right: 30px;">
+
+L'apparato circolatorio è formato da una pompa (❤️), una rete di percorrenza (vasi sanguigni) e un mezzo (il sangue)
+
+- In rosso abbiamo il **sangue arterioso**: ricco di O<sub>2</sub> e povero di CO<sub>2</sub>
+- In blu inceve abbbiamo il **sangue venoso**: povero di O<sub>2</sub> e ricco di CO<sub>2</sub>
+
+<div style="clear: both;"></div>
+
+## I vasi sanguigni
+Si dividoni in 5 tipi:
+- Arterie
+- Arteriole
+- Capillari
+- Venule
+- Vene
+
+La nomenclatura dei vasi sanguigni ==NON== dipende da che sangue trasportano:
+- Arteria: vaso sagnuigno che trasporta il sangue ==VIA DAL CUORE==
+- Vena:

@@ -9,6 +9,7 @@ Eseguito dalla GitHub Action a ogni push; si può lanciare anche in locale.
 import re
 import shutil
 import subprocess
+import tempfile
 import time
 import urllib.parse
 from pathlib import Path
@@ -36,7 +37,9 @@ FILE_ICONS = {
 # Icona e descrizione per la card in homepage
 SUBJECTS = {
     "Adattamento e responsabilità": ("material-account-heart", "Relazione di cura, sensazione e percezione"),
-    "Atelier": ("material-arm-flex", "Atelier di fisioterapia"),
+    "Atelier": ("material-arm-flex", "Atelier di fisioterapia ed ergonomia"),
+    "Atelier/Fisioterapia": ("material-arm-flex", "Evidenze, dolore e primo intervento"),
+    "Atelier/Ergonomia": ("material-human-child", "Fasi della vita e sviluppo del bambino"),
     "Anatomia e Fisiologia": ("material-heart-pulse", "Cellula, tessuti, sistema nervoso e apparati"),
     "Comunicazione": ("material-forum", "Sistemi, assiomi e comunicazione umana"),
     "Ergonomia": ("material-chair-rolling", "Colonna vertebrale e movimenti corretti"),
@@ -49,6 +52,48 @@ SUBJECTS = {
     "Sociologia": ("material-account-group", "Esperimenti e dinamiche sociali"),
 }
 DEFAULT_ICON = "material-notebook-outline"
+
+
+def subject_meta(name: str, parent: str = "") -> tuple:
+    """Icona e descrizione: prima la chiave 'Materia/Sotto-materia', poi il nome."""
+    return SUBJECTS.get(f"{parent}/{name}", SUBJECTS.get(name, (DEFAULT_ICON, "Appunti e materiali")))
+
+
+# Più appunti nella stessa cartella (appunti_fisio.md, appunti_ergo.md, ...):
+# ognuno diventa una sotto-materia, come se avesse una sua sottocartella.
+STAGE = Path(tempfile.mkdtemp(prefix="sspss_split_"))
+ORIGIN: dict[Path, Path] = {}          # file in STAGE -> file vero nella repo
+SPLIT_RE = re.compile(r"^appunti[_-](.+)$", re.I)
+REL_LINK = re.compile(r'(\]\(<?|(?:src|href)=")(?!https?:|mailto:|/|#|\.\./|data:)')
+
+
+def split_notes(src: Path, mds: list[Path]) -> tuple[list[Path], set[Path]]:
+    """Ritorna (sottocartelle virtuali, file della cartella già usati)."""
+    parts = [m for m in mds if SPLIT_RE.match(m.stem)]
+    if len(parts) < 2 or any(m.stem.lower() == "appunti" for m in mds):
+        return [], set()
+    virtual, used = [], set()
+    for md in parts:
+        key = SPLIT_RE.match(md.stem).group(1)
+        text = md.read_text(encoding="utf-8")
+        m = re.search(r"<h1[^>]*>(.*?)</h1>", text, re.S)
+        name = re.sub(r"<[^>]+>", "", m.group(1)).strip() if m else key
+        name = re.sub(rf"^{re.escape(src.name)}\W*", "", name, flags=re.I).strip() or key
+        name = name[0].upper() + name[1:]
+        folder = STAGE / src.relative_to(ROOT) / name
+        folder.mkdir(parents=True, exist_ok=True)
+        # i link relativi (immagini, allegati) puntano alla cartella vera, un livello sopra
+        (folder / "appunti.md").write_text(REL_LINK.sub(r"\1../", text), encoding="utf-8")
+        ORIGIN[folder / "appunti.md"] = md
+        used.add(md)
+        for extra, target in ((f"quiz_{key}.json", "quiz.json"), (f"glossario_{key}.md", "glossario.md")):
+            f = src / extra
+            if f.exists():
+                shutil.copy2(f, folder / target)
+                ORIGIN[folder / target] = f
+                used.add(f)
+        virtual.append(folder)
+    return virtual, used
 
 
 def is_junk(p: Path) -> bool:
@@ -119,6 +164,7 @@ MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio",
 
 def updated_on(src: Path) -> str:
     """Data dell'ultima modifica (ultimo commit, altrimenti data del file)."""
+    src = ORIGIN.get(src, src)
     ts = last_commit_ts(src) or int(src.stat().st_mtime)
     d = time.localtime(ts)
     return f"{d.tm_mday} {MESI[d.tm_mon - 1]} {d.tm_year}"
@@ -133,6 +179,11 @@ def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "",
     # Via la riga "# Table of Content" e il segnaposto [TOC] (il tema ha già il sommario)
     text = re.sub(r"^#{1,3}\s*table of content.*$", "", text, flags=re.M | re.I)
     text = re.sub(r"^\[TOC\]\s*$", "", text, flags=re.M)
+    # salti pagina prima del primo capitolo: nel PDF ci pensano copertina e indice
+    first = re.search(r"^#{1,6}\s", text, re.M)
+    if first:
+        head = re.sub(r'^<div style="page-break-[^"]*"></div>\s*$', "", text[:first.start()], flags=re.M)
+        text = head + text[first.start():]
     text = fix_tight_blocks(text)
     text = demote_headings(text)
     text = re.sub(r"\n{4,}", "\n\n\n", text).strip() + "\n"
@@ -243,10 +294,13 @@ def process_folder(src: Path, dest: Path) -> dict:
     dest.mkdir(parents=True, exist_ok=True)
     mds = [p for p in sorted(src.iterdir()) if p.suffix == ".md" and not is_junk(p)]
     subdirs = [p for p in sorted(src.iterdir()) if p.is_dir() and p.name not in EXCLUDE_DIRS]
+    virtual, used = split_notes(src, mds) if ROOT in src.parents else ([], set())
+    mds = [m for m in mds if m not in used]
+    subdirs = sorted(subdirs + virtual, key=lambda p: p.name.lower())
 
     # Copia tutti i file non-md (immagini, pdf, docx, ...)
     for p in src.rglob("*"):
-        if p.is_file() and not is_junk(p) and p.suffix != ".md":
+        if p.is_file() and not is_junk(p) and p.suffix != ".md" and p not in used:
             target = dest / p.relative_to(src)
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(p, target)
@@ -317,7 +371,7 @@ def process_folder(src: Path, dest: Path) -> dict:
         if md_subdirs:
             sub_cards = []
             for sub2 in md_subdirs:
-                icon, desc = SUBJECTS.get(sub2.name, (DEFAULT_ICON, "Appunti e materiali"))
+                icon, desc = subject_meta(sub2.name, src.name)
                 sub_cards.append(
                     f"-   :{icon}:{{ .lg .middle }} __{sub2.name}__\n\n"
                     f"    ---\n\n    {desc}\n\n    [Apri →](<{sub2.name}/index.md>)"
@@ -1150,17 +1204,39 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
   .md-typeset .md-button, .sspss-materials, .sspss-crumb, #sspss-progress, .sspss-right, .sspss-lightbox { display: none !important; }
   .sspss-cover {
     display: flex; flex-direction: column; justify-content: center;
-    height: 245mm;
+    height: 238mm; box-sizing: border-box; overflow: hidden; break-inside: avoid;
+    margin: 0 !important;
     padding: 0 8mm;
     border-left: 6mm solid #B3261E;
     break-after: page; page-break-after: always;
   }
   .sspss-cover p { margin: 0 !important; }
+  /* il titolo centrato degli appunti è già in copertina */
+  .md-typeset h1[align="center"],
+  .md-typeset h1[align="center"] + p[align="center"],
+  .md-typeset h1[align="center"] + p[align="center"] + hr { display: none !important; }
+  /* Indice del PDF (inserito da make_pdfs.py) */
+  .sspss-printtoc { break-after: page; page-break-after: always; padding-top: 4mm; }
+  .sspss-printtoc__title {
+    font-family: "Space Grotesk", sans-serif; font-size: 22pt; font-weight: 700;
+    letter-spacing: -.01em; color: #1C1917; margin: 0 0 8mm !important;
+    padding-bottom: 3mm; border-bottom: 2px solid #B3261E;
+  }
+  .sspss-printtoc ol { list-style: none; margin: 0 !important; padding: 0 !important; }
+  .sspss-printtoc li { margin: 0 !important; padding: 0 !important; break-inside: avoid; }
+  .sspss-printtoc__row { display: flex; align-items: baseline; gap: 2mm; font-size: 10.5pt; line-height: 1.45; color: #1C1917; }
+  .sspss-printtoc__row--1 { font-weight: 700; margin-top: 3.5mm; }
+  .sspss-printtoc__row--2 { padding-left: 6mm; color: #44403C; }
+  .sspss-printtoc__dots { flex: 1; border-bottom: 1px dotted #A8A29E; transform: translateY(-1mm); }
+  .sspss-printtoc__num { font-variant-numeric: tabular-nums; min-width: 7mm; text-align: right; }
+  .sspss-printtoc__end { position: absolute; color: #fff; font-size: 1pt; }
   .sspss-cover__kicker { font-size: 11pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #B3261E; }
   .sspss-cover .sspss-cover__title { font-family: "Space Grotesk", sans-serif; font-size: 40pt; font-weight: 700; line-height: 1.1 !important; letter-spacing: -.02em; color: #1C1917; margin: 8mm 0 4mm !important; }
   .sspss-cover__sub { font-size: 15pt; color: #57534E; }
   .sspss-cover .sspss-cover__meta { font-size: 10pt; color: #78716C; margin-top: 30mm !important; }
-  .md-content__inner { background: #fff; border: none; box-shadow: none; padding: 0; }
+  .md-content__inner { background: #fff; border: none; box-shadow: none; padding: 0; margin: 0 !important; }
+  .md-content__inner::before { display: none !important; }
+  .md-main__inner { margin-top: 0 !important; }
   /* titoli mai staccati dal contenuto che segue */
   .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
     break-after: avoid; page-break-after: avoid;

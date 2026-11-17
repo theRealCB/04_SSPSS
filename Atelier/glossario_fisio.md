@@ -1,5 +1,5 @@
 <h1 align="center">Glossario</h1>
-<p align="center"><em>Atelier · MC anno 2026/2027</em></p>
+<p align="center"><em>Atelier · Fisioterapia · MC anno 2026/2027</em></p>
 
 - **EBP (Evidence Based Practice)**: pratica basata su migliori evidenze, valori del paziente ed esperienza clinica.
 - **Meta-analisi**: analisi che combina i risultati di più studi; vertice della piramide delle evidenze.

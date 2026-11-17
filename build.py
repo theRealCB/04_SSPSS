@@ -9,6 +9,7 @@ Eseguito dalla GitHub Action a ogni push; si può lanciare anche in locale.
 import re
 import shutil
 import subprocess
+import tempfile
 import time
 import urllib.parse
 from pathlib import Path
@@ -36,7 +37,9 @@ FILE_ICONS = {
 # Icona e descrizione per la card in homepage
 SUBJECTS = {
     "Adattamento e responsabilità": ("material-account-heart", "Relazione di cura, sensazione e percezione"),
-    "Atelier": ("material-arm-flex", "Atelier di fisioterapia"),
+    "Atelier": ("material-arm-flex", "Atelier di fisioterapia ed ergonomia"),
+    "Atelier/Fisioterapia": ("material-arm-flex", "Evidenze, dolore e primo intervento"),
+    "Atelier/Ergonomia": ("material-human-child", "Fasi della vita e sviluppo del bambino"),
     "Anatomia e Fisiologia": ("material-heart-pulse", "Cellula, tessuti, sistema nervoso e apparati"),
     "Comunicazione": ("material-forum", "Sistemi, assiomi e comunicazione umana"),
     "Ergonomia": ("material-chair-rolling", "Colonna vertebrale e movimenti corretti"),
@@ -49,6 +52,48 @@ SUBJECTS = {
     "Sociologia": ("material-account-group", "Esperimenti e dinamiche sociali"),
 }
 DEFAULT_ICON = "material-notebook-outline"
+
+
+def subject_meta(name: str, parent: str = "") -> tuple:
+    """Icona e descrizione: prima la chiave 'Materia/Sotto-materia', poi il nome."""
+    return SUBJECTS.get(f"{parent}/{name}", SUBJECTS.get(name, (DEFAULT_ICON, "Appunti e materiali")))
+
+
+# Più appunti nella stessa cartella (appunti_fisio.md, appunti_ergo.md, ...):
+# ognuno diventa una sotto-materia, come se avesse una sua sottocartella.
+STAGE = Path(tempfile.mkdtemp(prefix="sspss_split_"))
+ORIGIN: dict[Path, Path] = {}          # file in STAGE -> file vero nella repo
+SPLIT_RE = re.compile(r"^appunti[_-](.+)$", re.I)
+REL_LINK = re.compile(r'(\]\(<?|(?:src|href)=")(?!https?:|mailto:|/|#|\.\./|data:)')
+
+
+def split_notes(src: Path, mds: list[Path]) -> tuple[list[Path], set[Path]]:
+    """Ritorna (sottocartelle virtuali, file della cartella già usati)."""
+    parts = [m for m in mds if SPLIT_RE.match(m.stem)]
+    if len(parts) < 2 or any(m.stem.lower() == "appunti" for m in mds):
+        return [], set()
+    virtual, used = [], set()
+    for md in parts:
+        key = SPLIT_RE.match(md.stem).group(1)
+        text = md.read_text(encoding="utf-8")
+        m = re.search(r"<h1[^>]*>(.*?)</h1>", text, re.S)
+        name = re.sub(r"<[^>]+>", "", m.group(1)).strip() if m else key
+        name = re.sub(rf"^{re.escape(src.name)}\W*", "", name, flags=re.I).strip() or key
+        name = name[0].upper() + name[1:]
+        folder = STAGE / src.relative_to(ROOT) / name
+        folder.mkdir(parents=True, exist_ok=True)
+        # i link relativi (immagini, allegati) puntano alla cartella vera, un livello sopra
+        (folder / "appunti.md").write_text(REL_LINK.sub(r"\1../", text), encoding="utf-8")
+        ORIGIN[folder / "appunti.md"] = md
+        used.add(md)
+        for extra, target in ((f"quiz_{key}.json", "quiz.json"), (f"glossario_{key}.md", "glossario.md")):
+            f = src / extra
+            if f.exists():
+                shutil.copy2(f, folder / target)
+                ORIGIN[folder / target] = f
+                used.add(f)
+        virtual.append(folder)
+    return virtual, used
 
 
 def is_junk(p: Path) -> bool:
@@ -119,6 +164,7 @@ MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio",
 
 def updated_on(src: Path) -> str:
     """Data dell'ultima modifica (ultimo commit, altrimenti data del file)."""
+    src = ORIGIN.get(src, src)
     ts = last_commit_ts(src) or int(src.stat().st_mtime)
     d = time.localtime(ts)
     return f"{d.tm_mday} {MESI[d.tm_mon - 1]} {d.tm_year}"
@@ -243,10 +289,13 @@ def process_folder(src: Path, dest: Path) -> dict:
     dest.mkdir(parents=True, exist_ok=True)
     mds = [p for p in sorted(src.iterdir()) if p.suffix == ".md" and not is_junk(p)]
     subdirs = [p for p in sorted(src.iterdir()) if p.is_dir() and p.name not in EXCLUDE_DIRS]
+    virtual, used = split_notes(src, mds) if ROOT in src.parents else ([], set())
+    mds = [m for m in mds if m not in used]
+    subdirs = sorted(subdirs + virtual, key=lambda p: p.name.lower())
 
     # Copia tutti i file non-md (immagini, pdf, docx, ...)
     for p in src.rglob("*"):
-        if p.is_file() and not is_junk(p) and p.suffix != ".md":
+        if p.is_file() and not is_junk(p) and p.suffix != ".md" and p not in used:
             target = dest / p.relative_to(src)
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(p, target)
@@ -317,7 +366,7 @@ def process_folder(src: Path, dest: Path) -> dict:
         if md_subdirs:
             sub_cards = []
             for sub2 in md_subdirs:
-                icon, desc = SUBJECTS.get(sub2.name, (DEFAULT_ICON, "Appunti e materiali"))
+                icon, desc = subject_meta(sub2.name, src.name)
                 sub_cards.append(
                     f"-   :{icon}:{{ .lg .middle }} __{sub2.name}__\n\n"
                     f"    ---\n\n    {desc}\n\n    [Apri →](<{sub2.name}/index.md>)"

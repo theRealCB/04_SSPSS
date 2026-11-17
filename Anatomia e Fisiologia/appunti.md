@@ -356,7 +356,7 @@ Alcuni dettagli:
 
 #### CO<sub>2</sub> nell'organismo
 Perché il corpo deve espellere immediatamente CO<sub>2</sub>? Perché ==acidifica il sangue==
-CO<sub>2</sub> + H~2~O &rarr; H<sub>2</sub>CO<sub>3</sub>(acido carbonico) &rarr; HCO<sub>3</sub><sup>−</sup>(ione carbonato) + H<sup>+</sup>
+CO<sub>2</sub> + H~2~O &rarr; H<sub>2</sub>CO<sub>3</sub>(acido carbonico) &rarr; HCO<sub>3</sub><sup>−</sup> (ione carbonato) + H<sup>+</sup>
 Se la concentrazione di CO<sub>2</sub> è troppo alta le proteine si denaturano (perdono la loro tridimensionalità)
 
 CO<sub>2</sub> serve comunque come regolatore di vasodilatazione nel cervello
@@ -762,16 +762,19 @@ La **membrana respiratoria** è molto sottile, per facilitare la diffusione semp
 - epitelio semplice dell'alveolo
 - epitelio semplice del capillare polmonare
 - le due membrane basali sono fuse
-- tra le due membrane basali, un sottilissim ostrato di tessuto connettivo
+- tra le due membrane basali, un sottilissimo strato di tessuto connettivo
+
 Distribuzione dei gas nell'atmosfera:
+
 - 21% O<sub>2</sub>
 - 78% N<sub>2</sub>
 - 1% altri gas
-- 0,04 CO<sub>2</sub>
+- 0,04% CO<sub>2</sub>
 
 Guardiamo ora cosa succede a livello di pressione a livello alveolare e capillare:
+
 - pO<sub>2</sub> alveolare > pO<sub>2</sub> capillare (perché l'ossigeno nel sangue è già stato usato dalle cellule dei tessuti)
-- diffusione netta di O<sub>2</sub> degli alveoli al capillare polmonare
+- diffusione netta di O<sub>2</sub> dagli alveoli al capillare polmonare
 - pCO<sub>2</sub> alveolare < pCO<sub>2</sub> capillare (CO<sub>2</sub> della respirazione cellulare arriva nel sangue)
 
 ### Respirazione interna
@@ -780,7 +783,7 @@ Scambio di gas tra cellule dei tessuti e i capillari sistemici
 
 - pO<sub>2</sub> cellulare < pO<sub>2</sub> capillare (O<sub>2</sub> consumato dalla respirazione cellulare)
 - diffusione netta di O<sub>2</sub> dal capillare alle cellule
-- pCO<sub>2</sub> cellulare > pCO<sub>2</sub> capillare(CO<sub>2</sub> della respirazione cellulare accumulato nella cellula)
+- pCO<sub>2</sub> cellulare > pCO<sub>2</sub> capillare (CO<sub>2</sub> della respirazione cellulare accumulato nella cellula)
 
 ## Trasporto di gas nel sangue
 
@@ -788,7 +791,7 @@ Scambio di gas tra cellule dei tessuti e i capillari sistemici
 
 ~98% di O<sub>2</sub> è legato all'emoglobina
 **Emoglobina (Hb)**: proteina formata da 4 catene: 2 &alpha; e 2 &beta;
-~2% do O<sub>2</sub> sciolto nel plasma
+~2% di O<sub>2</sub> sciolto nel plasma
 In ogni catena è presente un gruppo eme (specie chimica non proteica che contiene un atomo di ferro Fe) &rarr; è questo atomo che lega in maniera **<font color="green">reversibile</font>** la molecola di O<sub>2</sub>
 
 - nei capillari polmonari: Hb &rarr; Hb-O<sub>2</sub>
@@ -806,18 +809,17 @@ Trasporto di CO<sub>2</sub> nel sangue:
 
 <img src="imm/pagina21_img3.png" width="300" style="float: left; margin-right: 30px;">
 
-- Nel globulo rosso la CO<sub>2</sub> reagisce con H~2~O,formando **acido carbonico** H<sub>2</sub>CO<sub>3</sub>
-- Acido carbonico si scompone in H<sup>+</sup> (che si lega all'emoglobina) e HCO<sub>3</sub><sup>−</sup>(ione bicarbonato, che diffonde nel plasma).
-    > Reazione chimica CO<sub>2</sub> + H<sub>2</sub>O &rarr; H<sub>2</sub>CO<sub>3</sub> &rarr; H<sup>+</sup> + HCO<sub>3</sub><sup>−</sup> (che esce dal globluo rosso)
-- Nei capillari sistemici, l'intera reazione chimica che si verifica nei globuli rossi, è spostata verso destra, cioè verso la formazione di ioni carbonato.
+- Nel globulo rosso la CO<sub>2</sub> reagisce con H<sub>2</sub>O, formando **acido carbonico** H<sub>2</sub>CO<sub>3</sub>
+- Acido carbonico si scompone in H<sup>+</sup> (che si lega all'emoglobina) e HCO<sub>3</sub><sup>−</sup> (ione bicarbonato, che diffonde nel plasma).
+    > Reazione chimica: CO<sub>2</sub> + H<sub>2</sub>O &rarr; H<sub>2</sub>CO<sub>3</sub> &rarr; H<sup>+</sup> + HCO<sub>3</sub><sup>−</sup> (che esce dal globulo rosso)
+- Nei capillari sistemici, l'intera reazione chimica che si verifica nei globuli rossi, è spostata verso destra, cioè verso la formazione di ioni bicarbonato.
 
 **A livello alveolare**:
 
 - La CO<sub>2</sub> disciolta nell'acqua passa agli alveoli per prima
-- HCO<sub>3</sub><sup>−</sup> non puo essere direttamente espulso dai polmoni.
-   > reazione chimica: HCO<sub>3</sub><sup>−</sup> (che rientra nel globulo rosso) + H<sup>+</sup> &rarr; H<sub>2</sub>CO<sub>3</sub> &rarr; CO<sub>2</sub> + H<sub>2</sub>O 
+- HCO<sub>3</sub><sup>−</sup> non può essere direttamente espulso dai polmoni.
+    > Reazione chimica: HCO<sub>3</sub><sup>−</sup> (che rientra nel globulo rosso) + H<sup>+</sup> &rarr; H<sub>2</sub>CO<sub>3</sub> &rarr; CO<sub>2</sub> + H<sub>2</sub>O
 - Questa reazione chimica che si verifica nei globuli rossi è ora spostata nel senso opposto, cioè verso la formazione di CO<sub>2</sub> che può essere così eliminata
-
 
 ## La regolazione della respirazione
 
@@ -827,19 +829,19 @@ Trasporto di CO<sub>2</sub> nel sangue:
 - **Centri del ponte** regolano l'attività dei centri del midollo allungato
 - **Centri del midollo allungato**: determinano il ritmo di base della respirazione
 
-
-
 Omeostasi del pH nel sangue: 7.35 - 7.45
+
 - Aumento di CO<sub>2</sub> nel sangue &rarr; ==pH diminuisce== (pH < 7.35) &rarr; **acidosi** &rarr; centri respiratori nel cervello &rarr; **iperventilazione** per eliminare CO<sub>2</sub> &rarr; ritorno all'equilibrio omeostatico
 
-- Diminuzione del CO<sub>2</sub> nel sangue &rarr; ==pH aumenta== (pH > 7.45) &rarr; **alcalosi** &rarr; centri respiratori nel cervello &rarr; **ipoventilazione** per far aumenare CO<sub>2</sub> nel sangue
+- Diminuzione della CO<sub>2</sub> nel sangue &rarr; ==pH aumenta== (pH > 7.45) &rarr; **alcalosi** &rarr; centri respiratori nel cervello &rarr; **ipoventilazione** per far aumentare CO<sub>2</sub> nel sangue
 
 ### Situazioni in cui l'omeostasi del pH del sangue non può essere mantenuta
 
-- problemi respiratori &rarr; acidosi causata dall'ipoventilazione &rarr; compensazione dell'acidosi: **broncodilatatori**
+- Problemi respiratori &rarr; acidosi causata dall'ipoventilazione &rarr; compensazione dell'acidosi: **broncodilatatori**
 
-- Attacco di panico &rarr; alcalosi causata dall'iperventilazione &rarr; compensazione dell'alcalosi: respirare in un sacchetto.
+- Attacco di panico &rarr; alcalosi causata dall'iperventilazione &rarr; compensazione dell'alcalosi: respirare in un sacchetto
 
+<div style="page-break-after: always;"></div>
 
 # L'APPARATO CARDIOCIRCOLATORIO
 
@@ -848,12 +850,14 @@ Omeostasi del pH nel sangue: 7.35 - 7.45
 L'apparato circolatorio è formato da una pompa (❤️), una rete di percorrenza (vasi sanguigni) e un mezzo (il sangue)
 
 - In rosso abbiamo il **sangue arterioso**: ricco di O<sub>2</sub> e povero di CO<sub>2</sub>
-- In blu inceve abbbiamo il **sangue venoso**: povero di O<sub>2</sub> e ricco di CO<sub>2</sub>
+- In blu invece abbiamo il **sangue venoso**: povero di O<sub>2</sub> e ricco di CO<sub>2</sub>
 
 <div style="clear: both;"></div>
 
 ## I vasi sanguigni
-Si dividoni in 5 tipi:
+
+Si dividono in 5 tipi:
+
 - Arterie
 - Arteriole
 - Capillari
@@ -861,5 +865,6 @@ Si dividoni in 5 tipi:
 - Vene
 
 La nomenclatura dei vasi sanguigni ==NON== dipende da che sangue trasportano:
-- Arteria: vaso sagnuigno che trasporta il sangue ==VIA DAL CUORE==
+
+- Arteria: vaso sanguigno che trasporta il sangue ==VIA DAL CUORE==
 - Vena:

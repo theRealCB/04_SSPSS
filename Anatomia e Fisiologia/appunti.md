@@ -474,8 +474,8 @@ Stimolo misurato dal recettore &rarr; segnale inviato al **centro di controllo**
     2. Se il valore è fuori range, ==azione necessaria== (poichè omeostasi non è mantenuta) &rarr; il centro di controllo ==DEVE ELABORARE UNA RISPOSTA== per ripristinare l'omeostasi
 4. **Effettore** (solitamente o muscolo o ghiandola): riceve precise istruzioni dal centro di controllo per agire e ripristinare l'omeostasi
 
-- **Via afferente** (riporta stimolo rilevato da recettore): puo essere via **nervosa** o via **ormonale**. Nella maggior parte dei casi si tratta di una via nervosa
-- **Via ennerente** (riporta la risposta del centro di controllo all'effettore): come prima, puo essere via **nervosa** o **ormonale**
+- **Via afferente** (riporta stimolo rilevato da recettore): può essere via **nervosa** o via **ormonale**. Nella maggior parte dei casi si tratta di una via nervosa
+- **Via efferente** (riporta la risposta del centro di controllo all'effettore): come prima, può essere via **nervosa** o **ormonale**
 
 
 L'omeostasi è mantenuta attraverso dai meccanismi di controllo omeostatico:

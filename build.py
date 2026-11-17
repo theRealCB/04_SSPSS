@@ -179,6 +179,11 @@ def transform_md(src: Path, title: str, pdf_name: str, crumb: str = "",
     # Via la riga "# Table of Content" e il segnaposto [TOC] (il tema ha già il sommario)
     text = re.sub(r"^#{1,3}\s*table of content.*$", "", text, flags=re.M | re.I)
     text = re.sub(r"^\[TOC\]\s*$", "", text, flags=re.M)
+    # salti pagina prima del primo capitolo: nel PDF ci pensano copertina e indice
+    first = re.search(r"^#{1,6}\s", text, re.M)
+    if first:
+        head = re.sub(r'^<div style="page-break-[^"]*"></div>\s*$', "", text[:first.start()], flags=re.M)
+        text = head + text[first.start():]
     text = fix_tight_blocks(text)
     text = demote_headings(text)
     text = re.sub(r"\n{4,}", "\n\n\n", text).strip() + "\n"
@@ -1199,17 +1204,39 @@ mark { background: #fff59d; padding: 0 .15em; border-radius: 3px; }
   .md-typeset .md-button, .sspss-materials, .sspss-crumb, #sspss-progress, .sspss-right, .sspss-lightbox { display: none !important; }
   .sspss-cover {
     display: flex; flex-direction: column; justify-content: center;
-    height: 245mm;
+    height: 238mm; box-sizing: border-box; overflow: hidden; break-inside: avoid;
+    margin: 0 !important;
     padding: 0 8mm;
     border-left: 6mm solid #B3261E;
     break-after: page; page-break-after: always;
   }
   .sspss-cover p { margin: 0 !important; }
+  /* il titolo centrato degli appunti è già in copertina */
+  .md-typeset h1[align="center"],
+  .md-typeset h1[align="center"] + p[align="center"],
+  .md-typeset h1[align="center"] + p[align="center"] + hr { display: none !important; }
+  /* Indice del PDF (inserito da make_pdfs.py) */
+  .sspss-printtoc { break-after: page; page-break-after: always; padding-top: 4mm; }
+  .sspss-printtoc__title {
+    font-family: "Space Grotesk", sans-serif; font-size: 22pt; font-weight: 700;
+    letter-spacing: -.01em; color: #1C1917; margin: 0 0 8mm !important;
+    padding-bottom: 3mm; border-bottom: 2px solid #B3261E;
+  }
+  .sspss-printtoc ol { list-style: none; margin: 0 !important; padding: 0 !important; }
+  .sspss-printtoc li { margin: 0 !important; padding: 0 !important; break-inside: avoid; }
+  .sspss-printtoc__row { display: flex; align-items: baseline; gap: 2mm; font-size: 10.5pt; line-height: 1.45; color: #1C1917; }
+  .sspss-printtoc__row--1 { font-weight: 700; margin-top: 3.5mm; }
+  .sspss-printtoc__row--2 { padding-left: 6mm; color: #44403C; }
+  .sspss-printtoc__dots { flex: 1; border-bottom: 1px dotted #A8A29E; transform: translateY(-1mm); }
+  .sspss-printtoc__num { font-variant-numeric: tabular-nums; min-width: 7mm; text-align: right; }
+  .sspss-printtoc__end { position: absolute; color: #fff; font-size: 1pt; }
   .sspss-cover__kicker { font-size: 11pt; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #B3261E; }
   .sspss-cover .sspss-cover__title { font-family: "Space Grotesk", sans-serif; font-size: 40pt; font-weight: 700; line-height: 1.1 !important; letter-spacing: -.02em; color: #1C1917; margin: 8mm 0 4mm !important; }
   .sspss-cover__sub { font-size: 15pt; color: #57534E; }
   .sspss-cover .sspss-cover__meta { font-size: 10pt; color: #78716C; margin-top: 30mm !important; }
-  .md-content__inner { background: #fff; border: none; box-shadow: none; padding: 0; }
+  .md-content__inner { background: #fff; border: none; box-shadow: none; padding: 0; margin: 0 !important; }
+  .md-content__inner::before { display: none !important; }
+  .md-main__inner { margin-top: 0 !important; }
   /* titoli mai staccati dal contenuto che segue */
   .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
     break-after: avoid; page-break-after: avoid;

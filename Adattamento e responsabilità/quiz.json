@@ -1,0 +1,68 @@
+[
+ {
+  "q": "Com'è la relazione tra curante e paziente?",
+  "correct": "Asimmetrica: chi aiuta si assume la responsabilità della relazione",
+  "wrong": [
+   "Simmetrica: entrambi hanno lo stesso ruolo",
+   "Reciproca: ci si aiuta a vicenda",
+   "Gerarchica: il paziente deve adattarsi al curante"
+  ],
+  "why": "Nella relazione d'aiuto non c'è reciprocità: è chi aiuta che deve assumersi la responsabilità e adattarsi.",
+  "cap": "Intro"
+ },
+ {
+  "q": "Che cos'è la sensazione?",
+  "correct": "Il processo elementare di ricevere stimoli dagli organi di senso e convertirli in segnali neurali",
+  "wrong": [
+   "L'interpretazione personale di ciò che vediamo",
+   "Un'emozione provocata da un ricordo",
+   "La rappresentazione mentale costruita dalla corteccia"
+  ],
+  "why": "La sensazione è il primo passo, fisiologico: organi di senso, nervi, cervello.",
+  "cap": "La sensazione"
+ },
+ {
+  "q": "Che cos'è la percezione?",
+  "correct": "L'elaborazione dello stimolo nel cervello, che lo trasforma in una rappresentazione mentale",
+  "wrong": [
+   "La semplice ricezione dello stimolo da parte dei recettori",
+   "Un riflesso involontario del midollo spinale",
+   "La trasmissione del segnale lungo i nervi"
+  ],
+  "why": "La percezione è ciò che capita nel cervello dopo lo stimolo, e dipende anche da personalità, esperienze e inconscio.",
+  "cap": "La percezione"
+ },
+ {
+  "q": "Quale regola della percezione formularono gli psicologi della Gestalt?",
+  "correct": "Il tutto è diverso dalla somma delle parti",
+  "wrong": [
+   "La percezione è una copia fedele della realtà",
+   "Percepiamo prima i dettagli e poi l'insieme",
+   "Ogni stimolo viene percepito allo stesso modo da tutti"
+  ],
+  "why": "Non percepiamo in modo analitico ma globale: l'esempio delle facce di Arcimboldo.",
+  "cap": "La percezione"
+ },
+ {
+  "q": "Da cosa è guidata l'elaborazione top-down?",
+  "correct": "Da concetti, significato e memoria",
+  "wrong": [
+   "Dalle sole caratteristiche fisiche dello stimolo",
+   "Dai recettori periferici",
+   "Dall'intensità dello stimolo"
+  ],
+  "why": "Top-down: conoscenza pregressa e aspettative danno senso agli stimoli. I due processi lavorano insieme.",
+  "cap": "Elaborazione Top-Down"
+ },
+ {
+  "q": "Cosa ci insegna il test di Rorschach sulla percezione?",
+  "correct": "Che è una costruzione soggettiva, non una copia fedele della realtà",
+  "wrong": [
+   "Che tutti vedono le stesse figure",
+   "Che la percezione dipende solo dalla vista",
+   "Che le emozioni non influenzano ciò che vediamo"
+  ],
+  "why": "La percezione è costruita da esperienze, emozioni, cultura, stato fisico e mentale.",
+  "cap": "Il test di Rorschach"
+ }
+]

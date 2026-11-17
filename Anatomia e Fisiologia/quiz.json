@@ -1,0 +1,310 @@
+[
+ {
+  "q": "Quanta parte della massa corporea di un uomo adulto è acqua?",
+  "correct": "Circa il 70%",
+  "wrong": [
+   "Circa il 30%",
+   "Circa il 55%",
+   "Circa il 90%"
+  ],
+  "why": "Uomo ~70%, donna ~55% (maggior tessuto adiposo).",
+  "cap": "La composizione del corpo umano"
+ },
+ {
+  "q": "Come sono fatti i fosfolipidi?",
+  "correct": "Testa idrofila con gruppo fosfato e due code idrofobe di acidi grassi",
+  "wrong": [
+   "Tre acidi grassi legati al glicerolo",
+   "Catene di amminoacidi",
+   "Anelli di carbonio senza gruppi fosfato"
+  ],
+  "why": "Sono i componenti della membrana cellulare: come un trigliceride in cui un acido grasso è sostituito da un fosfato.",
+  "cap": "I lipidi"
+ },
+ {
+  "q": "Cosa fa la pompa sodio-potassio?",
+  "correct": "Trasporta attivamente Na⁺ fuori e K⁺ dentro la cellula consumando energia",
+  "wrong": [
+   "Fa passare l'acqua per osmosi",
+   "Trasporta glucosio senza consumare energia",
+   "Fa entrare Na⁺ e uscire K⁺ secondo gradiente"
+  ],
+  "why": "È un trasporto attivo: va contro gradiente e consuma ATP.",
+  "cap": "I trasporti cellulari"
+ },
+ {
+  "q": "Cosa distingue la respirazione cellulare aerobica da quella anaerobica?",
+  "correct": "L'aerobica utilizza ossigeno",
+  "wrong": [
+   "L'aerobica non produce energia",
+   "L'anaerobica avviene solo nei polmoni",
+   "L'anaerobica utilizza più ossigeno"
+  ],
+  "why": "Aerobica: con O₂. Anaerobica: senza O₂.",
+  "cap": "La respirazione cellulare"
+ },
+ {
+  "q": "Che cos'è l'omeostasi?",
+  "correct": "Il mantenimento di un equilibrio interno stabile nonostante i cambiamenti esterni",
+  "wrong": [
+   "La produzione di ormoni da parte del pancreas",
+   "La divisione delle cellule",
+   "Il trasporto dei gas nel sangue"
+  ],
+  "why": "È regolata da recettori, centri di controllo ed effettori.",
+  "cap": "L'EQUILIBRIO OMEOSTATICO"
+ },
+ {
+  "q": "Cosa fa un feedback negativo?",
+  "correct": "Contrasta lo stimolo riportando la variabile verso il valore di riferimento",
+  "wrong": [
+   "Rinforza lo stimolo allontanando la variabile dal valore di riferimento",
+   "Blocca ogni risposta dell'organismo",
+   "Agisce solo sul sistema nervoso"
+  ],
+  "why": "Esempio: la regolazione della glicemia.",
+  "cap": "Sistemi di controllo omeostatici"
+ },
+ {
+  "q": "Quale di questi è un esempio di feedback positivo?",
+  "correct": "Le contrazioni durante il parto",
+  "wrong": [
+   "La regolazione della glicemia",
+   "La regolazione della temperatura corporea",
+   "La regolazione della pressione"
+  ],
+  "why": "Le contrazioni diventano sempre più frequenti finché un fattore esterno (la nascita) interrompe il ciclo.",
+  "cap": "IL PARTO (feedback positivo)"
+ },
+ {
+  "q": "Perché il polmone sinistro è più piccolo del destro?",
+  "correct": "Perché deve lasciare spazio al cuore",
+  "wrong": [
+   "Perché riceve meno sangue",
+   "Perché ha più lobi",
+   "Perché è meno utilizzato"
+  ],
+  "why": "Il cuore occupa parte dello spazio a sinistra.",
+  "cap": "I polmoni"
+ },
+ {
+  "q": "Come viene trasportato l'ossigeno nel sangue?",
+  "correct": "Per circa il 98% legato all'emoglobina",
+  "wrong": [
+   "Quasi tutto sciolto nel plasma",
+   "Legato ai globuli bianchi",
+   "Sotto forma di bicarbonato"
+  ],
+  "why": "Solo ~2% è sciolto nel plasma; l'O₂ si lega in modo reversibile al ferro del gruppo eme.",
+  "cap": "Trasporto di gas nel sangue"
+ },
+ {
+  "q": "Nella respirazione esterna, in che direzione diffonde l'ossigeno?",
+  "correct": "Dagli alveoli al capillare polmonare",
+  "wrong": [
+   "Dal capillare agli alveoli",
+   "Dalle cellule al capillare",
+   "Dal sangue all'aria espirata"
+  ],
+  "why": "La pO₂ alveolare è maggiore di quella capillare, quindi l'O₂ diffonde verso il sangue.",
+  "cap": "Respirazione interna ed esterna"
+ },
+ {
+  "q": "Che cos'è l'anabolismo?",
+  "correct": "La sintesi di molecole più grandi a partire da molecole più piccole",
+  "wrong": [
+   "La scissione di grandi molecole",
+   "La produzione di calore",
+   "Il trasporto di ossigeno"
+  ],
+  "why": "Il catabolismo è il processo opposto (es. idrolisi).",
+  "cap": "Il metabolismo"
+ },
+ {
+  "q": "Quanti sono gli amminoacidi essenziali?",
+  "correct": "8, da assumere con la dieta",
+  "wrong": [
+   "20",
+   "12",
+   "Nessuno"
+  ],
+  "why": "Gli amminoacidi sono 20: 12 li produce il corpo, 8 no.",
+  "cap": "Le proteine"
+ },
+ {
+  "q": "Quale funzione svolge l'emoglobina?",
+  "correct": "Trasporto",
+  "wrong": [
+   "Strutturale",
+   "Difesa",
+   "Contrattile"
+  ],
+  "why": "È una proteina di trasporto: porta l'ossigeno nel sangue.",
+  "cap": "Le proteine"
+ },
+ {
+  "q": "A cosa servono i polisaccaridi come glicogeno e amido?",
+  "correct": "Da riserva di energia",
+  "wrong": [
+   "A trasportare ossigeno",
+   "A formare la membrana",
+   "A catalizzare reazioni"
+  ],
+  "why": "",
+  "cap": "Gli zuccheri (carboidrati)"
+ },
+ {
+  "q": "Nel DNA, con quale base si appaia l'adenina?",
+  "correct": "Con la timina",
+  "wrong": [
+   "Con la citosina",
+   "Con la guanina",
+   "Con l'uracile"
+  ],
+  "why": "A-T e C-G, con legami idrogeno.",
+  "cap": "Gli acidi nucleici"
+ },
+ {
+  "q": "Quale base azotata è presente nell'RNA al posto della timina?",
+  "correct": "L'uracile",
+  "wrong": [
+   "L'adenina",
+   "La guanina",
+   "La citosina"
+  ],
+  "why": "",
+  "cap": "Gli acidi nucleici"
+ },
+ {
+  "q": "Quali sostanze attraversano naturalmente la membrana cellulare?",
+  "correct": "Piccole molecole come O₂, CO₂ e acqua",
+  "wrong": [
+   "Gli ioni Na⁺ e K⁺",
+   "Le grandi proteine",
+   "Il glucosio"
+  ],
+  "why": "Ioni e glucosio hanno bisogno di canali; grandi proteine e DNA non passano.",
+  "cap": "La membrana cellulare"
+ },
+ {
+  "q": "Cosa succede nell'osmosi?",
+  "correct": "L'acqua si sposta per diluire il soluto che non può attraversare la membrana",
+  "wrong": [
+   "Il soluto attraversa la membrana consumando energia",
+   "La cellula ingloba una macromolecola",
+   "Gli ioni escono dalla cellula"
+  ],
+  "why": "È un trasporto passivo.",
+  "cap": "I trasporti cellulari"
+ },
+ {
+  "q": "Cosa distingue una cellula procariote?",
+  "correct": "Non ha nucleo: il DNA è libero nel citoplasma",
+  "wrong": [
+   "Ha molti organelli con membrana",
+   "È sempre pluricellulare",
+   "È più grande dell'eucariote"
+  ],
+  "why": "Batteri e archei sono procarioti.",
+  "cap": "La cellula"
+ },
+ {
+  "q": "Qual è il compito dei ribosomi?",
+  "correct": "Tradurre l'mRNA in proteine",
+  "wrong": [
+   "Produrre ATP",
+   "Contenere il DNA",
+   "Demolire le sostanze tossiche"
+  ],
+  "why": "",
+  "cap": "Gli organelli"
+ },
+ {
+  "q": "Dove avviene la glicolisi?",
+  "correct": "Nel citoplasma",
+  "wrong": [
+   "Nel mitocondrio",
+   "Nel nucleo",
+   "Nell'apparato di Golgi"
+  ],
+  "why": "Da una molecola di glucosio si ottengono 2 piruvato e 2 ATP.",
+  "cap": "La respirazione cellulare"
+ },
+ {
+  "q": "Quante molecole di ATP produce in totale la respirazione aerobica da una molecola di glucosio?",
+  "correct": "38",
+  "wrong": [
+   "2",
+   "12",
+   "100"
+  ],
+  "why": "2 dalla glicolisi, 2 dal ciclo di Krebs, 34 dalla fosforilazione ossidativa.",
+  "cap": "La respirazione cellulare"
+ },
+ {
+  "q": "Perché il tessuto epiteliale è detto avascolare?",
+  "correct": "Perché è privo di vasi sanguigni",
+  "wrong": [
+   "Perché non si rinnova",
+   "Perché non ha cellule",
+   "Perché è fatto solo di vasi"
+  ],
+  "why": "Il nutrimento arriva dal tessuto connettivo sottostante.",
+  "cap": "Il tessuto epiteliale"
+ },
+ {
+  "q": "Dove versano il loro contenuto le ghiandole endocrine?",
+  "correct": "Direttamente nel sangue",
+  "wrong": [
+   "All'esterno del corpo",
+   "Nel tubo digerente",
+   "Nelle articolazioni"
+  ],
+  "why": "Le molecole che producono si chiamano ormoni.",
+  "cap": "Il tessuto epiteliale"
+ },
+ {
+  "q": "Quali sono le tre membrane sierose?",
+  "correct": "Pleura, pericardio, peritoneo",
+  "wrong": [
+   "Cute, mucosa, sinoviale",
+   "Epidermide, derma, ipoderma",
+   "Pleura, meningi, sinoviale"
+  ],
+  "why": "Ognuna ha un foglietto viscerale e uno parietale.",
+  "cap": "Le membrane epiteliali e connettivali"
+ },
+ {
+  "q": "Cosa rilevano i nocicettori?",
+  "correct": "Il dolore",
+  "wrong": [
+   "La luce",
+   "La temperatura",
+   "Le sostanze chimiche"
+  ],
+  "why": "Sono terminazioni nervose libere.",
+  "cap": "Tipi di recettori"
+ },
+ {
+  "q": "Cosa succede quando la glicemia è alta?",
+  "correct": "Le cellule β del pancreas producono insulina",
+  "wrong": [
+   "Le cellule α producono glucagone",
+   "Il fegato libera glucosio",
+   "L'ipofisi libera ossitocina"
+  ],
+  "why": "L'insulina fa entrare il glucosio nelle cellule e il fegato lo immagazzina come glicogeno.",
+  "cap": "LA REGOLAZIONE DELLA GLICEMIA (feedback negativo)"
+ },
+ {
+  "q": "Cosa fa il diaframma durante l'inspirazione?",
+  "correct": "Si contrae e si abbassa",
+  "wrong": [
+   "Si rilassa e si alza",
+   "Resta fermo",
+   "Si contrae e si alza"
+  ],
+  "why": "L'inspirazione è un processo attivo; l'espirazione è passiva.",
+  "cap": "Inspirazione"
+ }
+]

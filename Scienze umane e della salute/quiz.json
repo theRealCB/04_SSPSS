@@ -1,0 +1,156 @@
+[
+ {
+  "q": "Cosa sono i determinanti della salute?",
+  "correct": "Fattori che modificano in positivo o in negativo lo stato di salute di persone e popolazioni",
+  "wrong": [
+   "Le malattie più diffuse",
+   "Gli esami diagnostici",
+   "I farmaci essenziali"
+  ],
+  "why": "",
+  "cap": "Determinanti della salute"
+ },
+ {
+  "q": "In che anno è stata firmata la Carta di Ottawa?",
+  "correct": "1986",
+  "wrong": [
+   "1948",
+   "1989",
+   "2001"
+  ],
+  "why": "Carta dell'OMS per la promozione della salute.",
+  "cap": "Carta di Ottawa: per la promozione della salute (OMS, 1986)"
+ },
+ {
+  "q": "Cosa significa salutogenesi?",
+  "correct": "Costruzione della salute",
+  "wrong": [
+   "Origine delle malattie",
+   "Cura dei sintomi",
+   "Storia della medicina"
+  ],
+  "why": "La ricerca si orienta sui fattori della salute, non solo sulla malattia.",
+  "cap": "Salutogenesi"
+ },
+ {
+  "q": "Qual è la grande novità di Ippocrate?",
+  "correct": "Spiegare la malattia con cause naturali",
+  "wrong": [
+   "Inventare l'ospedale",
+   "Scoprire i germi",
+   "Introdurre la dissezione"
+  ],
+  "why": "Salute = equilibrio dei quattro umori.",
+  "cap": "Antichità: da Ippocrate alla medicina greca"
+ },
+ {
+  "q": "Perché gli errori anatomici di Galeno durarono secoli?",
+  "correct": "Perché studiò soprattutto animali e le sue opere rimasero l'autorità indiscussa",
+  "wrong": [
+   "Perché nessuno leggeva i suoi testi",
+   "Perché furono tradotti male",
+   "Perché si occupava solo di chirurgia"
+  ],
+  "why": "Dominarono fino al Rinascimento.",
+  "cap": "Età ellenistica e Roma: anatomia, sanità pubblica e Galeno"
+ },
+ {
+  "q": "Chi criticò Galeno con il «De humani corporis fabrica» (1543)?",
+  "correct": "Andrea Vesalio",
+  "wrong": [
+   "William Harvey",
+   "Louis Pasteur",
+   "Avicenna"
+  ],
+  "why": "Con la dissezione diretta del cadavere.",
+  "cap": "Rinascimento: anatomia, ospedale e critica di Galeno"
+ },
+ {
+  "q": "Cosa dimostrò William Harvey?",
+  "correct": "La circolazione del sangue",
+  "wrong": [
+   "La teoria dei germi",
+   "L'utilità dell'anestesia",
+   "L'efficacia del vaccino"
+  ],
+  "why": "",
+  "cap": "XVII secolo: rivoluzione scientifica e fisiologia"
+ },
+ {
+  "q": "Chi introdusse la vaccinazione contro il vaiolo?",
+  "correct": "Edward Jenner",
+  "wrong": [
+   "Joseph Lister",
+   "Ignaz Semmelweis",
+   "Robert Koch"
+  ],
+  "why": "Fine del Settecento.",
+  "cap": "Illuminismo e XVIII secolo: nascita della medicina clinica e sociale"
+ },
+ {
+  "q": "A chi si deve l'importanza del lavaggio delle mani?",
+  "correct": "Ignaz Semmelweis",
+  "wrong": [
+   "Rudolf Virchow",
+   "René Laennec",
+   "Claude Bernard"
+  ],
+  "why": "",
+  "cap": "XIX secolo: l'ospedale moderno e la medicina scientifica"
+ },
+ {
+  "q": "Cosa significa «primum non nocere»?",
+  "correct": "Prima di tutto non nuocere",
+  "wrong": [
+   "Prima di tutto guarire",
+   "Prima di tutto informare",
+   "Prima di tutto obbedire"
+  ],
+  "why": "È la massima dell'etica medica ippocratica.",
+  "cap": "L'etica medica di Ippocrate"
+ },
+ {
+  "q": "Dove si conservò il sapere medico antico nell'Alto Medioevo?",
+  "correct": "Nei monasteri",
+  "wrong": [
+   "Nelle università",
+   "Negli ospedali pubblici",
+   "Nelle corti reali"
+  ],
+  "why": "I monaci copiavano i testi e coltivavano piante medicinali.",
+  "cap": "Alto Medioevo: monasteri, carità e conservazione del sapere"
+ },
+ {
+  "q": "Cosa stabilirono le Costituzioni di Melfi (1231)?",
+  "correct": "Che per esercitare la medicina serviva un esame pubblico",
+  "wrong": [
+   "Il divieto di dissezione",
+   "La nascita degli ospedali",
+   "L'obbligo di vaccinazione"
+  ],
+  "why": "È una prima regolamentazione della professione, legata alla Scuola Salernitana.",
+  "cap": "Basso Medioevo: Scuola Salernitana, ospedali cittadini e università"
+ },
+ {
+  "q": "Quale passaggio avviene nel XX secolo?",
+  "correct": "Dall'assistenza caritativa al diritto sociale alla salute",
+  "wrong": [
+   "Dalla medicina scientifica a quella religiosa",
+   "Dall'ospedale al monastero",
+   "Dal medico al guaritore"
+  ],
+  "why": "Lo Stato si occupa della salute dei cittadini con i sistemi sanitari.",
+  "cap": "XX secolo: medicina tecnologica e sistemi sanitari"
+ },
+ {
+  "q": "Qual è il cambiamento più grande rispetto all'etica di Ippocrate?",
+  "correct": "Il superamento del paternalismo, con il consenso informato del paziente",
+  "wrong": [
+   "L'abolizione del segreto professionale",
+   "Il divieto di curare",
+   "La fine dell'obiezione di coscienza"
+  ],
+  "why": "Il segreto professionale è rimasto, anzi si è rafforzato.",
+  "cap": "Confronto con la situazione attuale"
+ }
+]

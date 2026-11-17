@@ -1,0 +1,79 @@
+[
+ {
+  "q": "Da quali tre elementi è composta l'Evidence Based Practice?",
+  "correct": "Migliori evidenze scientifiche, valori del paziente, esperienza clinica",
+  "wrong": [
+   "Diagnosi, terapia, prognosi",
+   "Linee guida, protocolli, opinione dell'esperto",
+   "Studi clinici, statistiche, costi"
+  ],
+  "why": "EBP = best scientific evidence + patient values + clinical experience.",
+  "cap": "Evidence Based Practice (EBP)"
+ },
+ {
+  "q": "Cosa sta in cima alla piramide delle evidenze?",
+  "correct": "Meta-analisi e revisioni sistematiche",
+  "wrong": [
+   "L'opinione dell'esperto",
+   "I casi individuali",
+   "Gli studi di coorte"
+  ],
+  "why": "Mettono insieme più studi: sono il livello più alto di qualità.",
+  "cap": "Piramide delle evidenze"
+ },
+ {
+  "q": "Cosa si intende per «spin» nella comunicazione scientifica?",
+  "correct": "Presentare i risultati in modo che il trattamento sembri più efficace di quanto i dati supportino",
+  "wrong": [
+   "Un errore di calcolo statistico",
+   "La ripetizione di uno studio",
+   "La pubblicazione di dati grezzi"
+  ],
+  "why": "È una distorsione nella comunicazione dei fatti.",
+  "cap": "Come scegliere le evidenze"
+ },
+ {
+  "q": "Cosa afferma il modello biopsicosociale?",
+  "correct": "Che il paziente è molto di più della sua diagnosi",
+  "wrong": [
+   "Che conta solo la causa biologica",
+   "Che la malattia è sempre psicologica",
+   "Che l'ambiente sociale non influisce"
+  ],
+  "why": "Considera insieme aspetti biologici, psicologici e sociali (Engel, 1977).",
+  "cap": "Il modello biopsicosociale"
+ },
+ {
+  "q": "Quale affermazione sul dolore è corretta?",
+  "correct": "È sempre creato dal cervello, ma questo non vuol dire che sia «nella tua testa»",
+  "wrong": [
+   "Indica sempre con precisione la gravità del danno",
+   "Più dura, più il danno è grave",
+   "Nasce direttamente nei muscoli"
+  ],
+  "why": "Il dolore è un allarme, non una misura precisa del danno; se persiste a lungo la relazione dolore-danno è debole.",
+  "cap": "Il dolore può essere considerato un allarme"
+ },
+ {
+  "q": "Che ruolo ha il midollo spinale nella regolazione del dolore?",
+  "correct": "Può amplificare o ridurre il segnale inviato al cervello",
+  "wrong": [
+   "Trasmette il segnale sempre invariato",
+   "Genera il dolore",
+   "Blocca sempre il segnale"
+  ],
+  "why": "Come un megafono o un riduttore, in base a inibizione o facilitazione discendente.",
+  "cap": "Regolazione del dolore"
+ },
+ {
+  "q": "Per cosa sta la «A» di PEACE nel protocollo PEACE & LOVE?",
+  "correct": "Avoid anti-inflammatory (evitare antinfiammatori)",
+  "wrong": [
+   "Activity (attività)",
+   "Assessment (valutazione)",
+   "Analgesia"
+  ],
+  "why": "P-rotection, E-levation, A-void anti-inflammatory, C-ompression, E-ducation.",
+  "cap": "Primo intervento in caso di infortunio"
+ }
+]

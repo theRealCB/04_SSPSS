@@ -72,7 +72,7 @@ I sistemi tendono al mantenimento di un certo equilibrio attraverso la stabilizz
 - **Il principio di totalità**
     >L'uno influenza il tutto, come un domino
 - **Il principio di non-sommatività**
-    > Il sistema è piu della somma delle sue parti
+    > Il sistema è più della somma delle sue parti
 
     L'analisi delle singole componenti non riuscirebbe a spiegare tutto il sistema, poichè si tratta di proprietà integrate.
     Le proprietà di un sistema vengono distrutte quando un sistema viene dissezionato, fisicamente o concettualmente, in elementi isolati
@@ -134,7 +134,7 @@ Messaggi volti a rifiutare la Relazione:
 La comunicazione è un **processo circolare**, in cui emergono diverse punteggiature. La punteggiatura è un ==attribuzione causale soggettiva== 
 >Con **punteggiatura** intendiamo **punto di vista** &rarr; mettiamo un punto di partenza a una dinamica circolare (è naturale, è proprio così che queste dinamiche si autoalimentano)
 
-Ci cristallizziamo in questi circoli viziosi perche vogliamo mettere in discussione la relazione che intercorre tra noi &rarr; spesso perche la visione di relazione reciproca non è simmetrica 
+Ci cristallizziamo in questi circoli viziosi perché vogliamo mettere in discussione la relazione che intercorre tra noi &rarr; spesso perché la visione di relazione reciproca non è simmetrica 
 
 
 #### Storia del rinoceronte e del leone

@@ -195,8 +195,8 @@ Richiede energia, solitamente spostamento ==contro gradiente==
 
 Esempio di ==trasporto attivo== (detta anche Na<sup>+</sup>/K<sup>+</sup> ATPasi)
 
-Scopo: Mantenere il tono e volume cellulare (cosi che la cellula non esploda) &rarr; mantiene equilibrio osmotico e pressione
->Curiosità: serve anche nei neuroni e nelle cellule muscolari per mantenere il potenziale elettrico (cosi che rimangano eccitabili e possano trasmettere impulsi elettrici)
+Scopo: Mantenere il tono e volume cellulare (così che la cellula non esploda) &rarr; mantiene equilibrio osmotico e pressione
+>Curiosità: serve anche nei neuroni e nelle cellule muscolari per mantenere il potenziale elettrico (così che rimangano eccitabili e possano trasmettere impulsi elettrici)
 
 Ecco il funzionamento:
 
@@ -319,10 +319,10 @@ Esempio: i globuli rossi non possiedono mitocondri, ma devono comunque produrre 
     Si tratta di un tipo di respirazione cellulare anaerobica dove **NON** viene prodotto acido lattico
     <img src="imm/pagina12_img1.png" width="200">
     Sistema utilizzato principalmente dai muscoli
-    Chiamato così perche partecipa alla reazione una molecola di creatina con attaccato un fosfato (CP)
+    Chiamato così perché partecipa alla reazione una molecola di creatina con attaccato un fosfato (CP)
     >in breve: fosfato di CP viene trasferito a un ADP &rarr; si crea una molecola di creatina e una di ATP
 
-    Più creatina è presente nei muscoli, piu CP viene formato nel muscolo.
+    Più creatina è presente nei muscoli, più CP viene formato nel muscolo. 
     Meccanismo rapidissimo
 
 <div style="page-break-after: always;"></div>
@@ -355,8 +355,7 @@ Alcuni dettagli:
 <div style="clear: both;"></div>
 
 #### CO<sub>2</sub> nell'organismo
-
-Perche il corpo deve espellere immediatamente CO<sub>2</sub>? Perche ==acidifica il sangue==
+Perché il corpo deve espellere immediatamente CO<sub>2</sub>? Perché ==acidifica il sangue==
 CO<sub>2</sub> + H~2~O &rarr; H<sub>2</sub>CO<sub>3</sub>(acido carbonico) &rarr; HCO<sub>3</sub><sup>−</sup>(ione carbonato) + H<sup>+</sup>
 Se la concentrazione di CO<sub>2</sub> è troppo alta le proteine si denaturano (perdono la loro tridimensionalità)
 
@@ -394,7 +393,7 @@ Classificazione:
     Le ghiandole che si trovano nel nostro corpo sono classificate in ==tre categorie==:
     1. Ghiandole **endocrine** (es.tiroide): versano il contenuto direttamente nel sangue. Nello specifico le molecole prodotte e riversate nel sangue da queste ghiandole si chiamano **ormoni**
     2. Ghiandole **esocrine** (es. ghiandole sudoripare): riversano il contenuto fuori dal corpo, oppure all'interno di una sua cavità (es nel tubo digerente)
-    3. Ghiandole **miste** (es. pancreas): hanno capacita sia endocrine che esocrine
+    3. Ghiandole **miste** (es. pancreas): hanno capacità sia endocrine che esocrine
         > ~99% del pancreas è esocrino &rarr; produce succo pancreatico (cocktail di enzimi)
         ~1% endocrino (Isole di Langherans) &rarr; produce due ormoni (insulina e glucagone) per la regolazione di glucosio nel sangue
 
@@ -411,8 +410,8 @@ Le **membrane epiteliali** sono membrane costituite da epitelio e un sottile str
 Si dividono in tre tipi:
 
 1. Membrane **mucose**(o semplicemente **mucose**)
-    Rivestono ==le cavità del corpo== che comunicano direttamente con l'esterno &rarr; costantemente umide perche bagnate da **secreti**
-    >Esempi:
+    Rivestono ==le cavità del corpo== che comunicano direttamente con l'esterno &rarr; costantemente umide perché bagnate da **secreti**
+    >Esempi: 
         - L'esofago è ricoperto da una mucosa stratificata &rarr; durante il passaggio del bolo alimentare, molte cellule della mucosa vengono portate via. I numerosi strati servono per proteggere da danni all'esofago
         - Nell'intestino la mucosa invece è composta da strato epiteliale semplice &rarr; funzione di assorbimento dell'intestino favorita dal singolo strato
     In generale: a dipendenza della mucosa troviamo ==diverse strutture in base alla  diverse funzioni==
@@ -478,6 +477,7 @@ Stimolo misurato dal recettore &rarr; segnale inviato al **centro di controllo**
 - **Via afferente** (riporta stimolo rilevato da recettore): puo essere via **nervosa** o via **ormonale**. Nella maggior parte dei casi si tratta di una via nervosa
 - **Via ennerente** (riporta la risposta del centro di controllo all'effettore): come prima, puo essere via **nervosa** o **ormonale**
 
+
 L'omeostasi è mantenuta attraverso dai meccanismi di controllo omeostatico:
 <img src="imm/pagina16_img1.png" width="400">
 
@@ -488,8 +488,8 @@ La risposta si ==oppone== allo stimolo iniziale
         - Valore è alto &rarr; feedback negativo lo fa scendere
         - Valore è basso &rarr; feedback negativo lo fa alzare
 
-- **Feedback positivo** (meccanismo di retroazione positiva): La risposta ==rinforza== lo stimolo, allontanado la variabile ancora di più dal valore di riferimento, finche un fattore esterno (fattore d'arresto) termina il ciclo di feedback positivo
-    > Esempio: nel parto, le contrazioni sono regolate da un feedback positivo &rarr; contrazioni sempre più frequenti finche il figlio nasce (fattore esterno)
+- **Feedback positivo** (meccanismo di retroazione positiva): La risposta ==rinforza== lo stimolo, allontanando la variabile ancora di più dal valore di riferimento, finché un fattore esterno (fattore d'arresto) termina il ciclo di feedback positivo
+    > Esempio: nel parto, le contrazioni sono regolate da un feedback positivo &rarr; contrazioni sempre più frequenti finché il figlio nasce (fattore esterno)
 
 ## Tipi di recettori
 
@@ -679,7 +679,7 @@ Avvengono 3 processi importanti nelle vie di conduzione
 
 <img src="imm/pagina18_img2.png" width="200" style="float: left; margin-right: 30px;">
 
-- Parliamo di **epitelio pseudostratificato** perche al microscopio sembra composto da piu strati, ma in realta è a singolo strato, ma con nuclei posizionati nella cellula in posizioni differenti
+- Parliamo di **epitelio pseudostratificato** perché al microscopio sembra composto da più strati, ma in realtà è a singolo strato, ma con nuclei posizionati nella cellula in posizioni differenti
 - Tra le cellule epiteliali pseudostratificate troviamo **cellule caliciformi**, che producono muco
 - Il **muco** è una sostanza viscosa che svolge due funzioni:
         1. lubrifica le ciglia
@@ -696,7 +696,7 @@ Il fumo inibisce il movimento delle ciglia
 - Organi localizzati nella ==cavità toracica==
 - La base di ogni polmone ==poggia sul diaframma==, mentre **l'apice** ("la punta") si estende fino a ==poco sotto la clavicola ==
 - Da notare le ==separazoni nei polmoni==, vengono identificate come **lobi** (3 lobi nel destro e 2 lobi nel sinistro, per lasciare spazio al cuore). I lobi sono separati da **scissure**
-- Il polmone sinistro è quindi ==piu piccolo== del polmone destro
+- Il polmone sinistro è quindi ==più piccolo== del polmone destro
 - I polmoni sono costituiti da tessuto connettivo ==**elastico**== e alveoli. Ciò fa si che si possono allargare e poi ritornare alla posizione originale
 - I polmoni sono rivestiti dalla pleura viscerale
 
@@ -716,9 +716,9 @@ Il fumo inibisce il movimento delle ciglia
 <img src="imm/pagina19_img1.jpg" width="350" style="float: left; margin-right: 30px;">
 
 - La deglutizione è un riflesso &rarr; risposta **involontaria** ad uno stimolo
-- <font color="red">La deglutizione però è un riflesso particolare, perche inizia in maniera volontaria, e poi procede in maniera involontaria</font>:
-  - **Parte volontaria**: Spostamento del bolo verso la faringe da parte della lingua
-  - **Parte involontaria**: quando il bolo arriva nella faringe, il riflesso procede in maniera involontaria (non controlliamo più il movimento della farigne)
+- <font color="red">La deglutizione però è un riflesso particolare, perché inizia in maniera volontaria, e poi procede in maniera involontaria</font>:
+    - **Parte volontaria**: Spostamento del bolo verso la faringe da parte della lingua
+    - **Parte involontaria**: quando il bolo arriva nella faringe, il riflesso procede in maniera involontaria (non controlliamo più il movimento della farigne)
 - L'**epiglottide** è una lamina (sottile strato) cartilaginea. Nel corso della deglutizione l'epiglottide si ==abbassa==, e chiude l'entrata alle vie respiratorie
 
 ## La ventilazione polmonare
@@ -770,8 +770,7 @@ Distribuzione dei gas nell'atmosfera:
 - 0,04 CO<sub>2</sub>
 
 Guardiamo ora cosa succede a livello di pressione a livello alveolare e capillare:
-
-- pO<sub>2</sub> alveolare > pO<sub>2</sub> capillare (perche l'ossigeno nel sangue è gia stato usato dalle cellule dei tessuti)
+- pO<sub>2</sub> alveolare > pO<sub>2</sub> capillare (perché l'ossigeno nel sangue è già stato usato dalle cellule dei tessuti)
 - diffusione netta di O<sub>2</sub> degli alveoli al capillare polmonare
 - pCO<sub>2</sub> alveolare < pCO<sub>2</sub> capillare (CO<sub>2</sub> della respirazione cellulare arriva nel sangue)
 

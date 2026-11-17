@@ -1,0 +1,112 @@
+[
+ {
+  "q": "A quale temperatura muoiono i batteri?",
+  "correct": "Dai 65 °C (ma non le tossine)",
+  "wrong": [
+   "Dai 40 °C",
+   "A 0 °C",
+   "Dai 17 °C"
+  ],
+  "why": "Tra 17 e 39 °C la proliferazione è veloce; sotto i 5 °C non crescono ma non muoiono.",
+  "cap": "Importanza delle temperature"
+ },
+ {
+  "q": "Qual è la differenza tra goccioline e trasmissione aerea?",
+  "correct": "Goccioline >5 micron cadono entro ~1,5-2 m; particelle <5 micron restano sospese",
+  "wrong": [
+   "Le goccioline sono più piccole",
+   "La trasmissione aerea avviene solo per contatto",
+   "Non c'è differenza"
+  ],
+  "why": "",
+  "cap": "Mezzi di trasmissione"
+ },
+ {
+  "q": "Quale mascherina protegge dalla trasmissione aerea?",
+  "correct": "La FFP",
+  "wrong": [
+   "La chirurgica",
+   "Nessuna",
+   "La visiera"
+  ],
+  "why": "La chirurgica protegge dalle goccioline.",
+  "cap": "Mezzi di protezione"
+ },
+ {
+  "q": "Quale percentuale delle infezioni legate ad atti di cura viaggia sulle mani?",
+  "correct": "Circa l'80%",
+  "wrong": [
+   "Circa il 10%",
+   "Circa il 30%",
+   "Circa il 50%"
+  ],
+  "why": "",
+  "cap": "Un cambio di prospettiva"
+ },
+ {
+  "q": "Qual è il metodo più efficace per eliminare i germi dalle mani?",
+  "correct": "L'antisepsi con soluzione alcolica",
+  "wrong": [
+   "Il lavaggio sociale",
+   "Il lavaggio con sapone",
+   "Indossare i guanti"
+  ],
+  "why": "99,999% della flora transitoria in 20 secondi.",
+  "cap": "Mezzi di protezione"
+ },
+ {
+  "q": "I guanti sostituiscono la disinfezione delle mani?",
+  "correct": "No, mai",
+  "wrong": [
+   "Sì, sempre",
+   "Sì, se sono sterili",
+   "Solo con pazienti infetti"
+  ],
+  "why": "Il 25-30% dei germi passa comunque.",
+  "cap": "Mezzi di protezione"
+ },
+ {
+  "q": "Quali sono i quattro elementi del cerchio di Sinner?",
+  "correct": "Chimica, temperatura, meccanica, tempo",
+  "wrong": [
+   "Acqua, sapone, alcool, guanti",
+   "Pulizia, disinfezione, sterilizzazione, asepsi",
+   "Contatto, goccioline, aria, sangue"
+  ],
+  "why": "Se ne togli uno, devi compensare con gli altri.",
+  "cap": "Mezzi di protezione"
+ },
+ {
+  "q": "Cos'è la flora residente?",
+  "correct": "I germi abitualmente presenti sulla pelle",
+  "wrong": [
+   "I germi acquisiti durante le attività",
+   "I germi presenti solo in ospedale",
+   "I germi che causano sempre malattia"
+  ],
+  "why": "Quella transitoria è acquisita durante le attività quotidiane.",
+  "cap": "I microrganismi (germi)"
+ },
+ {
+  "q": "Oggi si ragiona per…",
+  "correct": "Modalità di trasmissione e azione a rischio",
+  "wrong": [
+   "Patologia e paziente a rischio",
+   "Luogo più o meno pulito",
+   "Germi buoni e germi cattivi"
+  ],
+  "why": "Non è il luogo che crea l'infezione, ma l'azione.",
+  "cap": "Un cambio di prospettiva"
+ },
+ {
+  "q": "Fino a dove va riempito un contenitore per taglienti?",
+  "correct": "Fino alla linea indicata o, se manca, ai 3/4",
+  "wrong": [
+   "Fino all'orlo",
+   "Fino a metà",
+   "Non c'è un limite"
+  ],
+  "why": "",
+  "cap": "Biancheria, taglienti e rifiuti sanitari"
+ }
+]

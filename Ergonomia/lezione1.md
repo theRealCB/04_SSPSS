@@ -8,7 +8,7 @@ Insieme anatomico costituito da elementi ossei, legamentosi e muscolari
 - toracica -> disco da 7mm
 - lombare -> disco da 10 mm
 in generale: STRUTTURA MOLTO FORTE
-Il soma (zona centrale piu spessa, nella foto corpo vertebrale) è piu grande nella zona lombare che nella zona cervicale -> deve supportare più peso
+Il soma (zona centrale più spessa, nella foto corpo vertebrale) è più grande nella zona lombare che nella zona cervicale -> deve supportare più peso
 <p align="center">
 <img src="foto/colonna_vertebrale.jpg" width="300">
 <img src="foto/vertebra.jpg" width="300">

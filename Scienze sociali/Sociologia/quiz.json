@@ -1,0 +1,266 @@
+[
+ {
+  "q": "Chi ha coniato il termine «sociologia»?",
+  "correct": "Auguste Comte",
+  "wrong": [
+   "Émile Durkheim",
+   "Karl Marx",
+   "Max Weber"
+  ],
+  "why": "Prima la chiamava «fisica sociale».",
+  "cap": "Auguste Comte"
+ },
+ {
+  "q": "Quali sono i tre stadi della legge di Comte?",
+  "correct": "Teologico, metafisico, positivo",
+  "wrong": [
+   "Primitivo, feudale, capitalista",
+   "Meccanico, organico, anomico",
+   "Personale, sociale, professionale"
+  ],
+  "why": "",
+  "cap": "Auguste Comte"
+ },
+ {
+  "q": "Qual è il primo principio di Durkheim?",
+  "correct": "Studia i fatti sociali come cose",
+  "wrong": [
+   "La storia è storia di lotte di classi",
+   "Il tutto è la somma delle parti",
+   "Le idee contano più dell'economia"
+  ],
+  "why": "I fatti sociali sono esterni agli individui e coercitivi.",
+  "cap": "Émile Durkheim"
+ },
+ {
+  "q": "Che cos'è l'anomia?",
+  "correct": "La carenza di valori e norme provocata dal rapido cambiamento sociale",
+  "wrong": [
+   "Un eccesso di regole",
+   "La solidarietà tra simili",
+   "La divisione del lavoro"
+  ],
+  "why": "",
+  "cap": "Émile Durkheim"
+ },
+ {
+  "q": "Secondo Durkheim, il suicidio egoistico dipende da…",
+  "correct": "Una carenza di integrazione sociale",
+  "wrong": [
+   "Un eccesso di integrazione sociale",
+   "Una carenza di regolazione sociale",
+   "Un eccesso di regolazione sociale"
+  ],
+  "why": "Altruistico = eccesso di integrazione; anomico = carenza di regolazione; fatalistico = eccesso di regolazione.",
+  "cap": "Émile Durkheim"
+ },
+ {
+  "q": "Che cos'è il plusvalore per Marx?",
+  "correct": "Ciò che il lavoro produce oltre il salario, di cui si appropria il capitalista",
+  "wrong": [
+   "Il salario dell'operaio",
+   "Il valore dei mezzi di produzione",
+   "La tassa pagata allo Stato"
+  ],
+  "why": "È alla base dello sfruttamento.",
+  "cap": "Karl Marx"
+ },
+ {
+  "q": "Cosa intende Weber con «gabbia d'acciaio»?",
+  "correct": "Una società iper-razionalizzata e burocratizzata che soffoca lo spirito umano",
+  "wrong": [
+   "La prigione di Stanford",
+   "Il conflitto di classe",
+   "La solidarietà meccanica"
+  ],
+  "why": "",
+  "cap": "Max Weber"
+ },
+ {
+  "q": "Qual è la differenza tra socializzazione primaria e secondaria?",
+  "correct": "La primaria avviene nei primi anni (competenze di base), la secondaria dall'ingresso a scuola (ruoli sociali)",
+  "wrong": [
+   "La primaria avviene a scuola, la secondaria al lavoro",
+   "La primaria è formale, la secondaria informale",
+   "Non c'è differenza"
+  ],
+  "why": "",
+  "cap": "La socializzazione"
+ },
+ {
+  "q": "Cosa dimostra l'esperimento di Asch?",
+  "correct": "Che molti si conformano a una maggioranza unanime anche quando sbaglia palesemente",
+  "wrong": [
+   "Che l'autorità ottiene sempre obbedienza",
+   "Che la paura si può condizionare",
+   "Che i gruppi democratici producono di più"
+  ],
+  "why": "Fino al 75% si conforma almeno una volta: influenza sociale normativa.",
+  "cap": "Caso 2: Il conformismo e l'esperimento di Asch"
+ },
+ {
+  "q": "Quale leadership produce i risultati migliori secondo Lewin?",
+  "correct": "Quella democratica",
+  "wrong": [
+   "Quella autoritaria",
+   "Quella anarchica",
+   "Dipende solo dai membri del gruppo"
+  ],
+  "why": "Tanta qualità, anche se meno quantità di quella autoritaria.",
+  "cap": "La leadership"
+ },
+ {
+  "q": "Cos'è l'immaginazione sociologica (Mills)?",
+  "correct": "La capacità di guardare le proprie abitudini quotidiane con occhio diverso, cogliendone il lato sociale",
+  "wrong": [
+   "La capacità di inventare teorie",
+   "Lo studio delle statistiche",
+   "La previsione del futuro"
+  ],
+  "why": "Esempio della tazza di caffè: valore simbolico, differenze culturali, relazioni economiche, storia, stili di vita.",
+  "cap": "La prospettiva sociologica"
+ },
+ {
+  "q": "Secondo Parsons, cosa deve saper fare una società per sopravvivere?",
+  "correct": "Adattarsi, procurarsi i mezzi materiali, integrare i membri, trasmettere regole e conoscenze",
+  "wrong": [
+   "Eliminare il conflitto di classe",
+   "Avere un solo leader",
+   "Evitare ogni cambiamento"
+  ],
+  "why": "Sono i quattro prerequisiti del funzionalismo: se ne manca uno, la società scompare.",
+  "cap": "Talcott Parsons"
+ },
+ {
+  "q": "Qual è la differenza tra educazione e socializzazione?",
+  "correct": "L'educazione è la parte formale e intenzionale; la socializzazione include anche ciò che si apprende spontaneamente",
+  "wrong": [
+   "Sono sinonimi",
+   "L'educazione avviene solo in famiglia",
+   "La socializzazione riguarda solo gli adulti"
+  ],
+  "why": "Un bambino impara a parlare imitando: nessuno glielo insegna.",
+  "cap": "Socializzazione ed educazione"
+ },
+ {
+  "q": "Cosa accadde ai bambini dell'esperimento di Federico II?",
+  "correct": "Morirono tutti, privati di interazione e affetto",
+  "wrong": [
+   "Parlarono spontaneamente ebraico",
+   "Crebbero normalmente",
+   "Impararono a comunicare a gesti"
+  ],
+  "why": "Erano accuditi ma nessuno parlava né interagiva con loro.",
+  "cap": "Federico II"
+ },
+ {
+  "q": "Cosa suggeriscono i casi di Victor, Kamala e Genie?",
+  "correct": "Che esiste un periodo critico per apprendere il linguaggio",
+  "wrong": [
+   "Che il linguaggio è innato",
+   "Che la socializzazione non serve",
+   "Che l'isolamento non lascia conseguenze"
+  ],
+  "why": "Passato quel periodo, la lingua non si padroneggia più pienamente.",
+  "cap": "Genie"
+ },
+ {
+  "q": "Perché Isabella recuperò del tutto, a differenza di Anna?",
+  "correct": "Era stata isolata insieme alla madre e fu seguita da un'équipe competente",
+  "wrong": [
+   "Era più grande",
+   "Aveva un quoziente intellettivo più alto",
+   "Era stata isolata per meno tempo"
+  ],
+  "why": "Una figura di attaccamento e un intervento educativo fanno la differenza.",
+  "cap": "I bambini allevati in condizioni di isolamento"
+ },
+ {
+  "q": "Che cos'è uno status ascritto?",
+  "correct": "Uno status assegnato in base a fattori biologici (sesso, età, aspetto)",
+  "wrong": [
+   "Uno status ottenuto con lo studio",
+   "Lo status più importante",
+   "Uno status scelto dalla persona"
+  ],
+  "why": "Lo status acquisito si ottiene invece con una prestazione.",
+  "cap": "Status e ruoli"
+ },
+ {
+  "q": "Quale conseguenza ha l'etichettamento?",
+  "correct": "La profezia che si auto-avvera",
+  "wrong": [
+   "La riduzione della devianza",
+   "L'aumento dell'autostima",
+   "La fine del pregiudizio"
+  ],
+  "why": "Chi viene etichettato come deviante finisce per comportarsi e considerarsi tale.",
+  "cap": "Caso 3: La teoria dell'etichettamento (labeling theory)"
+ },
+ {
+  "q": "Cosa dimostrò l'auto abbandonata a Palo Alto?",
+  "correct": "Che basta un vetro rotto perché partano furti e vandalismi anche in un quartiere ricco",
+  "wrong": [
+   "Che la criminalità dipende solo dalla povertà",
+   "Che nei quartieri ricchi non c'è vandalismo",
+   "Che le auto abbandonate non interessano a nessuno"
+  ],
+  "why": "Il degrado trasmette l'idea che le regole non valgano.",
+  "cap": "Caso 4: La teoria delle finestre rotte"
+ },
+ {
+  "q": "Nell'esperimento di Milgram, quanti arrivarono alla scossa più potente?",
+  "correct": "Circa il 62%",
+  "wrong": [
+   "Circa il 5%",
+   "Circa il 25%",
+   "Nessuno"
+  ],
+  "why": "Quando valori morali e obbedienza all'autorità entrano in conflitto, spesso vince l'obbedienza.",
+  "cap": "Caso 7: L'esperimento di Yale (Milgram) — disciplina vs coscienza"
+ },
+ {
+  "q": "Dopo quanti giorni fu interrotto l'esperimento di Stanford?",
+  "correct": "Dopo 6 giorni, dei 14 previsti",
+  "wrong": [
+   "Dopo 1 giorno",
+   "Dopo 14 giorni",
+   "Dopo un mese"
+  ],
+  "why": "La situazione era sfuggita di mano a tutti, compreso Zimbardo.",
+  "cap": "Caso 8 (il nostro): L'esperimento della prigione di Stanford — Lucifer Effect"
+ },
+ {
+  "q": "Nell'esperimento del fumo (Latané e Darley), cosa fece chi era insieme a complici impassibili?",
+  "correct": "Nel 90% dei casi non fece nulla",
+  "wrong": [
+   "Segnalò subito il fumo",
+   "Uscì di corsa",
+   "Avvisò i complici"
+  ],
+  "why": "Da soli, oltre il 75% segnalava il fumo entro due minuti.",
+  "cap": "Caso 11: Il condizionamento d'ambiente che genera apatia"
+ },
+ {
+  "q": "Le persone alla fermata dell'autobus sono…",
+  "correct": "Un aggregato",
+  "wrong": [
+   "Un gruppo primario",
+   "Una categoria",
+   "Un gruppo formale"
+  ],
+  "why": "Sono presenti nello stesso luogo ma senza relazioni. Una categoria è invece un insieme con una caratteristica comune (es. gli studenti).",
+  "cap": "Aggregati e categorie non sono veri gruppi"
+ },
+ {
+  "q": "Cos'è la coesione narcisistica?",
+  "correct": "Una coesione eccessiva in cui «il gruppo è tutto» e l'individuo rinuncia alla propria libertà",
+  "wrong": [
+   "La normale unione di un gruppo",
+   "La leadership democratica",
+   "Il senso di appartenenza"
+  ],
+  "why": "Porta a isolamento e aggressività (ultrà, bande, sette).",
+  "cap": "La dinamica di gruppo"
+ }
+]

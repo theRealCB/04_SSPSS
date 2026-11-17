@@ -1,0 +1,57 @@
+[
+ {
+  "q": "Dove il disco intervertebrale è più spesso?",
+  "correct": "Nella zona lombare (~10 mm)",
+  "wrong": [
+   "Nella zona cervicale",
+   "Nella zona toracica",
+   "È uguale ovunque"
+  ],
+  "why": "Cervicale ~5 mm, toracica ~7 mm, lombare ~10 mm: deve supportare più peso.",
+  "cap": "Ossa"
+ },
+ {
+  "q": "Il Lower Back Pain è…",
+  "correct": "Un sintomo, non una malattia",
+  "wrong": [
+   "Una malattia grave nella maggior parte dei casi",
+   "Sempre causato da un'ernia",
+   "Raro negli adulti"
+  ],
+  "why": "È molto comune e nella maggior parte dei casi non è grave (cause serie <1%).",
+  "cap": "Lower back pain (LBP)"
+ },
+ {
+  "q": "Cosa significa ergonomia?",
+  "correct": "Modificare gli elementi di un sistema (noi + ambiente) per migliorare la soddisfazione e ridurre il rischio",
+  "wrong": [
+   "Fare esercizi per la schiena",
+   "Sollevare pesi nel modo più veloce",
+   "Adattare l'operatore al contesto"
+  ],
+  "why": "Il contesto viene adattato all'operatore, non viceversa.",
+  "cap": "Cosa significa ergonomia"
+ },
+ {
+  "q": "Che cos'è il centro di gravità?",
+  "correct": "La proiezione sul terreno del centro di massa",
+  "wrong": [
+   "Il punto più basso del corpo",
+   "L'area di contatto con il terreno",
+   "Il peso totale del corpo"
+  ],
+  "why": "C'è equilibrio quando il centro di gravità cade dentro la base d'appoggio.",
+  "cap": "Termini utili"
+ },
+ {
+  "q": "Cosa bisogna evitare durante uno sforzo?",
+  "correct": "L'apnea",
+  "wrong": [
+   "Flettere le gambe",
+   "Usare il peso del corpo",
+   "Spiegare il movimento al paziente"
+  ],
+  "why": "Si respira durante gli sforzi.",
+  "cap": "Strategie attuabili"
+ }
+]

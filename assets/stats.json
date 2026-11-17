@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-17T08:18:15+00:00",
+ "updated": "2026-11-17T13:08:47+00:00",
  "source": "api",
- "total": 22,
+ "total": 28,
  "paths": {
   "/04_SSPSS/Adattamento e responsabilità/": 2,
-  "/04_SSPSS/Anatomia e Fisiologia/": 4,
+  "/04_SSPSS/Anatomia e Fisiologia/": 5,
   "/04_SSPSS/Atelier/": 1,
-  "/04_SSPSS/Comunicazione/": 0,
+  "/04_SSPSS/Comunicazione/": 1,
   "/04_SSPSS/Ergonomia/": 0,
-  "/04_SSPSS/Inglese/": 0,
+  "/04_SSPSS/Inglese/": 1,
   "/04_SSPSS/Scienze sociali/": 0,
   "/04_SSPSS/Scienze umane e della salute/": 0,
   "/04_SSPSS/Situazioni di cura/": 3

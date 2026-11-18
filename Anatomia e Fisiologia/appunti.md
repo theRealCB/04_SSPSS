@@ -868,4 +868,35 @@ La nomenclatura dei vasi sanguigni ==NON== dipende da che sangue trasportano:
 - Arteria: vaso sagnuigno che trasporta il sangue ==VIA DAL CUORE==
 - Vena: vaso sanguigno che trasporta il sangue ==VERSO IL CUORE==
 
+## La circolazione
+
+<img src="imm/pagina23_img2.png" width="400" style="float: left; margin-right: 30px;">
+Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polmonare nascono dal tronco polmonare
+
+### Piccola circolazionela 
+- Funzione: ossigenare il sangue e liberarlo dalla CO<sub>2</sub>
+- Percorso:
+
+```mermaid
+graph TD
+  AD["Atrio Destro (AD)"]
+  VD["Ventricolo Destro (VD)"]
+  TP["Tronco polmonare"]
+  AP["Arterie polmonari<sup>1</sup>"]
+  CP["Capillari polmonari"]
+  VP["Vene polmonari<sup>2</sup>"]
+
+  AD -->|"valvola atrio-ventricolare destra"| VD
+  VD -->|"valvola semilunare polmonare"| TP
+  TP --> AP
+  AP -.-> CP
+  CP -.-> VP
+```
+
+<sup>1</sup>Nelle arterie polmonari scorre sangue venoso
+<sup>2</sup> Nelle vene polmonari scorre sangue arterioso
+    
+> Nota per essere chiari: sono arterie polmonari perche portano il siangue *via dal cuore*, con sangue venoso perche ricco di CO<sub>2</sub>, viceversa per le vene polmonari, che portano il sagnue *verso il cuore*, con sangue però arterioso, poiche ricco di O<sub>2</sub>
+
+
 

@@ -878,16 +878,17 @@ Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polm
 - Percorso:
 
 ```mermaid
-graph TD
-  AD["Atrio Destro (AD)"]
-  VD["Ventricolo Destro (VD)"]
-  TP["Tronco polmonare"]
-  AP["Arterie polmonari<sup>1</sup>"]
-  CP["Capillari polmonari"]
-  VP["Vene polmonari<sup>2</sup>"]
+block-beta
+  columns 3
+  AD["Atrio Destro (AD)"] space VD["Ventricolo Destro (VD)"]
+  space space space
+  space space space
+  AP["Arterie polmonari"] space TP["Tronco polmonare"]
+  space space space
+  CP["Capillari polmonari"] space VP["Vene polmonari"]
 
-  AD -->|"valvola atrio-ventricolare destra"| VD
-  VD -->|"valvola semilunare polmonare"| TP
+  AD -- "valvola AV destra" --> VD
+  VD -- "valvola semilunare polmonare" --> TP
   TP --> AP
   AP -.-> CP
   CP -.-> VP
@@ -898,5 +899,32 @@ graph TD
     
 > Nota per essere chiari: sono arterie polmonari perche portano il siangue *via dal cuore*, con sangue venoso perche ricco di CO<sub>2</sub>, viceversa per le vene polmonari, che portano il sagnue *verso il cuore*, con sangue però arterioso, poiche ricco di O<sub>2</sub>
 
+### Grande circolazione
+- Funzione: distribuire O<sub>2</sub> alle cellule e portare via CO<sub>2</sub>. La prima diramazione dell'aorta sono le coronarie, che irrorano il cuore di sangue
 
+- Percorso:
+```mermaid
+block-beta
+  columns 3
+  AS["Atrio Sinistro (AS)"] space VS["Ventricolo Sinistro (VS)"]
+  space space space
+  space space space
+  CS["Capillari sistemici"] space AO["Aorta"]
+  space space space
+  VC["Vene cave <br> (inferiore e superiore)"] space AD["Atrio Destro (AD)"]
 
+  AS -- "valvola AV sinistra (mitrale)" --> VS
+  VS -- "valvola semilunare aortica" --> AO
+  AO -.-> CS
+  CS -.-> VC
+  VC --> AD
+```
+
+## La sede del cuore
+<img src="imm/pagina23_img1.png" width="">
+
+- Localizzato nel mediastano (regione specifica della cavità toracica che ospita il cuore)
+- Immaginiamo una linea che divide a metà il torace (**linea mediosternale**). Circa i 2/3 del cuore si trovano a sinistra della linea mediosternale
+- L'apice del cuore poggia sul diagramma
+- Nell'uomo: ~300g, nella donna ~250g
+- Il cuore è rivestito da membrane sierose

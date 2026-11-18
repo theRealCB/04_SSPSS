@@ -862,4 +862,6 @@ Si dividoni in 5 tipi:
 
 La nomenclatura dei vasi sanguigni ==NON== dipende da che sangue trasportano:
 - Arteria: vaso sagnuigno che trasporta il sangue ==VIA DAL CUORE==
-- Vena:
+- Vena: vaso sanguigno che trasporta il sangue ==VERSO IL CUORE==
+
+

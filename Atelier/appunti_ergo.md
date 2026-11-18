@@ -1,4 +1,4 @@
-<h1 align="center">Atelier: Ergonomia</h1>
+<h1 align="center">Atelier: Ergoterapia</h1>
 <p align="center"><em>MC anno 2026/2027</em></p>
 
 # Fasi della vita

@@ -2685,8 +2685,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#grande-circolazione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grande circolazione
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-sede-del-cuore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La sede del cuore
+      
+    </span>
+  </a>
   
 </li>
         
@@ -3656,16 +3678,17 @@ Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polm
 <li>Funzione: ossigenare il sangue e liberarlo dalla CO<sub>2</sub></li>
 <li>Percorso:</li>
 </ul>
-<pre class="mermaid"><code>graph TD
-  AD["Atrio Destro (AD)"]
-  VD["Ventricolo Destro (VD)"]
-  TP["Tronco polmonare"]
-  AP["Arterie polmonari&lt;sup&gt;1&lt;/sup&gt;"]
-  CP["Capillari polmonari"]
-  VP["Vene polmonari&lt;sup&gt;2&lt;/sup&gt;"]
+<pre class="mermaid"><code>block-beta
+  columns 3
+  AD["Atrio Destro (AD)"] space VD["Ventricolo Destro (VD)"]
+  space space space
+  space space space
+  AP["Arterie polmonari"] space TP["Tronco polmonare"]
+  space space space
+  CP["Capillari polmonari"] space VP["Vene polmonari"]
 
-  AD --&gt;|"valvola atrio-ventricolare destra"| VD
-  VD --&gt;|"valvola semilunare polmonare"| TP
+  AD -- "valvola AV destra" --&gt; VD
+  VD -- "valvola semilunare polmonare" --&gt; TP
   TP --&gt; AP
   AP -.-&gt; CP
   CP -.-&gt; VP</code></pre>
@@ -3674,6 +3697,38 @@ Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polm
 <blockquote>
 <p>Nota per essere chiari: sono arterie polmonari perche portano il siangue <em>via dal cuore</em>, con sangue venoso perche ricco di CO<sub>2</sub>, viceversa per le vene polmonari, che portano il sagnue <em>verso il cuore</em>, con sangue però arterioso, poiche ricco di O<sub>2</sub></p>
 </blockquote>
+<h4 id="grande-circolazione">Grande circolazione<a class="headerlink" href="#grande-circolazione" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Funzione: distribuire O<sub>2</sub> alle cellule e portare via CO<sub>2</sub>. La prima diramazione dell'aorta sono le coronarie, che irrorano il cuore di sangue</p>
+</li>
+<li>
+<p>Percorso:
+<pre class="mermaid"><code>block-beta
+  columns 3
+  AS["Atrio Sinistro (AS)"] space VS["Ventricolo Sinistro (VS)"]
+  space space space
+  space space space
+  CS["Capillari sistemici"] space AO["Aorta"]
+  space space space
+  VC["Vene cave &lt;br&gt; (inferiore e superiore)"] space AD["Atrio Destro (AD)"]
+
+  AS -- "valvola AV sinistra (mitrale)" --&gt; VS
+  VS -- "valvola semilunare aortica" --&gt; AO
+  AO -.-&gt; CS
+  CS -.-&gt; VC
+  VC --&gt; AD</code></pre></p>
+</li>
+</ul>
+<h3 id="la-sede-del-cuore">La sede del cuore<a class="headerlink" href="#la-sede-del-cuore" title="Permanent link">&para;</a></h3>
+<p><img src="imm/pagina23_img1.png" width=""></p>
+<ul>
+<li>Localizzato nel mediastano (regione specifica della cavità toracica che ospita il cuore)</li>
+<li>Immaginiamo una linea che divide a metà il torace (<strong>linea mediosternale</strong>). Circa i 2/3 del cuore si trovano a sinistra della linea mediosternale</li>
+<li>L'apice del cuore poggia sul diagramma</li>
+<li>Nell'uomo: ~300g, nella donna ~250g</li>
+<li>Il cuore è rivestito da membrane sierose</li>
+</ul>
 <p class="sspss-updated">Ultimo aggiornamento: 18 novembre 2026</p>
 
 <div class="sspss-materials">

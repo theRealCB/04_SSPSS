@@ -986,3 +986,33 @@ Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polm
     In questa fase le valvole AV sono chiuse (per evitare che il sangue torni indietro), mentre le semilunari sono aperte
 
 Le 4 valvole cardiache si assicurano che il sangue segua sempre il tragitto corretto (tragitto unidirezionale)
+
+### Sistema di contrazione cardiaca
+
+<img src="imm/pagina24_img2.png" width="400">
+
+La parte contrattile del cuore è il **miocardio**:
+- 99% è costituito da cellule muscolari cardiache che si contraggono
+- 1% costituito da cellule cardiache specializzate, che nell'insieme formano il <font color="red">sistema di conduzione del cuore</font>. Grazie a questo sistema di conduzione, il cuore è detotato di **autoritmicità** &rarr; il cuore è in grado di contrarsi in assenza di un segnale che proviene dal sistema nervoso
+Il sistema di conduzione genera e trasporta impulsi elettrici (flussi di ioni)
+
+Il **nodo senoatriale (SA)** è una piccola massa di cellule localizzata nell'atrio destro &rarr; ==determina il ritmo di base del cuore==:
+Il nodo SA genera impulsi che diffondono in entrmambi gli atri. di conseguenza queste camere si contraggono.
+Gli impulsi elettrici raggiungono anche il **Nodo atrioventricolare (AV)**. Quest'ultimo rallenta momentaneamente la trasmissione degli impulsi elettrici per impedire la contrazione simultanea di atri e ventricoli.
+Gli impulsi elettrici si dirignono quindi nele strutture seguenti:
+    
+- Fascio AV (fascio di His)
+- Rami del AV
+- Fibre di Pukinje (fibre subendocardiche)
+    Tramite le fibre di Purkinje gli impulsi elettrici diffondono nei ventricoli che si contraggono
+
+Il nodo senoatriale è regolato dal SNP
+
+
+Il SNP è diviso in:
+- divisione sensoriale
+- divisione motoria:
+    - divisione nervosa somatica
+    - divisione nervosa autonoma:
+        - sistema nervoso simpatico
+        - sistema nervoso parasimpatico

@@ -238,7 +238,24 @@ Solitamente non si uccide perchè porta dispiacere, malessere, sofferenza nella 
 Uccidere un tiranno dittatore può essere lecito se permette il benessere del popolo
 
 ### Rubare o non rubare
+!!Da completare con slides!!
 
+### Consequenzialismo ed etica professionale
+Lo scopo dell'Opertore sanitario p sempre quello di fare il bene
+Contemporaneamente lo scopo dell OS è di contrastare il male
+Se non si riesce a fare il bene/ridurre il male di tutti i pazienti, bisogna per farlo per la maggioranza
+
+&rarr; da valutare quindi costi/benefici
+
+## Responsabili di rispettare i principi primi: responsabili delle conseguenze delle nostre azioni
+
+*Investo a 50kmh una persona sulle srisce, il pedone muore*
+
+- Etica deontologia ha il principio di intenzionalità: Doloso
+- Etica delle conseguenze: principio di colposità: Colposo
+
+## Conclusione
+!! Riprendi le tabella dal powerpoint che compara i concetti chiave 
 
 
 # BIOETICA

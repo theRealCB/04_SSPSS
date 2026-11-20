@@ -865,12 +865,20 @@ Si dividono in 5 tipi:
 - Vene
 
 La nomenclatura dei vasi sanguigni ==NON== dipende da che sangue trasportano:
-- Arteria: vaso sagnuigno che trasporta il sangue ==VIA DAL CUORE==
+
+- Arteria: vaso sanguigno che trasporta il sangue ==VIA DAL CUORE==
 - Vena: vaso sanguigno che trasporta il sangue ==VERSO IL CUORE==
 
 ## La circolazione
 
-### Piccola circolazionela 
+<img src="imm/pagina23_img2.png" width="400" style="float: left; margin-right: 30px;">
+
+Non indicato nell'immagine: l'arteria polmonare destra e l'arteria polmonare sinistra nascono dal tronco polmonare.
+
+<div style="clear: both;"></div>
+
+### Piccola circolazione
+
 - Funzione: ossigenare il sangue e liberarlo dalla CO<sub>2</sub>
 - Percorso:
 
@@ -880,9 +888,9 @@ block-beta
   AD["Atrio Destro (AD)"] space VD["Ventricolo Destro (VD)"]
   space space space
   space space space
-  AP["Arterie polmonari"] space TP["Tronco polmonare"]
+  AP["Arterie polmonari<sup>1</sup>"] space TP["Tronco polmonare"]
   space space space
-  CP["Capillari polmonari"] space VP["Vene polmonari"]
+  CP["Capillari polmonari"] space VP["Vene polmonari<sup>2</sup>"]
 
   AD -- "valvola AV destra" --> VD
   VD -- "valvola semilunare polmonare" --> TP
@@ -891,15 +899,16 @@ block-beta
   CP -.-> VP
 ```
 
-<sup>1</sup>Nelle arterie polmonari scorre sangue venoso
+<sup>1</sup> Nelle arterie polmonari scorre sangue venoso  
 <sup>2</sup> Nelle vene polmonari scorre sangue arterioso
-    
-> Nota per essere chiari: sono arterie polmonari perche portano il siangue *via dal cuore*, con sangue venoso perche ricco di CO<sub>2</sub>, viceversa per le vene polmonari, che portano il sagnue *verso il cuore*, con sangue però arterioso, poiche ricco di O<sub>2</sub>
+
+> Nota per essere chiari: sono arterie polmonari perché portano il sangue *via dal cuore*, con sangue venoso perché ricco di CO<sub>2</sub>; viceversa per le vene polmonari, che portano il sangue *verso il cuore*, con sangue però arterioso, poiché ricco di O<sub>2</sub>.
 
 ### Grande circolazione
-- Funzione: distribuire O<sub>2</sub> alle cellule e portare via CO<sub>2</sub>. La prima diramazione dell'aorta sono le coronarie, che irrorano il cuore di sangue
 
+- Funzione: distribuire O<sub>2</sub> alle cellule e portare via CO<sub>2</sub>. La prima diramazione dell'aorta sono le coronarie, che irrorano il cuore di sangue
 - Percorso:
+
 ```mermaid
 block-beta
   columns 3
@@ -922,7 +931,9 @@ block-beta
 
 <img src="imm/pagina23_img1.png" width="">
 
-- Localizzato nel mediastano (regione specifica della cavità toracica che ospita il cuore)
+<img src="imm/pagina23_img1.png" width="400">
+
+- Localizzato nel **mediastino** (regione specifica della cavità toracica che ospita il cuore)
 - Immaginiamo una linea che divide a metà il torace (**linea mediosternale**). Circa i 2/3 del cuore si trovano a sinistra della linea mediosternale
 - L'apice del cuore poggia sul diagramma
 - Nell'uomo: ~300g, nella donna ~250g

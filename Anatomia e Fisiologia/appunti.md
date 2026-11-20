@@ -929,8 +929,6 @@ block-beta
 ## Il cuore
 
 
-<img src="imm/pagina23_img1.png" width="">
-
 <img src="imm/pagina23_img1.png" width="400">
 
 - Localizzato nel **mediastino** (regione specifica della cavità toracica che ospita il cuore)
@@ -963,6 +961,8 @@ Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polm
         3. arteria succlavia sinistra
     - **Aorta discendente**:
 
-    
-
+### Il circolo cardiaco
+<img src="imm/pagina24_img1.png" width="300" style="float: left; margin-right: 30px;">
+- Battito cardiaco = cotrazione ritmica del cuore
+- a riposo il numero di battiti cardiaci al minuto sono ~70
 

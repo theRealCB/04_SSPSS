@@ -314,5 +314,7 @@ Etica deontologica, etica delle conseguenze ed etica della cura: che risposte da
 **Etica della cura** (assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni individuali). In questo caso:
 
 
+# Etica della cura
+
 # BIOETICA
 *(ancora da trattare a lezione: aborto, fecondazione assistita, eutanasia; etica della Sacralità della Vita vs etica della Qualità della Vita)*

@@ -926,12 +926,43 @@ block-beta
   VC --> AD
 ```
 
-## La sede del cuore
+## Il cuore
+
+
+<img src="imm/pagina23_img1.png" width="">
 
 <img src="imm/pagina23_img1.png" width="400">
 
 - Localizzato nel **mediastino** (regione specifica della cavità toracica che ospita il cuore)
 - Immaginiamo una linea che divide a metà il torace (**linea mediosternale**). Circa i 2/3 del cuore si trovano a sinistra della linea mediosternale
-- L'apice del cuore poggia sul diaframma
-- Nell'uomo: ~300 g, nella donna ~250 g
-- Il cuore è rivestito da membrane sierose
+- L'apice del cuore poggia sul diagramma
+- Nell'uomo: ~300g, nella donna ~250g
+- Il cuore è rivestito da membrane sierose (**pericardio**)
+    - **Pericardio viscerale**: riveste direttamente il cuore
+    - **Pericardio parietale**: riveste la porzione della parete della cavità toracica che ospita il cuore.
+    - Il pericardio produce **liquido pericardico** che consente al cuore di contrarsi in un ambiente privo di ossigeno
+
+<img src="imm/pagina23_img2.png" width="400" style="float: left; margin-right: 30px;">
+Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polmonare nascono dal tronco polmonare
+
+
+- <font color="red">È un organo muscolare cavo:</font> formato da 4 camere (2 atri e 2 ventricoli)
+- <font color="red">Organo asimmetrico</font>: La parete del ventricolo sinistro è 3x volte più spessa rispetto alla parete del ventricolo destro. Questo perche il ventricolo destro deve pompare sangue "solo" fino ai polmoni, mentre quello sinsitro deve pompare in tutto il corpo (dal cervello fino ai piedi)
+
+- La parete del cuore è costituita da:
+    - pericardio viscerale, miocardio(parte contrattile), endocardio (tessuto che riveste il miocardio)
+- i due ventricoli sono separati dal setto interventricolare
+- i due atri sono separati dal setto interatriale
+- Valvola atrioventricolare destra (tricuspide), composta da 3 lembi di tessuto connettivo
+- Valvola atrioventricolare sinistra (bicuspide), chiamata anche valvola mitrale
+- Aorta divisa in tre parti:
+    - **Aorta ascendente**, da cui partono le coronarioe
+    - **Arco aortico**, da cui partono tre ramificazioni (nell'immagine, da sinsitra verso destra):
+        1. Tronco brachioencefalico
+        2. arteria carotide comune sinistra
+        3. arteria succlavia sinistra
+    - **Aorta discendente**:
+
+    
+
+

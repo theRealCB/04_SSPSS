@@ -257,6 +257,62 @@ Se non si riesce a fare il bene/ridurre il male di tutti i pazienti, bisogna per
 ## Conclusione
 !! Riprendi le tabella dal powerpoint che compara i concetti chiave 
 
+## Esercizio di riflessione finale
+
+Etica deontologica, etica delle conseguenze ed etica della cura: che risposte danno ai problemi morali concreti visti in classe?
+
+### 1. Chiara e Camilla
+
+*Casa per anziani: durante i pasti alcuni ospiti vengono legati alla sedia con una cintura per evitare cadute. Camilla, 82 anni, instabile ma lucida e orientata, chiede di essere «liberata dal guinzaglio».*
+
+**Legare la paziente con la cintura alla sedia?**
+
+| | PRO | CONTRO |
+|---|---|---|
+| **Etica deontologica** | | |
+| **Etica delle conseguenze** | | |
+
+**Etica della cura** (assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni individuali). In questo caso:
+
+### 2. Anna e Monica
+
+*Chirurgia: Monica è MRSA positiva (amputazione di un alluce per una ferita infetta) e dovrebbe stare in isolamento, ma le è concesso di passeggiare in reparto rispettando le precauzioni igieniche, per non aggravare la sua depressione.*
+
+**Far uscire o non far uscire la paziente?**
+
+| | PRO | CONTRO |
+|---|---|---|
+| **Etica deontologica** | | |
+| **Etica delle conseguenze** | | |
+
+**Etica della cura** (assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni individuali). In questo caso:
+
+### 3. Marco e Renzo
+
+*Medicina interna: Renzo ha un tumore al pancreas in stadio avanzato, ma su richiesta dei figli non conosce la diagnosi. Sospetta qualcosa e chiede a Marco: «Ce la farò, Marco, non è vero?».*
+
+**Mentire al paziente?**
+
+| | PRO | CONTRO |
+|---|---|---|
+| **Etica deontologica** | | |
+| **Etica delle conseguenze** | | |
+
+**Etica della cura** (assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni individuali). In questo caso:
+
+### 4. Piero e Sara
+
+*Foyer: Sara, 40 anni, sclerosi multipla e anoressia nervosa, rifiuta di bere l'acqua in cui è sciolto un farmaco importante. Non assumerlo mette seriamente a rischio la sua salute.*
+
+**Dare la medicina con la forza?**
+
+| | PRO | CONTRO |
+|---|---|---|
+| **Etica deontologica** | | |
+| **Etica delle conseguenze** | | |
+
+**Etica della cura** (assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni individuali). In questo caso:
+
 
 # BIOETICA
 *(ancora da trattare a lezione: aborto, fecondazione assistita, eutanasia; etica della Sacralità della Vita vs etica della Qualità della Vita)*

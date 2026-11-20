@@ -233,29 +233,46 @@ Esempi di problemi da analizzare: "è giusto vietare il fumo?", "è giusto impor
 
 ## Consequenzialismo
 ### Uccidere o non uccidere?
-Solitamente non si uccide perchè porta dispiacere, malessere, sofferenza nella persona, a parenti amici e alla società nel complesso. Fa il bene solo dell'assassino
+Solitamente non si uccide perché porta dispiacere, malessere, sofferenza alla persona, a parenti e amici e alla società nel complesso. Fa il "bene" solo dell'assassino
 
 Uccidere un tiranno dittatore può essere lecito se permette il benessere del popolo
 
-### Rubare o non rubare
-!!Da completare con slides!!
+### Rubare o non rubare?
+Solitamente non si ruba perché provoca dispiacere, malessere, sofferenza alla persona, ai suoi parenti e amici e alla società nel suo complesso, e fa il "bene" solo del ladro
+
+*Esempio: decidete di rubare a Jeff Bezos, il padrone di Amazon che ha un patrimonio di 113 miliardi di dollari, 1 miliardo di dollari, e lo date in beneficenza ai bambini poveri in Africa che rischiano di morire di fame.*
+
+- Per l'**etica deontologica**, invece, si può rubare solo in caso di ==ultima ratio==, quindi di estrema necessità
+- Se tutti dovessero iniziare a rubare ai ricchi per dare ai poveri, ci sarebbe il rischio di caos, abusi...
 
 ### Consequenzialismo ed etica professionale
-Lo scopo dell'Opertore sanitario p sempre quello di fare il bene
-Contemporaneamente lo scopo dell OS è di contrastare il male
-Se non si riesce a fare il bene/ridurre il male di tutti i pazienti, bisogna per farlo per la maggioranza
+- Lo scopo dell'operatore sanitario è sempre quello di **fare il bene**
+- Contemporaneamente, lo scopo dell'OS è di **contrastare il male**
+- Se non si riesce a fare il bene/ridurre il male di tutti i pazienti, bisogna almeno farlo per la maggioranza
 
-&rarr; da valutare quindi costi/benefici
+&rarr; da valutare quindi ==costi/benefici==
 
-## Responsabili di rispettare i principi primi: responsabili delle conseguenze delle nostre azioni
+## Responsabili di rispettare i principi primi, responsabili delle conseguenze delle nostre azioni
 
-*Investo a 50kmh una persona sulle srisce, il pedone muore*
+*Investo a 50 km/h una persona sulle strisce, il pedone muore*
 
-- Etica deontologia ha il principio di intenzionalità: Doloso
-- Etica delle conseguenze: principio di colposità: Colposo
+- Etica deontologica: principio di intenzionalità &rarr; **doloso**
+- Etica delle conseguenze: principio di colposità &rarr; **colposo**
 
 ## Conclusione
-!! Riprendi le tabella dal powerpoint che compara i concetti chiave 
+Parole chiave e concetti fondamentali (dalle slides):
+
+| **Etica deontologica** | **Etica delle conseguenze** |
+|---|---|
+| Diritti e doveri umani fondamentali | Fare il bene: benessere, salute |
+| Principi assoluti | Contrastare il male: malessere, malattia |
+| Ultima ratio | Valutare e calcolare le conseguenze delle azioni |
+| Proporzionalità | Azione giusta: + benessere, + salute |
+| Diritti dei pazienti | Azione sbagliata: + malessere, + malattia |
+| Doveri degli operatori, codice deontologico | Per tutti o per la maggioranza |
+| Libertà, autonomia, uguaglianza (parità di trattamento), dignità, integrità fisica e psichica | |
+| Rispetto ai principi assoluti, il fine ==non giustifica mai== i mezzi | Il fine ==può giustificare== i mezzi |
+| Responsabili di rispettare i principi primi | Responsabili delle conseguenze delle azioni |
 
 ## Esercizio di riflessione finale
 
@@ -269,7 +286,7 @@ Etica deontologica, etica delle conseguenze ed etica della cura: che risposte da
 
 | | PRO | CONTRO |
 |---|---|---|
-| **Etica deontologica** |Ultima ratio: quando ho provato tutte le altre opzioni |Viola diritti fondamentali: Diritti dei pazienti, libertà di movimento, autonomia (=autodeterminazione), dignità, integrità fisica e psichica. Il fine non giustifica i mezzi |
+| **Etica deontologica** | Ultima ratio: quando ho provato tutte le altre opzioni | Viola diritti fondamentali: diritti dei pazienti, libertà di movimento, autonomia (= autodeterminazione), dignità, integrità fisica e psichica. Il fine non giustifica i mezzi |
 | **Etica delle conseguenze** | | |
 
 **Etica della cura** (assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni individuali). In questo caso:
@@ -312,7 +329,6 @@ Etica deontologica, etica delle conseguenze ed etica della cura: che risposte da
 | **Etica delle conseguenze** | | |
 
 **Etica della cura** (assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni individuali). In questo caso:
-
 
 # Etica della cura
 

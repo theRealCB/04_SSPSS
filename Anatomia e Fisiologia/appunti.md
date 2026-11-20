@@ -928,91 +928,88 @@ block-beta
 
 ## Il cuore
 
-
 <img src="imm/pagina23_img1.png" width="400">
 
 - Localizzato nel **mediastino** (regione specifica della cavità toracica che ospita il cuore)
 - Immaginiamo una linea che divide a metà il torace (**linea mediosternale**). Circa i 2/3 del cuore si trovano a sinistra della linea mediosternale
-- L'apice del cuore poggia sul diagramma
-- Nell'uomo: ~300g, nella donna ~250g
-- Il cuore è rivestito da membrane sierose (**pericardio**)
+- L'apice del cuore poggia sul diaframma
+- Nell'uomo: ~300 g, nella donna ~250 g
+- Il cuore è rivestito da membrane sierose (**pericardio**):
     - **Pericardio viscerale**: riveste direttamente il cuore
-    - **Pericardio parietale**: riveste la porzione della parete della cavità toracica che ospita il cuore.
-    - Il pericardio produce **liquido pericardico** che consente al cuore di contrarsi in un ambiente privo di ossigeno
+    - **Pericardio parietale**: riveste la porzione della parete della cavità toracica che ospita il cuore
+    - Il pericardio produce **liquido pericardico**, che consente al cuore di contrarsi in un ambiente privo di ossigeno
 
 <img src="imm/pagina23_img2.png" width="400" style="float: left; margin-right: 30px;">
-Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polmonare nascono dal tronco polmonare
 
+Non indicato nell'immagine: l'arteria polmonare destra e l'arteria polmonare sinistra nascono dal tronco polmonare.
 
-- <font color="red">È un organo muscolare cavo:</font> formato da 4 camere (2 atri e 2 ventricoli)
-- <font color="red">Organo asimmetrico</font>: La parete del ventricolo sinistro è 3x volte più spessa rispetto alla parete del ventricolo destro. Questo perche il ventricolo destro deve pompare sangue "solo" fino ai polmoni, mentre quello sinsitro deve pompare in tutto il corpo (dal cervello fino ai piedi)
-
+- <font color="red">È un organo muscolare cavo</font>: formato da 4 camere (2 atri e 2 ventricoli)
+- <font color="red">Organo asimmetrico</font>: la parete del ventricolo sinistro è 3 volte più spessa rispetto alla parete del ventricolo destro. Questo perché il ventricolo destro deve pompare sangue "solo" fino ai polmoni, mentre quello sinistro deve pomparlo in tutto il corpo (dal cervello fino ai piedi)
 - La parete del cuore è costituita da:
-    - pericardio viscerale, miocardio(parte contrattile), endocardio (tessuto che riveste il miocardio)
-- i due ventricoli sono separati dal setto interventricolare
-- i due atri sono separati dal setto interatriale
-- Valvola atrioventricolare destra (tricuspide), composta da 3 lembi di tessuto connettivo
-- Valvola atrioventricolare sinistra (bicuspide), chiamata anche valvola mitrale
-- Aorta divisa in tre parti:
-    - **Aorta ascendente**, da cui partono le coronarioe
-    - **Arco aortico**, da cui partono tre ramificazioni (nell'immagine, da sinsitra verso destra):
-        1. Tronco brachioencefalico
-        2. arteria carotide comune sinistra
-        3. arteria succlavia sinistra
-    - **Aorta discendente**:
+    - pericardio viscerale, miocardio (parte contrattile), endocardio (tessuto che riveste il miocardio)
+- I due ventricoli sono separati dal **setto interventricolare**
+- I due atri sono separati dal **setto interatriale**
+- **Valvola atrioventricolare destra** (tricuspide), composta da 3 lembi di tessuto connettivo
+- **Valvola atrioventricolare sinistra** (bicuspide), chiamata anche **valvola mitrale**
+- L'aorta è divisa in tre parti:
+    - **Aorta ascendente**, da cui partono le coronarie
+    - **Arco aortico**, da cui partono tre ramificazioni (nell'immagine, da sinistra verso destra):
+        1. Tronco brachiocefalico
+        2. Arteria carotide comune sinistra
+        3. Arteria succlavia sinistra
+    - **Aorta discendente**
 
 ### Il ciclo cardiaco
+
 <img src="imm/pagina24_img1.png" width="300" style="float: left; margin-right: 30px;">
 
 - Con **ciclo cardiaco** si intende la sequenza di eventi in un battito cardiaco
+- Battito cardiaco = contrazione ritmica del cuore
+- A riposo il numero di battiti cardiaci al minuto è ~70 (**frequenza cardiaca**)
 
-- Battito cardiaco = cotrazione ritmica del cuore
-- A riposo il numero di battiti cardiaci al minuto sono ~70 (frequenza cardiaca)
 <div style="clear: both;"></div>
 
+Il ciclo cardiaco è composto da ==3 fasi==:
 
+1. Fase 1 &rarr; **Diastole totale**: è la più lunga (0.4 s). Le 4 camere sono in fase di rilassamento, quindi sia atri che ventricoli si rilassano. Distinguiamo poi diastole **atriale** (atri rilassati) e diastole **ventricolare** (ventricoli rilassati). Durante questa prima fase:
+    - Il sangue torna all'atrio destro tramite le vene cave (superiore e inferiore)
+    - Il sangue giunge all'atrio sinistro attraverso le 4 vene polmonari
+    - Si assiste poi al riempimento <font color="red">PASSIVO</font> dei ventricoli per forza di gravità (ventricoli sotto gli atri) &rarr; le valvole AV sono aperte
+    - Le valvole semilunari ("l'uscita") rimangono chiuse, per evitare che il sangue torni indietro
+2. Fase 2 &rarr; **Sistole atriale** e **diastole ventricolare**: è la più breve (0.1 s). Riempimento <font color="red">ATTIVO</font> dei ventricoli: con questa contrazione gli atri si contraggono e si assicurano di trasferire tutto il sangue nei ventricoli (rilassati)
+    - Come nella diastole, le valvole semilunari sono chiuse e le valvole AV sono aperte
+3. Fase 3 &rarr; **Sistole ventricolare** e **diastole atriale** (0.3 s): i ventricoli si contraggono, immettendo il sangue nelle rispettive circolazioni. Gli atri sono invece rilassati e cominciano a riempirsi nuovamente di sangue
+    - In questa fase le valvole AV sono chiuse (per evitare che il sangue torni indietro), mentre le semilunari sono aperte
 
-- Ciclo cardiaco composto da ==3 fasi==:
-    1. Fase 1 &rarr; **Diastole totale**: è la piu lunga (0.4 sec). Le 4 camere sono in fase di rilassamento. Quindi sia atri che ventricoli si rilassano. Distinguiamo poi diastole **atriale** (atri rilassati) e diastole **ventricolare** (ventricoli sono rilassati)
-    Durante questa prima fase:
-        - Il sangue torna all'atrio destro tramite le vene cave (superiore e inferiore)
-        - Il sangue giunge all'atrio sinistro attraverso le 4 vene polmonari
-        
-        Si assiste poi al riempimento <font color="red">PASSIVO</font> dei ventricoli per forza di gravità (ventricoli sotto gli atri) &rarr; le valvole AV sono aperte
-        Le valvole semilunari ("l'uscita") rimangono chiuse, per evitare che il sangue troni indietro
-    2. Fase 2 &rarr; **Sistole atriale** e **diastole ventricolare**: è la piu breve (0.1s)Riempimento <font color="red">ATTIVO</font> dei ventricoli. Con questa contrazione degli atri si contraggono e si assicurano di trasferire tutto il sangue nei ventricoli (rilassati).
-    Come nella diastole, le valvole semilunari sono chiuse, e le valvole AV sono aperte
-    3. Fase 3 &rarr; **Sistole ventricolare** e **diastole atriale**: (0.3 sec): I ventricoli si contraggono, immettendo il sangue nelle rispettive circolazioni. Gli atri sono invece rilassate e cominciano a riempirsi nuovamente di sangue
-    In questa fase le valvole AV sono chiuse (per evitare che il sangue torni indietro), mentre le semilunari sono aperte
-
-Le 4 valvole cardiache si assicurano che il sangue segua sempre il tragitto corretto (tragitto unidirezionale)
+> Le 4 valvole cardiache si assicurano che il sangue segua sempre il tragitto corretto (tragitto ==unidirezionale==)
 
 ### Sistema di contrazione cardiaca
 
 <img src="imm/pagina24_img2.png" width="400">
 
 La parte contrattile del cuore è il **miocardio**:
-- 99% è costituito da cellule muscolari cardiache che si contraggono
-- 1% costituito da cellule cardiache specializzate, che nell'insieme formano il <font color="red">sistema di conduzione del cuore</font>. Grazie a questo sistema di conduzione, il cuore è detotato di **autoritmicità** &rarr; il cuore è in grado di contrarsi in assenza di un segnale che proviene dal sistema nervoso
-Il sistema di conduzione genera e trasporta impulsi elettrici (flussi di ioni)
+
+- 99% costituito da cellule muscolari cardiache che si contraggono
+- 1% costituito da cellule cardiache specializzate, che nell'insieme formano il <font color="red">sistema di conduzione del cuore</font>. Grazie a questo sistema di conduzione, il cuore è dotato di **autoritmicità** &rarr; il cuore è in grado di contrarsi in assenza di un segnale che proviene dal sistema nervoso
+
+Il sistema di conduzione genera e trasporta impulsi elettrici (flussi di ioni).
 
 Il **nodo senoatriale (SA)** è una piccola massa di cellule localizzata nell'atrio destro &rarr; ==determina il ritmo di base del cuore==:
-Il nodo SA genera impulsi che diffondono in entrmambi gli atri. di conseguenza queste camere si contraggono.
-Gli impulsi elettrici raggiungono anche il **Nodo atrioventricolare (AV)**. Quest'ultimo rallenta momentaneamente la trasmissione degli impulsi elettrici per impedire la contrazione simultanea di atri e ventricoli.
-Gli impulsi elettrici si dirignono quindi nele strutture seguenti:
-    
-- Fascio AV (fascio di His)
-- Rami del AV
-- Fibre di Pukinje (fibre subendocardiche)
-    Tramite le fibre di Purkinje gli impulsi elettrici diffondono nei ventricoli che si contraggono
 
-Il nodo senoatriale è regolato dal SNP
+- Il nodo SA genera impulsi che si diffondono in entrambi gli atri; di conseguenza queste camere si contraggono
+- Gli impulsi elettrici raggiungono anche il **nodo atrioventricolare (AV)**. Quest'ultimo rallenta momentaneamente la trasmissione degli impulsi elettrici per impedire la contrazione simultanea di atri e ventricoli
+- Gli impulsi elettrici si dirigono quindi nelle strutture seguenti:
+    1. Fascio AV (fascio di His)
+    2. Rami del fascio AV
+    3. Fibre di Purkinje (fibre subendocardiche) &rarr; tramite le fibre di Purkinje gli impulsi elettrici si diffondono nei ventricoli, che si contraggono
 
+Il nodo senoatriale è regolato dal **SNP**.
 
 Il SNP è diviso in:
-- divisione sensoriale
-- divisione motoria:
-    - divisione nervosa somatica
-    - divisione nervosa autonoma:
-        - sistema nervoso simpatico
-        - sistema nervoso parasimpatico
+
+- Divisione sensoriale
+- Divisione motoria:
+    - Divisione nervosa somatica
+    - Divisione nervosa autonoma:
+        - Sistema nervoso simpatico
+        - Sistema nervoso parasimpatico

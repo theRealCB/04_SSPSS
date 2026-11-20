@@ -269,7 +269,7 @@ Etica deontologica, etica delle conseguenze ed etica della cura: che risposte da
 
 | | PRO | CONTRO |
 |---|---|---|
-| **Etica deontologica** | | |
+| **Etica deontologica** |Ultima ratio: quando ho provato tutte le altre opzioni |Viola diritti fondamentali: Diritti dei pazienti, libertà di movimento, autonomia (=autodeterminazione), dignità, integrità fisica e psichica. Il fine non giustifica i mezzi |
 | **Etica delle conseguenze** | | |
 
 **Etica della cura** (assistenza, dedizione, relazione, ascolto, empatia, comprensione dei bisogni individuali). In questo caso:

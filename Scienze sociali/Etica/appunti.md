@@ -231,6 +231,15 @@ I fondamenti:
 
 Esempi di problemi da analizzare: "è giusto vietare il fumo?", "è giusto imporre le vaccinazioni?", "è giusto donare gli organi?"
 
+## Consequenzialismo
+### Uccidere o non uccidere?
+Solitamente non si uccide perchè porta dispiacere, malessere, sofferenza nella persona, a parenti amici e alla società nel complesso. Fa il bene solo dell'assassino
+
+Uccidere un tiranno dittatore può essere lecito se permette il benessere del popolo
+
+### Rubare o non rubare
+
+
 
 # BIOETICA
 *(ancora da trattare a lezione: aborto, fecondazione assistita, eutanasia; etica della Sacralità della Vita vs etica della Qualità della Vita)*

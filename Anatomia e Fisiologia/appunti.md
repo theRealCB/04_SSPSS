@@ -961,8 +961,28 @@ Non indicato nell'immagine, l'arteria destra polmonare e l'arteria sinistra polm
         3. arteria succlavia sinistra
     - **Aorta discendente**:
 
-### Il circolo cardiaco
+### Il ciclo cardiaco
 <img src="imm/pagina24_img1.png" width="300" style="float: left; margin-right: 30px;">
-- Battito cardiaco = cotrazione ritmica del cuore
-- a riposo il numero di battiti cardiaci al minuto sono ~70
 
+- Con **ciclo cardiaco** si intende la sequenza di eventi in un battito cardiaco
+
+- Battito cardiaco = cotrazione ritmica del cuore
+- A riposo il numero di battiti cardiaci al minuto sono ~70 (frequenza cardiaca)
+<div style="clear: both;"></div>
+
+
+
+- Ciclo cardiaco composto da ==3 fasi==:
+    1. Fase 1 &rarr; **Diastole totale**: è la piu lunga (0.4 sec). Le 4 camere sono in fase di rilassamento. Quindi sia atri che ventricoli si rilassano. Distinguiamo poi diastole **atriale** (atri rilassati) e diastole **ventricolare** (ventricoli sono rilassati)
+    Durante questa prima fase:
+        - Il sangue torna all'atrio destro tramite le vene cave (superiore e inferiore)
+        - Il sangue giunge all'atrio sinistro attraverso le 4 vene polmonari
+        
+        Si assiste poi al riempimento <font color="red">PASSIVO</font> dei ventricoli per forza di gravità (ventricoli sotto gli atri) &rarr; le valvole AV sono aperte
+        Le valvole semilunari ("l'uscita") rimangono chiuse, per evitare che il sangue troni indietro
+    2. Fase 2 &rarr; **Sistole atriale** e **diastole ventricolare**: è la piu breve (0.1s)Riempimento <font color="red">ATTIVO</font> dei ventricoli. Con questa contrazione degli atri si contraggono e si assicurano di trasferire tutto il sangue nei ventricoli (rilassati).
+    Come nella diastole, le valvole semilunari sono chiuse, e le valvole AV sono aperte
+    3. Fase 3 &rarr; **Sistole ventricolare** e **diastole atriale**: (0.3 sec): I ventricoli si contraggono, immettendo il sangue nelle rispettive circolazioni. Gli atri sono invece rilassate e cominciano a riempirsi nuovamente di sangue
+    In questa fase le valvole AV sono chiuse (per evitare che il sangue torni indietro), mentre le semilunari sono aperte
+
+Le 4 valvole cardiache si assicurano che il sangue segua sempre il tragitto corretto (tragitto unidirezionale)

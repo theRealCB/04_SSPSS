@@ -96,6 +96,22 @@ def split_notes(src: Path, mds: list[Path]) -> tuple[list[Path], set[Path]]:
     return virtual, used
 
 
+# Cartelle di soli materiali: anche se contengono un .md non diventano una sotto-materia
+MATERIAL_DIRS = {"docs", "slides", "lavori di gruppo"}
+
+
+def is_material_dir(p: Path) -> bool:
+    if p.name.lower() in MATERIAL_DIRS:
+        return True
+    return not any(c.suffix == ".md" for c in p.rglob("*") if not is_junk(c))
+
+
+def pretty(name: str) -> str:
+    """'1 - Teorie etiche' -> '1 · Teorie etiche', underscore -> spazio."""
+    name = name.replace("_", " ")
+    return re.sub(r"^(\d+)\s*[-.]\s*", r"\1 · ", name)
+
+
 def is_junk(p: Path) -> bool:
     return p.name.startswith("~$") or p.name.startswith(".") or p.suffix.lower() in SKIP_EXT
 
@@ -236,25 +252,62 @@ def natkey(p: Path):
 
 
 def materials_in(folder: Path, paired_pdfs: set[Path]) -> list[tuple]:
-    """File scaricabili raggruppati: (None, file sciolti), poi una voce per
-    ogni sottocartella senza .md. Deduplica per nome tra i gruppi."""
-    groups, seen = [], set()
+    """File scaricabili raggruppati per cartella: [(percorso_gruppo, [file])].
+    Il percorso ha al massimo due livelli (gruppo, sottogruppo); i livelli
+    più profondi confluiscono nel sottogruppo. I .md diventano pagine."""
+    groups: dict[tuple, list[Path]] = {}
+    seen = set()
 
-    def add(name, files):
-        unique = [f for f in sorted(files, key=natkey) if f.name not in seen]
-        seen.update(f.name for f in unique)
-        if unique:
-            groups.append((name, unique))
+    def ok(f: Path) -> bool:
+        return (f.is_file() and not is_junk(f)
+                and (f.suffix.lower() in MATERIAL_EXT or f.suffix == ".md"))
 
-    add(None, [p for p in folder.iterdir()
-               if p.is_file() and not is_junk(p)
-               and p.suffix.lower() in MATERIAL_EXT and p not in paired_pdfs])
-    for p in sorted(folder.iterdir()):
-        if (p.is_dir() and not is_junk(p)
-                and not any(c.suffix == ".md" for c in p.rglob("*") if not is_junk(c))):
-            add(p.name, [c for c in p.rglob("*")
-                         if c.is_file() and not is_junk(c) and c.suffix.lower() in MATERIAL_EXT])
-    return groups
+    loose = [p for p in folder.iterdir() if ok(p) and p.suffix != ".md" and p not in paired_pdfs]
+    if loose:
+        groups[()] = loose
+    for top in sorted(folder.iterdir(), key=natkey):
+        if not (top.is_dir() and not is_junk(top) and is_material_dir(top)):
+            continue
+        for f in top.rglob("*"):
+            if not ok(f):
+                continue
+            if f.suffix == ".pdf" and f.with_suffix(".md").exists():
+                continue                      # PDF di una pagina: scaricabile dalla pagina stessa
+            parts = f.relative_to(folder).parent.parts[:2]
+            groups.setdefault(parts, []).append(f)
+    out = []
+    for key in sorted(groups, key=lambda k: [natkey(Path(x)) for x in k]):
+        files = [f for f in sorted(groups[key], key=natkey) if f.name not in seen]
+        seen.update(f.name for f in files)
+        if files:
+            out.append((key, files))
+    return out
+
+
+def material_page(f: Path, folder: Path, dest_folder: Path) -> str:
+    """Pagina del sito per un .md dentro una cartella di materiali. Ritorna il titolo."""
+    text = f.read_text(encoding="utf-8")
+    m = re.search(r"<h1[^>]*>(.*?)</h1>", text, re.S) or re.search(r"^#\s+(.+)$", text, re.M)
+    title = re.sub(r"<[^>]+>", "", m.group(1)).strip() if m else f.stem.replace("_", " ")
+    frel = f.relative_to(folder)
+    rel = dest_folder.relative_to(DOCS)
+    depth = len(rel.parts) + len(frel.parts)          # .../cartelle/pagina/
+    items = [f'<a href="{"../" * depth}">Home</a>']
+    for j, part in enumerate(rel.parts):
+        items.append(f'<a href="{"../" * (depth - 1 - j)}">{part}</a>')
+    items.append(f"<span>{title}</span>")
+    crumb = ('<nav class="sspss-crumb">' + '<span class="sspss-crumb__sep">/</span>'.join(items)
+             + "</nav>\n\n")
+    pdf = f.with_suffix(".pdf")
+    out = dest_folder / frel
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(transform_md(f, title, f"../{pdf.name}", crumb,
+                                subject=" · ".join(rel.parts)), encoding="utf-8")
+    page = "/".join((*rel.parts, *frel.with_suffix("").parts)) + "/"
+    pdf_rel = "/".join((*rel.parts, *frel.with_suffix(".pdf").parts))
+    if not pdf.exists():
+        PDF_TARGETS.append({"page": page, "pdf": pdf_rel, "title": title})
+    return title
 
 
 def material_links(folder: Path, dest_folder: Path, paired_pdfs: set[Path]) -> str:
@@ -262,27 +315,37 @@ def material_links(folder: Path, dest_folder: Path, paired_pdfs: set[Path]) -> s
     if not groups:
         return ""
     rel = dest_folder.relative_to(DOCS)
-    for gname, files in groups:
+    lines = ["", '<div class="sspss-materials" markdown>',
+             '<p class="sspss-materials__title">Materiali</p>', ""]
+    last_top = None
+    for key, files in groups:
+        if key and key[0] != last_top:
+            lines += [f'<p class="sspss-materials__group">{pretty(key[0])}</p>', ""]
+        last_top = key[0] if key else None
+        if len(key) > 1:
+            lines += [f'<p class="sspss-materials__sub">{pretty(key[1])}</p>', ""]
         for f in files:
             frel = f.relative_to(folder)
+            if f.suffix == ".md":
+                title = material_page(f, folder, dest_folder)
+                # file con un nome "umano" (con spazi): si usa quello, altrimenti il titolo
+                label = f.stem if " " in f.stem else title
+                icon = ":material-text-box-outline:"
+                href = urllib.parse.quote(str(frel.with_suffix(""))) + "/"
+                ext, url_parts = "pdf", (*rel.parts, *frel.with_suffix(".pdf").parts)
+            else:
+                label = f.stem.replace("_", " ")
+                icon = FILE_ICONS.get(f.suffix.lower(), ":material-file-document-outline:")
+                href = urllib.parse.quote(str(frel))
+                ext, url_parts = f.suffix.lower().lstrip("."), (*rel.parts, *frel.parts)
             DOWNLOADS.append({
                 "subject": rel.parts[0],
                 "sub": rel.parts[1] if len(rel.parts) > 1 else None,
-                "folder": gname.replace("_", " ") if gname else None,
-                "label": f.stem.replace("_", " "),
-                "ext": f.suffix.lower().lstrip("."),
-                "url": "/".join(urllib.parse.quote(x) for x in (*rel.parts, *frel.parts)),
+                "folder": " / ".join(pretty(k) for k in key) or None,
+                "label": label,
+                "ext": ext,
+                "url": "/".join(urllib.parse.quote(x) for x in url_parts),
             })
-    lines = ["", '<div class="sspss-materials" markdown>',
-             '<p class="sspss-materials__title">Materiali</p>', ""]
-    for gname, files in groups:
-        if gname:
-            lines += [f'<p class="sspss-materials__group">{gname.replace("_", " ")}</p>', ""]
-        for f in files:
-            rel = f.relative_to(folder)
-            icon = FILE_ICONS.get(f.suffix.lower(), ":material-file-document-outline:")
-            href = urllib.parse.quote(str(rel))
-            label = f.stem.replace("_", " ")
             lines.append(f"- {icon} [{label}]({href})")
         lines.append("")
     lines.append("</div>")
@@ -360,13 +423,12 @@ def process_folder(src: Path, dest: Path) -> dict:
 
     # Sottocartelle con md: ricorsione (es. Scienze sociali/Etica)
     for sub in subdirs:
-        if any(c.suffix == ".md" for c in sub.rglob("*") if not is_junk(c)):
+        if not is_material_dir(sub):
             process_folder(sub, dest / sub.name)
 
     # Nessun md in questa cartella: indice generato
     if not mds:
-        md_subdirs = [s for s in subdirs
-                      if any(c.suffix == ".md" for c in s.rglob("*") if not is_junk(c))]
+        md_subdirs = [s for s in subdirs if not is_material_dir(s)]
         body = ""
         if md_subdirs:
             sub_cards = []
@@ -660,6 +722,12 @@ body.sspss-hide-mat .sspss-card .sspss-materials > ul { display: none; }
   margin: .6rem 0 0 !important;
 }
 [data-md-color-scheme="slate"] .sspss-materials__group { color: #FF8A75; }
+.md-typeset .sspss-materials__sub {
+  margin: .35rem 0 .05rem .1rem !important;
+  font-size: .66rem; font-weight: 700; color: var(--md-default-fg-color--light);
+}
+.md-typeset .sspss-materials__sub + ul { margin-left: .5rem !important; }
+body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__sub { display: none; }
 body.sspss-hide-mat .sspss-card .sspss-materials .sspss-materials__group { display: none; }
 .sspss-card .sspss-materials > ul { list-style: none; margin: .4rem 0 0; padding: 0; font-size: .62rem; }
 .sspss-card .sspss-materials > ul li { margin: .15rem 0; display: flex; align-items: center; gap: .3rem; }
